@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_food_fields_product_food_fields,product_food_fields.product_food_fields,model_product_food_fields_product_food_fields,base.group_user,1,1,1,1

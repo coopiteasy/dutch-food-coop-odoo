@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="food_product_view_form" model="ir.ui.view">
+        <field name="name">food_product_fields.extra.fields</field>
+        <field name="model">product.template</field>
+        <field name="priority" eval="2" />
+        <field name="inherit_id" ref="product.product_template_only_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='general_information']" position="after">
+                <page string="Food related information" name="main_information">
+                    <group name="group_default">
+                        <field name="ingredients" string="Ingredients" />
+                        <field name="quality" string="Quality" />
+                        <field
+                            name="origin"
+                            string="Land where the product is produced, an ISO 3166 code"
+                        />
+                        <field name="usage_tips" string="Usage tips" />
+                        <field
+                            name="days_until_expiry"
+                            string="Days until expiration"
+                        />
+                        <field
+                            name="storage_temperature"
+                            string="Storage temperature in Celcius"
+                        />
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
