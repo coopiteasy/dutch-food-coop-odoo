@@ -20,7 +20,7 @@
         <field name="name">digi_client_tree_view</field>
         <field name="model">product_digi_sync.digi_client</field>
         <field name="arch" type="xml">
-            <tree string="Digi Client List">
+            <tree>
                 <field name="name" />
                 <field name="username" />
             </tree>

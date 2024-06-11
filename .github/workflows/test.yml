@@ -31,6 +31,8 @@ jobs:
     runs-on: ubuntu-22.04
     container: ${{ matrix.container }}
     name: ${{ matrix.name }}
+    env:
+      ADDONS_PATH: "/opt/odoo/addons,/__w/dutch-food-coop-odoo/dutch-food-coop-odoo/extra-addons"
     strategy:
       fail-fast: false
       matrix:
@@ -48,9 +50,16 @@ jobs:
         ports:
           - 5432:5432
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           persist-credentials: false
+      - name: Checkout extra Odoo modules
+        uses: actions/checkout@v4
+        with:
+          repository: OCA/queue
+          path: "${{ github.workspace }}/extra-addons"
+      - name: list workspace in __w
+        run: ls -als "/__w/dutch-food-coop-odoo/dutch-food-coop-odoo/extra-addons"
       - name: Install addons and dependencies
         run: oca_install_addons
       - name: Check licenses

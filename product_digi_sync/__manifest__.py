@@ -4,7 +4,7 @@
         Allows for syncing products to Digi using the @Fresh api""",
     "author": "Gedeelde Weelde",
     "license": "AGPL-3",
-    "website": "https://www.yourcompany.com",
+    "website": "https://github.com/Gedeelde-Weelde/dutch-food-coop-odoo",
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/16.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
