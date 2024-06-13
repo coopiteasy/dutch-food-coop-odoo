@@ -1,0 +1,173 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* product_digi_sync
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: product_digi_sync
+#: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_digi_client__password
+msgid "@Fresh Password"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_digi_client__username
+msgid "@Fresh Username"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_digi_client__api_url
+msgid "Api Url"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.model,name:product_digi_sync.model_barcode_rule
+#: model:ir.model.fields,field_description:product_digi_sync.field_product_category__barcode_rule_id
+msgid "Barcode Rule"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.model.fields,field_description:product_digi_sync.field_barcode_rule__digi_barcode_type_id
+msgid "Barcode Type ID in @Fresh"
+msgstr ""
+
+#. module: product_digi_sync
+#: model_terms:ir.ui.view,arch_db:product_digi_sync.digi_sync_product_category_view_form
+msgid "Barcode rule"
+msgstr ""
+
+#. module: product_digi_sync
+#: model_terms:ir.actions.act_window,help:product_digi_sync.digi_client_action
+msgid "Click to create your first Digi Client."
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.model,name:product_digi_sync.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_digi_client__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_digi_client__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.model,name:product_digi_sync.model_product_digi_sync_digi_client
+#: model:ir.model.fields,field_description:product_digi_sync.field_res_config_settings__digi_client_id
+msgid "Digi Client"
+msgstr ""
+
+#. module: product_digi_sync
+#: model_terms:ir.ui.view,arch_db:product_digi_sync.digi_client_form_view
+msgid "Digi Client Form"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.actions.act_window,name:product_digi_sync.digi_client_action
+#: model:ir.ui.menu,name:product_digi_sync.digi_client_menu
+msgid "Digi Clients"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.model.fields,field_description:product_digi_sync.field_res_config_settings__digi_sync_products_enabled
+msgid "Digi Sync Products Enabled"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_digi_client__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: product_digi_sync
+#: model_terms:ir.ui.view,arch_db:product_digi_sync.res_config_settings_view_form
+msgid "Documentation"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.model.fields,field_description:product_digi_sync.field_product_category__external_digi_id
+msgid "External Digi identifier"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.model.constraint,message:product_digi_sync.constraint_product_category_external_digi_id
+msgid "External Digi identifier must be unique."
+msgstr ""
+
+#. module: product_digi_sync
+#: model_terms:ir.ui.view,arch_db:product_digi_sync.digi_sync_product_category_view_form
+msgid "External digi identifier"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_digi_client__id
+msgid "ID"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_digi_client____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_digi_client__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_digi_client__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_digi_client__name
+msgid "Name"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.model.fields,field_description:product_digi_sync.field_product_product__plu_code
+#: model:ir.model.fields,field_description:product_digi_sync.field_product_template__plu_code
+msgid "Plu code"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.model,name:product_digi_sync.model_product_template
+msgid "Product"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.model,name:product_digi_sync.model_product_category
+msgid "Product Category"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.actions.server,name:product_digi_sync.action_send_product_image_to_digi
+msgid "Send image to digi"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.actions.server,name:product_digi_sync.action_send_product_to_digi
+msgid "Send product to digi"
+msgstr ""
+
+#. module: product_digi_sync
+#: model_terms:ir.ui.view,arch_db:product_digi_sync.res_config_settings_view_form
+msgid "Send products to @fresh by Digi"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.actions.server,name:product_digi_sync.action_send_product_category_to_digi
+msgid "Send to digi"
+msgstr ""
