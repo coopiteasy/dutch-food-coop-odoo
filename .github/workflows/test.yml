@@ -49,6 +49,8 @@ jobs:
           POSTGRES_DB: odoo
         ports:
           - 5432:5432
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -74,5 +76,5 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
       - name: Update .pot files
-        run: oca_export_and_push_pot https://x-access-token:${{ secrets.GIT_PUSH_TOKEN }}@github.com/${{ github.repository }}
+        run: oca_export_and_push_pot https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
         if: ${{ matrix.makepot == 'true' && github.event_name == 'push' && github.repository_owner == 'Gedeelde-Weelde' }}
