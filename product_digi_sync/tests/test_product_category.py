@@ -1,13 +1,13 @@
-from unittest.mock import patch
-
-from odoo.tests import TransactionCase
+from unittest.mock import Mock, patch
 
 from odoo.addons.base.models.ir_config_parameter import IrConfigParameter
 from odoo.addons.product_digi_sync.models.digi_client import DigiClient
 from odoo.addons.queue_job.models.base import Base as QueueJobBase
 
+from .digi_sync_base_test_case import DigiSyncBaseTestCase
 
-class ProductCategoryTestCase(TransactionCase):
+
+class ProductCategoryTestCase(DigiSyncBaseTestCase):
     def setUp(self):
         super().setUp()
 
@@ -59,21 +59,24 @@ class ProductCategoryTestCase(TransactionCase):
             }
         )
 
-        patch.object(IrConfigParameter, "get_param", digi_client.id)
+        client_id = digi_client.id
+        patched_get_param = self._patch_ir_config_parameter_for_get_param(client_id)
+        patched_get_param.start()
+        send_category_to_digi = Mock()
+        mock_send_category_to_digi = patch.object(
+            DigiClient, "send_category_to_digi", send_category_to_digi
+        ).start()
+        category = self.env["product.category"].create(
+            {
+                "name": "Test Category",
+                "external_digi_id": 1145,
+            }
+        )
+        category.write(
+            {
+                "name": "Test Category altered",
+            }
+        )
 
-        with patch.object(
-            DigiClient, "send_category_to_digi"
-        ) as mock_send_category_to_digi:
-            category = self.env["product.category"].create(
-                {
-                    "name": "Test Category",
-                    "external_digi_id": 1145,
-                }
-            )
-            category.write(
-                {
-                    "name": "Test Category altered",
-                }
-            )
-
-            self.assertEqual(mock_send_category_to_digi.call_args[0][0], category)
+        self.assertEqual(mock_send_category_to_digi.call_args[0][0], category)
+        patched_get_param.stop()
