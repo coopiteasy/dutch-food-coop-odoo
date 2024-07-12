@@ -14,7 +14,7 @@ class ProductTemplate(models.Model):
 
     plu_code = fields.Integer(string="Plu code", required=False)
     send_to_scale = fields.Boolean(string="Send to scale", required=False)
-    is_pieces_article = fields.Boolean(string="Is pieces article", required=False)
+    is_pieces_article = fields.Boolean(string="Pieces article", required=False)
 
     @api.depends("plu_code")
     def _compute_barcode(self):
@@ -56,20 +56,23 @@ class ProductTemplate(models.Model):
     def write(self, vals):
         result = super().write(vals)
         for product_template in self:
-            if product_template.plu_code:
+            if product_template.should_send_to_digi():
                 product_template.send_to_digi()
-            product_template.send_image_to_digi()
+                product_template.send_image_to_digi()
         return result
 
     @api.model
     def create(self, vals):
         record = super().create(vals)
 
-        if record.plu_code:
+        if record.should_send_to_digi():
             record.send_to_digi()
-        record.send_image_to_digi()
+            record.send_image_to_digi()
 
         return record
+
+    def should_send_to_digi(self):
+        return self.send_to_scale and self.plu_code
 
     def send_to_digi(self):
         self.ensure_one()

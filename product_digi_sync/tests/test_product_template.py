@@ -25,14 +25,14 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
         self.patcher.stop()
 
     @patch("logging.Logger.warning")
-    def test_it_logs_an_error_when_plu_code_is_set_but_no_digi_client_is_provided(
+    def test_it_logs_an_error_when_plu_code_is_set_and_send_to_scale_is_true_but_no_digi_client_is_provided(
         self, mock_logger
     ):
         patched_get_param = self._patch_ir_config_parameter_for_get_param("-1")
         patched_get_param.start()
 
         product = self.env["product.template"].create(
-            {"name": "Test Product Template", "plu_code": 405}
+            {"name": "Test Product Template", "plu_code": 405, "send_to_scale": True }
         )
         product.write(
             {
@@ -45,16 +45,7 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
         )
         patched_get_param.stop()
 
-    def test_it_sends_the_product_to_digi_when_plu_code_is_set(self):
-        product1 = self.env["product.template"].create(
-            {"name": "Test Product Template", "plu_code": 405}
-        )
-        product2 = self.env["product.template"].create(
-            {"name": "Test Product without ply"}
-        )
-
-        products = self.env["product.template"].browse([product1.id, product2.id])
-
+    def test_it_sends_the_product_to_digi_when_send_to_scale_is_true(self):
         digi_client = self._create_digi_client()
 
         patched_get_param = self._patch_ir_config_parameter_for_get_param(
@@ -67,6 +58,15 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
         ).start()
         patch.object(DigiClient, "send_product_image_to_digi", Mock()).start()
 
+        product1 = self.env["product.template"].create(
+            {"name": "Test Product Template", "plu_code": 405, "send_to_scale": True}
+        )
+        product2 = self.env["product.template"].create(
+            {"name": "Test Product without ply"}
+        )
+
+        products = self.env["product.template"].browse([product1.id, product2.id])
+
         products.write(
             {
                 "name": "Test Product Template",
@@ -76,15 +76,33 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
         self.assertEqual(mock_send_product_to_digi.call_args[0][0], product1)
         patched_get_param.stop()
 
-    def _create_digi_client(self):
-        digi_client = self.env["product_digi_sync.digi_client"].create(
+    def test_it_does_not_send_the_product_to_digi_when_send_to_scale_is_false_although_plu_code_is_set(self):
+        digi_client = self._create_digi_client()
+
+        patched_get_param = self._patch_ir_config_parameter_for_get_param(
+            digi_client.id
+        )
+        patched_get_param.start()
+        mock_send_product_to_digi = Mock()
+        patch.object(
+            DigiClient, "send_product_to_digi", mock_send_product_to_digi
+        ).start()
+        patch.object(DigiClient, "send_product_image_to_digi", Mock()).start()
+
+        product1 = self.env["product.template"].create(
+            {"name": "Test Product Template", "plu_code": 405, "send_to_scale": False}
+        )
+
+        products = self.env["product.template"].browse([product1.id])
+
+        products.write(
             {
-                "name": "Test Digi Client",
-                "username": "user",
-                "password": "<PASSWORD>",
+                "name": "Test Product Template",
             }
         )
-        return digi_client
+
+        self.assertEqual(mock_send_product_to_digi.called, False)
+        patched_get_param.stop()
 
     def test_it_sends_the_product_image_to_digi_when_the_image_is_set(self):
         digi_client = self._create_digi_client()
@@ -103,11 +121,22 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
         self.assertEqual(mock_send_product_image_to_digi.call_args[0][0], product)
         patched_get_param.stop()
 
+    def _create_digi_client(self):
+        digi_client = self.env["product_digi_sync.digi_client"].create(
+            {
+                "name": "Test Digi Client",
+                "username": "user",
+                "password": "<PASSWORD>",
+            }
+        )
+        return digi_client
+
     def _create_product_with_image(self, name, plu_code):
         product_with_image = self.env["product.template"].create(
             {
                 "name": name,
                 "plu_code": plu_code,
+                "send_to_scale": True,
                 "list_price": 1.0,
             }
         )
