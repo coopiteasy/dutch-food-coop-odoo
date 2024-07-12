@@ -168,6 +168,48 @@ class DigiClientTestCase(TransactionCase):
             self.assertEqual(post_spy.call_args.kwargs["data"], expected_payload)
 
     @tagged("post_install", "-at_install")
+    def test_it_sends_status_pieces_article_true_when_article_is_pieces_article(self):
+        name = "Test product"
+        plu_code = 200
+
+        test_category = self.env["product.category"].create(
+            {
+                "name": "Test category",
+                "external_digi_id": 120,
+            }
+        )
+
+        product_without_standard_price = self.env["product.product"].create(
+            {
+                "name": "Test product",
+                "plu_code": plu_code,
+                "list_price": 1.0,
+                "categ_id": test_category.id,
+                "send_to_scale": True,
+                "is_pieces_article": True,
+            }
+        )
+
+        data = {}
+        data["DataId"] = plu_code
+        data["Names"] = [
+            {
+                "Reference": "Nederlands",
+                "DdFormatCommodity": f"01000000{name}",
+            }
+        ]
+        data["UnitPrice"] = int(product_without_standard_price.list_price * 100)
+        data["MainGroupDataId"] = test_category.external_digi_id
+        data["StatusFields"] = {"PiecesArticle": True}
+
+        expected_payload = json.dumps(data)
+
+        with self.patch_request_post() as post_spy:
+            self.digi_client.send_product_to_digi(product_without_standard_price)
+
+            self.assertEqual(post_spy.call_args.kwargs["data"], expected_payload)
+
+    @tagged("post_install", "-at_install")
     def test_it_sends_no_barcode_to_digi_id_if_wrong_format(self):
         barcode_rule = self.env["barcode.rule"].create(
             {

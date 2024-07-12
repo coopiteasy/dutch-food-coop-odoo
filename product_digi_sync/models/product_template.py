@@ -13,6 +13,8 @@ class ProductTemplate(models.Model):
     _inherit = "product.template"
 
     plu_code = fields.Integer(string="Plu code", required=False)
+    send_to_scale = fields.Boolean(string="Send to scale", required=False)
+    is_pieces_article = fields.Boolean(string="Is pieces article", required=False)
 
     @api.depends("plu_code")
     def _compute_barcode(self):

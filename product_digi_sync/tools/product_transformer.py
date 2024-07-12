@@ -25,7 +25,7 @@ class ProductTransformer:
             data["CostPrice"] = int(product.standard_price * 100)
         if product.categ_id.id:
             data["MainGroupDataId"] = product.categ_id.external_digi_id
-        data["StatusFields"] = {"PiecesArticle": False}
+        data["StatusFields"] = {"PiecesArticle": (product.is_pieces_article)}
         if (
             product
             and getattr(product, "categ_id", None)
