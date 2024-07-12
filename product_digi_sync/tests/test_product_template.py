@@ -25,7 +25,7 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
         self.patcher.stop()
 
     @patch("logging.Logger.warning")
-    def test_it_logs_an_error_when_plu_code_is_set_and_send_to_scale_is_true_but_no_digi_client_is_provided(
+    def test_it_logs_an_error_when_product_can_bes_send_but_no_digi_client_is_provided(
         self, mock_logger
     ):
         patched_get_param = self._patch_ir_config_parameter_for_get_param("-1")
@@ -76,7 +76,7 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
         self.assertEqual(mock_send_product_to_digi.call_args[0][0], product1)
         patched_get_param.stop()
 
-    def test_it_does_not_send_the_product_to_digi_when_send_to_scale_is_false_although_plu_code_is_set(self):
+    def test_it_does_not_send_the_product_to_digi_when_send_to_scale_is_false(self):
         digi_client = self._create_digi_client()
 
         patched_get_param = self._patch_ir_config_parameter_for_get_param(
