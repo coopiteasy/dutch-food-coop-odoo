@@ -60,7 +60,9 @@ class ProductCategoryTestCase(DigiSyncBaseTestCase):
         )
 
         client_id = digi_client.id
-        patched_get_param = self._patch_ir_config_parameter_for_get_param("digi_client_id", client_id)
+        patched_get_param = self._patch_ir_config_parameter_for_get_param(
+            "digi_client_id", client_id
+        )
         patched_get_param.start()
         send_category_to_digi = Mock()
         mock_send_category_to_digi = patch.object(

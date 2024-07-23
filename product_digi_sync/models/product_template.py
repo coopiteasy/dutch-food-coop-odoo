@@ -32,7 +32,11 @@ class ProductTemplate(models.Model):
         for record in self:
             if not record.plu_code:
                 continue
-            current_rule = piece_barcode_rule if record.is_pieces_article else weighted_barcode_rule
+            current_rule = (
+                piece_barcode_rule
+                if record.is_pieces_article
+                else weighted_barcode_rule
+            )
             if current_rule is not None:
                 record.set_barcode(current_rule)
 

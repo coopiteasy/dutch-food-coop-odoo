@@ -28,11 +28,13 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
     def test_it_logs_an_error_when_product_can_bes_send_but_no_digi_client_is_provided(
         self, mock_logger
     ):
-        patched_get_param = self._patch_ir_config_parameter_for_get_param("digi_client_id", "-1")
+        patched_get_param = self._patch_ir_config_parameter_for_get_param(
+            "digi_client_id", "-1"
+        )
         patched_get_param.start()
 
         product = self.env["product.template"].create(
-            {"name": "Test Product Template", "plu_code": 405, "send_to_scale": True }
+            {"name": "Test Product Template", "plu_code": 405, "send_to_scale": True}
         )
         product.write(
             {
@@ -49,8 +51,7 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
         digi_client = self._create_digi_client()
 
         patched_get_param = self._patch_ir_config_parameter_for_get_param(
-            "digi_client_id",
-            digi_client.id
+            "digi_client_id", digi_client.id
         )
         patched_get_param.start()
         mock_send_product_to_digi = Mock()
@@ -81,8 +82,7 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
         digi_client = self._create_digi_client()
 
         patched_get_param = self._patch_ir_config_parameter_for_get_param(
-            "digi_client_id",
-            digi_client.id
+            "digi_client_id", digi_client.id
         )
         patched_get_param.start()
         mock_send_product_to_digi = Mock()
@@ -110,7 +110,9 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
         digi_client = self._create_digi_client()
 
         client_id = digi_client.id
-        patched_get_param = self._patch_ir_config_parameter_for_get_param("digi_client_id", client_id)
+        patched_get_param = self._patch_ir_config_parameter_for_get_param(
+            "digi_client_id", client_id
+        )
         patched_get_param.start()
         mock_send_product_image_to_digi = Mock()
         patch.object(

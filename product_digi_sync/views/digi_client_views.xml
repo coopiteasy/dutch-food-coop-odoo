@@ -10,7 +10,7 @@
                     <group>
                         <field name="name" />
                         <field name="username" />
-                        <field name="password" password="True"/>
+                        <field name="password" password="True" />
                         <field name="api_url" widget="url" />
                     </group>
                 </sheet>
