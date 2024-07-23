@@ -3,15 +3,17 @@
     <record id="digi_client_form_view" model="ir.ui.view">
         <field name="name">digi_client_form_view</field>
         <field name="model">product_digi_sync.digi_client</field>
+        <field name="mode">primary</field>
         <field name="arch" type="xml">
             <form string="Digi Client Form">
                 <sheet>
-                    <field name="name" />
-                    <field name="username" />
-                    <field name="password" />
-                    <field name="api_url" widget="url" />
+                    <group>
+                        <field name="name" />
+                        <field name="username" />
+                        <field name="password" password="True"/>
+                        <field name="api_url" widget="url" />
+                    </group>
                 </sheet>
-
             </form>
         </field>
     </record>

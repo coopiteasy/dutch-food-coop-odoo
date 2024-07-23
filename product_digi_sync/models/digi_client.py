@@ -17,10 +17,10 @@ class DigiClient(models.Model):
 
     DEFAULT_FRESH_URL = "https://fresh.digi.eu:8010/API/V1"
 
-    name = fields.Char(required=True)
+    name = fields.Char(required=True, string="Name")
     username = fields.Char("@Fresh Username", required=True)
     password = fields.Char("@Fresh Password", required=True)
-    api_url = fields.Char(required=True, default=DEFAULT_FRESH_URL)
+    api_url = fields.Char(required=True, default=DEFAULT_FRESH_URL, string="API URL")
 
     def send_product_to_digi(self, product):
         self.ensure_one()

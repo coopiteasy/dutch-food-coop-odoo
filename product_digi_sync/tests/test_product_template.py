@@ -28,7 +28,7 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
     def test_it_logs_an_error_when_product_can_bes_send_but_no_digi_client_is_provided(
         self, mock_logger
     ):
-        patched_get_param = self._patch_ir_config_parameter_for_get_param("-1")
+        patched_get_param = self._patch_ir_config_parameter_for_get_param("digi_client_id", "-1")
         patched_get_param.start()
 
         product = self.env["product.template"].create(
@@ -49,6 +49,7 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
         digi_client = self._create_digi_client()
 
         patched_get_param = self._patch_ir_config_parameter_for_get_param(
+            "digi_client_id",
             digi_client.id
         )
         patched_get_param.start()
@@ -80,6 +81,7 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
         digi_client = self._create_digi_client()
 
         patched_get_param = self._patch_ir_config_parameter_for_get_param(
+            "digi_client_id",
             digi_client.id
         )
         patched_get_param.start()
@@ -108,7 +110,7 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
         digi_client = self._create_digi_client()
 
         client_id = digi_client.id
-        patched_get_param = self._patch_ir_config_parameter_for_get_param(client_id)
+        patched_get_param = self._patch_ir_config_parameter_for_get_param("digi_client_id", client_id)
         patched_get_param.start()
         mock_send_product_image_to_digi = Mock()
         patch.object(
@@ -120,16 +122,6 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
 
         self.assertEqual(mock_send_product_image_to_digi.call_args[0][0], product)
         patched_get_param.stop()
-
-    def _create_digi_client(self):
-        digi_client = self.env["product_digi_sync.digi_client"].create(
-            {
-                "name": "Test Digi Client",
-                "username": "user",
-                "password": "<PASSWORD>",
-            }
-        )
-        return digi_client
 
     def _create_product_with_image(self, name, plu_code):
         product_with_image = self.env["product.template"].create(

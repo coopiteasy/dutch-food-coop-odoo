@@ -18,11 +18,14 @@ class ProductTemplate(models.Model):
 
     @api.depends("plu_code")
     def _compute_barcode(self):
+        weighted_barcode_rule_id = int(self.env["ir.config_parameter"].get_param("weighted_barcode_rule_id"))
+        if weighted_barcode_rule_id:
+            weighted_barcode_rule = self.env["barcode.rule"].browse(weighted_barcode_rule_id)
         for record in self:
-            if record.plu_code and record.categ_id.barcode_rule_id:
-                pattern = record.categ_id.barcode_rule_id.pattern
+            if record.plu_code and weighted_barcode_rule:
+                pattern = weighted_barcode_rule.pattern
 
-                is_ean = record.categ_id.barcode_rule_id.encoding == "ean13"
+                is_ean = weighted_barcode_rule.encoding == "ean13"
 
                 record.barcode = record._prepare_barcode(
                     pattern, record.plu_code, is_ean

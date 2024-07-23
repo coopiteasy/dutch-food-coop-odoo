@@ -28,6 +28,8 @@
                                 attrs="{'invisible': [('digi_sync_products_enabled', '=', False)]}"
                             >
                                     <field name="digi_client_id" />
+                                    <field name="piece_barcode_rule_id" />
+                                    <field name="weighted_barcode_rule_id" />
                                 </div>
                             </div>
                         </div>
