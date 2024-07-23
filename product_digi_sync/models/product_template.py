@@ -16,7 +16,7 @@ class ProductTemplate(models.Model):
     send_to_scale = fields.Boolean(string="Send to scale", required=False)
     is_pieces_article = fields.Boolean(string="Pieces article", required=False)
 
-    @api.depends("plu_code")
+    @api.depends("plu_code", "is_pieces_article")
     def _compute_barcode(self):
         weighted_barcode_rule = self._get_barcode_rule("weighted_barcode_rule_id")
         piece_barcode_rule = self._get_barcode_rule("piece_barcode_rule_id")
