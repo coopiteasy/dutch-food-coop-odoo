@@ -16,6 +16,14 @@ class ProductTemplate(models.Model):
     send_to_scale = fields.Boolean(string="Send to scale", required=False)
     is_pieces_article = fields.Boolean(string="Pieces article", required=False)
 
+    _sql_constraints = [
+        (
+            "plu_code_uniq",
+            "unique(plu_code)",
+            "Plu code must be unique.",
+        ),
+    ]
+
     @api.depends("plu_code", "is_pieces_article")
     def _compute_barcode(self):
         weighted_barcode_rule = self._get_barcode_rule("weighted_barcode_rule_id")
