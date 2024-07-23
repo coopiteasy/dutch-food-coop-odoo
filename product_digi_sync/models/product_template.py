@@ -18,34 +18,20 @@ class ProductTemplate(models.Model):
 
     @api.depends("plu_code")
     def _compute_barcode(self):
-        weighted_barcode_rule_id = int(self.env["ir.config_parameter"].get_param("weighted_barcode_rule_id"))
-        weighted_barcode_rule = None
-        piece_barcode_rule_id = int(self.env["ir.config_parameter"].get_param("piece_barcode_rule_id"))
-        piece_barcode_rule = None
-        if weighted_barcode_rule_id:
-            weighted_barcode_rule = self.env["barcode.rule"].browse(weighted_barcode_rule_id)
-        if piece_barcode_rule_id:
-            piece_barcode_rule = self.env["barcode.rule"].browse(piece_barcode_rule_id)
+        weighted_barcode_rule = self._get_barcode_rule("weighted_barcode_rule_id")
+        piece_barcode_rule = self._get_barcode_rule("piece_barcode_rule_id")
+
         for record in self:
-            if record.plu_code:
-                if record.is_pieces_article:
-                    if piece_barcode_rule is not None:
-                        pattern = piece_barcode_rule.pattern
+            if not record.plu_code:
+                continue
+            current_rule = piece_barcode_rule if record.is_pieces_article else weighted_barcode_rule
+            if current_rule is not None:
+                record.set_barcode(current_rule)
 
-                        is_ean = piece_barcode_rule.encoding == "ean13"
-
-                        record.barcode = record._prepare_barcode(
-                            pattern, record.plu_code, is_ean
-                        )
-                else:
-                    if weighted_barcode_rule is not None:
-                        pattern = weighted_barcode_rule.pattern
-
-                        is_ean = weighted_barcode_rule.encoding == "ean13"
-
-                        record.barcode = record._prepare_barcode(
-                            pattern, record.plu_code, is_ean
-                        )
+    def set_barcode(self, rule):
+        pattern = rule.pattern
+        is_ean = rule.encoding == "ean13"
+        self.barcode = self._prepare_barcode(pattern, self.plu_code, is_ean)
 
     @staticmethod
     def _prepare_barcode(barcode_pattern, plu_code, is_ean13):
@@ -71,6 +57,12 @@ class ProductTemplate(models.Model):
             barcode = f"{barcode}{barcode_check_digit}"
 
         return barcode
+
+    def _get_barcode_rule(self, rule_id):
+        barcode_rule_id = int(self.env["ir.config_parameter"].get_param(rule_id))
+        if barcode_rule_id:
+            return self.env["barcode.rule"].browse(barcode_rule_id)
+        return None
 
     def write(self, vals):
         result = super().write(vals)
