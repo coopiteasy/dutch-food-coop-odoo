@@ -6,8 +6,16 @@
         <field name="priority" eval="2" />
         <field name="inherit_id" ref="product.product_template_only_form_view" />
         <field name="arch" type="xml">
-            <field name="barcode" position="after">
-                <field name="plu_code" />
+            <field name="barcode" position="before">
+                <field name="send_to_scale" />
+                <field
+                    name="is_pieces_article"
+                    attrs="{'invisible': [('send_to_scale', '=', False)]}"
+                />
+                <field
+                    name="plu_code"
+                    attrs="{'required': [('send_to_scale', '=', True)]}"
+                />
             </field>
         </field>
     </record>

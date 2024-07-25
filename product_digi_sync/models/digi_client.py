@@ -20,7 +20,7 @@ class DigiClient(models.Model):
     name = fields.Char(required=True)
     username = fields.Char("@Fresh Username", required=True)
     password = fields.Char("@Fresh Password", required=True)
-    api_url = fields.Char(required=True, default=DEFAULT_FRESH_URL)
+    api_url = fields.Char(required=True, default=DEFAULT_FRESH_URL, string="API URL")
 
     def send_product_to_digi(self, product):
         self.ensure_one()

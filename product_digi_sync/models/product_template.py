@@ -13,18 +13,36 @@ class ProductTemplate(models.Model):
     _inherit = "product.template"
 
     plu_code = fields.Integer(string="Plu code", required=False)
+    send_to_scale = fields.Boolean(string="Send to scale", required=False)
+    is_pieces_article = fields.Boolean(string="Pieces article", required=False)
 
-    @api.depends("plu_code")
+    _sql_constraints = [
+        (
+            "plu_code_uniq",
+            "unique(plu_code)",
+            "Plu code must be unique.",
+        ),
+    ]
+
+    def get_current_barcode_rule(self):
+        weighted_barcode_rule = self._get_barcode_rule("weighted_barcode_rule_id")
+        piece_barcode_rule = self._get_barcode_rule("piece_barcode_rule_id")
+
+        return piece_barcode_rule if self.is_pieces_article else weighted_barcode_rule
+
+    @api.depends("plu_code", "is_pieces_article")
     def _compute_barcode(self):
         for record in self:
-            if record.plu_code and record.categ_id.barcode_rule_id:
-                pattern = record.categ_id.barcode_rule_id.pattern
+            if not record.plu_code:
+                continue
+            current_rule = record.get_current_barcode_rule()
+            if current_rule is not None:
+                record.set_barcode(current_rule)
 
-                is_ean = record.categ_id.barcode_rule_id.encoding == "ean13"
-
-                record.barcode = record._prepare_barcode(
-                    pattern, record.plu_code, is_ean
-                )
+    def set_barcode(self, rule):
+        pattern = rule.pattern
+        is_ean = rule.encoding == "ean13"
+        self.barcode = self._prepare_barcode(pattern, self.plu_code, is_ean)
 
     @staticmethod
     def _prepare_barcode(barcode_pattern, plu_code, is_ean13):
@@ -51,23 +69,32 @@ class ProductTemplate(models.Model):
 
         return barcode
 
+    def _get_barcode_rule(self, rule_id):
+        barcode_rule_id = self.env["ir.config_parameter"].get_param(rule_id)
+        if barcode_rule_id:
+            return self.env["barcode.rule"].browse(int(barcode_rule_id))
+        return None
+
     def write(self, vals):
         result = super().write(vals)
         for product_template in self:
-            if product_template.plu_code:
+            if product_template.should_send_to_digi():
                 product_template.send_to_digi()
-            product_template.send_image_to_digi()
+                product_template.send_image_to_digi()
         return result
 
     @api.model
     def create(self, vals):
         record = super().create(vals)
 
-        if record.plu_code:
+        if record.should_send_to_digi():
             record.send_to_digi()
-        record.send_image_to_digi()
+            record.send_image_to_digi()
 
         return record
+
+    def should_send_to_digi(self):
+        return self.send_to_scale and self.plu_code
 
     def send_to_digi(self):
         self.ensure_one()

@@ -27,7 +27,21 @@
                                 class="mt8"
                                 attrs="{'invisible': [('digi_sync_products_enabled', '=', False)]}"
                             >
-                                    <field name="digi_client_id" />
+                                    <label
+                                    for="digi_client_id"
+                                    class="o_form_label"
+                                >Digi client</label>
+                                    <div><field name="digi_client_id" /></div>
+                                    <label
+                                    for="piece_barcode_rule_id"
+                                    class="o_form_label"
+                                >Piece barcode rule</label>
+                                    <div><field name="piece_barcode_rule_id" /></div>
+                                    <label
+                                    for="weighted_barcode_rule_id"
+                                    class="o_form_label"
+                                >Weighted barcode rule</label>
+                                    <div><field name="weighted_barcode_rule_id" /></div>
                                 </div>
                             </div>
                         </div>

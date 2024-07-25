@@ -25,19 +25,15 @@ class ProductTransformer:
             data["CostPrice"] = int(product.standard_price * 100)
         if product.categ_id.id:
             data["MainGroupDataId"] = product.categ_id.external_digi_id
-        data["StatusFields"] = {"PiecesArticle": False}
-        if (
-            product
-            and getattr(product, "categ_id", None)
-            and getattr(product.categ_id, "barcode_rule_id", None)
-            and getattr(product.categ_id.barcode_rule_id, "digi_barcode_type_id", None)
-        ):
-            matches = re.match(r"^(\d{2}).*", product.categ_id.barcode_rule_id.pattern)
+        data["StatusFields"] = {"PiecesArticle": (product.is_pieces_article)}
+        if product and product.product_tmpl_id.get_current_barcode_rule() is not None:
+            barcode_rule = product.product_tmpl_id.get_current_barcode_rule()
+            matches = re.match(r"^(\d{2}).*", barcode_rule.pattern)
 
             if matches:
                 flag = matches.group(1)
                 if flag.isnumeric():
-                    barcode_id = product.categ_id.barcode_rule_id.digi_barcode_type_id
+                    barcode_id = barcode_rule.digi_barcode_type_id
                     data["NormalBarcode1"] = {
                         "BarcodeDataType": {
                             "Id": barcode_id,
