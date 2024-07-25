@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <!-- wizard view -->
     <record id="cwa_wizard_view" model="ir.ui.view">
@@ -7,15 +7,25 @@
         <field name="arch" type="xml">
             <form string="Update Brands Translations">
                 <field name="brand_ids">
-                    <tree string="Link Brands" editable="bottom" create="false" delete="false">
-                        <field name="cwa_product_id" string="Product Name"/>
-                        <field name="source_brand"/>
-                        <field name="target_brand"/>
-                        <field name="existing_brands"/>
+                    <tree
+                        string="Link Brands"
+                        editable="bottom"
+                        create="false"
+                        delete="false"
+                    >
+                        <field name="cwa_product_id" string="Product Name" />
+                        <field name="source_brand" />
+                        <field name="target_brand" />
+                        <field name="existing_brands" />
                     </tree>
                 </field>
                 <footer>
-                    <button string="Apply" name="action_apply" type="object" class="btn-primary"/>
+                    <button
+                        string="Apply"
+                        name="action_apply"
+                        type="object"
+                        class="btn-primary"
+                    />
                     <button string="Cancel" class="btn-default" special="cancel" />
                 </footer>
             </form>
@@ -27,6 +37,6 @@
         <field name="res_model">cwa.product.import.brands</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
-        <field name="binding_model_id" ref="model_cwa_product"/>
+        <field name="binding_model_id" ref="model_cwa_product" />
     </record>
 </odoo>

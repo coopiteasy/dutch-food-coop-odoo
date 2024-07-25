@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <record id="cwa_uom_tree_view" model="ir.ui.view">
         <field name="name">product.uom.tree</field>
         <field name="model">cwa.product.uom</field>
         <field name="arch" type="xml">
             <tree string="Product UoM/Purchaes UoM">
-                <field name="eenheid"/>
-                <field name="inhoud"/>
-                <field name="uom_id"/>
-                <field name="uom_po_id"/>
-                <field name="uos_combo"/>
+                <field name="eenheid" />
+                <field name="inhoud" />
+                <field name="uom_id" />
+                <field name="uom_po_id" />
+                <field name="uos_combo" />
             </tree>
         </field>
     </record>
@@ -21,11 +21,11 @@
             <form string="Product UoM/Purchaes UoM">
                 <sheet>
                     <group>
-                        <field name="eenheid"/>
-                        <field name="inhoud"/>
-                        <field name="uom_id"/>
-                        <field name="uom_po_id"/>
-                        <field name="uos_combo"/>
+                        <field name="eenheid" />
+                        <field name="inhoud" />
+                        <field name="uom_id" />
+                        <field name="uom_po_id" />
+                        <field name="uos_combo" />
                     </group>
                 </sheet>
             </form>
@@ -45,5 +45,6 @@
         parent="sale.prod_config_main"
         id="cwa_product_uom_menuitem"
         sequence="66"
-        action="action_cwa_product_uom"/>
+        action="action_cwa_product_uom"
+    />
 </odoo>

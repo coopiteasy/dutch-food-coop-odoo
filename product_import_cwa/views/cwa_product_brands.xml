@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <record id="cwa_brands_tree_view" model="ir.ui.view">
         <field name="name">product.brands.tree</field>
         <field name="model">cwa.product.brands</field>
         <field name="arch" type="xml">
             <tree string="Product Brands">
-                <field name="source_value"/>
-                <field name="destination_value"/>
+                <field name="source_value" />
+                <field name="destination_value" />
             </tree>
         </field>
     </record>
@@ -18,8 +18,8 @@
             <form string="Product Brands">
                 <sheet>
                     <group>
-                        <field name="source_value"/>
-                        <field name="destination_value"/>
+                        <field name="source_value" />
+                        <field name="destination_value" />
                     </group>
                 </sheet>
             </form>
@@ -38,5 +38,6 @@
         parent="sale.prod_config_main"
         id="cwa_product_brands_menuitem"
         sequence="65"
-        action="action_cwa_product_brands"/>
+        action="action_cwa_product_brands"
+    />
 </odoo>

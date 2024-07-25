@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
   <record id="pos_categ_01" model="pos.category">
     <field name="name">AGF</field>

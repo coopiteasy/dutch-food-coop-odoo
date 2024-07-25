@@ -1,21 +1,35 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <record id="view_cwa_product_filter" model="ir.ui.view">
         <field name="name">cwa.product.search</field>
         <field name="model">cwa.product</field>
         <field name="arch" type="xml">
             <search string="Search CWA Catalogue">
-                <field name="omschrijving"/>
-                <field name="leveranciernummer"/>
-                <field name="bestelnummer"/>
-                <field name="eancode" string="Eancode"/>
-                <field name="merk"/>
-                <separator/>
-                <filter string="New" name="new" domain="[('state','=','new')]" help="CWA Products that have not been imported"/>
-                <filter string="Imported" name="imported" domain="[('state','=', 'imported')]"/>
-                <separator/>
+                <field name="omschrijving" />
+                <field name="leveranciernummer" />
+                <field name="bestelnummer" />
+                <field name="eancode" string="Eancode" />
+                <field name="merk" />
+                <separator />
+                <filter
+                    string="New"
+                    name="new"
+                    domain="[('state','=','new')]"
+                    help="CWA Products that have not been imported"
+                />
+                <filter
+                    string="Imported"
+                    name="imported"
+                    domain="[('state','=', 'imported')]"
+                />
+                <separator />
                 <group expand="0" string="Group By">
-                    <filter string="Status" name="state" domain="[]" context="{'group_by':'state','visible':True}"/>
+                    <filter
+                        string="Status"
+                        name="state"
+                        domain="[]"
+                        context="{'group_by':'state','visible':True}"
+                    />
                 </group>
            </search>
         </field>
@@ -26,19 +40,25 @@
         <field name="model">cwa.product</field>
         <field name="arch" type="xml">
             <tree string="Catalogue">
-                <button class="oe_edit_only" states="new" name="to_product"
-                type="object" icon="fa-mail-forward" string="Import Product and Supplierinfo, if not already imported"/>
-                <field name="leveranciernummer"/>
-                <field name="bestelnummer"/>
-                <field name="eancode"/>
-                <field name="cblcode"/>
-                <field name="omschrijving"/>
-                <field name="merk"/>
-                <field name="kwaliteit"/>
-                <field name="inhoud"/>
-                <field name="eenheid"/>
-                <field name="inkoopprijs"/>
-                <field name="state"/>
+                <button
+                    class="oe_edit_only"
+                    states="new"
+                    name="to_product"
+                    type="object"
+                    icon="fa-mail-forward"
+                    string="Import Product and Supplierinfo, if not already imported"
+                />
+                <field name="leveranciernummer" />
+                <field name="bestelnummer" />
+                <field name="eancode" />
+                <field name="cblcode" />
+                <field name="omschrijving" />
+                <field name="merk" />
+                <field name="kwaliteit" />
+                <field name="inhoud" />
+                <field name="eenheid" />
+                <field name="inkoopprijs" />
+                <field name="state" />
             </tree>
         </field>
     </record>
@@ -49,15 +69,32 @@
         <field name="arch" type="xml">
             <form string="CWA form view">
             <header>
-                <button name="to_product" string="Import Info" type="object" class="btn-primary"/>
-                <field name="state" widget="statusbar" statusbar_visible="new,imported"/>
+                <button
+                        name="to_product"
+                        string="Import Info"
+                        type="object"
+                        class="btn-primary"
+                    />
+                <field
+                        name="state"
+                        widget="statusbar"
+                        statusbar_visible="new,imported"
+                    />
             </header>
                 <sheet>
                     <div class="oe_left" style="width: 500px;">
                         <div class="oe_title" style="width: 780px;">
-                            <label class="oe_edit_only" for="omschrijving" string="Product Name"/>
+                            <label
+                                class="oe_edit_only"
+                                for="omschrijving"
+                                string="Product Name"
+                            />
                             <h1>
-                                <field name="omschrijving" class="oe_inline" modifiers="{'required': true}"/>
+                                <field
+                                    name="omschrijving"
+                                    class="oe_inline"
+                                    modifiers="{'required': true}"
+                                />
                             </h1>
                         </div>
                     </div>
@@ -65,93 +102,93 @@
                         <page name="extended_information" string="Artikelbeheer">
                             <group name="group_top">
                                 <group name="group_left">
-                                    <field name="eancode"/>
-                                    <field name="merk"/>
-                                    <field name="inhoud"/>
-                                    <field name="eenheid"/>
-                                    <field name="leveranciernummer"/>
-                                    <field name="bestelnummer"/>
-                                    <field name="vendor_id"/>
+                                    <field name="eancode" />
+                                    <field name="merk" />
+                                    <field name="inhoud" />
+                                    <field name="eenheid" />
+                                    <field name="leveranciernummer" />
+                                    <field name="bestelnummer" />
+                                    <field name="vendor_id" />
                                 </group>
                                 <group name="group_right">
-                                    <field name="weegschaalartikel"/>
-                                    <field name="pluartikel"/>
-                                    <field name="plucode"/>
-                                    <field name="kwaliteit"/>
-                                    <field name="herkomst"/>
+                                    <field name="weegschaalartikel" />
+                                    <field name="pluartikel" />
+                                    <field name="plucode" />
+                                    <field name="kwaliteit" />
+                                    <field name="herkomst" />
                                 </group>
                             </group>
-                            <separator string="Price information" colspan="4"/>
+                            <separator string="Price information" colspan="4" />
                                 <group>
-                                    <field name="inkoopprijs"/>
-                                    <field name="consumentenprijs"/>
+                                    <field name="inkoopprijs" />
+                                    <field name="consumentenprijs" />
                                 </group>
 
                             <group name="extras">
                                 <group name="group_left">
-                                    <field name="status"/>
-                                    <field name="verpakkingce"/>
-                                    <field name="sve"/>
-                                    <field name="btw"/>
+                                    <field name="status" />
+                                    <field name="verpakkingce" />
+                                    <field name="sve" />
+                                    <field name="btw" />
                                 </group>
                                 <group name="group_right">
-                                    <field name="ingangsdatum"/>
-                                    <field name="cblcode"/>
-                                    <field name="statiegeld"/>
-                                    <field name="kassaomschrijving"/>
-                                    <field name="wichtartikel"/>
+                                    <field name="ingangsdatum" />
+                                    <field name="cblcode" />
+                                    <field name="statiegeld" />
+                                    <field name="kassaomschrijving" />
+                                    <field name="wichtartikel" />
                                 </group>
                             </group>
-                            <separator string="Ingrediënten"/>
+                            <separator string="Ingrediënten" />
                             <group name="ingredienten">
-                                <field name="ingredienten"/>
+                                <field name="ingredienten" />
                             </group>
                             <group name="group_top">
                                 <group name="group_left">
-                                    <field name="proefdiervrij"/>
-                                    <field name="vegetarisch"/>
-                                    <field name="d204"/>
-                                    <field name="d209"/>
-                                    <field name="d210"/>
-                                    <field name="d212"/>
-                                    <field name="d213"/>
-                                    <field name="d214"/>
-                                    <field name="d215"/>
-                                    <field name="d216"/>
-                                    <field name="d217"/>
-                                    <field name="d217b"/>
-                                    <field name="d220"/>
-                                    <field name="d221"/>
-                                    <field name="d221b"/>
-                                    <field name="d222"/>
-                                    <field name="d223"/>
+                                    <field name="proefdiervrij" />
+                                    <field name="vegetarisch" />
+                                    <field name="d204" />
+                                    <field name="d209" />
+                                    <field name="d210" />
+                                    <field name="d212" />
+                                    <field name="d213" />
+                                    <field name="d214" />
+                                    <field name="d215" />
+                                    <field name="d216" />
+                                    <field name="d217" />
+                                    <field name="d217b" />
+                                    <field name="d220" />
+                                    <field name="d221" />
+                                    <field name="d221b" />
+                                    <field name="d222" />
+                                    <field name="d223" />
                                 </group>
                                 <group name="group_right">
-                                    <field name="veganistisch"/>
-                                    <field name="rauwemelk"/>
-                                    <field name="d225"/>
-                                    <field name="d226"/>
-                                    <field name="d228"/>
-                                    <field name="d230"/>
-                                    <field name="d232"/>
-                                    <field name="d234"/>
-                                    <field name="d235"/>
-                                    <field name="d236"/>
-                                    <field name="d237"/>
-                                    <field name="d238"/>
-                                    <field name="d238b"/>
-                                    <field name="d239"/>
-                                    <field name="d240"/>
-                                    <field name="d241"/>
-                                    <field name="d242"/>
+                                    <field name="veganistisch" />
+                                    <field name="rauwemelk" />
+                                    <field name="d225" />
+                                    <field name="d226" />
+                                    <field name="d228" />
+                                    <field name="d230" />
+                                    <field name="d232" />
+                                    <field name="d234" />
+                                    <field name="d235" />
+                                    <field name="d236" />
+                                    <field name="d237" />
+                                    <field name="d238" />
+                                    <field name="d238b" />
+                                    <field name="d239" />
+                                    <field name="d240" />
+                                    <field name="d241" />
+                                    <field name="d242" />
                                 </group>
                             </group>
-                            <separator string="Overige gegevens"/>
+                            <separator string="Overige gegevens" />
                             <group name="group_top">
                                 <group name="group_left">
-                                    <field name="aantaldagenhoudbaar"/>
-                                    <field name="bewaartemperatuur"/>
-                                    <field name="gebruikstips"/>
+                                    <field name="aantaldagenhoudbaar" />
+                                    <field name="bewaartemperatuur" />
+                                    <field name="gebruikstips" />
                                 </group>
                                 <group name="group_right">
                                 </group>
