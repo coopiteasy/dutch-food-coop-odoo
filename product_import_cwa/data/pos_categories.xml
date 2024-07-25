@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="pos_categ_01" model="pos.category">
+    <field name="name">AGF</field>
+    <field name="sequence">1</field>
+  </record>
+
+  <record id="pos_categ_02" model="pos.category">
+    <field name="name">BROOD &amp; BANKET</field>
+    <field name="sequence">2</field>
+  </record>
+
+  <record id="pos_categ_03" model="pos.category">
+    <field name="name">KAAS &amp; DELICATESSEN</field>
+    <field name="sequence">3</field>
+  </record>
+
+  <record id="pos_categ_04" model="pos.category">
+    <field name="name">VLEES &amp; VIS</field>
+    <field name="sequence">4</field>
+  </record>
+
+  <record id="pos_categ_05" model="pos.category">
+    <field name="name">KOELVERS</field>
+    <field name="sequence">5</field>
+  </record>
+
+  <record id="pos_categ_10" model="pos.category">
+    <field name="name">DIEPVRIES</field>
+    <field name="sequence">6</field>
+  </record>
+
+  <record id="pos_categ_06" model="pos.category">
+    <field name="name">KRUIDENIERSWAREN</field>
+    <field name="sequence">7</field>
+  </record>
+
+  <record id="pos_categ_07" model="pos.category">
+    <field name="name">NON-FOOD</field>
+    <field name="sequence">8</field>
+  </record>
+
+  <record id="pos_categ_08" model="pos.category">
+    <field name="name">TRAITEUR - RESTAURANT</field>
+    <field name="sequence">9</field>
+  </record>
+
+  <record id="pos_categ_09" model="pos.category">
+    <field name="name">STATIEGELD</field>
+    <field name="sequence">10</field>
+  </record>
+
+  <record id="pos_categ_11" model="pos.category">
+    <field name="name">NON-SCAN</field>
+    <field name="sequence">11</field>
+  </record>
+
+  <record id="pos_categ_12" model="pos.category">
+    <field name="name">DERVING</field>
+    <field name="sequence">12</field>
+  </record>
+</odoo>

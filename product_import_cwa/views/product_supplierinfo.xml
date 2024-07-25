@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Add more filters to supplierinfo -->
+    <record id="view_cwa_supplierinfo_filter" model="ir.ui.view">
+        <field name="name">cwa.supplier.info</field>
+        <field name="model">product.supplierinfo</field>
+        <field name="arch" type="xml">
+            <search string="Search Supplieinfo">
+                <field name="name"/>
+                <field name="product_name"/>
+                <field name="product_code"/>
+                <field name="eancode" string="Eancode"/>
+           </search>
+        </field>
+    </record>
+
+    <!-- product supplier form view -->
+    <record id="view_supplierinfo_form" model="ir.ui.view">
+        <field name="name">Extended supplierinfo form</field>
+        <field name="model">product.supplierinfo</field>
+        <field name="inherit_id" ref="product.product_supplierinfo_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/group" position="before">
+                <header>
+                    <button name="compare_prices" type="object" string="Compare Prices" class="oe_highlight" groups="base.group_no_one"/>
+                    <button name="update_price" type="object" string="Update Prices" class="oe_highlight" attrs="{'invisible':[('has_new_price','=',False)]}"/>
+                </header>
+            </xpath>
+            <xpath expr="//label[@for='min_qty']" position='attributes'>
+                <attribute name="string">Minimal Order Quantity</attribute>
+            </xpath>
+            <xpath expr="//form/group[1]" position="after">
+                <separator string="Price information" colspan="4"/>
+                <group>
+                    <field name="inkoopprijs" readonly="1"/>
+                    <field name="consumentenprijs" readonly="1"/>
+                    <field name="cwa" invisible="1"/>
+                    <field name="has_new_price" invisible="1"/>
+                </group>
+                <separator string="CWA Information" colspan="4"/>
+                <group name="group_top">
+                    <group name="group_left">
+                        <field name="merk" readonly="1"/>
+                        <field name="herkomst" readonly="1"/>
+                        <field name="kassaomschrijving" readonly="1"/>
+                        <field name="status" readonly="1"/>
+                        <field name="ingangsdatum" readonly="1"/>
+                        <field name="kwaliteit" readonly="1"/>
+                        <field name="verpakkingce" readonly="1"/>
+                        <field name="sve" readonly="1"/>
+                        <field name="proefdiervrij" readonly="1"/>
+                        <field name="vegetarisch" readonly="1"/>
+                        <field name="veganistisch" readonly="1"/>
+                        <field name="rauwemelk" readonly="1"/>
+                    </group>
+                    <group name="group_right">
+                        <field name="eancode" readonly="1"/>
+                        <field name="weegschaalartikel" readonly="1"/>
+                        <field name="wichtartikel" readonly="1"/>
+                        <field name="pluartikel" readonly="1"/>
+                        <field name="inhoud" readonly="1"/>
+                        <field name="eenheid" readonly="1"/>
+                        <field name="btw" readonly="1"/>
+                        <field name="plucode" readonly="1"/>
+                        <field name="cblcode" readonly="1"/>
+                        <field name="bestelnummer" readonly="1"/>
+                        <field name="leveranciernummer" readonly="1"/>
+                        <field name="statiegeld" readonly="1"/>
+                    </group>
+                </group>
+                <separator string="Ingrediënten"/>
+                    <group name="ingredienten">
+                        <field name="ingredienten" readonly="1"/>
+                    </group>
+                <separator string="D numbers" colspan="4"/>
+                <group name="group_top">
+                    <group name="group_left">
+                        <field name="d204" readonly="1"/>
+                        <field name="d209" readonly="1"/>
+                        <field name="d210" readonly="1"/>
+                        <field name="d212" readonly="1"/>
+                        <field name="d213" readonly="1"/>
+                        <field name="d214" readonly="1"/>
+                        <field name="d215" readonly="1"/>
+                        <field name="d216" readonly="1"/>
+                        <field name="d217" readonly="1"/>
+                        <field name="d217b" readonly="1"/>
+                        <field name="d220" readonly="1"/>
+                        <field name="d221" readonly="1"/>
+                        <field name="d221b" readonly="1"/>
+                        <field name="d222" readonly="1"/>
+                    </group>
+                    <group name="group_right">
+                        <field name="d223" readonly="1"/>
+                        <field name="d225" readonly="1"/>
+                        <field name="d226" readonly="1"/>
+                        <field name="d228" readonly="1"/>
+                        <field name="d230" readonly="1"/>
+                        <field name="d232" readonly="1"/>
+                        <field name="d234" readonly="1"/>
+                        <field name="d235" readonly="1"/>
+                        <field name="d236" readonly="1"/>
+                        <field name="d237" readonly="1"/>
+                        <field name="d238" readonly="1"/>
+                        <field name="d238b" readonly="1"/>
+                        <field name="d239" readonly="1"/>
+                        <field name="d240" readonly="1"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- product supplier tree view -->
+    <record id="view_supplierinfo_tree" model="ir.ui.view">
+        <field name="name">Extended supplierinfo tree view</field>
+        <field name="model">product.supplierinfo</field>
+        <field name="inherit_id" ref="product.product_supplierinfo_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='min_qty']" position='attributes'>
+                <attribute name="string">Minimal Order Quantity</attribute>
+            </xpath>
+            <xpath expr="//field[@name='min_qty']" position='after'>
+                <field name="product_code"/>
+                <field name="eancode"/>
+                <field name="merk"/>
+                <field name="inkoopprijs"/>
+                <field name="consumentenprijs"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

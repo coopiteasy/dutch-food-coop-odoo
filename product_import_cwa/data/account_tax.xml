@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="pos_low_tax_sale" model="account.tax">
+		<field name="name">BTW Pos Low Tax</field>
+		<field name="type_tax_use">sale</field>
+		<field name="amount_type">percent</field>
+		<field name="amount">6</field>
+		<field name="description">6% BTW</field>
+	</record>
+	<record id="pos_high_tax_sale" model="account.tax">
+		<field name="name">BTW Pos High Tax</field>
+		<field name="type_tax_use">sale</field>
+		<field name="amount_type">percent</field>
+		<field name="amount">9</field>
+		<field name="description">9% BTW</field>
+	</record>
+	<record id="pos_low_tax_purchase" model="account.tax">
+		<field name="name">BTW Pos Low Tax (Inkopen)</field>
+		<field name="type_tax_use">purchase</field>
+		<field name="amount_type">percent</field>
+		<field name="amount">6</field>
+		<field name="description">6% BTW</field>
+	</record>
+	<record id="pos_high_tax_purchase" model="account.tax">
+		<field name="name">BTW Pos High Tax (Inkopen)</field>
+		<field name="type_tax_use">purchase</field>
+		<field name="amount_type">percent</field>
+		<field name="amount">9</field>
+		<field name="description">9% BTW</field>
+	</record>
+</odoo>
