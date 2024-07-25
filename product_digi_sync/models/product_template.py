@@ -24,19 +24,18 @@ class ProductTemplate(models.Model):
         ),
     ]
 
-    @api.depends("plu_code", "is_pieces_article")
-    def _compute_barcode(self):
+    def get_current_barcode_rule(self):
         weighted_barcode_rule = self._get_barcode_rule("weighted_barcode_rule_id")
         piece_barcode_rule = self._get_barcode_rule("piece_barcode_rule_id")
 
+        return piece_barcode_rule if self.is_pieces_article else weighted_barcode_rule
+
+    @api.depends("plu_code", "is_pieces_article")
+    def _compute_barcode(self):
         for record in self:
             if not record.plu_code:
                 continue
-            current_rule = (
-                piece_barcode_rule
-                if record.is_pieces_article
-                else weighted_barcode_rule
-            )
+            current_rule = record.get_current_barcode_rule()
             if current_rule is not None:
                 record.set_barcode(current_rule)
 
@@ -71,9 +70,9 @@ class ProductTemplate(models.Model):
         return barcode
 
     def _get_barcode_rule(self, rule_id):
-        barcode_rule_id = int(self.env["ir.config_parameter"].get_param(rule_id))
+        barcode_rule_id = self.env["ir.config_parameter"].get_param(rule_id)
         if barcode_rule_id:
-            return self.env["barcode.rule"].browse(barcode_rule_id)
+            return self.env["barcode.rule"].browse(int(barcode_rule_id))
         return None
 
     def write(self, vals):

@@ -8,18 +8,28 @@ from unittest.mock import patch
 import requests
 from PIL import Image
 
-from odoo.tests import TransactionCase, tagged
+from odoo.tests import tagged
 
 from odoo.addons.product_digi_sync.models.digi_client import DigiApiException
 
+from .digi_sync_base_test_case import DigiSyncBaseTestCase
 
-class DigiClientTestCase(TransactionCase):
+
+class DigiClientTestCase(DigiSyncBaseTestCase):
     def setUp(self):
         super().setUp()
         self.maxDiff = None
         self.digi_client = self.env["product_digi_sync.digi_client"].create(
             {"username": "test_username", "password": "123", "name": "Default"}
         )
+        self.patched_get_param = self._patch_ir_config_parameter_for_get_param(
+            "weighted_barcode_rule_id", None
+        )
+
+    def tearDown(self):
+        super().tearDown()
+        self.patched_get_param.stop()
+        self.patched_get_param = None
 
     @tagged("post_install", "-at_install")
     def test_it_can_be_instantiated_with_username_and_password(self):
@@ -51,6 +61,7 @@ class DigiClientTestCase(TransactionCase):
         plu_code = 200
         expected_unit_price = 250
         expected_cost_price = 150
+        self.patched_get_param.start()
 
         test_category = self.env["product.category"].create(
             {
@@ -89,6 +100,7 @@ class DigiClientTestCase(TransactionCase):
         name = "Test product"
         ingredients = "Noten en zo"
         plu_code = 200
+        self.patched_get_param.start()
 
         test_category = self.env["product.category"].create(
             {
@@ -131,6 +143,7 @@ class DigiClientTestCase(TransactionCase):
     def test_it_does_not_send_empty_ingredients(self):
         name = "Test product"
         plu_code = 200
+        self.patched_get_param.start()
 
         test_category = self.env["product.category"].create(
             {
@@ -171,6 +184,10 @@ class DigiClientTestCase(TransactionCase):
     def test_it_sends_status_pieces_article_true_when_article_is_pieces_article(self):
         name = "Test product"
         plu_code = 200
+        self.patched_get_param = self._patch_ir_config_parameter_for_get_param(
+            "piece_barcode_rule_id", None
+        )
+        self.patched_get_param.start()
 
         test_category = self.env["product.category"].create(
             {
@@ -221,17 +238,14 @@ class DigiClientTestCase(TransactionCase):
             }
         )
 
-        category = self.env["product.category"].create(
-            {
-                "name": "Test category",
-                "barcode_rule_id": barcode_rule.id,
-            }
+        self.patched_get_param = self._patch_ir_config_parameter_for_get_param(
+            "weighted_barcode_rule_id", barcode_rule.id
         )
+        self.patched_get_param.start()
 
         product = self.env["product.product"].create(
             {
                 "name": "Test product",
-                "categ_id": category.id,
             }
         )
 
@@ -254,17 +268,14 @@ class DigiClientTestCase(TransactionCase):
             }
         )
 
-        category = self.env["product.category"].create(
-            {
-                "name": "Test category",
-                "barcode_rule_id": barcode_rule.id,
-            }
+        self.patched_get_param = self._patch_ir_config_parameter_for_get_param(
+            "weighted_barcode_rule_id", barcode_rule.id
         )
+        self.patched_get_param.start()
 
         product = self.env["product.product"].create(
             {
                 "name": "Test product",
-                "categ_id": category.id,
             }
         )
 
