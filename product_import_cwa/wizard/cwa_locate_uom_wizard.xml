@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- wizard view -->
+    <record id="cwa_uom_wizard_view" model="ir.ui.view">
+        <field name="name">Update UoM translations</field>
+        <field name="model">cwa.product.import.uom</field>
+        <field name="arch" type="xml">
+            <form string="Locate Unknown UoM/Purchase UoM">
+                <field name="uom_ids">
+                    <tree string="Link UoMs" editable="bottom" create="false" delete="false">
+                        <field name="cwa_product_id" string="Product Name"/>
+                        <field name="inhoud" readonly="0"/>
+                        <field name="eenheid" readonly="0"/>
+                        <field name="target_inhoud"/>
+                        <field name="uom_id"/>
+                        <field name="uom_po_id"/>
+                        <field name="uos_combo" readonly="0"/>
+                    </tree>
+                </field>
+                <footer>
+                    <button string="Apply" name="action_apply" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_update_uom_translations" model="ir.actions.act_window">
+        <field name="name">Update UoM translations</field>
+        <field name="res_model">cwa.product.import.uom</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="model_cwa_product"/>
+    </record>
+</odoo>

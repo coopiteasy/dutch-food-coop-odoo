@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+	<record id="cwa_quality_bd" model="cwa.product.quality">
+		<field name="source_value">BD</field>
+		<field name="destination_value">DEMETER</field>
+	</record>
+	<record id="cwa_quality_bdih" model="cwa.product.quality">
+		<field name="source_value">BDIH</field>
+		<field name="destination_value">BDIH</field>
+	</record>
+	<record id="cwa_quality_bdhi" model="cwa.product.quality">
+		<field name="source_value">BDHI</field>
+		<field name="destination_value">BDIH</field>
+	</record>
+	<record id="cwa_quality_biologisch" model="cwa.product.quality">
+		<field name="source_value">BIOLOGISCH</field>
+		<field name="destination_value">BIOLOGISCH</field>
+	</record>
+	<record id="cwa_quality_natrue" model="cwa.product.quality">
+		<field name="source_value">NATRUE</field>
+		<field name="destination_value">NATRUE</field>
+	</record>
+	<record id="cwa_quality_afbak" model="cwa.product.quality">
+		<field name="source_value">AFBAK</field>
+		<field name="destination_value">AFBAK</field>
+	</record>
+</odoo>

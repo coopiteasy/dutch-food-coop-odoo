@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="cwa_uom_tree_view" model="ir.ui.view">
+        <field name="name">product.uom.tree</field>
+        <field name="model">cwa.product.uom</field>
+        <field name="arch" type="xml">
+            <tree string="Product UoM/Purchaes UoM">
+                <field name="eenheid"/>
+                <field name="inhoud"/>
+                <field name="uom_id"/>
+                <field name="uom_po_id"/>
+                <field name="uos_combo"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="product_uom_form_view" model="ir.ui.view">
+        <field name="name">product.uom.form</field>
+        <field name="model">cwa.product.uom</field>
+        <field name="arch" type="xml">
+            <form string="Product UoM/Purchaes UoM">
+                <sheet>
+                    <group>
+                        <field name="eenheid"/>
+                        <field name="inhoud"/>
+                        <field name="uom_id"/>
+                        <field name="uom_po_id"/>
+                        <field name="uos_combo"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="action_cwa_product_uom" model="ir.actions.act_window">
+        <field name="name">CWA Product UoM</field>
+        <field name="res_model">cwa.product.uom</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+    </record>
+
+    <menuitem
+        name="Products UoM"
+        parent="sale.prod_config_main"
+        id="cwa_product_uom_menuitem"
+        sequence="66"
+        action="action_cwa_product_uom"/>
+</odoo>
