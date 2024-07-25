@@ -6,7 +6,6 @@
         <field name="model">product.supplierinfo</field>
         <field name="arch" type="xml">
             <search string="Search Supplieinfo">
-                <field name="name" />
                 <field name="product_name" />
                 <field name="product_code" />
                 <field name="eancode" string="Eancode" />
@@ -20,7 +19,7 @@
         <field name="model">product.supplierinfo</field>
         <field name="inherit_id" ref="product.product_supplierinfo_form_view" />
         <field name="arch" type="xml">
-            <xpath expr="//form/group" position="before">
+            <xpath expr="//form/sheet/group" position="before">
                 <header>
                     <button
                         name="compare_prices"
@@ -41,7 +40,7 @@
             <xpath expr="//label[@for='min_qty']" position='attributes'>
                 <attribute name="string">Minimal Order Quantity</attribute>
             </xpath>
-            <xpath expr="//form/group[1]" position="after">
+            <xpath expr="//form/sheet/group/group[1]" position="after">
                 <separator string="Price information" colspan="4" />
                 <group>
                     <field name="inkoopprijs" readonly="1" />
