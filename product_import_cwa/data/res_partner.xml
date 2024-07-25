@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 	<record id="supplier_code_1001" model="res.partner">
 		<field name="name">Udea</field>
@@ -246,12 +246,12 @@
 		<field name="ref">WALA</field>
 		<field name="supplier_rank">1</field>
 		<field name="is_company">True</field>
-		<field name="street"/>
-		<field name="zip"/>
-		<field name="city"/>
+		<field name="street" />
+		<field name="zip" />
+		<field name="city" />
 		<field name="country_id" ref="base.nl" />
-		<field name="phone"/>
-		<field name="website"></field>
+		<field name="phone" />
+		<field name="website" />
 	</record>
 	<record id="supplier_code_1061" model="res.partner">
 		<field name="name">Kroon AGF</field>
@@ -283,10 +283,10 @@
 		<field name="supplier_rank">1</field>
 		<field name="is_company">True</field>
 		<field name="street">Fleehook 53</field>
-		<field name="zip"></field>
+		<field name="zip" />
 		<field name="city">Ahaus</field>
 		<field name="country_id" ref="base.de" />
-		<field name="phone"></field>
+		<field name="phone" />
 		<field name="website">http://www.biobakker.eu/</field>
 	</record>
 	<record id="supplier_code_1116" model="res.partner">

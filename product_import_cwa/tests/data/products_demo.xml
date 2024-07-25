@@ -7,7 +7,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>60</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Orthica</merk>
   <herkomst>EU/niet-EU</herkomst>
   <btw>6</btw>
@@ -16,7 +16,8 @@
   <bestelnummer>267896</bestelnummer>
   <sve>1</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: gelatine, mineralen, VISolie, raapzaadolie, vit.n, geleermiddel (glycerine), tocoferolenmix, stabilisator (bijenwas), cholinebitartraat, inositol, raapzaadlecithine, kleurstof (titaandioxide, ijzeroxide rood), paba.</ingredienten>
+  <ingredienten
+        >Ingrediënten: gelatine, mineralen, VISolie, raapzaadolie, vit.n, geleermiddel (glycerine), tocoferolenmix, stabilisator (bijenwas), cholinebitartraat, inositol, raapzaadlecithine, kleurstof (titaandioxide, ijzeroxide rood), paba.</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -61,7 +62,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>180</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Dr. Schär</merk>
   <herkomst>EU/niet-EU</herkomst>
   <btw>6</btw>
@@ -70,7 +71,8 @@
   <bestelnummer>816087</bestelnummer>
   <sve>6</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: maiszetmeel, water, rijstmeel, chocoladestukjes 10% (suiker, cacaomassa, emulgator: SOJAlecithine, aroma), suiker, EIEREN, plantaardige margarine (plantaardige vetten en olien [palmolie, palmpitolie, kokosolie, koolzaadolie in wisselende verhoudingen],                                                water, zout, emulgator: mono- en diglyceriden van vetzuren, aroma), glucosestroop, volleMELKpoeder, verdikkingsmiddelen: hydroxypropylmethylcellulose, guar gom  gist, appelvezels, emulgator: mono- en</ingredienten>
+  <ingredienten
+        >Ingrediënten: maiszetmeel, water, rijstmeel, chocoladestukjes 10% (suiker, cacaomassa, emulgator: SOJAlecithine, aroma), suiker, EIEREN, plantaardige margarine (plantaardige vetten en olien [palmolie, palmpitolie, kokosolie, koolzaadolie in wisselende verhoudingen],                                                water, zout, emulgator: mono- en diglyceriden van vetzuren, aroma), glucosestroop, volleMELKpoeder, verdikkingsmiddelen: hydroxypropylmethylcellulose, guar gom  gist, appelvezels, emulgator: mono- en</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -115,7 +117,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>3</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Natur Compagnie</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>DE</herkomst>
@@ -125,7 +127,8 @@
   <bestelnummer>816841</bestelnummer>
   <sve>12</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: Volle MELKpoeder*, zetmeel*  (maiszetmeel*, aardappelzetmeel*), zeezout,  champignons poeder* (4,4 %), eekhoorntjesbrood*  (2,6 %), gistextract, natuurlijke aroma s, gebakken  uien*, knoflook*, geconcentreerd groentesap*  (SELDERIJ*, wortel*, uien*),                                                  zonnebloemolie*,  rietsuiker*, peterselie*, maisglucosestroop*,  peper*, lavasbladeren*, pastinaken*, kurkuma*,  tomaten*, lavaswortel*, gember*. *van gecontroleerde biologische teelt. Gecertificeerd</ingredienten>
+  <ingredienten
+        >Ingrediënten: Volle MELKpoeder*, zetmeel*  (maiszetmeel*, aardappelzetmeel*), zeezout,  champignons poeder* (4,4 %), eekhoorntjesbrood*  (2,6 %), gistextract, natuurlijke aroma s, gebakken  uien*, knoflook*, geconcentreerd groentesap*  (SELDERIJ*, wortel*, uien*),                                                  zonnebloemolie*,  rietsuiker*, peterselie*, maisglucosestroop*,  peper*, lavasbladeren*, pastinaken*, kurkuma*,  tomaten*, lavaswortel*, gember*. *van gecontroleerde biologische teelt. Gecertificeerd</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -170,7 +173,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>3</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Natur Compagnie</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>DE</herkomst>
@@ -180,7 +183,8 @@
   <bestelnummer>816858</bestelnummer>
   <sve>12</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: Aardappelvlokken* (54 %), corn  glucosestroop*, zeezout, aardappelzetmeel*,  gistextract, wortel* (2,8 %), SELDERIJ* (2,5 %), prei*  (2,5 %), rietsuiker*, uipoeder* (1 %),  zonnebloemolie*, peper*, lavasbladeren*,  kurkuma*, SELDERIJblad*. *van                                                        gecontroleerde biologische teelt. Gecertificeerd  door DE- KO-001.</ingredienten>
+  <ingredienten
+        >Ingrediënten: Aardappelvlokken* (54 %), corn  glucosestroop*, zeezout, aardappelzetmeel*,  gistextract, wortel* (2,8 %), SELDERIJ* (2,5 %), prei*  (2,5 %), rietsuiker*, uipoeder* (1 %),  zonnebloemolie*, peper*, lavasbladeren*,  kurkuma*, SELDERIJblad*. *van                                                        gecontroleerde biologische teelt. Gecertificeerd  door DE- KO-001.</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -225,7 +229,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>250</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Allos</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>DE</herkomst>
@@ -235,7 +239,8 @@
   <bestelnummer>812706</bestelnummer>
   <sve>12</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: ROGGEmeel* 65%, amarantmeel* 20%, zaaden* 8% (SESAMZAAD*, lijnzaad*, boekweit*, HAVER* mout), zeezout, kummel*, koriander*. *van biologische teelt</ingredienten>
+  <ingredienten
+        >Ingrediënten: ROGGEmeel* 65%, amarantmeel* 20%, zaaden* 8% (SESAMZAAD*, lijnzaad*, boekweit*, HAVER* mout), zeezout, kummel*, koriander*. *van biologische teelt</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>1</d210>
@@ -280,7 +285,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>450</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Traay</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>EU</herkomst>
@@ -335,7 +340,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>1</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Brita</merk>
   <btw>21</btw>
   <cblcode>2511020</cblcode>
@@ -387,7 +392,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>1</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Brita</merk>
   <btw>21</btw>
   <cblcode>2511020</cblcode>
@@ -439,7 +444,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>3</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Brita</merk>
   <btw>21</btw>
   <cblcode>2511020</cblcode>
@@ -491,7 +496,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>50</inhoud>
   <eenheid>Ml</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Weleda</merk>
   <kwaliteit>NaTrue</kwaliteit>
   <btw>21</btw>
@@ -544,7 +549,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>1</inhoud>
   <eenheid>kg</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Sea.Line</merk>
   <kwaliteit>BDIH</kwaliteit>
   <btw>21</btw>
@@ -597,7 +602,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>100</inhoud>
   <eenheid>Ml</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Fes</merk>
   <kwaliteit>BDIH</kwaliteit>
   <btw>21</btw>
@@ -650,7 +655,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>24</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Ortis</merk>
   <herkomst>EU/niet-EU</herkomst>
   <btw>6</btw>
@@ -659,7 +664,8 @@
   <bestelnummer>266790</bestelnummer>
   <sve>1</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: Vijgen (Ficus carica L. - 7280 mg/blokje), glycerine, poeder van sennablaadjes (Cassia angustifolia Vahl. - 720 mg/blokje), LACTOSE, tamarindepulp (Tamarindus indica L. - 250 mg/blokje), natuurlijk sinaasappelextract. - Tevens bevattende: MELK</ingredienten>
+  <ingredienten
+        >Ingrediënten: Vijgen (Ficus carica L. - 7280 mg/blokje), glycerine, poeder van sennablaadjes (Cassia angustifolia Vahl. - 720 mg/blokje), LACTOSE, tamarindepulp (Tamarindus indica L. - 250 mg/blokje), natuurlijk sinaasappelextract. - Tevens bevattende: MELK</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -704,7 +710,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>900</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Nanny-Care</merk>
   <herkomst>NZ</herkomst>
   <btw>6</btw>
@@ -713,7 +719,8 @@
   <bestelnummer>266776</bestelnummer>
   <sve>1</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: Gepasteuriseerde vaste geitenMELKdeeltjes (43%), LACTOSE (uit geitenMELK), plantaardige olien (zonnebloem (hoog oliezuur), koolzaad en zonnebloem), mineralen, vitaminen, zuurteregelaar, citroenzuur, cholinechloride, antioxidant: zonnebloemlecithine,                                                   L-tryptofaan, L-isoleucine, taurine, L-carnitine, antioxidant: tocoferolrijk extract. Vitamine: ascorbinezuur, dl-alfa-tocoferylacetaat, nicotinamide, retinylacetaat, cholecalciferol, calcium-d-pantot</ingredienten>
+  <ingredienten
+        >Ingrediënten: Gepasteuriseerde vaste geitenMELKdeeltjes (43%), LACTOSE (uit geitenMELK), plantaardige olien (zonnebloem (hoog oliezuur), koolzaad en zonnebloem), mineralen, vitaminen, zuurteregelaar, citroenzuur, cholinechloride, antioxidant: zonnebloemlecithine,                                                   L-tryptofaan, L-isoleucine, taurine, L-carnitine, antioxidant: tocoferolrijk extract. Vitamine: ascorbinezuur, dl-alfa-tocoferylacetaat, nicotinamide, retinylacetaat, cholecalciferol, calcium-d-pantot</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -758,7 +765,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>500</inhoud>
   <eenheid>Ml</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Lauretana</merk>
   <herkomst>IT</herkomst>
   <btw>6</btw>
@@ -812,7 +819,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>500</inhoud>
   <eenheid>Ml</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Lauretana</merk>
   <herkomst>IT</herkomst>
   <btw>6</btw>
@@ -866,7 +873,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>100</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Lima</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>BE</herkomst>
@@ -921,7 +928,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>70</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Lima</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>BE</herkomst>
@@ -976,7 +983,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>100</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Lima</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>BE</herkomst>
@@ -1031,7 +1038,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>70</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Lima</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>BE</herkomst>
@@ -1041,7 +1048,8 @@
   <bestelnummer>336233</bestelnummer>
   <sve>5</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: radijszaad*, mierikswortel*zaad, rammenas*zaad, roze radijs*zaad.</ingredienten>
+  <ingredienten
+        >Ingrediënten: radijszaad*, mierikswortel*zaad, rammenas*zaad, roze radijs*zaad.</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>

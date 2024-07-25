@@ -1,20 +1,14 @@
-# -*- coding: utf-8 -*-
-import re
 import math
-
+import re
 
 PRESENCE_SELECTION = [
-    ('0', 'ONBEKEND'),
-    ('1', 'AANWEZIG'),
-    ('2', 'NIET AANWEZIG'),
-    ('3', 'MOGELIJK AANWEZIG')
+    ("0", "ONBEKEND"),
+    ("1", "AANWEZIG"),
+    ("2", "NIET AANWEZIG"),
+    ("3", "MOGELIJK AANWEZIG"),
 ]
 
-YESNO_SELECTION = [
-    ('0', 'ONBEKEND'),
-    ('1', 'JA'),
-    ('2', 'NEE')
-]
+YESNO_SELECTION = [("0", "ONBEKEND"), ("1", "JA"), ("2", "NEE")]
 
 
 def ean_checksum(eancode):
@@ -59,20 +53,20 @@ def sanitize_ean13(ean13):
     """Creates and returns a valid ean13 from an invalid one"""
     if not ean13:
         return "0000000000000"
-    ean13 = re.sub("[A-Za-z]", "0", ean13);
-    ean13 = re.sub("[^0-9]", "", ean13);
+    ean13 = re.sub("[A-Za-z]", "0", ean13)
+    ean13 = re.sub("[^0-9]", "", ean13)
     ean13 = ean13[:13]
     if len(ean13) < 13:
-        ean13 = ean13 + '0' * (13 - len(ean13))
+        ean13 = ean13 + "0" * (13 - len(ean13))
     return ean13[:-1] + str(ean_checksum(ean13))
 
 
 def split_data(data, split_size=50):
-    return [data[x:x + split_size] for x in range(0, len(data), split_size)]
+    return [data[x : x + split_size] for x in range(0, len(data), split_size)]
 
 
 def set_external_id(data):
-    if data['eancode'] == 0:
-        return 'product_ex_id_%s_%s' % (data['leveranciernummer'], data['bestelnummer'])
+    if data["eancode"] == 0:
+        return "product_ex_id_%s_%s" % (data["leveranciernummer"], data["bestelnummer"])
     else:
-        return 'product_ex_id_%s' % (data['eancode'])
+        return "product_ex_id_%s" % (data["eancode"])

@@ -1,29 +1,29 @@
-<?xml version="1.0"?>
+<?xml version="1.0" ?>
 <odoo>
     <data noupdate="1">
         <!-- Auto import cwa products-->
         <record id="auto_import_cwa_products" model="ir.cron">
             <field name="name">Auto Import CWA Products and Supplier Info</field>
-            <field name="model_id" ref="product_import_cwa.model_cwa_product"/>
+            <field name="model_id" ref="product_import_cwa.model_cwa_product" />
             <field eval="False" name="active" />
             <field name="interval_number">1</field>
             <field name="interval_type">days</field>
             <field name="numbercall">-1</field>
             <field name="state">code</field>
             <field name="code">model.import_xml_products(prod_file=False)</field>
-            <field name="doall" eval="False"/>
+            <field name="doall" eval="False" />
         </record>
     </data>
     <!-- Import demo cwa products-->
     <record id="demo_import_cwa_products" model="ir.cron">
         <field name="name">Import DEMO CWA Products</field>
-        <field name="model_id" ref="product_import_cwa.model_cwa_product"/>
+        <field name="model_id" ref="product_import_cwa.model_cwa_product" />
         <field eval="False" name="active" />
         <field name="interval_number">1</field>
         <field name="interval_type">weeks</field>
         <field name="numbercall">-1</field>
         <field name="state">code</field>
         <field name="code">model.import_demo_xml_products()</field>
-        <field name="doall" eval="False"/>
+        <field name="doall" eval="False" />
     </record>
 </odoo>

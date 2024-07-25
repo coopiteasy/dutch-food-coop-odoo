@@ -1,15 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <record id="cwa_product_form_import_to_product" model="ir.ui.view">
                 <field name="name">Import Products and Supplier Info</field>
                 <field name="model">cwa.import.products</field>
                 <field name="arch" type="xml">
                     <form string="Mass Import">
-                        <separator colspan="4" string="Do you really want to import the selected items?"/>
+                        <separator
+                    colspan="4"
+                    string="Do you really want to import the selected items?"
+                />
                         <footer>
-                            <button name="to_product" string="Yes" type="object" class="oe_highlight"/>
+                            <button
+                        name="to_product"
+                        string="Yes"
+                        type="object"
+                        class="oe_highlight"
+                    />
                             or
-                            <button string="Cancel" class="oe_link" special="cancel"/>
+                            <button string="Cancel" class="oe_link" special="cancel" />
                         </footer>
                     </form>
                 </field>
@@ -21,7 +29,7 @@
         <field name="view_mode">form</field>
         <field name="target">new</field>
         <field name="context">{}</field>
-        <field name="binding_model_id" ref="model_cwa_product"/>
+        <field name="binding_model_id" ref="model_cwa_product" />
     </record>
 
     <!-- Force Import of Products -->
@@ -31,6 +39,6 @@
         <field name="view_mode">form</field>
         <field name="target">new</field>
         <field name="context">{'force': True}</field>
-        <field name="binding_model_id" ref="model_cwa_product"/>
+        <field name="binding_model_id" ref="model_cwa_product" />
     </record>
 </odoo>

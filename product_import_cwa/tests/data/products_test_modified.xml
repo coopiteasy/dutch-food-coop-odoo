@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="ISO8859-1" ?>
- <xmlartikel>
+<xmlartikel>
   <product>
-  <eancode></eancode>
+  <eancode />
   <omschrijving>Boekweit</omschrijving>
   <weegschaalartikel>0</weegschaalartikel>
   <wichtartikel>1</wichtartikel>
   <pluartikel>0</pluartikel>
   <inhoud>1</inhoud>
   <eenheid>kg</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>IDorganics</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>CN</herkomst>
@@ -18,7 +18,7 @@
   <bestelnummer>1001</bestelnummer>
   <sve>10</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: Boekweit, Eekhoorns</ingredienten>
+  <ingredienten>Ingrediï¿½nten: Boekweit, Eekhoorns</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>0</d210>
@@ -56,14 +56,14 @@
   <ingangsdatum>2016-02-11</ingangsdatum>
   </product>
   <product>
-  <eancode></eancode>
+  <eancode />
   <omschrijving>Gierst</omschrijving>
   <weegschaalartikel>0</weegschaalartikel>
   <wichtartikel>1</wichtartikel>
   <pluartikel>0</pluartikel>
   <inhoud>1</inhoud>
   <eenheid>kg</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>IDorganics</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>CN</herkomst>
@@ -73,7 +73,7 @@
   <bestelnummer>1002</bestelnummer>
   <sve>10</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: gierst</ingredienten>
+  <ingredienten>Ingrediï¿½nten: gierst</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>0</d210>
@@ -118,7 +118,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>20</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Piramide</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <btw>6</btw>
@@ -171,7 +171,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>20</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Piramide</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <btw>6</btw>
@@ -224,7 +224,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>20</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Piramide</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <btw>6</btw>
@@ -277,7 +277,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>135</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Allos</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <btw>6</btw>
@@ -330,7 +330,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>1</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>NextBrush</merk>
   <btw>21</btw>
   <cblcode>2110530</cblcode>
@@ -382,7 +382,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>1</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>NextBrush</merk>
   <btw>21</btw>
   <cblcode>2110530</cblcode>
@@ -434,7 +434,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>1</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>NextBrush</merk>
   <btw>21</btw>
   <cblcode>2110530</cblcode>
@@ -486,7 +486,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>1</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>NextBrush</merk>
   <btw>21</btw>
   <cblcode>2110530</cblcode>
@@ -538,7 +538,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>125</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Mattisson</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <btw>6</btw>
@@ -593,7 +593,7 @@
   <inhoud>125</inhoud>
   <eenheid>Gram</eenheid>
   <verpakkingce>doos</verpakkingce>
-  <merk>Öma</merk>
+  <merk>ï¿½ma</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>IT</herkomst>
   <btw>6</btw>
@@ -647,7 +647,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>250</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Bertyn</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>BE</herkomst>
@@ -657,7 +657,8 @@
   <bestelnummer>31449</bestelnummer>
   <sve>1</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: Water, TARWEmeel* 25%, TARWE-eiwitten* 25%, zeezout, preipoeder*, pepermix* (witte, zwarte, roze peper, KORIANDER), muskaatnoot*, *= Biologisch</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: Water, TARWEmeel* 25%, TARWE-eiwitten* 25%, zeezout, preipoeder*, pepermix* (witte, zwarte, roze peper, KORIANDER), muskaatnoot*, *= Biologisch</ingredienten>
   <d204>2</d204>
   <d209>2</d209>
   <d210>1</d210>
@@ -703,7 +704,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>170</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>St. Hendrick</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>NL</herkomst>
@@ -713,7 +714,8 @@
   <bestelnummer>31631</bestelnummer>
   <sve>1</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: VARKENSVLEES*, zout, natriumnitriet,   * = Biologisch</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: VARKENSVLEES*, zout, natriumnitriet,   * = Biologisch</ingredienten>
   <d204>2</d204>
   <d209>2</d209>
   <d210>2</d210>
@@ -759,7 +761,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>100</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Your Organic Nature</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>IT</herkomst>
@@ -769,7 +771,7 @@
   <bestelnummer>91255</bestelnummer>
   <sve>8</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: LINZEN*, *= Biologisch</ingredienten>
+  <ingredienten>Ingrediï¿½nten: LINZEN*, *= Biologisch</ingredienten>
   <d204>2</d204>
   <d209>2</d209>
   <d210>2</d210>
@@ -815,7 +817,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>25</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Organic Flavour</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>NL</herkomst>
@@ -825,7 +827,8 @@
   <bestelnummer>5007441</bestelnummer>
   <sve>10</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: nootmuskaat* gemalen,&#10;&#10;* = Biologisch</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: nootmuskaat* gemalen,&#10;&#10;* = Biologisch</ingredienten>
   <d204>2</d204>
   <d209>2</d209>
   <d210>2</d210>
@@ -871,7 +874,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>375</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Meesters van de Halm</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>NL</herkomst>
@@ -881,7 +884,8 @@
   <bestelnummer>5008667</bestelnummer>
   <sve>6</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: HAVERvlokken*, TARWEstroop*, kokos* 10%, rijst*, CORNflakes*, palmvet* (niet gehard), GERST-* en ROGGEvlokken*, suiker*, TARWEvlokken*, TARWEmeel*, TARWEzemelen*, zout, mais zetmeel*, zonnebloemlecithine*, emulgator Arabische gom, * = Biologisch</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: HAVERvlokken*, TARWEstroop*, kokos* 10%, rijst*, CORNflakes*, palmvet* (niet gehard), GERST-* en ROGGEvlokken*, suiker*, TARWEvlokken*, TARWEmeel*, TARWEzemelen*, zout, mais zetmeel*, zonnebloemlecithine*, emulgator Arabische gom, * = Biologisch</ingredienten>
   <d204>2</d204>
   <d209>2</d209>
   <d210>1</d210>
@@ -927,7 +931,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>110</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Carl Siegert</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>NL</herkomst>
@@ -937,7 +941,8 @@
   <bestelnummer>34180</bestelnummer>
   <sve>30</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: TARWEMEEL*, water, GEFERMENTEERDE TARWE/ROGGE*, lijnzaad*, zonnebloempitten*, SESAMZAAD*, bakkerszout, gist, * = Biologisch</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: TARWEMEEL*, water, GEFERMENTEERDE TARWE/ROGGE*, lijnzaad*, zonnebloempitten*, SESAMZAAD*, bakkerszout, gist, * = Biologisch</ingredienten>
   <d204>2</d204>
   <d209>2</d209>
   <d210>1</d210>
@@ -983,7 +988,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>110</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Carl Siegert</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>NL</herkomst>
@@ -993,7 +998,8 @@
   <bestelnummer>34181</bestelnummer>
   <sve>30</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: TARWEMEEL*, water, GEFERMENTEERDE TARWE/ROGGE*, rozemarijn*, zeezout, bakkerszout, gist, * = Biologisch</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: TARWEMEEL*, water, GEFERMENTEERDE TARWE/ROGGE*, rozemarijn*, zeezout, bakkerszout, gist, * = Biologisch</ingredienten>
   <d204>2</d204>
   <d209>2</d209>
   <d210>1</d210>
@@ -1032,14 +1038,14 @@
   </product>
   <product>
   <eancode>8714848630917</eancode>
-  <omschrijving>Harvest céréales</omschrijving>
-  <kassaomschrijving>Harvest céréales</kassaomschrijving>
+  <omschrijving>Harvest cï¿½rï¿½ales</omschrijving>
+  <kassaomschrijving>Harvest cï¿½rï¿½ales</kassaomschrijving>
   <weegschaalartikel>0</weegschaalartikel>
   <wichtartikel>0</wichtartikel>
   <pluartikel>0</pluartikel>
   <inhoud>110</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Carl Siegert</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>NL</herkomst>
@@ -1049,7 +1055,8 @@
   <bestelnummer>34182</bestelnummer>
   <sve>30</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: Water, vijfgranenmeel* (volkoren TARWE-/SPELTMEEL*, TARWE-/ROGGEBLOEM*, HAVER-/ROGGE-/MAISVLOKKEN*), TARWEMEEL*, gefermenteerde TARWE/ROGGE*, lijnzaad*, zonnebloempitten*, SESAMZAAD*, MOUTEXTRACT (GERST)*, bakkerszout, gist, * = Biologisch</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: Water, vijfgranenmeel* (volkoren TARWE-/SPELTMEEL*, TARWE-/ROGGEBLOEM*, HAVER-/ROGGE-/MAISVLOKKEN*), TARWEMEEL*, gefermenteerde TARWE/ROGGE*, lijnzaad*, zonnebloempitten*, SESAMZAAD*, MOUTEXTRACT (GERST)*, bakkerszout, gist, * = Biologisch</ingredienten>
   <d204>2</d204>
   <d209>2</d209>
   <d210>1</d210>
@@ -1095,7 +1102,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>20</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Piramide</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>NL</herkomst>
@@ -1105,7 +1112,8 @@
   <bestelnummer>5008680</bestelnummer>
   <sve>6</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: Groene thee* (27%), Gember wortel* (22%), verveine*, citroengras* (13%), zoethout*, pepermunt*, witte hibiscus*, citoenschil* (1%), * = Biologisch</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: Groene thee* (27%), Gember wortel* (22%), verveine*, citroengras* (13%), zoethout*, pepermunt*, witte hibiscus*, citoenschil* (1%), * = Biologisch</ingredienten>
   <d204>2</d204>
   <d209>2</d209>
   <d210>2</d210>
@@ -1151,7 +1159,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>20</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Piramide</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>NL</herkomst>
@@ -1161,7 +1169,8 @@
   <bestelnummer>5008681</bestelnummer>
   <sve>6</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: Lindebloesem* (23%), vlierbloesem* (23%), gember* (16%), pepermunt*, citroengras*, zoethout*, verveine*, * = Biologisch</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: Lindebloesem* (23%), vlierbloesem* (23%), gember* (16%), pepermunt*, citroengras*, zoethout*, verveine*, * = Biologisch</ingredienten>
   <d204>2</d204>
   <d209>2</d209>
   <d210>2</d210>
@@ -1207,7 +1216,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>20</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Piramide</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>NL</herkomst>
@@ -1217,7 +1226,8 @@
   <bestelnummer>5008682</bestelnummer>
   <sve>6</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: Rooibos* (42%), kaneel* (27%), rozenbottel*, citroengras*, vanille poeder* (1%), kruidnagel*, * = Biologisch</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: Rooibos* (42%), kaneel* (27%), rozenbottel*, citroengras*, vanille poeder* (1%), kruidnagel*, * = Biologisch</ingredienten>
   <d204>2</d204>
   <d209>2</d209>
   <d210>2</d210>
@@ -1263,7 +1273,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>20</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Piramide</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>NL</herkomst>
@@ -1273,7 +1283,8 @@
   <bestelnummer>5008683</bestelnummer>
   <sve>6</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: Groene thee* (38%), verveine*, witte thee*, Natuurlijk honing aroma* (5%), natuurlijk citroen aroma met andere natuurlijke aroma&apos;s*, citoenschil* (1%), * = Biologisch</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: Groene thee* (38%), verveine*, witte thee*, Natuurlijk honing aroma* (5%), natuurlijk citroen aroma met andere natuurlijke aroma&apos;s*, citoenschil* (1%), * = Biologisch</ingredienten>
   <d204>2</d204>
   <d209>2</d209>
   <d210>2</d210>
@@ -1319,7 +1330,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>20</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Piramide</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>NL</herkomst>
@@ -1329,7 +1340,8 @@
   <bestelnummer>5008684</bestelnummer>
   <sve>6</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: Rozenbottel* (28%), biet*, honingbos* (20%), hibiscus*, sinaasappelschil*, vlierbloesem*, rooibos* (5%), appel*, * = Biologisch</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: Rozenbottel* (28%), biet*, honingbos* (20%), hibiscus*, sinaasappelschil*, vlierbloesem*, rooibos* (5%), appel*, * = Biologisch</ingredienten>
   <d204>2</d204>
   <d209>2</d209>
   <d210>2</d210>
@@ -1375,7 +1387,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>20</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Piramide</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>NL</herkomst>
@@ -1385,7 +1397,8 @@
   <bestelnummer>5008685</bestelnummer>
   <sve>6</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: Groene thee* (45%), witte thee*, gember* (22%),  natuurlijk mango aroma* (5%), witte hibiscus*, appel*, ananas*,  * = Biologisch</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: Groene thee* (45%), witte thee*, gember* (22%),  natuurlijk mango aroma* (5%), witte hibiscus*, appel*, ananas*,  * = Biologisch</ingredienten>
   <d204>2</d204>
   <d209>2</d209>
   <d210>2</d210>
@@ -1431,7 +1444,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>20</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Piramide</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>NL</herkomst>
@@ -1441,7 +1454,8 @@
   <bestelnummer>5008686</bestelnummer>
   <sve>6</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: Rooibos* 94%, natuurlijk vanille-aroma met andere natuurlijke aroma&apos;s* 5%, vanillepoeder* 1%,  * = Biologisch</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: Rooibos* 94%, natuurlijk vanille-aroma met andere natuurlijke aroma&apos;s* 5%, vanillepoeder* 1%,  * = Biologisch</ingredienten>
   <d204>2</d204>
   <d209>2</d209>
   <d210>2</d210>
@@ -1487,7 +1501,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>20</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Piramide</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>NL</herkomst>
@@ -1497,7 +1511,8 @@
   <bestelnummer>5008685</bestelnummer>
   <sve>6</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: Groene thee* (45%), witte thee*, gember* (22%),  natuurlijk mango aroma* (5%), witte hibiscus*, appel*, ananas*,  * = Biologisch</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: Groene thee* (45%), witte thee*, gember* (22%),  natuurlijk mango aroma* (5%), witte hibiscus*, appel*, ananas*,  * = Biologisch</ingredienten>
   <d204>2</d204>
   <d209>2</d209>
   <d210>2</d210>
@@ -1543,7 +1558,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>20</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Piramide</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>NL</herkomst>
@@ -1553,7 +1568,8 @@
   <bestelnummer>5008686</bestelnummer>
   <sve>6</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: Rooibos* 94%, natuurlijk vanille-aroma met andere natuurlijke aroma&apos;s* 5%, vanillepoeder* 1%,  * = Biologisch</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: Rooibos* 94%, natuurlijk vanille-aroma met andere natuurlijke aroma&apos;s* 5%, vanillepoeder* 1%,  * = Biologisch</ingredienten>
   <d204>2</d204>
   <d209>2</d209>
   <d210>2</d210>
@@ -1598,7 +1614,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>400</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>La Bioidea</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>IT</herkomst>
@@ -1608,7 +1624,8 @@
   <bestelnummer>269494</bestelnummer>
   <sve>6</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: rode kidneybonen* (60%), water, zeezout.  *van biologische afkomst</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: rode kidneybonen* (60%), water, zeezout.  *van biologische afkomst</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -1653,7 +1670,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>12</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Natracare</merk>
   <btw>21</btw>
   <cblcode>2112005</cblcode>
@@ -1705,7 +1722,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>12</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Natracare</merk>
   <btw>6</btw>
   <cblcode>2111005</cblcode>
@@ -1757,7 +1774,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>500</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Ekoland</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>EU</herkomst>
@@ -1767,7 +1784,7 @@
   <bestelnummer>828677</bestelnummer>
   <sve>6</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: SPELTbloem [GLUTEN ]*. *biologisch</ingredienten>
+  <ingredienten>Ingrediï¿½nten: SPELTbloem [GLUTEN ]*. *biologisch</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>1</d210>
@@ -1812,7 +1829,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>125</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Buiteman</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>EU/niet-EU</herkomst>
@@ -1822,7 +1839,8 @@
   <bestelnummer>817671</bestelnummer>
   <sve>10</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: (NL) Biologische oude Goudse kaasbiscuits Ingredienten: TARWEbloem* (GLUTEN  ), ongehard palmvet*, oude Goudse kaas* (MELK) 18%, bakkersgist*, MELKpoeder*, zeezout, ui*, specerijen*. *= van gecontroleerde biologische teelt. Kan sporen van NOTEN, PINDA,                                                SESAM en EIEREN bevatten.</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: (NL) Biologische oude Goudse kaasbiscuits Ingredienten: TARWEbloem* (GLUTEN  ), ongehard palmvet*, oude Goudse kaas* (MELK) 18%, bakkersgist*, MELKpoeder*, zeezout, ui*, specerijen*. *= van gecontroleerde biologische teelt. Kan sporen van NOTEN, PINDA,                                                SESAM en EIEREN bevatten.</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>1</d210>
@@ -1867,7 +1885,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>125</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Buiteman</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>EU/niet-EU</herkomst>
@@ -1877,7 +1895,8 @@
   <bestelnummer>817688</bestelnummer>
   <sve>10</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: (NL) Biologische oude Goudse kaasbolletjes met uitjes Ingredienten: TARWEbloem* (GLUTEN  ), ongehard palmvet*, oude Goudse kaas* (MELK) 30%, bakkersgist*, ui* 2,7%, MELKpoeder*, zeezout, specerijen*. *= van gecontroleerde biologische teelt. Kan sporen                                                 van  NOTEN, PINDA, SESAM en EIEREN bevatten.</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: (NL) Biologische oude Goudse kaasbolletjes met uitjes Ingredienten: TARWEbloem* (GLUTEN  ), ongehard palmvet*, oude Goudse kaas* (MELK) 30%, bakkersgist*, ui* 2,7%, MELKpoeder*, zeezout, specerijen*. *= van gecontroleerde biologische teelt. Kan sporen                                                 van  NOTEN, PINDA, SESAM en EIEREN bevatten.</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>1</d210>
@@ -1922,7 +1941,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>1</inhoud>
   <eenheid>kg</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Ekoland</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>EU</herkomst>
@@ -1932,7 +1951,8 @@
   <bestelnummer>828745</bestelnummer>
   <sve>6</sve>
   <status>Non actief</status>
-  <ingredienten>Ingrediënten: SPELTmeel volkoren [GLUTEN ] van biologische teelt</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: SPELTmeel volkoren [GLUTEN ] van biologische teelt</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>1</d210>
@@ -1977,7 +1997,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>400</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>La Bioidea</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>IT</herkomst>
@@ -1987,7 +2007,8 @@
   <bestelnummer>269500</bestelnummer>
   <sve>6</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: water, rode kidneybonen*(15%), kikkererwten* (15%), witte boontjes* (15%), BOTERbonen*(15%), zeezout. *van biologische afkomst</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: water, rode kidneybonen*(15%), kikkererwten* (15%), witte boontjes* (15%), BOTERbonen*(15%), zeezout. *van biologische afkomst</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -2032,7 +2053,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>125</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Ekoland</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>EU/niet-EU</herkomst>
@@ -2042,7 +2063,7 @@
   <bestelnummer>831325</bestelnummer>
   <sve>6</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: rietsuikerpoeder 97%, tapiocazetmeel</ingredienten>
+  <ingredienten>Ingrediï¿½nten: rietsuikerpoeder 97%, tapiocazetmeel</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -2087,7 +2108,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>400</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>La Bioidea</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>IT</herkomst>
@@ -2097,7 +2118,8 @@
   <bestelnummer>269524</bestelnummer>
   <sve>6</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: witte boontjes* (60%), water, zeezout.  *van biologische afkomst</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: witte boontjes* (60%), water, zeezout.  *van biologische afkomst</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -2142,7 +2164,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>400</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>La Bioidea</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>IT</herkomst>
@@ -2152,7 +2174,8 @@
   <bestelnummer>269531</bestelnummer>
   <sve>6</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: kikkererwten* (60%), water, zeezout.  *van biologische afkomst</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: kikkererwten* (60%), water, zeezout.  *van biologische afkomst</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -2197,7 +2220,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>400</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>La Bioidea</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>IT</herkomst>
@@ -2207,7 +2230,8 @@
   <bestelnummer>269517</bestelnummer>
   <sve>6</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: borlotti bruine bonen* (60%), water, zeezout.  *van biologische afkomst</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: borlotti bruine bonen* (60%), water, zeezout.  *van biologische afkomst</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -2252,7 +2276,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>400</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>La Bioidea</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>IT</herkomst>
@@ -2262,7 +2286,8 @@
   <bestelnummer>269548</bestelnummer>
   <sve>6</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: BOTERbonen* (60%), water, zeezout.  *van biologische afkomst</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: BOTERbonen* (60%), water, zeezout.  *van biologische afkomst</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -2307,7 +2332,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>7</inhoud>
   <eenheid>Ml</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Bach</merk>
   <herkomst>GB</herkomst>
   <btw>6</btw>
@@ -2316,7 +2341,8 @@
   <bestelnummer>268206</bestelnummer>
   <sve>1</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: Alcohol , tinctuur van Rescue bloesemmix (zonneroosje, bosrank, reuzenbalsemien, kerspruim en vogelMELK).</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: Alcohol , tinctuur van Rescue bloesemmix (zonneroosje, bosrank, reuzenbalsemien, kerspruim en vogelMELK).</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -2361,8 +2387,8 @@
   <pluartikel>0</pluartikel>
   <inhoud>60</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
-  <merk>Dr. Schär</merk>
+  <verpakkingce />
+  <merk>Dr. Schï¿½r</merk>
   <herkomst>EU/niet-EU</herkomst>
   <btw>6</btw>
   <cblcode>1014510</cblcode>
@@ -2370,7 +2396,8 @@
   <bestelnummer>816100</bestelnummer>
   <sve>20</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: maiszetmeel, palmolie, aardappelzetmeel, zeezout, invertsuikersiroop, droge gist, stabilisator: E-466, emulgator: SOJAlecithine, rijsmiddel: natriumbicarbonaat, dinatriumdifosfaat.</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: maiszetmeel, palmolie, aardappelzetmeel, zeezout, invertsuikersiroop, droge gist, stabilisator: E-466, emulgator: SOJAlecithine, rijsmiddel: natriumbicarbonaat, dinatriumdifosfaat.</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -2415,7 +2442,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>225</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Lima</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>BE</herkomst>
@@ -2425,7 +2452,8 @@
   <bestelnummer>364427</bestelnummer>
   <sve>6</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: SESAM* 94,5%, zeezout 5,5%. - Tevens bevattende: SESAMZAAD</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: SESAM* 94,5%, zeezout 5,5%. - Tevens bevattende: SESAMZAAD</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -2470,7 +2498,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>100</inhoud>
   <eenheid>Ml</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Chi</merk>
   <btw>21</btw>
   <cblcode>2815555</cblcode>
@@ -2522,7 +2550,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>200</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Lima</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>JP</herkomst>
@@ -2532,7 +2560,8 @@
   <bestelnummer>336455</bestelnummer>
   <sve>6</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: umeboshi* (Prunus mume), shiso-bladeren* (Perilla frutescens), zeezout.</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: umeboshi* (Prunus mume), shiso-bladeren* (Perilla frutescens), zeezout.</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -2577,7 +2606,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>275</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Lima</merk>
   <herkomst>JP</herkomst>
   <btw>6</btw>
@@ -2586,7 +2615,8 @@
   <bestelnummer>336431</bestelnummer>
   <sve>6</sve>
   <status>Non actief</status>
-  <ingredienten>Ingrediënten: umeboshi (Prunus mume), shiso-bladeren (Perilla frutescens), zeezout.</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: umeboshi (Prunus mume), shiso-bladeren (Perilla frutescens), zeezout.</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -2631,7 +2661,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>1</inhoud>
   <eenheid>kg</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Lima</merk>
   <herkomst>PT</herkomst>
   <btw>6</btw>
@@ -2640,7 +2670,7 @@
   <bestelnummer>336356</bestelnummer>
   <sve>12</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: zeezout.</ingredienten>
+  <ingredienten>Ingrediï¿½nten: zeezout.</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -2685,7 +2715,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>125</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Lima</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>JP</herkomst>
@@ -2695,7 +2725,7 @@
   <bestelnummer>336349</bestelnummer>
   <sve>6</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: Kuzu*.</ingredienten>
+  <ingredienten>Ingrediï¿½nten: Kuzu*.</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -2740,7 +2770,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>30</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Orthica</merk>
   <herkomst>EU/niet-EU</herkomst>
   <btw>6</btw>
@@ -2749,7 +2779,8 @@
   <bestelnummer>267957</bestelnummer>
   <sve>1</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: maiszetmeel, fructo-oligosachariden, maltodextrine, natuurlijk eiwit-isolaat, bacteriecultuur, kaliumchloride, Mgsulfaat, enzymen, mangaansulfaat.</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: maiszetmeel, fructo-oligosachariden, maltodextrine, natuurlijk eiwit-isolaat, bacteriecultuur, kaliumchloride, Mgsulfaat, enzymen, mangaansulfaat.</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -2794,7 +2825,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>1</inhoud>
   <eenheid>Liter</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Lima</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>IT</herkomst>
@@ -2804,7 +2835,8 @@
   <bestelnummer>267216</bestelnummer>
   <sve>12</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: water, rijst* 6,6%, rijststroop*, SOJA* 3,8%, cacao* 1%, zeewier Lithothamnium calcareum 0,38%, koudgeperste zonnebloemolie*, natuurlijk aroma van vanille*, zeezout, verdikkingsmiddel: johannesbroodpitmeel*.</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: water, rijst* 6,6%, rijststroop*, SOJA* 3,8%, cacao* 1%, zeewier Lithothamnium calcareum 0,38%, koudgeperste zonnebloemolie*, natuurlijk aroma van vanille*, zeezout, verdikkingsmiddel: johannesbroodpitmeel*.</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -2849,7 +2881,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>70</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Orthica</merk>
   <herkomst>EU/niet-EU</herkomst>
   <btw>6</btw>
@@ -2858,7 +2890,8 @@
   <bestelnummer>267940</bestelnummer>
   <sve>1</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: rijstzetmeel, maltodextrine, natuurlijk eiwit-iosolaat, bacteriecultuur.</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: rijstzetmeel, maltodextrine, natuurlijk eiwit-iosolaat, bacteriecultuur.</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -2903,7 +2936,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>150</inhoud>
   <eenheid>Ml</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Chi</merk>
   <btw>21</btw>
   <cblcode>2110520</cblcode>
@@ -2955,7 +2988,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>4</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Lima</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>JP</herkomst>
@@ -2965,7 +2998,8 @@
   <bestelnummer>268213</bestelnummer>
   <sve>6</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: miso van volle rijst* 49% (SOJA*, volle rijst*, zeezout, water, A. Oryzae), water, mirin* (water, rijst*, zoete rijst*, A. Oryzae), Shoyu* (water, SOJA*, TARWE*, zeezout, A. Oryzae), moutstroop* (GERST), zeezout, zeewier Wakame (Undaria pinnatifida),                                                  zeewier: Kombu extract, gember* 0,2%, witte peper*, Cayennepeper*.</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: miso van volle rijst* 49% (SOJA*, volle rijst*, zeezout, water, A. Oryzae), water, mirin* (water, rijst*, zoete rijst*, A. Oryzae), Shoyu* (water, SOJA*, TARWE*, zeezout, A. Oryzae), moutstroop* (GERST), zeezout, zeewier Wakame (Undaria pinnatifida),                                                  zeewier: Kombu extract, gember* 0,2%, witte peper*, Cayennepeper*.</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>1</d210>
@@ -3010,8 +3044,8 @@
   <pluartikel>0</pluartikel>
   <inhoud>40</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
-  <merk>Dr. Schär</merk>
+  <verpakkingce />
+  <merk>Dr. Schï¿½r</merk>
   <herkomst>EU/niet-EU</herkomst>
   <btw>6</btw>
   <cblcode>1014510</cblcode>
@@ -3019,7 +3053,8 @@
   <bestelnummer>816025</bestelnummer>
   <sve>20</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: donkere chocolade met minimaal 50% cacao 42% (suiker, cacaomassa, cacaoboter, emulgator: SOJAlecithine, natuurlijk aroma), aardappelzetmeel, suiker, palmolie, cacao 5%, HAZELNOTEN 2%, SOJAmeel, emulgator: SOJAlecithine , verdikkingsmiddel: guargom,                                                    rijsmiddel: natriumwaterstofcarbonaat, magereMELKpoeder.</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: donkere chocolade met minimaal 50% cacao 42% (suiker, cacaomassa, cacaoboter, emulgator: SOJAlecithine, natuurlijk aroma), aardappelzetmeel, suiker, palmolie, cacao 5%, HAZELNOTEN 2%, SOJAmeel, emulgator: SOJAlecithine , verdikkingsmiddel: guargom,                                                    rijsmiddel: natriumwaterstofcarbonaat, magereMELKpoeder.</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -3064,7 +3099,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>37</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Allos</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>DE</herkomst>
@@ -3074,7 +3109,8 @@
   <bestelnummer>817251</bestelnummer>
   <sve>9</sve>
   <status>Non actief</status>
-  <ingredienten>Ingrediënten: MELKchocolade* 60% (rietsuiker*, cacaoboter*, volleMELKpoeder*, cacaomassa*), gepofte mais* 36%, gepofte amarant* 4%, zonnebloemolie*.  Cacaogehalte: ten minste 37%. *van biologische teelt .</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: MELKchocolade* 60% (rietsuiker*, cacaoboter*, volleMELKpoeder*, cacaomassa*), gepofte mais* 36%, gepofte amarant* 4%, zonnebloemolie*.  Cacaogehalte: ten minste 37%. *van biologische teelt .</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -3119,7 +3155,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>37</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Allos</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>DE</herkomst>
@@ -3129,7 +3165,8 @@
   <bestelnummer>817275</bestelnummer>
   <sve>9</sve>
   <status>Non actief</status>
-  <ingredienten>Ingrediënten: pure chocolade* 60% (cacaomassa*, rietsuiker*, cacaoboter*), gepofte mais* 36%, gepofte amarant* 4%, zonnebloemolie*. Cacaogehalte: ten minste 55% . *van biologische teelt</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: pure chocolade* 60% (cacaomassa*, rietsuiker*, cacaoboter*), gepofte mais* 36%, gepofte amarant* 4%, zonnebloemolie*. Cacaogehalte: ten minste 55% . *van biologische teelt</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -3174,7 +3211,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>40</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Orthica</merk>
   <herkomst>EU/niet-EU</herkomst>
   <btw>6</btw>
@@ -3183,7 +3220,8 @@
   <bestelnummer>268947</bestelnummer>
   <sve>1</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: rijstzetmeel, maltodextrine, bacteriecultuur</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: rijstzetmeel, maltodextrine, bacteriecultuur</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -3228,7 +3266,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>60</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Orthica</merk>
   <herkomst>EU/niet-EU</herkomst>
   <btw>6</btw>
@@ -3237,7 +3275,8 @@
   <bestelnummer>268879</bestelnummer>
   <sve>1</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: maiszetmeel, gelatine, maltodextrine, natuurlijk eiwit isolaat, inuline, bacteriecultuur, kaliumchloride, Mgsulfaat, fructo-oligosacchariden, mangaansulfaat.</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: maiszetmeel, gelatine, maltodextrine, natuurlijk eiwit isolaat, inuline, bacteriecultuur, kaliumchloride, Mgsulfaat, fructo-oligosacchariden, mangaansulfaat.</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -3282,7 +3321,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>40</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Arche</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>EU/niet-EU</herkomst>
@@ -3292,7 +3331,7 @@
   <bestelnummer>267827</bestelnummer>
   <sve>18</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: Ruw rietsuiker, vanillestokje (6,3%)</ingredienten>
+  <ingredienten>Ingrediï¿½nten: Ruw rietsuiker, vanillestokje (6,3%)</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -3337,7 +3376,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>125</inhoud>
   <eenheid>Gram</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Panda</merk>
   <herkomst>FI</herkomst>
   <btw>6</btw>
@@ -3346,7 +3385,8 @@
   <bestelnummer>815776</bestelnummer>
   <sve>12</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: Rietsuikermelassestroop, TARWEbloem, zoethoutwortelextract, natuurlijk aroma (anijsolie).</ingredienten>
+  <ingredienten
+        >Ingrediï¿½nten: Rietsuikermelassestroop, TARWEbloem, zoethoutwortelextract, natuurlijk aroma (anijsolie).</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>1</d210>
@@ -3391,7 +3431,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>20</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Piramide</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>NL</herkomst>
@@ -3401,7 +3441,7 @@
   <bestelnummer>267278</bestelnummer>
   <sve>6</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: Zwarte thee, natuurlijk aroma (12%)</ingredienten>
+  <ingredienten>Ingrediï¿½nten: Zwarte thee, natuurlijk aroma (12%)</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -3446,7 +3486,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>20</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Piramide</merk>
   <kwaliteit>Biologisch</kwaliteit>
   <herkomst>NL</herkomst>
@@ -3456,7 +3496,7 @@
   <bestelnummer>267315</bestelnummer>
   <sve>6</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: Zwarte thee</ingredienten>
+  <ingredienten>Ingrediï¿½nten: Zwarte thee</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>3</d210>
@@ -3501,7 +3541,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>2</inhoud>
   <eenheid>stuk</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Brita</merk>
   <btw>21</btw>
   <cblcode>2511020</cblcode>

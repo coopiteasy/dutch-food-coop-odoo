@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from . import cwa_import_wizard
 from . import cwa_locate_brands_wizard
 from . import cwa_locate_cblcode_wizard

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO8859-1" ?>
- <xmlartikel>
+<xmlartikel>
   <product>
   <eancode>8714811142843</eancode>
   <omschrijving>Volle yomio (12)</omschrijving>
@@ -9,7 +9,7 @@
   <pluartikel>0</pluartikel>
   <inhoud>1</inhoud>
   <eenheid>Liter</eenheid>
-  <verpakkingce></verpakkingce>
+  <verpakkingce />
   <merk>Zuiver Zuivel</merk>
   <kwaliteit>BD</kwaliteit>
   <herkomst>NL</herkomst>
@@ -19,7 +19,8 @@
   <bestelnummer>1263</bestelnummer>
   <sve>1</sve>
   <status>Actief</status>
-  <ingredienten>Ingrediënten: Gepasteuriseerde volle koeMELK* met de speciale Yomio cultures: B. Lactis en L. acidophilus,  * = Demeter</ingredienten>
+  <ingredienten
+        >Ingrediënten: Gepasteuriseerde volle koeMELK* met de speciale Yomio cultures: B. Lactis en L. acidophilus,  * = Demeter</ingredienten>
   <d204>3</d204>
   <d209>2</d209>
   <d210>3</d210>

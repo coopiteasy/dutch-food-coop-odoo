@@ -1,23 +1,21 @@
-# -*- coding: utf-8 -*-
-
-from odoo import fields, models, api
+from odoo import api, fields, models
 
 
 class CwaProductTax(models.Model):
-    _name = 'cwa.vat.tax'
-    _description = 'BTW Sale and Purchase Translations'
-    _order = 'btw'
-    _rec_name = 'description'
+    _name = "cwa.vat.tax"
+    _description = "BTW Sale and Purchase Translations"
+    _order = "btw"
+    _rec_name = "description"
 
-    btw = fields.Integer('BTW', required=True)
-    description = fields.Char('Short Name', required=True)
+    btw = fields.Integer("BTW", required=True)
+    description = fields.Char("Short Name", required=True)
     sale_tax = fields.Many2many(
-        'account.tax', 'cwa_sale_taxes_rel', 'btw', string='Sales Tax', size=64)
+        "account.tax", "cwa_sale_taxes_rel", "btw", string="Sales Tax", size=64
+    )
     purchase_tax = fields.Many2many(
-        'account.tax', 'cwa_purchase_taxes_rel', 'btw', string='Purchases Tax', size=64)
+        "account.tax", "cwa_purchase_taxes_rel", "btw", string="Purchases Tax", size=64
+    )
 
     @api.model
     def get_translated(self, btw):
-        return self.search([
-            ('btw', '=', btw)
-        ], limit=1)
+        return self.search([("btw", "=", btw)], limit=1)
