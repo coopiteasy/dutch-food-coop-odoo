@@ -25,23 +25,27 @@ msgstr ""
 
 #. module: product_digi_sync
 #: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_digi_client__api_url
-msgid "Api Url"
+msgid "API URL"
 msgstr ""
 
 #. module: product_digi_sync
 #: model:ir.model,name:product_digi_sync.model_barcode_rule
-#: model:ir.model.fields,field_description:product_digi_sync.field_product_category__barcode_rule_id
 msgid "Barcode Rule"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.model.fields,field_description:product_digi_sync.field_res_config_settings__piece_barcode_rule_id
+msgid "Barcode Rule for Piece products"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.model.fields,field_description:product_digi_sync.field_res_config_settings__weighted_barcode_rule_id
+msgid "Barcode Rule for Weighted products"
 msgstr ""
 
 #. module: product_digi_sync
 #: model:ir.model.fields,field_description:product_digi_sync.field_barcode_rule__digi_barcode_type_id
 msgid "Barcode Type ID in @Fresh"
-msgstr ""
-
-#. module: product_digi_sync
-#: model_terms:ir.ui.view,arch_db:product_digi_sync.digi_sync_product_category_view_form
-msgid "Barcode rule"
 msgstr ""
 
 #. module: product_digi_sync
@@ -84,6 +88,11 @@ msgstr ""
 #. module: product_digi_sync
 #: model:ir.model.fields,field_description:product_digi_sync.field_res_config_settings__digi_sync_products_enabled
 msgid "Digi Sync Products Enabled"
+msgstr ""
+
+#. module: product_digi_sync
+#: model_terms:ir.ui.view,arch_db:product_digi_sync.res_config_settings_view_form
+msgid "Digi client"
 msgstr ""
 
 #. module: product_digi_sync
@@ -137,9 +146,25 @@ msgid "Name"
 msgstr ""
 
 #. module: product_digi_sync
+#: model_terms:ir.ui.view,arch_db:product_digi_sync.res_config_settings_view_form
+msgid "Piece barcode rule"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.model.fields,field_description:product_digi_sync.field_product_product__is_pieces_article
+#: model:ir.model.fields,field_description:product_digi_sync.field_product_template__is_pieces_article
+msgid "Pieces article"
+msgstr ""
+
+#. module: product_digi_sync
 #: model:ir.model.fields,field_description:product_digi_sync.field_product_product__plu_code
 #: model:ir.model.fields,field_description:product_digi_sync.field_product_template__plu_code
 msgid "Plu code"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.model.constraint,message:product_digi_sync.constraint_product_template_plu_code_uniq
+msgid "Plu code must be unique."
 msgstr ""
 
 #. module: product_digi_sync
@@ -170,4 +195,15 @@ msgstr ""
 #. module: product_digi_sync
 #: model:ir.actions.server,name:product_digi_sync.action_send_product_category_to_digi
 msgid "Send to digi"
+msgstr ""
+
+#. module: product_digi_sync
+#: model:ir.model.fields,field_description:product_digi_sync.field_product_product__send_to_scale
+#: model:ir.model.fields,field_description:product_digi_sync.field_product_template__send_to_scale
+msgid "Send to scale"
+msgstr ""
+
+#. module: product_digi_sync
+#: model_terms:ir.ui.view,arch_db:product_digi_sync.res_config_settings_view_form
+msgid "Weighted barcode rule"
 msgstr ""
