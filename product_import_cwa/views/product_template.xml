@@ -60,16 +60,9 @@
                 <field
                     string="Product Variant"
                     name="product_variant_ids"
-                    filter_domain="['|', ('product_variant_ids.name','ilike',self), ('product_variant_ids.attribute_value_ids.attribute_id.name','ilike',self)]"
+                    filter_domain="['|', ('product_variant_ids.name','ilike',self), ('product_variant_ids.product_template_attribute_value_ids.attribute_id.name','ilike',self)]"
                 />
                 <field name="company_id" />
-                <field
-                    name="pricelist_id"
-                    widget="selection"
-                    context="{'pricelist': self}"
-                    filter_domain="[]"
-                    groups="product.group_sale_pricelist"
-                />
 
                 <group expand='0' string='Group by...'>
                     <filter
@@ -205,7 +198,7 @@
                                         string="Ignore the Price Changes"
                                         attrs="{'invisible': [('has_new_price', '=', False)]}"
                                     />
-                                    <field name="name" />
+                                    <field name="product_name" />
                                     <field name="min_qty" />
                                     <field name="product_code" />
                                     <field name="inkoopprijs" />
