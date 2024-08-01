@@ -21,7 +21,7 @@ class ProductCategoryTestCase(DigiSyncBaseTestCase):
         super().tearDown()
         self.patcher.stop()
 
-    def test_it_doesn_send_the_category_to_digi_after_save_when_external_id_not_set(
+    def test_it_doesnt_send_the_category_to_digi_after_save_when_external_id_not_set(
         self
     ):
         digi_client = self.env["product_digi_sync.digi_client"].create(
