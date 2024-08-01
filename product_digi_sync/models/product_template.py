@@ -5,11 +5,12 @@ from odoo import api, fields, models
 from odoo.tools import get_barcode_check_digit
 
 from odoo.addons.queue_job.exception import RetryableJobError
+from .digi_sync_base_model import DigiSyncBaseModel
 
 _logger = logging.getLogger(__name__)
 
 
-class ProductTemplate(models.Model):
+class ProductTemplate(DigiSyncBaseModel):
     _inherit = "product.template"
 
     plu_code = fields.Integer(string="Plu code", required=False)
@@ -100,10 +101,6 @@ class ProductTemplate(models.Model):
     def should_send_to_digi(self):
         return self.send_to_scale and self.plu_code
 
-    def send_to_digi(self):
-        self.ensure_one()
-        self.with_delay().send_to_digi_directly()
-
     def send_to_digi_directly(self):
         client = self._get_digi_client()
         if client:
@@ -125,13 +122,3 @@ class ProductTemplate(models.Model):
                 client.send_product_image_to_digi(self)
             except Exception as e:
                 raise RetryableJobError(str(e), 5) from e
-
-    def _get_digi_client(self):
-        digi_client_id = int(
-            self.env["ir.config_parameter"].get_param("digi_client_id")
-        )
-        client = self.env["product_digi_sync.digi_client"].browse(digi_client_id)
-        if not client.exists():
-            _logger.warning("Digi client requested, but no client was configured.")
-            return False
-        return client
