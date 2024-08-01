@@ -89,3 +89,16 @@ class ProductTransformer:
             ],
         }
         return json.dumps(payload)
+
+    @classmethod
+    def transform_product_origin_to_payload(cls, product_origin):
+        payload = {
+            "DataId": product_origin.external_digi_id,
+            "Names": [{
+                "Reference": "Nederlands",
+                "DdData": f"02000000<span style='font-family:\"DejaVu Sans\";font-size:24px;'>Herkomst:<\/~02000000span><b><span~02000000style='font-family:\"DIN\";font-size:36px;'>{product_origin.description}<\/span><\/b>",
+                "Name": f"Herkomst {product_origin.description}",
+            }]
+        }
+
+        return json.dumps(payload)

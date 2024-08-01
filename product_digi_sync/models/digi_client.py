@@ -48,6 +48,14 @@ class DigiClient(models.Model):
 
         self._post_to_digi(url, body)
 
+    def send_product_origin_to_digi(self, product_origin):
+        self.ensure_one()
+        url = self.create_labeltext_url()
+
+        body = ProductTransformer.transform_product_origin_to_payload(product_origin)
+
+        self._post_to_digi(url, body)
+
     def _post_to_digi(self, url, body):
         headers = self.create_header()
         response = requests.post(
@@ -74,6 +82,10 @@ class DigiClient(models.Model):
 
     def create_category_url(self):
         url = f"{self.get_api_url()}/MAINGROUP.SVC/POST"
+        return url
+
+    def create_labeltext_url(self):
+        url = f"{self.get_api_url()}/LABELTEXT.SVC/POST"
         return url
 
     def create_header(self):

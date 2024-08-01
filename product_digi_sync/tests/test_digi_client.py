@@ -486,6 +486,27 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
 
             self.assertEqual(post_spy.call_args.kwargs["data"], expected_payload)
 
+    def test_it_sends_a_product_origin_to_digi_with_the_right_payload(self):
+        origin = self.env['product_digi_sync.product_origin'].create({
+            "description": "Spanje"
+        })
+
+        payload = {
+            "DataId": origin.external_digi_id,
+            "Names": [{
+                "Reference": "Nederlands",
+                "DdData": "02000000<span style='font-family:\"DejaVu Sans\";font-size:24px;'>Herkomst:<\/~02000000span><b><span~02000000style='font-family:\"DIN\";font-size:36px;'>Spanje<\/span><\/b>",
+                "Name": "Herkomst Spanje",
+            }]
+        }
+
+        expected_payload = json.dumps(payload)
+
+        with self.patch_request_post() as post_spy:
+            self.digi_client.send_product_origin_to_digi(origin)
+
+            self.assertEqual(post_spy.call_args.kwargs["data"], expected_payload)
+
     @contextlib.contextmanager
     def patch_request_post(self, status_code=200, response_content=None):
         if not response_content:
