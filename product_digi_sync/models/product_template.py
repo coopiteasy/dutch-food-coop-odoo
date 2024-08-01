@@ -15,6 +15,7 @@ class ProductTemplate(models.Model):
     plu_code = fields.Integer(string="Plu code", required=False)
     send_to_scale = fields.Boolean(string="Send to scale", required=False)
     is_pieces_article = fields.Boolean(string="Pieces article", required=False)
+    product_origin_id = fields.Many2one('product_digi_sync.product_origin', string="Product origin")
 
     _sql_constraints = [
         (

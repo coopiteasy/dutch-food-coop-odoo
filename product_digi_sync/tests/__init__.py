@@ -3,4 +3,5 @@ from . import (
     test_digi_client,
     test_product_template,
     test_product_category,
+    test_product_origin,
 )
