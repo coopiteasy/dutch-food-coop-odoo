@@ -49,3 +49,31 @@ class TestProductOrigin(DigiSyncBaseTestCase):
         })
 
         self.assertEqual(mock_send_product_origin_to_digi.call_args[0][0], origin)
+        patched_digi_client.stop()
+        patched_get_param.stop()
+
+    def test_it_sends_the_product_origin_to_digi_when_saved(self):
+        digi_client = self._create_digi_client()
+
+        patched_get_param = self._patch_ir_config_parameter_for_get_param(
+            "digi_client_id", digi_client.id
+        )
+        patched_get_param.start()
+
+        mock_send_product_origin_to_digi = Mock()
+        patched_digi_client = patch.object(
+            DigiClient, "send_product_origin_to_digi", mock_send_product_origin_to_digi
+        )
+        patched_digi_client.start()
+
+        origin = self.env['product_digi_sync.product_origin'].create({
+            "description": "Nederland"
+        })
+        origin.write({
+            "description": "Spanje"
+        })
+
+        self.assertEqual(mock_send_product_origin_to_digi.call_args_list[1][0][0], origin)
+        self.assertEqual(mock_send_product_origin_to_digi.call_count, 2)
+        patched_digi_client.stop()
+        patched_get_param.stop()

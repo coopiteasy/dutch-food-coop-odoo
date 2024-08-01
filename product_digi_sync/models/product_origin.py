@@ -34,8 +34,13 @@ class ProductOrigin(models.Model):
         records = super().create(vals)
         for record in records:
             record.external_digi_id = record.id + EXTERNAL_DIGI_ID_START
-            record.send_to_digi()
         return records
+
+    def write(self, vals):
+        result = super().write(vals)
+        for record in self:
+            record.send_to_digi()
+        return result
 
     def send_to_digi(self):
         self.ensure_one()
