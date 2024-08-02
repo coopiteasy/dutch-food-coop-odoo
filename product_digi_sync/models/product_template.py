@@ -10,7 +10,7 @@ from .digi_sync_base_model import DigiSyncBaseModel
 _logger = logging.getLogger(__name__)
 
 
-class ProductTemplate(DigiSyncBaseModel):
+class ProductTemplate(DigiSyncBaseModel, models.Model):
     _inherit = "product.template"
 
     plu_code = fields.Integer(string="Plu code", required=False)

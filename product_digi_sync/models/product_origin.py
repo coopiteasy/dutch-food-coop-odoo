@@ -1,6 +1,6 @@
 import logging
 
-from odoo import api, fields
+from odoo import api, fields, models
 
 from odoo.addons.queue_job.exception import RetryableJobError
 from .digi_sync_base_model import DigiSyncBaseModel
@@ -10,7 +10,7 @@ _logger = logging.getLogger(__name__)
 EXTERNAL_DIGI_ID_START = 10000
 
 
-class ProductOrigin(DigiSyncBaseModel):
+class ProductOrigin(DigiSyncBaseModel, models.Model):
     _name = "product_digi_sync.product_origin"
     _description = "Product Origin"
 

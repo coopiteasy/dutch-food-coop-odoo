@@ -1,10 +1,10 @@
-from odoo import api, fields
+from odoo import api, fields, models
 
 from odoo.addons.queue_job.exception import RetryableJobError
 from .digi_sync_base_model import DigiSyncBaseModel
 
 
-class ProductCategory(DigiSyncBaseModel):
+class ProductCategory(DigiSyncBaseModel, models.Model):
     _inherit = "product.category"
 
     external_digi_id = fields.Integer(
