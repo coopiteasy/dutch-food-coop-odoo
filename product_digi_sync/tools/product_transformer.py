@@ -25,6 +25,8 @@ class ProductTransformer:
             data["CostPrice"] = int(product.standard_price * 100)
         if product.categ_id.id:
             data["MainGroupDataId"] = product.categ_id.external_digi_id
+        if product.product_origin_id:
+            data["LabelTextDataId"] = product.product_origin_id.external_digi_id
         data["StatusFields"] = {"PiecesArticle": (product.is_pieces_article)}
         if product and product.product_tmpl_id.get_current_barcode_rule() is not None:
             barcode_rule = product.product_tmpl_id.get_current_barcode_rule()
