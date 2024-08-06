@@ -441,6 +441,36 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
 
             self.assertEqual(post_spy.call_args.kwargs["data"], expected_payload)
 
+    def test_it_sends_a_product_quality_image_to_digi_with_the_right_payload(self):
+        with self.patch_request_post() as post_spy:
+            image_id = 1000010
+            quality = self.env['product_food_fields.product_quality'].create({
+                "code": "BD",
+                "name": "Biologisch dynamisch",
+                "image": self._create_dummy_image("png"),
+                "digi_image_id": image_id,
+            })
+
+            expected_image_data = quality.image.decode("utf-8")
+
+            payload = {}
+            payload["DataId"] = image_id
+            payload["OriginalInput"] = expected_image_data
+            payload["Names"] = [
+                {
+                    "DataId": 1,
+                    "Reference": "Nederlands",
+                    "Name": "biologisch_dynamisch",
+                }
+            ]
+            payload["InputFormat"] = "png"
+
+            expected_payload = json.dumps(payload)
+
+            self.digi_client.send_product_quality_image_to_digi(quality)
+
+            self.assertEqual(post_spy.call_args.kwargs["data"], expected_payload)
+
     def test_it_sends_a_product_category_to_digi_with_the_right_url(self):
         category_name = "Test category"
         digi_id = 2
@@ -572,14 +602,19 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
             }
         )
         # Create a 1x1 pixel image
+        image_data = self._create_dummy_image(format="jpeg")
+        product_with_image.image_1920 = image_data
+        return product_with_image
+
+    @staticmethod
+    def _create_dummy_image(format):
         image = Image.new("RGB", (1, 1))
         output = io.BytesIO()
-        image.save(output, format="jpeg")
+        image.save(output, format=format)
         # Get the binary data of the image
         image_data = base64.b64encode(output.getvalue())
         output.close()
-        product_with_image.image_1920 = image_data
-        return product_with_image
+        return image_data
 
     def _create_expected_product_payload(
         self,

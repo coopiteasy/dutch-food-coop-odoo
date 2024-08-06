@@ -110,3 +110,22 @@ class ProductTransformer:
         }
 
         return json.dumps(payload)
+
+    @classmethod
+    def transform_product_quality_to_image_payload(cls, product_quality):
+        image_name = product_quality.name.lower().replace(" ", "_")
+        payload = {"DataId": product_quality.digi_image_id}
+        image_data = base64.b64decode(product_quality.image)
+        image = Image.open(io.BytesIO(image_data))
+        image_format = image.format.lower().replace("jpeg", "jpg")
+        payload["OriginalInput"] = product_quality.image.decode("utf-8")
+        payload["Names"] = [
+            {
+                "DataId": 1,
+                "Reference": "Nederlands",
+                "Name": image_name,
+            }
+        ]
+        payload["InputFormat"] = image_format
+        return json.dumps(payload)
+

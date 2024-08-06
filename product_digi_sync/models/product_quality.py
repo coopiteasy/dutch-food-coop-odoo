@@ -19,6 +19,7 @@ class ProductQuality(DigiSyncBaseModel, models.Model):
     def create(self, vals):
         records = super().create(vals)
         for record in records:
-            record.digi_image_id = record.id + EXTERNAL_DIGI_ID_START
+            if not record.digi_image_id:
+                record.digi_image_id = record.id + EXTERNAL_DIGI_ID_START
         return records
 

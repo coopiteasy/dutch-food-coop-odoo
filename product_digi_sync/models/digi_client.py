@@ -38,6 +38,14 @@ class DigiClient(models.Model):
 
         self._post_to_digi(url, body)
 
+    def send_product_quality_image_to_digi(self, product_quality):
+        self.ensure_one()
+        url = self.create_image_url()
+
+        body = ProductTransformer.transform_product_quality_to_image_payload(product_quality)
+
+        self._post_to_digi(url, body)
+
     def send_category_to_digi(self, product_category):
         self.ensure_one()
         url = self.create_category_url()

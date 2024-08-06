@@ -30,3 +30,17 @@ class TestProductQuality(DigiSyncBaseTestCase):
 
         self.assertEqual(expected_digi_image_id, product_quality.digi_image_id)
 
+
+    def test_the_external_digi_id_is_set_to_desired_value_when_creating_record(self):
+        product_quality = self.env["product_food_fields.product_quality"].create(
+            {
+                "code": "BD",
+                "name": "Biologisch dynamisch",
+                "digi_image_id": 42
+            }
+        )
+
+        expected_digi_image_id = 42
+
+        self.assertEqual(expected_digi_image_id, product_quality.digi_image_id)
+
