@@ -606,16 +606,6 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
         product_with_image.image_1920 = image_data
         return product_with_image
 
-    @staticmethod
-    def _create_dummy_image(format):
-        image = Image.new("RGB", (1, 1))
-        output = io.BytesIO()
-        image.save(output, format=format)
-        # Get the binary data of the image
-        image_data = base64.b64encode(output.getvalue())
-        output.close()
-        return image_data
-
     def _create_expected_product_payload(
         self,
         expected_cost_price,
