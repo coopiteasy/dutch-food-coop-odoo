@@ -10,7 +10,6 @@
                 <page string="Food related information" name="main_information">
                     <group name="group_default">
                         <field name="ingredients" string="Ingredients" />
-                        <field name="quality" string="Quality" />
                         <field
                             name="origin"
                             string="Land where the product is produced, an ISO 3166 code"

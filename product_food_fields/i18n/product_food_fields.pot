@@ -63,19 +63,6 @@ msgid "Product"
 msgstr ""
 
 #. module: product_food_fields
-#: model:ir.model.fields,field_description:product_food_fields.field_product_product__quality
-#: model:ir.model.fields,field_description:product_food_fields.field_product_template__quality
-#: model_terms:ir.ui.view,arch_db:product_food_fields.food_product_view_form
-msgid "Quality"
-msgstr ""
-
-#. module: product_food_fields
-#: model:ir.model.fields,help:product_food_fields.field_product_product__quality
-#: model:ir.model.fields,help:product_food_fields.field_product_template__quality
-msgid "Quality e.g. organic or biodynamic"
-msgstr ""
-
-#. module: product_food_fields
 #: model:ir.model.fields,field_description:product_food_fields.field_product_product__storage_temperature
 #: model:ir.model.fields,field_description:product_food_fields.field_product_template__storage_temperature
 msgid "Storage Temperature"

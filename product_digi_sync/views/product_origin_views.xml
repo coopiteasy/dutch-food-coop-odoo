@@ -5,8 +5,8 @@
         <field name="model">product_digi_sync.product_origin</field>
         <field name="arch" type="xml">
             <tree string="Product Origin">
-                <field name="description"/>
-                <field name="external_digi_id"/>
+                <field name="description" />
+                <field name="external_digi_id" />
             </tree>
         </field>
     </record>
@@ -18,8 +18,8 @@
             <form string="Product Origin">
                 <sheet>
                     <group>
-                        <field name="description"/>
-                        <field name="external_digi_id"/>
+                        <field name="description" />
+                        <field name="external_digi_id" />
                     </group>
                 </sheet>
             </form>
@@ -35,8 +35,14 @@
     <record id="action_send_product_to_digi" model="ir.actions.server">
         <field name="name">Send product origin to digi</field>
         <field name="type">ir.actions.server</field>
-        <field name="model_id" ref="product_digi_sync.model_product_digi_sync_product_origin" />
-        <field name="binding_model_id" ref="product_digi_sync.model_product_digi_sync_product_origin" />
+        <field
+            name="model_id"
+            ref="product_digi_sync.model_product_digi_sync_product_origin"
+        />
+        <field
+            name="binding_model_id"
+            ref="product_digi_sync.model_product_digi_sync_product_origin"
+        />
         <field name="state">code</field>
         <field name="code">
             for record in records:

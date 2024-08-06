@@ -20,11 +20,10 @@ class TestProductOrigin(DigiSyncBaseTestCase):
         super().tearDown()
         self.patcher.stop()
 
-
     def test_the_external_digi_id_is_based_on_the_id_after_creation(self):
-        product_origin = self.env['product_digi_sync.product_origin'].create({
-            "description": "Nederland"
-        })
+        product_origin = self.env["product_digi_sync.product_origin"].create(
+            {"description": "Nederland"}
+        )
 
         expected_external_digi_id = product_origin.id + 10000
 
@@ -44,9 +43,9 @@ class TestProductOrigin(DigiSyncBaseTestCase):
         )
         patched_digi_client.start()
 
-        origin = self.env['product_digi_sync.product_origin'].create({
-            "description": "Nederland"
-        })
+        origin = self.env["product_digi_sync.product_origin"].create(
+            {"description": "Nederland"}
+        )
 
         self.assertEqual(mock_send_product_origin_to_digi.call_args[0][0], origin)
         patched_digi_client.stop()
@@ -66,14 +65,14 @@ class TestProductOrigin(DigiSyncBaseTestCase):
         )
         patched_digi_client.start()
 
-        origin = self.env['product_digi_sync.product_origin'].create({
-            "description": "Nederland"
-        })
-        origin.write({
-            "description": "Spanje"
-        })
+        origin = self.env["product_digi_sync.product_origin"].create(
+            {"description": "Nederland"}
+        )
+        origin.write({"description": "Spanje"})
 
-        self.assertEqual(mock_send_product_origin_to_digi.call_args_list[1][0][0], origin)
+        self.assertEqual(
+            mock_send_product_origin_to_digi.call_args_list[1][0][0], origin
+        )
         self.assertEqual(mock_send_product_origin_to_digi.call_count, 2)
         patched_digi_client.stop()
         patched_get_param.stop()

@@ -487,17 +487,19 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
             self.assertEqual(post_spy.call_args.kwargs["data"], expected_payload)
 
     def test_it_sends_a_product_origin_to_digi_with_the_right_payload(self):
-        origin = self.env['product_digi_sync.product_origin'].create({
-            "description": "Spanje"
-        })
+        origin = self.env["product_digi_sync.product_origin"].create(
+            {"description": "Spanje"}
+        )
 
         payload = {
             "DataId": origin.external_digi_id,
-            "Names": [{
-                "Reference": "Nederlands",
-                "DdData": "02000000<span style='font-family:\"DejaVu Sans\";font-size:24px;'>Herkomst:<\/~02000000span><b><span~02000000style='font-family:\"DIN\";font-size:36px;'>Spanje<\/span><\/b>",
-                "Name": "Herkomst Spanje",
-            }]
+            "Names": [
+                {
+                    "Reference": "Nederlands",
+                    "DdData": "02000000<span style='font-family:\"DejaVu Sans\";font-size:24px;'>Herkomst:<\/~02000000span><b><span~02000000style='font-family:\"DIN\";font-size:36px;'>Spanje<\/span><\/b>",
+                    "Name": "Herkomst Spanje",
+                }
+            ],
         }
 
         expected_payload = json.dumps(payload)
@@ -508,14 +510,12 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
             self.assertEqual(post_spy.call_args.kwargs["data"], expected_payload)
 
     def test_it_sends_the_product_origin_to_digi_using_labeltext_with_digi_id(self):
-        origin = self.env['product_digi_sync.product_origin'].create({
-            "description": "Spanje"
-        })
-        product = self.env['product.product'].create({
-            "name": "Test Origin",
-            "plu_code": 42,
-            "product_origin_id": origin.id
-        })
+        origin = self.env["product_digi_sync.product_origin"].create(
+            {"description": "Spanje"}
+        )
+        product = self.env["product.product"].create(
+            {"name": "Test Origin", "plu_code": 42, "product_origin_id": origin.id}
+        )
 
         expected_labeltext_in_payload = origin.external_digi_id
 
@@ -523,9 +523,9 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
             self.digi_client.send_product_to_digi(product)
 
             send_data = json.loads(post_spy.call_args.kwargs["data"])
-            self.assertEqual(send_data["LabelTextDataId"], expected_labeltext_in_payload)
-
-
+            self.assertEqual(
+                send_data["LabelTextDataId"], expected_labeltext_in_payload
+            )
 
     @contextlib.contextmanager
     def patch_request_post(self, status_code=200, response_content=None):

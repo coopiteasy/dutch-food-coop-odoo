@@ -7,6 +7,7 @@ _logger = logging.getLogger(__name__)
 
 class DigiSyncBaseModel(models.AbstractModel):
     _name = "product_digi_sync.digi_sync_base"
+
     def send_to_digi(self):
         self.ensure_one()
         self.with_delay().send_to_digi_directly()

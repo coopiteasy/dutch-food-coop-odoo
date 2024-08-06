@@ -1,6 +1,7 @@
 from odoo import api, fields, models
 
 from odoo.addons.queue_job.exception import RetryableJobError
+
 from .digi_sync_base_model import DigiSyncBaseModel
 
 

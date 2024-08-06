@@ -5,6 +5,7 @@ from odoo import api, fields, models
 from odoo.tools import get_barcode_check_digit
 
 from odoo.addons.queue_job.exception import RetryableJobError
+
 from .digi_sync_base_model import DigiSyncBaseModel
 
 _logger = logging.getLogger(__name__)
@@ -17,8 +18,7 @@ class ProductTemplate(DigiSyncBaseModel, models.Model):
     send_to_scale = fields.Boolean(string="Send to scale", required=False)
     is_pieces_article = fields.Boolean(string="Pieces article", required=False)
     product_origin_id = fields.Many2one(
-        'product_digi_sync.product_origin',
-        string="Product origin"
+        "product_digi_sync.product_origin", string="Product origin"
     )
 
     _sql_constraints = [
