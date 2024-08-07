@@ -29,6 +29,8 @@ class ProductTransformer:
             data["LabelTextDataId"] = product.product_origin_id.external_digi_id
         data["PackedDate"] = product.show_packed_date_on_label
         data["StatusFields"] = {"PiecesArticle": (product.is_pieces_article)}
+        if product.storage_temperature != 0:
+            data["MinStorageTemp"] = product.storage_temperature
         if product and product.product_tmpl_id.get_current_barcode_rule() is not None:
             barcode_rule = product.product_tmpl_id.get_current_barcode_rule()
             matches = re.match(r"^(\d{2}).*", barcode_rule.pattern)

@@ -61,6 +61,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
         plu_code = 200
         expected_unit_price = 250
         expected_cost_price = 150
+        expected_storage_temp = 6
         self.patched_get_param.start()
 
         test_category = self.env["product.category"].create(
@@ -78,6 +79,8 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
             plu_code=plu_code,
             category_id=test_category.external_digi_id,
             show_packed_date_on_label=True,
+            storage_temp=expected_storage_temp,
+
         )
 
         product = self.env["product.product"].create(
@@ -88,7 +91,8 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
                 "categ_id": test_category.id,
                 "list_price": 2.5,
                 "standard_price": 1.5,
-                "show_packed_date_on_label": True
+                "show_packed_date_on_label": True,
+                "storage_temperature": expected_storage_temp,
             }
         )
 
@@ -626,4 +630,6 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
         data["MainGroupDataId"] = kwargs.get('category_id')
         data["PackedDate"] = kwargs.get('show_packed_date_on_label') or False
         data["StatusFields"] = {"PiecesArticle": kwargs.get("is_pieces_article") or False}
+        if kwargs.get('storage_temp'):
+            data["MinStorageTemp"] = kwargs.get("storage_temp")
         return json.dumps(data)
