@@ -20,6 +20,10 @@
                             string="Days until expiration"
                         />
                         <field
+                            name="days_until_bad_taste"
+                            string="Days until bad taste"
+                        />
+                        <field
                             name="storage_temperature"
                             string="Storage temperature in Celcius"
                         />
