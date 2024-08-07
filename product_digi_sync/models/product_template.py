@@ -87,6 +87,7 @@ class ProductTemplate(DigiSyncBaseModel, models.Model):
             if product_template.should_send_to_digi():
                 product_template.send_to_digi()
                 product_template.send_image_to_digi()
+                product_template.send_quality_image_to_digi()
         return result
 
     @api.model
@@ -96,6 +97,7 @@ class ProductTemplate(DigiSyncBaseModel, models.Model):
         if record.should_send_to_digi():
             record.send_to_digi()
             record.send_image_to_digi()
+            record.send_quality_image_to_digi()
 
         return record
 
@@ -121,5 +123,19 @@ class ProductTemplate(DigiSyncBaseModel, models.Model):
         if client:
             try:
                 client.send_product_image_to_digi(self)
+            except Exception as e:
+                raise RetryableJobError(str(e), 5) from e
+
+    def send_quality_image_to_digi(self):
+        self.ensure_one()
+        if not self.product_quality_id.image:
+            return
+        self.with_delay().send_quality_image_to_digi_directly()
+
+    def send_quality_image_to_digi_directly(self):
+        client = self._get_digi_client()
+        if client:
+            try:
+                client.send_product_quality_image_to_digi(self)
             except Exception as e:
                 raise RetryableJobError(str(e), 5) from e
