@@ -71,12 +71,13 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
         )
 
         expected_payload = self._create_expected_product_payload(
-            expected_cost_price,
-            expected_unit_price,
-            ingredients,
-            name,
-            plu_code,
-            test_category.external_digi_id,
+            cost_price=expected_cost_price,
+            unit_price=expected_unit_price,
+            ingredients=ingredients,
+            name=name,
+            plu_code=plu_code,
+            category_id=test_category.external_digi_id,
+            show_packed_date_on_label=True,
         )
 
         product = self.env["product.product"].create(
@@ -87,6 +88,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
                 "categ_id": test_category.id,
                 "list_price": 2.5,
                 "standard_price": 1.5,
+                "show_packed_date_on_label": True
             }
         )
 
@@ -119,20 +121,13 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
             }
         )
 
-        data = {}
-        data["DataId"] = plu_code
-        data["Names"] = [
-            {
-                "Reference": "Nederlands",
-                "DdFormatCommodity": f"01000000{name}",
-                "DdFormatIngredient": f"01000000{ingredients}",
-            }
-        ]
-        data["UnitPrice"] = int(product_without_standard_price.list_price * 100)
-        data["MainGroupDataId"] = test_category.external_digi_id
-        data["StatusFields"] = {"PiecesArticle": False}
-
-        expected_payload = json.dumps(data)
+        expected_payload = self._create_expected_product_payload(
+            plu_code=plu_code,
+            name=name,
+            ingredients=ingredients,
+            unit_price=int(product_without_standard_price.list_price * 100),
+            category_id=test_category.external_digi_id,
+        )
 
         with self.patch_request_post() as post_spy:
             self.digi_client.send_product_to_digi(product_without_standard_price)
@@ -161,19 +156,12 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
             }
         )
 
-        data = {}
-        data["DataId"] = plu_code
-        data["Names"] = [
-            {
-                "Reference": "Nederlands",
-                "DdFormatCommodity": f"01000000{name}",
-            }
-        ]
-        data["UnitPrice"] = int(product_without_standard_price.list_price * 100)
-        data["MainGroupDataId"] = test_category.external_digi_id
-        data["StatusFields"] = {"PiecesArticle": False}
-
-        expected_payload = json.dumps(data)
+        expected_payload = self._create_expected_product_payload(
+            plu_code=plu_code,
+            name=name,
+            unit_price=int(product_without_standard_price.list_price * 100),
+            category_id=test_category.external_digi_id,
+        )
 
         with self.patch_request_post() as post_spy:
             self.digi_client.send_product_to_digi(product_without_standard_price)
@@ -207,19 +195,13 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
             }
         )
 
-        data = {}
-        data["DataId"] = plu_code
-        data["Names"] = [
-            {
-                "Reference": "Nederlands",
-                "DdFormatCommodity": f"01000000{name}",
-            }
-        ]
-        data["UnitPrice"] = int(product_without_standard_price.list_price * 100)
-        data["MainGroupDataId"] = test_category.external_digi_id
-        data["StatusFields"] = {"PiecesArticle": True}
-
-        expected_payload = json.dumps(data)
+        expected_payload = self._create_expected_product_payload(
+            plu_code=plu_code,
+            name=name,
+            unit_price=int(product_without_standard_price.list_price * 100),
+            category_id=test_category.external_digi_id,
+            is_pieces_article=True,
+        )
 
         with self.patch_request_post() as post_spy:
             self.digi_client.send_product_to_digi(product_without_standard_price)
@@ -626,26 +608,22 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
         product_with_image.image_1920 = image_data
         return product_with_image
 
-    def _create_expected_product_payload(
-        self,
-        expected_cost_price,
-        expected_unit_price,
-        ingredients,
-        name,
-        plu_code,
-        category_id,
-    ):
+    def _create_expected_product_payload(self, **kwargs):
         data = {}
-        data["DataId"] = plu_code
+        data["DataId"] = kwargs.get('plu_code')
         data["Names"] = [
             {
                 "Reference": "Nederlands",
-                "DdFormatCommodity": f"01000000{name}",
-                "DdFormatIngredient": f"01000000{ingredients}",
+                "DdFormatCommodity": f"01000000{kwargs.get('name')}",
             }
         ]
-        data["UnitPrice"] = expected_unit_price
-        data["CostPrice"] = expected_cost_price
-        data["MainGroupDataId"] = category_id
-        data["StatusFields"] = {"PiecesArticle": False}
+        if kwargs.get("ingredients"):
+            data["Names"][0]["DdFormatIngredient"] = f"01000000{kwargs.get('ingredients')}"
+        if kwargs.get('unit_price'):
+            data["UnitPrice"] = kwargs.get('unit_price')
+        if kwargs.get('cost_price'):
+            data["CostPrice"] = kwargs.get('cost_price')
+        data["MainGroupDataId"] = kwargs.get('category_id')
+        data["PackedDate"] = kwargs.get('show_packed_date_on_label') or False
+        data["StatusFields"] = {"PiecesArticle": kwargs.get("is_pieces_article") or False}
         return json.dumps(data)

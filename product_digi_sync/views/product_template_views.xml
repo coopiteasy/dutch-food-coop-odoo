@@ -13,6 +13,10 @@
                     attrs="{'invisible': [('send_to_scale', '=', False)]}"
                 />
                 <field
+                    name="show_packed_date_on_label"
+                    attrs="{'invisible': [('send_to_scale', '=', False)]}"
+                />
+                <field
                     name="plu_code"
                     attrs="{'required': [('send_to_scale', '=', True)]}"
                 />
