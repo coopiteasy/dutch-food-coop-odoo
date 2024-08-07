@@ -19,6 +19,8 @@ class ProductTransformer:
         ]
         if product.ingredients:
             data["Names"][0]["DdFormatIngredient"] = f"01000000{product.ingredients}"
+        if product.usage_tips:
+            data["Names"][0]["DdFormatSpecialMessage"] = f"01000000{product.usage_tips}"
         if product.list_price:
             data["UnitPrice"] = int(product.list_price * 100)
         if product.standard_price:
