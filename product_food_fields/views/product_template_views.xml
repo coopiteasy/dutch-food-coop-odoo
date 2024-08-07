@@ -23,6 +23,7 @@
                             name="storage_temperature"
                             string="Storage temperature in Celcius"
                         />
+                        <field name="product_quality_id" string="Product quality" />
                     </group>
                 </page>
             </xpath>
