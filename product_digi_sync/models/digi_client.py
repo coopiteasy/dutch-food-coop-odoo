@@ -73,7 +73,7 @@ class DigiClient(models.Model):
 
         if "Result" in response_json and response_json["Result"] != 1:
             raise DigiApiException(
-                f"Error {response_json['Result']}: {response_json['ResultDescription']}"
+                f"Error {response_json['Result']}: {response_json['ResultDescription']}, reason: {response_json['Validation'][0]['Description']}, payload: {body}"
             )
 
     def create_article_url(self):

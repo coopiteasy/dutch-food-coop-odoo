@@ -51,13 +51,13 @@ class ProductTransformer:
                     barcode_id = barcode_rule.digi_barcode_type_id
                     data["NormalBarcode1"] = {
                         "BarcodeDataType": {
-                            "Id": barcode_id,
+                            "Id": 1,
                         },
                         "Code": 0,
-                        "DataId": 1,
+                        "DataId": barcode_id,
                         "Flag": int(flag),
                         "Type": {
-                            "Id": barcode_id,
+                            "Id": 1,
                         },
                     }
 

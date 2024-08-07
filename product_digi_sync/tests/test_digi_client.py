@@ -367,13 +367,13 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
         expected_data = {
             "NormalBarcode1": {
                 "BarcodeDataType": {
-                    "Id": 42,
+                    "Id": 1,
                 },
                 "Code": 0,
-                "DataId": 1,
+                "DataId": 42,
                 "Flag": 27,
                 "Type": {
-                    "Id": 42,
+                    "Id": 1,
                 },
             }
         }
@@ -397,7 +397,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
           "ResultDescription": "Invalid_UserPassword",
           "DataId": 0,
           "Post": [],
-          "Validation": []
+          "Validation": [{"Description": "just invalid"}]
         }
                     """
 
@@ -416,7 +416,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
           "ResultDescription": "Number of filter parameters not correct",
           "DataId": 0,
           "Post": [],
-          "Validation": []
+          "Validation": [{"Description": "extra info"}]
         }
                     """
 
@@ -425,8 +425,8 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
         ):
             with self.assertRaises(DigiApiException) as context:
                 self.digi_client.send_product_to_digi(product)
-        self.assertEqual(
-            str(context.exception), "Error -98: Number of filter parameters not correct"
+        self.assertIn(
+            "Error -98: Number of filter parameters not correct, reason: extra info", str(context.exception)
         )
 
     def test_it_doesnt_catch_other_exceptions(self):
