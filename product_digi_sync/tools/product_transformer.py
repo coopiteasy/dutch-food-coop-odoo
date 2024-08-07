@@ -112,7 +112,8 @@ class ProductTransformer:
         return json.dumps(payload)
 
     @classmethod
-    def transform_product_quality_to_image_payload(cls, product_quality):
+    def transform_product_quality_to_image_payload(cls, product):
+        product_quality = product.product_quality_id
         image_name = product_quality.name.lower().replace(" ", "_")
         payload = {"DataId": product_quality.digi_image_id}
         image_data = base64.b64decode(product_quality.image)
@@ -124,6 +125,16 @@ class ProductTransformer:
                 "DataId": 1,
                 "Reference": "Nederlands",
                 "Name": image_name,
+            }
+        ]
+        payload["Links"] = [
+            {
+                "DataId": product.plu_code,
+                "LinkNumber": 1,
+                "Type": {
+                    "Description": "Article",
+                    "Id": 2,
+                },
             }
         ]
         payload["InputFormat"] = image_format

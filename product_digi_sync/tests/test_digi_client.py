@@ -451,6 +451,16 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
                 "digi_image_id": image_id,
             })
 
+            plu_code = 200
+            product = self.env["product.template"].create(
+                {
+                    "name": "test product",
+                    "plu_code": plu_code,
+                    "list_price": 1.0,
+                    "product_quality_id": quality.id,
+                }
+            )
+
             expected_image_data = quality.image.decode("utf-8")
 
             payload = {}
@@ -463,11 +473,21 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
                     "Name": "biologisch_dynamisch",
                 }
             ]
+            payload["Links"] = [
+                {
+                    "DataId": plu_code,
+                    "LinkNumber": 1,
+                    "Type": {
+                        "Description": "Article",
+                        "Id": 2,
+                    },
+                }
+            ]
             payload["InputFormat"] = "png"
 
             expected_payload = json.dumps(payload)
 
-            self.digi_client.send_product_quality_image_to_digi(quality)
+            self.digi_client.send_product_quality_image_to_digi(product)
 
             self.assertEqual(post_spy.call_args.kwargs["data"], expected_payload)
 

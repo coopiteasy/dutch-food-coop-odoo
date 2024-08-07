@@ -20,6 +20,7 @@ class ProductTemplate(DigiSyncBaseModel, models.Model):
     product_origin_id = fields.Many2one(
         "product_digi_sync.product_origin", string="Product origin"
     )
+    product_quality_id = fields.Many2one("product_food_fields.product_quality", string="Product quality")
 
     _sql_constraints = [
         (
