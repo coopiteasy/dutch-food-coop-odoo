@@ -1,5 +1,6 @@
 from . import (
     product_template,
+    product_product,
     product_category,
     product_origin,
     product_quality,

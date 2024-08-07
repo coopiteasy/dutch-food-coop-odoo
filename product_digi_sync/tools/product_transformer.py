@@ -29,18 +29,20 @@ class ProductTransformer:
             data["MainGroupDataId"] = product.categ_id.external_digi_id
         if product.product_origin_id:
             data["LabelTextDataId"] = product.product_origin_id.external_digi_id
-        data["PackedDate"] = product.show_packed_date_on_label
-        data["StatusFields"] = {"PiecesArticle": (product.is_pieces_article)}
+        data["StatusFields"] = {
+            "PiecesArticle": product.is_pieces_article,
+            "PackedDate": product.show_packed_date_on_label
+        }
         if product.storage_temperature != 0:
             data["MinStorageTemp"] = product.storage_temperature
         if product.days_until_expiry != 0:
-            data["SellByDate"] = True
+            data["StatusFields"]["SellByDate"] = True
             data["SellByDateAmount"] = product.days_until_expiry
         if product.days_until_bad_taste != 0:
-            data["TasteDate"] = True
+            data["StatusFields"]["TasteDate"] = True
             data["TasteDateAmount"] = product.days_until_bad_taste
-        if product and product.product_tmpl_id.get_current_barcode_rule() is not None:
-            barcode_rule = product.product_tmpl_id.get_current_barcode_rule()
+        if product and product.get_current_barcode_rule() is not None:
+            barcode_rule = product.get_current_barcode_rule()
             matches = re.match(r"^(\d{2}).*", barcode_rule.pattern)
 
             if matches:
