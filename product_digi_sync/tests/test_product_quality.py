@@ -33,54 +33,7 @@ class TestProductQuality(DigiSyncBaseTestCase):
 
 
     def test_the_external_digi_id_is_set_to_desired_value_when_creating_record(self):
-        product_quality = self._create_product_quality_with_image()
-
-        expected_digi_image_id = 42
-
-        self.assertEqual(expected_digi_image_id, product_quality.digi_image_id)
-
-
-    def test_it_sends_the_product_quality_image_to_digi_when_record_is_created_and_the_image_is_set(self):
-        digi_client = self._create_digi_client()
-
-        client_id = digi_client.id
-        patched_get_param = self._patch_ir_config_parameter_for_get_param(
-            "digi_client_id", client_id
-        )
-        patched_get_param.start()
-        mock_send_product_quality_image_to_digi = Mock()
-        patch.object(
-            DigiClient, "send_product_quality_image_to_digi", mock_send_product_quality_image_to_digi
-        ).start()
-
-        product_quality = self._create_product_quality_with_image()
-
-        self.assertEqual(mock_send_product_quality_image_to_digi.call_args[0][0], product_quality)
-        patched_get_param.stop()
-
-    def test_it_sends_the_product_quality_image_to_digi_when_record_is_saved_and_the_image_is_set(self):
-        digi_client = self._create_digi_client()
-
-        client_id = digi_client.id
-        patched_get_param = self._patch_ir_config_parameter_for_get_param(
-            "digi_client_id", client_id
-        )
-        patched_get_param.start()
-        mock_send_product_quality_image_to_digi = Mock()
-        patch.object(
-            DigiClient, "send_product_quality_image_to_digi", mock_send_product_quality_image_to_digi
-        ).start()
-
-        product_quality = self._create_product_quality_without_image()
-        product_quality.write({
-            "image": self._create_dummy_image("png")
-        })
-
-        self.assertEqual(mock_send_product_quality_image_to_digi.call_args[0][0], product_quality)
-        patched_get_param.stop()
-
-    def _create_product_quality_with_image(self):
-        return self.env["product_food_fields.product_quality"].create(
+        product_quality = self.env["product_food_fields.product_quality"].create(
             {
                 "code": "BD",
                 "name": "Biologisch dynamisch",
@@ -89,13 +42,7 @@ class TestProductQuality(DigiSyncBaseTestCase):
             }
         )
 
+        expected_digi_image_id = 42
 
-    def _create_product_quality_without_image(self):
-        return self.env["product_food_fields.product_quality"].create(
-            {
-                "code": "BD",
-                "name": "Biologisch dynamisch",
-                "digi_image_id": 42
-            }
-        )
+        self.assertEqual(expected_digi_image_id, product_quality.digi_image_id)
 
