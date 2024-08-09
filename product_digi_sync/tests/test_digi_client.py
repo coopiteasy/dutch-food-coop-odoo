@@ -662,6 +662,27 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
                 send_data["LabelText6DataId"], expected_labeltext_in_payload
             )
 
+    def test_it_sends_the_product_branch_as_extra_info_in_the_commodity_field_to_digi(self):
+        brand = self.env['product.brand'].create({
+            "name": "ACME"
+        })
+        product = self.env["product.product"].create(
+            {
+                "name": "Test Origin",
+                "plu_code": 42,
+                "product_brand_id": brand.id,
+             }
+        )
+        expected_commodity_payload = "08010000Test Origin~05010000ACME~01000000~01000000"
+        with self.patch_request_post() as post_spy:
+            self.digi_client.send_product_to_digi(product)
+
+            send_data = json.loads(post_spy.call_args.kwargs["data"])
+            self.assertEqual(
+                send_data["Names"][0]["DdFormatCommodity"], expected_commodity_payload
+            )
+
+
     @contextlib.contextmanager
     def patch_request_post(self, status_code=200, response_content=None):
         if not response_content:

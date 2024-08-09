@@ -14,7 +14,10 @@ class ProductTransformer:
         data["Names"] = [
             {
                 "Reference": "Nederlands",
-                "DdFormatCommodity": f"08010000{product.name}~01000000",
+                "DdFormatCommodity": (f"08010000{product.name}"
+                                      f"~05010000"
+                                      f"{product.product_brand_id.name}"
+                                      f"~01000000~01000000"),
             }
         ]
         if product.ingredients:
@@ -117,10 +120,10 @@ class ProductTransformer:
                 {
                     "Reference": "Nederlands",
                     "DdData": f"02000000<span style='font-family:\"DejaVu Sans\";font-size:24px;'>"
-                    f"Herkomst:"
-                    f"<\/~02000000span><b><span~02000000style='font-family:\"DIN\";font-size:36px;'>"
-                    f"{product_origin.name}"
-                    f"<\/span><\/b>",
+                              f"Herkomst:"
+                              f"<\/~02000000span><b><span~02000000style='font-family:\"DIN\";font-size:36px;'>"
+                              f"{product_origin.name}"
+                              f"<\/span><\/b>",
                     "Name": f"Herkomst {product_origin.name}",
                 }
             ],
@@ -156,4 +159,3 @@ class ProductTransformer:
         ]
         payload["InputFormat"] = image_format
         return json.dumps(payload)
-
