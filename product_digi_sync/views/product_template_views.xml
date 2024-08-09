@@ -21,6 +21,9 @@
                     attrs="{'invisible': [('send_to_scale', '=', False)]}"
                 />
                 <field
+                    name="product_brand_id"
+                />
+                <field
                     name="plu_code"
                     attrs="{'required': [('send_to_scale', '=', True)]}"
                 />

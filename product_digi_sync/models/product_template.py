@@ -20,6 +20,9 @@ class ProductTemplate(DigiSyncBaseModel, models.Model):
     product_origin_id = fields.Many2one(
         "product_digi_sync.product_origin", string="Product origin"
     )
+    product_brand_id = fields.Many2one(
+        "product.brand", string="Product brand"
+    )
     show_packed_date_on_label = fields.Boolean(string="Show packed date on label", required=False)
 
     _sql_constraints = [

@@ -21,6 +21,6 @@
         "views/barcode_rule.views.xml",
     ],
     # any module necessary for this one to work correctly
-    "depends": ["product_food_fields", "product", "point_of_sale", "queue_job", "sale"],
+    "depends": ["product_food_fields", "product", "point_of_sale", "queue_job", "sale", "product_brand"],
     "installable": True,
 }
