@@ -753,12 +753,13 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
 
         data["StatusFields"] = {
             "PiecesArticle": kwargs.get("is_pieces_article") or False,
-            "PackedDate": kwargs.get('show_packed_date_on_label') or False
+            "PackedDate": kwargs.get('show_packed_date_on_label') or False,
+            "ShowMinStorageTemp": True if kwargs.get("storage_temp") else False
         }
         data["StatusFields"]["SellByDate"] = False
         data["StatusFields"]["TasteDate"] = False
         if kwargs.get('storage_temp'):
-            data["MaxStorageTemp"] = kwargs.get("storage_temp")
+            data["MinStorageTemp"] = kwargs.get("storage_temp")
         if kwargs.get("days_until_expiry"):
             data["StatusFields"]["SellByDate"] = True
             data["SellByDateAmount"] = kwargs.get("days_until_expiry")

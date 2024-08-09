@@ -11,13 +11,17 @@ class ProductTransformer:
     def transform_product_to_payload(self, product):
         data = {}
         data["DataId"] = product.plu_code
+        commodity = f"08010000{product.name}"
+        if product.product_brand_id:
+            commodity += (f"~05010000"
+                          f"{product.product_brand_id.name}"
+                          f"~01000000~01000000")
+        else:
+            commodity += f"~01000000"
         data["Names"] = [
             {
                 "Reference": "Nederlands",
-                "DdFormatCommodity": (f"08010000{product.name}"
-                                      f"~05010000"
-                                      f"{product.product_brand_id.name}"
-                                      f"~01000000~01000000"),
+                "DdFormatCommodity": commodity,
             }
         ]
         if product.ingredients:
@@ -34,20 +38,20 @@ class ProductTransformer:
             data["LabelText6DataId"] = product.product_origin_id.external_digi_id
         data["StatusFields"] = {
             "PiecesArticle": product.is_pieces_article,
-            "PackedDate": product.show_packed_date_on_label
+            "PackedDate": product.show_packed_date_on_label,
+            "ShowMinStorageTemp": False,
+            "SellByDate": False,
+            "TasteDate": False,
         }
         if product.storage_temperature != 0:
-            data["MaxStorageTemp"] = product.storage_temperature
+            data["StatusFields"]["ShowMinStorageTemp"] = True
+            data["MinStorageTemp"] = product.storage_temperature
         if product.days_until_expiry != 0:
             data["StatusFields"]["SellByDate"] = True
             data["SellByDateAmount"] = product.days_until_expiry
-        else:
-            data["StatusFields"]["SellByDate"] = False
         if product.days_until_bad_taste != 0:
             data["StatusFields"]["TasteDate"] = True
             data["TasteDateAmount"] = product.days_until_bad_taste
-        else:
-            data["StatusFields"]["TasteDate"] = False
         if product and product.get_current_barcode_rule() is not None:
             barcode_rule = product.get_current_barcode_rule()
             matches = re.match(r"^(\d{2}).*", barcode_rule.pattern)
