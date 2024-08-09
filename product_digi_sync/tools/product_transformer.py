@@ -14,13 +14,13 @@ class ProductTransformer:
         data["Names"] = [
             {
                 "Reference": "Nederlands",
-                "DdFormatCommodity": f"01000000{product.name}",
+                "DdFormatCommodity": f"08010000{product.name}~01000000",
             }
         ]
         if product.ingredients:
-            data["Names"][0]["DdFormatIngredient"] = f"01000000{product.ingredients}"
+            data["Names"][0]["DdFormatIngredient"] = f"04000000{product.ingredients}~01000000"
         if product.usage_tips:
-            data["Names"][0]["DdFormatSpecialMessage"] = f"01000000{product.usage_tips}"
+            data["Names"][0]["DdFormatSpecialMessage"] = f"04000000{product.usage_tips}~01000000"
         if product.list_price:
             data["UnitPrice"] = int(product.list_price * 100)
         if product.standard_price:
@@ -28,19 +28,23 @@ class ProductTransformer:
         if product.categ_id.id:
             data["MainGroupDataId"] = product.categ_id.external_digi_id
         if product.product_origin_id:
-            data["LabelTextDataId"] = product.product_origin_id.external_digi_id
+            data["LabelText6DataId"] = product.product_origin_id.external_digi_id
         data["StatusFields"] = {
             "PiecesArticle": product.is_pieces_article,
             "PackedDate": product.show_packed_date_on_label
         }
         if product.storage_temperature != 0:
-            data["MinStorageTemp"] = product.storage_temperature
+            data["MaxStorageTemp"] = product.storage_temperature
         if product.days_until_expiry != 0:
             data["StatusFields"]["SellByDate"] = True
             data["SellByDateAmount"] = product.days_until_expiry
+        else:
+            data["StatusFields"]["SellByDate"] = False
         if product.days_until_bad_taste != 0:
             data["StatusFields"]["TasteDate"] = True
             data["TasteDateAmount"] = product.days_until_bad_taste
+        else:
+            data["StatusFields"]["TasteDate"] = False
         if product and product.get_current_barcode_rule() is not None:
             barcode_rule = product.get_current_barcode_rule()
             matches = re.match(r"^(\d{2}).*", barcode_rule.pattern)

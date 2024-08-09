@@ -17,6 +17,10 @@
                     attrs="{'invisible': [('send_to_scale', '=', False)]}"
                 />
                 <field
+                    name="product_origin_id"
+                    attrs="{'invisible': [('send_to_scale', '=', False)]}"
+                />
+                <field
                     name="plu_code"
                     attrs="{'required': [('send_to_scale', '=', True)]}"
                 />

@@ -659,7 +659,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
 
             send_data = json.loads(post_spy.call_args.kwargs["data"])
             self.assertEqual(
-                send_data["LabelTextDataId"], expected_labeltext_in_payload
+                send_data["LabelText6DataId"], expected_labeltext_in_payload
             )
 
     @contextlib.contextmanager
@@ -717,13 +717,13 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
         data["Names"] = [
             {
                 "Reference": "Nederlands",
-                "DdFormatCommodity": f"01000000{kwargs.get('name')}",
+                "DdFormatCommodity": f"08010000{kwargs.get('name')}~01000000",
             }
         ]
         if kwargs.get("ingredients"):
-            data["Names"][0]["DdFormatIngredient"] = f"01000000{kwargs.get('ingredients')}"
+            data["Names"][0]["DdFormatIngredient"] = f"04000000{kwargs.get('ingredients')}~01000000"
         if kwargs.get("usage_tips"):
-            data["Names"][0]["DdFormatSpecialMessage"] = f"01000000{kwargs.get('usage_tips')}"
+            data["Names"][0]["DdFormatSpecialMessage"] = f"04000000{kwargs.get('usage_tips')}~01000000"
         if kwargs.get('unit_price'):
             data["UnitPrice"] = kwargs.get('unit_price')
         if kwargs.get('cost_price'):
@@ -734,8 +734,10 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
             "PiecesArticle": kwargs.get("is_pieces_article") or False,
             "PackedDate": kwargs.get('show_packed_date_on_label') or False
         }
+        data["StatusFields"]["SellByDate"] = False
+        data["StatusFields"]["TasteDate"] = False
         if kwargs.get('storage_temp'):
-            data["MinStorageTemp"] = kwargs.get("storage_temp")
+            data["MaxStorageTemp"] = kwargs.get("storage_temp")
         if kwargs.get("days_until_expiry"):
             data["StatusFields"]["SellByDate"] = True
             data["SellByDateAmount"] = kwargs.get("days_until_expiry")
