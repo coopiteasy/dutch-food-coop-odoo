@@ -22,7 +22,7 @@ class TestProductOrigin(DigiSyncBaseTestCase):
 
     def test_the_external_digi_id_is_based_on_the_id_after_creation(self):
         product_origin = self.env["product_digi_sync.product_origin"].create(
-            {"description": "Nederland"}
+            {"name": "Nederland"}
         )
 
         expected_external_digi_id = product_origin.id + 10000
@@ -44,7 +44,7 @@ class TestProductOrigin(DigiSyncBaseTestCase):
         patched_digi_client.start()
 
         origin = self.env["product_digi_sync.product_origin"].create(
-            {"description": "Nederland"}
+            {"name": "Nederland"}
         )
 
         self.assertEqual(mock_send_product_origin_to_digi.call_args[0][0], origin)
@@ -66,9 +66,9 @@ class TestProductOrigin(DigiSyncBaseTestCase):
         patched_digi_client.start()
 
         origin = self.env["product_digi_sync.product_origin"].create(
-            {"description": "Nederland"}
+            {"name": "Nederland"}
         )
-        origin.write({"description": "Spanje"})
+        origin.write({"name": "Spanje"})
 
         self.assertEqual(
             mock_send_product_origin_to_digi.call_args_list[1][0][0], origin

@@ -623,7 +623,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
 
     def test_it_sends_a_product_origin_to_digi_with_the_right_payload(self):
         origin = self.env["product_digi_sync.product_origin"].create(
-            {"description": "Spanje"}
+            {"name": "Spanje"}
         )
 
         payload = {
@@ -646,7 +646,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
 
     def test_it_sends_the_product_origin_to_digi_using_labeltext_with_digi_id(self):
         origin = self.env["product_digi_sync.product_origin"].create(
-            {"description": "Spanje"}
+            {"name": "Spanje"}
         )
         product = self.env["product.product"].create(
             {"name": "Test Origin", "plu_code": 42, "product_origin_id": origin.id}

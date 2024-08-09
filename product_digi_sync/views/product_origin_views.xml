@@ -5,7 +5,7 @@
         <field name="model">product_digi_sync.product_origin</field>
         <field name="arch" type="xml">
             <tree string="Product Origin">
-                <field name="description" />
+                <field name="name" />
                 <field name="external_digi_id" />
             </tree>
         </field>
@@ -18,7 +18,7 @@
             <form string="Product Origin">
                 <sheet>
                     <group>
-                        <field name="description" />
+                        <field name="name" />
                         <field name="external_digi_id" />
                     </group>
                 </sheet>

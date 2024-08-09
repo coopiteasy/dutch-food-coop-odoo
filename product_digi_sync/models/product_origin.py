@@ -15,8 +15,8 @@ class ProductOrigin(DigiSyncBaseModel, models.Model):
     _name = "product_digi_sync.product_origin"
     _description = "Product Origin"
 
-    description = fields.Text(
-        help="The origin description. Can be a country, region or producer."
+    name = fields.Text(
+        help="The origin name. Can be a country, region or producer."
     )
     external_digi_id = fields.Integer(
         string="External Digi identifier",
