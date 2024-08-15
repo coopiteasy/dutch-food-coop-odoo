@@ -25,9 +25,9 @@ class ProductTransformer:
             }
         ]
         if product.ingredients:
-            data["Names"][0]["DdFormatIngredient"] = f"04000000{product.ingredients}~01000000"
+            data["Names"][0]["DdFormatIngredient"] = f"04000000Ingrediënten: {product.ingredients}~01000000~01000000"
         if product.usage_tips:
-            data["Names"][0]["DdFormatSpecialMessage"] = f"04000000{product.usage_tips}~01000000"
+            data["Names"][0]["DdFormatSpecialMessage"] = f"04000000<br>{product.usage_tips}~01000000"
         if product.list_price:
             data["UnitPrice"] = int(product.list_price * 100)
         if product.standard_price:
@@ -125,9 +125,9 @@ class ProductTransformer:
                     "Reference": "Nederlands",
                     "DdData": f"02000000<span style='font-family:\"DejaVu Sans\";font-size:24px;'>"
                               f"Herkomst:"
-                              f"<\/~02000000span><b><span~02000000style='font-family:\"DIN\";font-size:36px;'>"
+                              f"</span><b><span style='font-family:\"DIN\";font-size:36px;'>"
                               f"{product_origin.name}"
-                              f"<\/span><\/b>",
+                              f"</span></b>",
                     "Name": f"Herkomst {product_origin.name}",
                 }
             ],
