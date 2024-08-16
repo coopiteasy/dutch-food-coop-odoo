@@ -135,7 +135,9 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
         patched_get_param.start()
         mock_send_product_image_to_digi = Mock()
         patch.object(
-            DigiClient, "send_product_quality_image_to_digi", mock_send_product_image_to_digi
+            DigiClient,
+            "send_product_quality_image_to_digi",
+            mock_send_product_image_to_digi,
         ).start()
         patch.object(DigiClient, "send_product_to_digi", Mock()).start()
         patch.object(DigiClient, "send_product_image_to_digi", Mock()).start()
@@ -149,9 +151,11 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
             }
         )
         product_quality = self._create_product_quality_with_image()
-        product.write({
-            "product_quality_id": product_quality.id,
-        })
+        product.write(
+            {
+                "product_quality_id": product_quality.id,
+            }
+        )
 
         self.assertEqual(mock_send_product_image_to_digi.call_args[0][0], product)
         patched_get_param.stop()
@@ -181,6 +185,6 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
                 "code": "BD",
                 "name": "Biologisch dynamisch",
                 "image": self._create_dummy_image("png"),
-                "digi_image_id": 42
+                "digi_image_id": 42,
             }
         )

@@ -2,7 +2,7 @@ from odoo import models
 
 
 class ProductProduct(models.Model):
-    _inherit = 'product.product'
+    _inherit = "product.product"
 
     def get_current_barcode_rule(self):
         weighted_barcode_rule = self._get_barcode_rule("weighted_barcode_rule_id")

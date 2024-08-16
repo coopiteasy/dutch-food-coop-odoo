@@ -12,4 +12,6 @@ class ProductTemplate(models.Model):
     # TODO: rename field
     days_until_bad_taste = fields.Integer(help="Days until bad test")
     storage_temperature = fields.Integer(help="Storage temperature in Celcius")
-    product_quality_id = fields.Many2one("product_food_fields.product_quality", string="Product quality")
+    product_quality_id = fields.Many2one(
+        "product_food_fields.product_quality", string="Product quality"
+    )

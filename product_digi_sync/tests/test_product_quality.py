@@ -1,9 +1,9 @@
-from unittest.mock import patch, Mock
+from unittest.mock import patch
 
-from odoo.addons.product_digi_sync.models.digi_client import DigiClient
 from odoo.addons.queue_job.models.base import Base as QueueJobBase
 
 from .digi_sync_base_test_case import DigiSyncBaseTestCase
+
 
 class TestProductQuality(DigiSyncBaseTestCase):
     def setUp(self):
@@ -21,16 +21,12 @@ class TestProductQuality(DigiSyncBaseTestCase):
 
     def test_the_external_digi_id_is_based_on_the_id_after_creation(self):
         product_quality = self.env["product_food_fields.product_quality"].create(
-            {
-                "code": "BD",
-                "name": "Biologisch dynamisch"
-            }
+            {"code": "BD", "name": "Biologisch dynamisch"}
         )
 
         expected_digi_image_id = product_quality.id + 100000
 
         self.assertEqual(expected_digi_image_id, product_quality.digi_image_id)
-
 
     def test_the_external_digi_id_is_set_to_desired_value_when_creating_record(self):
         product_quality = self.env["product_food_fields.product_quality"].create(
@@ -38,11 +34,10 @@ class TestProductQuality(DigiSyncBaseTestCase):
                 "code": "BD",
                 "name": "Biologisch dynamisch",
                 "image": self._create_dummy_image("png"),
-                "digi_image_id": 42
+                "digi_image_id": 42,
             }
         )
 
         expected_digi_image_id = 42
 
         self.assertEqual(expected_digi_image_id, product_quality.digi_image_id)
-

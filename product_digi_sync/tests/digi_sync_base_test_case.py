@@ -32,10 +32,10 @@ class DigiSyncBaseTestCase(TransactionCase):
         return digi_client
 
     @staticmethod
-    def _create_dummy_image(format):
+    def _create_dummy_image(target_format):
         image = Image.new("RGB", (1, 1))
         output = io.BytesIO()
-        image.save(output, format=format)
+        image.save(output, format=target_format)
         # Get the binary data of the image
         image_data = base64.b64encode(output.getvalue())
         output.close()

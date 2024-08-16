@@ -13,11 +13,11 @@ class ProductTransformer:
         data["DataId"] = product.plu_code
         commodity = f"08010000{product.name}"
         if product.product_brand_id:
-            commodity += (f"~05010000"
-                          f"{product.product_brand_id.name}"
-                          f"~01000000~01000000")
+            commodity += (
+                f"~05010000" f"{product.product_brand_id.name}" f"~01000000~01000000"
+            )
         else:
-            commodity += f"~01000000"
+            commodity += "~01000000"
         data["Names"] = [
             {
                 "Reference": "Nederlands",
@@ -25,9 +25,13 @@ class ProductTransformer:
             }
         ]
         if product.ingredients:
-            data["Names"][0]["DdFormatIngredient"] = f"04000000Ingrediënten: {product.ingredients}~01000000~01000000"
+            data["Names"][0][
+                "DdFormatIngredient"
+            ] = f"04000000Ingrediënten: {product.ingredients}~01000000~01000000"
         if product.usage_tips:
-            data["Names"][0]["DdFormatSpecialMessage"] = f"04000000<br>{product.usage_tips}~01000000"
+            data["Names"][0][
+                "DdFormatSpecialMessage"
+            ] = f"04000000<br>{product.usage_tips}~01000000"
         if product.list_price:
             data["UnitPrice"] = int(product.list_price * 100)
         if product.standard_price:
@@ -124,10 +128,10 @@ class ProductTransformer:
                 {
                     "Reference": "Nederlands",
                     "DdData": f"02000000<span style='font-family:\"DejaVu Sans\";font-size:24px;'>"
-                              f"Herkomst:"
-                              f"</span><b><span style='font-family:\"DIN\";font-size:36px;'>"
-                              f"{product_origin.name}"
-                              f"</span></b>",
+                    f"Herkomst:"
+                    f"</span><b><span style='font-family:\"DIN\";font-size:36px;'>"
+                    f"{product_origin.name}"
+                    f"</span></b>",
                     "Name": f"Herkomst {product_origin.name}",
                 }
             ],
