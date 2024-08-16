@@ -127,7 +127,8 @@ class ProductTransformer:
             "Names": [
                 {
                     "Reference": "Nederlands",
-                    "DdData": f"02000000<span style='font-family:\"DejaVu Sans\";font-size:24px;'>"
+                    "DdData": f"02000000"
+                    f"<span style='font-family:\"DejaVu Sans\";font-size:24px;'>"
                     f"Herkomst:"
                     f"</span><b><span style='font-family:\"DIN\";font-size:36px;'>"
                     f"{product_origin.name}"
