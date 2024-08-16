@@ -635,7 +635,12 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
             "Names": [
                 {
                     "Reference": "Nederlands",
-                    "DdData": "02000000<span style='font-family:\"DejaVu Sans\";font-size:24px;'>Herkomst:<\\/~02000000span><b><span~02000000style='font-family:\"DIN\";font-size:36px;'>Spanje<\/span><\/b>",  # noqa: E501, pylint: disable=W1401
+                    "DdData": f"02000000"
+                        f"<span style='font-family:\"DejaVu Sans\";font-size:24px;'>"
+                        f"Herkomst:"
+                        f"</span><b><span style='font-family:\"DIN\";font-size:36px;'>"
+                        f"Spanje"
+                        f"</span></b>",  # noqa: E501, pylint: disable=W1401
                     "Name": "Herkomst Spanje",
                 }
             ],
@@ -747,11 +752,11 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
         if kwargs.get("ingredients"):
             data["Names"][0][
                 "DdFormatIngredient"
-            ] = f"04000000{kwargs.get('ingredients')}~01000000"
+            ] = f"04000000Ingrediënten: {kwargs.get('ingredients')}~01000000~01000000"
         if kwargs.get("usage_tips"):
             data["Names"][0][
                 "DdFormatSpecialMessage"
-            ] = f"04000000{kwargs.get('usage_tips')}~01000000"
+            ] = f"04000000<br>{kwargs.get('usage_tips')}~01000000"
         if kwargs.get("unit_price"):
             data["UnitPrice"] = kwargs.get("unit_price")
         if kwargs.get("cost_price"):
