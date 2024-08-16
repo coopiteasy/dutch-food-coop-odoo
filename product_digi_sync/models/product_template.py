@@ -6,15 +6,24 @@ from odoo.tools import get_barcode_check_digit
 
 from odoo.addons.queue_job.exception import RetryableJobError
 
+from .digi_sync_base_model import DigiSyncBaseModel
+
 _logger = logging.getLogger(__name__)
 
 
-class ProductTemplate(models.Model):
+class ProductTemplate(DigiSyncBaseModel, models.Model):
     _inherit = "product.template"
 
     plu_code = fields.Integer(string="Plu code", required=False)
     send_to_scale = fields.Boolean(string="Send to scale", required=False)
     is_pieces_article = fields.Boolean(string="Pieces article", required=False)
+    product_origin_id = fields.Many2one(
+        "product_digi_sync.product_origin", string="Product origin"
+    )
+    product_brand_id = fields.Many2one("product.brand", string="Product brand")
+    show_packed_date_on_label = fields.Boolean(
+        string="Show packed date on label", required=False
+    )
 
     _sql_constraints = [
         (
@@ -81,6 +90,7 @@ class ProductTemplate(models.Model):
             if product_template.should_send_to_digi():
                 product_template.send_to_digi()
                 product_template.send_image_to_digi()
+                product_template.send_quality_image_to_digi()
         return result
 
     @api.model
@@ -90,15 +100,12 @@ class ProductTemplate(models.Model):
         if record.should_send_to_digi():
             record.send_to_digi()
             record.send_image_to_digi()
+            record.send_quality_image_to_digi()
 
         return record
 
     def should_send_to_digi(self):
         return self.send_to_scale and self.plu_code
-
-    def send_to_digi(self):
-        self.ensure_one()
-        self.with_delay().send_to_digi_directly()
 
     def send_to_digi_directly(self):
         client = self._get_digi_client()
@@ -122,12 +129,16 @@ class ProductTemplate(models.Model):
             except Exception as e:
                 raise RetryableJobError(str(e), 5) from e
 
-    def _get_digi_client(self):
-        digi_client_id = int(
-            self.env["ir.config_parameter"].get_param("digi_client_id")
-        )
-        client = self.env["product_digi_sync.digi_client"].browse(digi_client_id)
-        if not client.exists():
-            _logger.warning("Digi client requested, but no client was configured.")
-            return False
-        return client
+    def send_quality_image_to_digi(self):
+        self.ensure_one()
+        if not self.product_quality_id.image:
+            return
+        self.with_delay().send_quality_image_to_digi_directly()
+
+    def send_quality_image_to_digi_directly(self):
+        client = self._get_digi_client()
+        if client:
+            try:
+                client.send_product_quality_image_to_digi(self)
+            except Exception as e:
+                raise RetryableJobError(str(e), 5) from e

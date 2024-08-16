@@ -125,6 +125,41 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
         self.assertEqual(mock_send_product_image_to_digi.call_args[0][0], product)
         patched_get_param.stop()
 
+    def test_it_sends_the_product_quality_image_to_digi_when_the_quality_is_set(self):
+        digi_client = self._create_digi_client()
+
+        client_id = digi_client.id
+        patched_get_param = self._patch_ir_config_parameter_for_get_param(
+            "digi_client_id", client_id
+        )
+        patched_get_param.start()
+        mock_send_product_image_to_digi = Mock()
+        patch.object(
+            DigiClient,
+            "send_product_quality_image_to_digi",
+            mock_send_product_image_to_digi,
+        ).start()
+        patch.object(DigiClient, "send_product_to_digi", Mock()).start()
+        patch.object(DigiClient, "send_product_image_to_digi", Mock()).start()
+
+        product = self.env["product.template"].create(
+            {
+                "name": "test quality",
+                "plu_code": 42,
+                "send_to_scale": True,
+                "list_price": 1.0,
+            }
+        )
+        product_quality = self._create_product_quality_with_image()
+        product.write(
+            {
+                "product_quality_id": product_quality.id,
+            }
+        )
+
+        self.assertEqual(mock_send_product_image_to_digi.call_args[0][0], product)
+        patched_get_param.stop()
+
     def _create_product_with_image(self, name, plu_code):
         product_with_image = self.env["product.template"].create(
             {
@@ -143,3 +178,13 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
         output.close()
         product_with_image.image_1920 = image_data
         return product_with_image
+
+    def _create_product_quality_with_image(self):
+        return self.env["product_food_fields.product_quality"].create(
+            {
+                "code": "BD",
+                "name": "Biologisch dynamisch",
+                "image": self._create_dummy_image("png"),
+                "digi_image_id": 42,
+            }
+        )

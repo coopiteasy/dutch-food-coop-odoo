@@ -11,23 +11,53 @@ class ProductTransformer:
     def transform_product_to_payload(self, product):
         data = {}
         data["DataId"] = product.plu_code
+        commodity = f"08010000{product.name}"
+        if product.product_brand_id:
+            commodity += (
+                f"~05010000" f"{product.product_brand_id.name}" f"~01000000~01000000"
+            )
+        else:
+            commodity += "~01000000"
         data["Names"] = [
             {
                 "Reference": "Nederlands",
-                "DdFormatCommodity": f"01000000{product.name}",
+                "DdFormatCommodity": commodity,
             }
         ]
         if product.ingredients:
-            data["Names"][0]["DdFormatIngredient"] = f"01000000{product.ingredients}"
+            data["Names"][0][
+                "DdFormatIngredient"
+            ] = f"04000000Ingrediënten: {product.ingredients}~01000000~01000000"
+        if product.usage_tips:
+            data["Names"][0][
+                "DdFormatSpecialMessage"
+            ] = f"04000000<br>{product.usage_tips}~01000000"
         if product.list_price:
             data["UnitPrice"] = int(product.list_price * 100)
         if product.standard_price:
             data["CostPrice"] = int(product.standard_price * 100)
         if product.categ_id.id:
             data["MainGroupDataId"] = product.categ_id.external_digi_id
-        data["StatusFields"] = {"PiecesArticle": (product.is_pieces_article)}
-        if product and product.product_tmpl_id.get_current_barcode_rule() is not None:
-            barcode_rule = product.product_tmpl_id.get_current_barcode_rule()
+        if product.product_origin_id:
+            data["LabelText6DataId"] = product.product_origin_id.external_digi_id
+        data["StatusFields"] = {
+            "PiecesArticle": product.is_pieces_article,
+            "PackedDate": product.show_packed_date_on_label,
+            "ShowMinStorageTemp": False,
+            "SellByDate": False,
+            "TasteDate": False,
+        }
+        if product.storage_temperature != 0:
+            data["StatusFields"]["ShowMinStorageTemp"] = True
+            data["MinStorageTemp"] = product.storage_temperature
+        if product.days_until_expiry != 0:
+            data["StatusFields"]["SellByDate"] = True
+            data["SellByDateAmount"] = product.days_until_expiry
+        if product.days_until_bad_taste != 0:
+            data["StatusFields"]["TasteDate"] = True
+            data["TasteDateAmount"] = product.days_until_bad_taste
+        if product and product.get_current_barcode_rule() is not None:
+            barcode_rule = product.get_current_barcode_rule()
             matches = re.match(r"^(\d{2}).*", barcode_rule.pattern)
 
             if matches:
@@ -36,13 +66,13 @@ class ProductTransformer:
                     barcode_id = barcode_rule.digi_barcode_type_id
                     data["NormalBarcode1"] = {
                         "BarcodeDataType": {
-                            "Id": barcode_id,
+                            "Id": 1,
                         },
                         "Code": 0,
-                        "DataId": 1,
+                        "DataId": barcode_id,
                         "Flag": int(flag),
                         "Type": {
-                            "Id": barcode_id,
+                            "Id": 1,
                         },
                     }
 
@@ -88,4 +118,53 @@ class ProductTransformer:
                 }
             ],
         }
+        return json.dumps(payload)
+
+    @classmethod
+    def transform_product_origin_to_payload(cls, product_origin):
+        payload = {
+            "DataId": product_origin.external_digi_id,
+            "Names": [
+                {
+                    "Reference": "Nederlands",
+                    "DdData": f"02000000"
+                    f"<span style='font-family:\"DejaVu Sans\";font-size:24px;'>"
+                    f"Herkomst:"
+                    f"</span><b><span style='font-family:\"DIN\";font-size:36px;'>"
+                    f"{product_origin.name}"
+                    f"</span></b>",
+                    "Name": f"Herkomst {product_origin.name}",
+                }
+            ],
+        }
+
+        return json.dumps(payload)
+
+    @classmethod
+    def transform_product_quality_to_image_payload(cls, product):
+        product_quality = product.product_quality_id
+        image_name = product_quality.name.lower().replace(" ", "_")
+        payload = {"DataId": product_quality.digi_image_id}
+        image_data = base64.b64decode(product_quality.image)
+        image = Image.open(io.BytesIO(image_data))
+        image_format = image.format.lower().replace("jpeg", "jpg")
+        payload["OriginalInput"] = product_quality.image.decode("utf-8")
+        payload["Names"] = [
+            {
+                "DataId": 1,
+                "Reference": "Nederlands",
+                "Name": image_name,
+            }
+        ]
+        payload["Links"] = [
+            {
+                "DataId": product.plu_code,
+                "LinkNumber": 1,
+                "Type": {
+                    "Description": "Article",
+                    "Id": 2,
+                },
+            }
+        ]
+        payload["InputFormat"] = image_format
         return json.dumps(payload)

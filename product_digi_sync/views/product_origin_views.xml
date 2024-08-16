@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="product_origin_tree" model="ir.ui.view">
+        <field name="name">product.origin.tree</field>
+        <field name="model">product_digi_sync.product_origin</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="external_digi_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="product_origin_form" model="ir.ui.view">
+        <field name="name">product.origin.form</field>
+        <field name="model">product_digi_sync.product_origin</field>
+        <field name="arch" type="xml">
+            <form string="Product Origin">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="external_digi_id" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_product_origin" model="ir.actions.act_window">
+        <field name="name">Product Origins</field>
+        <field name="res_model">product_digi_sync.product_origin</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_send_product_origin_to_digi" model="ir.actions.server">
+        <field name="name">Send product origin to digi</field>
+        <field name="type">ir.actions.server</field>
+        <field
+            name="model_id"
+            ref="product_digi_sync.model_product_digi_sync_product_origin"
+        />
+        <field
+            name="binding_model_id"
+            ref="product_digi_sync.model_product_digi_sync_product_origin"
+        />
+        <field name="state">code</field>
+        <field name="code">
+            for record in records:
+                record.send_to_digi()
+        </field>
+    </record>
+
+    <menuitem
+        id="menu_product_origin"
+        name="Product Origin"
+        parent="sale.prod_config_main"
+        sequence="66"
+        action="action_product_origin"
+    />
+</odoo>

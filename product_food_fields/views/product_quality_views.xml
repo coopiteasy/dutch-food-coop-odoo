@@ -1,0 +1,45 @@
+<odoo>
+    <record id="view_product_quality_tree" model="ir.ui.view">
+        <field name="name">product.quality.tree</field>
+        <field name="model">product_food_fields.product_quality</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code" />
+                <field name="name" />
+                <field name="image" widget="image" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_product_quality_form" model="ir.ui.view">
+        <field name="name">product.quality.form</field>
+        <field name="model">product_food_fields.product_quality</field>
+        <field name="arch" type="xml">
+            <form string="Product Quality">
+                <sheet>
+                    <group>
+                        <field name="code" />
+                        <field name="name" />
+                        <field name="image" widget="image" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action to open the right view -->
+    <record id="action_product_quality" model="ir.actions.act_window">
+        <field name="name">Product Quality</field>
+        <field name="res_model">product_food_fields.product_quality</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="menu_product_quality"
+        name="Product Quality"
+        parent="point_of_sale.menu_point_config_product"
+        sequence="66"
+        action="action_product_quality"
+    />
+</odoo>

@@ -32,7 +32,10 @@ jobs:
     container: ${{ matrix.container }}
     name: ${{ matrix.name }}
     env:
-      ADDONS_PATH: "/opt/odoo/addons,/__w/dutch-food-coop-odoo/dutch-food-coop-odoo/extra-addons"
+      ADDONS_PATH: >-
+        /opt/odoo/addons,
+        /__w/dutch-food-coop-odoo/dutch-food-coop-odoo/extra-addons-queue,
+        /__w/dutch-food-coop-odoo/dutch-food-coop-odoo/extra-addons-brand
     strategy:
       fail-fast: false
       matrix:
@@ -55,13 +58,16 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Checkout extra Odoo modules
+      - name: Checkout extra Odoo queue module
         uses: actions/checkout@v4
         with:
           repository: OCA/queue
-          path: "${{ github.workspace }}/extra-addons"
-      - name: list workspace in __w
-        run: ls -als "/__w/dutch-food-coop-odoo/dutch-food-coop-odoo/extra-addons"
+          path: "${{ github.workspace }}/extra-addons-queue"
+      - name: Checkout extra Odoo brand module
+        uses: actions/checkout@v4
+        with:
+          repository: OCA/brand
+          path: "${{ github.workspace }}/extra-addons-brand"
       - name: Install addons and dependencies
         run: oca_install_addons
       - name: Check licenses

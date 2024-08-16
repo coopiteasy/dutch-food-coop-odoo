@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="digi_sync_product_quality_view_form" model="ir.ui.view">
+        <field name="name">product_digi_sync.product_quality.form</field>
+        <field name="model">product_food_fields.product_quality</field>
+        <field name="priority" eval="2" />
+        <field name="inherit_id" ref="product_food_fields.view_product_quality_form" />
+        <field name="arch" type="xml">
+            <field name="image" position="after">
+                <field name="digi_image_id" />
+            </field>
+        </field>
+    </record>
+
+    <record id="digi_sync_product_quality_view_tree" model="ir.ui.view">
+        <field name="name">product_digi_sync.product_quality.tree</field>
+        <field name="model">product_food_fields.product_quality</field>
+        <field name="priority" eval="2" />
+        <field name="inherit_id" ref="product_food_fields.view_product_quality_tree" />
+        <field name="arch" type="xml">
+            <field name="image" position="after">
+                <field name="digi_image_id" />
+            </field>
+        </field>
+    </record>
+
+</odoo>

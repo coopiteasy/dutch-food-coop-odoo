@@ -10,7 +10,6 @@
                 <page string="Food related information" name="main_information">
                     <group name="group_default">
                         <field name="ingredients" string="Ingredients" />
-                        <field name="quality" string="Quality" />
                         <field
                             name="origin"
                             string="Land where the product is produced, an ISO 3166 code"
@@ -21,9 +20,14 @@
                             string="Days until expiration"
                         />
                         <field
+                            name="days_until_bad_taste"
+                            string="Days until bad taste"
+                        />
+                        <field
                             name="storage_temperature"
                             string="Storage temperature in Celcius"
                         />
+                        <field name="product_quality_id" string="Product quality" />
                     </group>
                 </page>
             </xpath>

@@ -1,4 +1,8 @@
+import base64
+import io
 from unittest.mock import patch
+
+from PIL import Image
 
 from odoo.tests import TransactionCase
 
@@ -26,3 +30,13 @@ class DigiSyncBaseTestCase(TransactionCase):
             }
         )
         return digi_client
+
+    @staticmethod
+    def _create_dummy_image(target_format):
+        image = Image.new("RGB", (1, 1))
+        output = io.BytesIO()
+        image.save(output, format=target_format)
+        # Get the binary data of the image
+        image_data = base64.b64encode(output.getvalue())
+        output.close()
+        return image_data

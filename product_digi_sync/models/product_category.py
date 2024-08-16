@@ -1,7 +1,11 @@
 from odoo import api, fields, models
 
+from odoo.addons.queue_job.exception import RetryableJobError
 
-class ProductCategory(models.Model):
+from .digi_sync_base_model import DigiSyncBaseModel
+
+
+class ProductCategory(DigiSyncBaseModel, models.Model):
     _inherit = "product.category"
 
     external_digi_id = fields.Integer(
@@ -36,9 +40,9 @@ class ProductCategory(models.Model):
         self.with_delay().send_to_digi_directly()
 
     def send_to_digi_directly(self):
-        digi_client_id = int(
-            self.env["ir.config_parameter"].get_param("digi_client_id")
-        )
-        client = self.env["product_digi_sync.digi_client"].browse(digi_client_id)
-        if client.exists():
-            client.send_category_to_digi(self)
+        client = self._get_digi_client()
+        if client:
+            try:
+                client.send_category_to_digi(self)
+            except Exception as e:
+                raise RetryableJobError(str(e), 5) from e

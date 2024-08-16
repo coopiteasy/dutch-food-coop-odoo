@@ -38,6 +38,14 @@ class DigiClient(models.Model):
 
         self._post_to_digi(url, body)
 
+    def send_product_quality_image_to_digi(self, product):
+        self.ensure_one()
+        url = self.create_image_url()
+
+        body = ProductTransformer.transform_product_quality_to_image_payload(product)
+
+        self._post_to_digi(url, body)
+
     def send_category_to_digi(self, product_category):
         self.ensure_one()
         url = self.create_category_url()
@@ -45,6 +53,14 @@ class DigiClient(models.Model):
         body = ProductTransformer.transform_product_category_to_payload(
             product_category
         )
+
+        self._post_to_digi(url, body)
+
+    def send_product_origin_to_digi(self, product_origin):
+        self.ensure_one()
+        url = self.create_labeltext_url()
+
+        body = ProductTransformer.transform_product_origin_to_payload(product_origin)
 
         self._post_to_digi(url, body)
 
@@ -56,9 +72,14 @@ class DigiClient(models.Model):
         response_json = response.json()
 
         if "Result" in response_json and response_json["Result"] != 1:
-            raise DigiApiException(
-                f"Error {response_json['Result']}: {response_json['ResultDescription']}"
+            message = (
+                f"Error {response_json['Result']}: "
+                + f"{response_json['ResultDescription']}, "
+                + f"reason: {response_json['Validation'][0]['Description']},"
+                + f" payload: {body}"
             )
+
+            raise DigiApiException(message)
 
     def create_article_url(self):
         url = f"{self.get_api_url()}/ARTICLE.SVC/POST"
@@ -74,6 +95,10 @@ class DigiClient(models.Model):
 
     def create_category_url(self):
         url = f"{self.get_api_url()}/MAINGROUP.SVC/POST"
+        return url
+
+    def create_labeltext_url(self):
+        url = f"{self.get_api_url()}/LABELTEXT.SVC/POST"
         return url
 
     def create_header(self):
