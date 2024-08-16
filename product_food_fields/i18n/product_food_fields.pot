@@ -14,9 +14,41 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: product_food_fields
+#: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_quality__code
+msgid "Code"
+msgstr ""
+
+#. module: product_food_fields
+#: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_quality__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: product_food_fields
+#: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_quality__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: product_food_fields
+#: model:ir.model.fields,field_description:product_food_fields.field_product_product__days_until_bad_taste
+#: model:ir.model.fields,field_description:product_food_fields.field_product_template__days_until_bad_taste
+msgid "Days Until Bad Taste"
+msgstr ""
+
+#. module: product_food_fields
 #: model:ir.model.fields,field_description:product_food_fields.field_product_product__days_until_expiry
 #: model:ir.model.fields,field_description:product_food_fields.field_product_template__days_until_expiry
 msgid "Days Until Expiry"
+msgstr ""
+
+#. module: product_food_fields
+#: model_terms:ir.ui.view,arch_db:product_food_fields.food_product_view_form
+msgid "Days until bad taste"
+msgstr ""
+
+#. module: product_food_fields
+#: model:ir.model.fields,help:product_food_fields.field_product_product__days_until_bad_taste
+#: model:ir.model.fields,help:product_food_fields.field_product_template__days_until_bad_taste
+msgid "Days until bad test"
 msgstr ""
 
 #. module: product_food_fields
@@ -27,8 +59,23 @@ msgid "Days until expiration"
 msgstr ""
 
 #. module: product_food_fields
+#: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_quality__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: product_food_fields
 #: model_terms:ir.ui.view,arch_db:product_food_fields.food_product_view_form
 msgid "Food related information"
+msgstr ""
+
+#. module: product_food_fields
+#: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_quality__id
+msgid "ID"
+msgstr ""
+
+#. module: product_food_fields
+#: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_quality__image
+msgid "Image"
 msgstr ""
 
 #. module: product_food_fields
@@ -52,6 +99,26 @@ msgid "Land where the product is produced, an ISO 3166 code"
 msgstr ""
 
 #. module: product_food_fields
+#: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_quality____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: product_food_fields
+#: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_quality__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: product_food_fields
+#: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_quality__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: product_food_fields
+#: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_quality__name
+msgid "Name"
+msgstr ""
+
+#. module: product_food_fields
 #: model:ir.model.fields,field_description:product_food_fields.field_product_product__origin
 #: model:ir.model.fields,field_description:product_food_fields.field_product_template__origin
 msgid "Origin"
@@ -60,6 +127,21 @@ msgstr ""
 #. module: product_food_fields
 #: model:ir.model,name:product_food_fields.model_product_template
 msgid "Product"
+msgstr ""
+
+#. module: product_food_fields
+#: model:ir.actions.act_window,name:product_food_fields.action_product_quality
+#: model:ir.model,name:product_food_fields.model_product_food_fields_product_quality
+#: model:ir.ui.menu,name:product_food_fields.menu_product_quality
+#: model_terms:ir.ui.view,arch_db:product_food_fields.view_product_quality_form
+msgid "Product Quality"
+msgstr ""
+
+#. module: product_food_fields
+#: model:ir.model.fields,field_description:product_food_fields.field_product_product__product_quality_id
+#: model:ir.model.fields,field_description:product_food_fields.field_product_template__product_quality_id
+#: model_terms:ir.ui.view,arch_db:product_food_fields.food_product_view_form
+msgid "Product quality"
 msgstr ""
 
 #. module: product_food_fields
