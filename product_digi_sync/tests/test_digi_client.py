@@ -635,12 +635,12 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
             "Names": [
                 {
                     "Reference": "Nederlands",
-                    "DdData": f"02000000"
-                        f"<span style='font-family:\"DejaVu Sans\";font-size:24px;'>"
-                        f"Herkomst:"
-                        f"</span><b><span style='font-family:\"DIN\";font-size:36px;'>"
-                        f"Spanje"
-                        f"</span></b>",  # noqa: E501, pylint: disable=W1401
+                    "DdData": "02000000"
+                    "<span style='font-family:\"DejaVu Sans\";font-size:24px;'>"
+                    "Herkomst:"
+                    "</span><b><span style='font-family:\"DIN\";font-size:36px;'>"
+                    "Spanje"
+                    "</span></b>",  # noqa: E501, pylint: disable=W1401
                     "Name": "Herkomst Spanje",
                 }
             ],

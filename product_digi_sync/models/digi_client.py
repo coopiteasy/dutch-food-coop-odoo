@@ -79,9 +79,7 @@ class DigiClient(models.Model):
                 + f" payload: {body}"
             )
 
-            raise DigiApiException(
-                message
-            )
+            raise DigiApiException(message)
 
     def create_article_url(self):
         url = f"{self.get_api_url()}/ARTICLE.SVC/POST"
