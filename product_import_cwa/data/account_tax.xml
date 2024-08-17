@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 	<record id="pos_low_tax_sale" model="account.tax">
 		<field name="name">BTW Pos Low Tax</field>
