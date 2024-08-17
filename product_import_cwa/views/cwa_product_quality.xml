@@ -4,7 +4,7 @@
         <field name="name">product.quality.tree</field>
         <field name="model">cwa.product.quality</field>
         <field name="arch" type="xml">
-            <tree string="Product Quality">
+            <tree>
                 <field name="source_value" />
                 <field name="destination_value" />
             </tree>

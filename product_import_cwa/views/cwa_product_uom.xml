@@ -4,7 +4,7 @@
         <field name="name">product.uom.tree</field>
         <field name="model">cwa.product.uom</field>
         <field name="arch" type="xml">
-            <tree string="Product UoM/Purchaes UoM">
+            <tree>
                 <field name="eenheid" />
                 <field name="inhoud" />
                 <field name="uom_id" />

@@ -7,12 +7,7 @@
         <field name="arch" type="xml">
             <form string="Update Brands Translations">
                 <field name="brand_ids">
-                    <tree
-                        string="Link Brands"
-                        editable="bottom"
-                        create="false"
-                        delete="false"
-                    >
+                    <tree editable="bottom" create="false" delete="false">
                         <field name="cwa_product_id" string="Product Name" />
                         <field name="source_brand" />
                         <field name="target_brand" />
