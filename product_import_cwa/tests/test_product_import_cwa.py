@@ -59,7 +59,6 @@ class TestProductImportCwa(TransactionCase):
     def test_product_import_cwa(self):
         prod_tmpl_object = self.env["product.template"]
         cwa_product_obj = self.env["cwa.product"]
-        orig_count = prod_tmpl_object.search_count([])
 
         # load first batch of cwa.product records
         path = os.path.dirname(os.path.realpath(__file__))
@@ -73,12 +72,6 @@ class TestProductImportCwa(TransactionCase):
         # find "Boekweit"
         cwa_prod1 = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
         self.assertEqual(len(cwa_prod1), 1)
-
-        # # decide to load them again, and check if none are added now
-        # count = cwa_product_obj \
-        #     .with_context(new_cursor=False) \
-        #     .import_xml_products(file1)
-        # self.assertEquals(count, 65)
 
         # decide to load the file that is changed a bit
         # check if Boekweit record has changed
@@ -104,6 +97,7 @@ class TestProductImportCwa(TransactionCase):
         self.assertEqual(self.env["cwa.product.cblcode"].search_count([]), 1)
         self.assertEqual(self.env["cwa.vat.tax"].search_count([]), 1)
 
+        # FROM HERE WE HAVE A PROBLEM!
         # Import the Boekweit product into the system,
         # both product and supplier details
         cwa_prod2.to_product()

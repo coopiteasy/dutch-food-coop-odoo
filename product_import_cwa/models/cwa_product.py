@@ -463,7 +463,7 @@ class CwaProduct(models.Model):
                 "product_name": self.omschrijving,
                 "price": self.inkoopprijs,
                 "date_start": self.ingangsdatum,
-                "name": self.vendor_id.id,
+                "partner_id": self.vendor_id.id,
             }
 
             # extra product.template values
@@ -573,13 +573,13 @@ class CwaProduct(models.Model):
             elif (
                 not products_by_unique_code
                 and products_by_ean_code
-                and supplier_dict["name"]
-                not in products_by_ean_code.mapped("seller_ids.name.id")
+                and supplier_dict["partner_id"]
+                not in products_by_ean_code.mapped("seller_ids.partner_id.id")
             ):
                 products_by_ean_code[0].write({"seller_ids": [(0, 0, supplier_dict)]})
             elif products_by_unique_code and supplier_dict[
                 "name"
-            ] not in products_by_unique_code.mapped("seller_ids.name.id"):
+            ] not in products_by_unique_code.mapped("seller_ids.partner_id.id"):
                 supplier_dict["sequence"] = 5  # give it least preference
                 products_by_unique_code[0].write(
                     {"seller_ids": [(0, 0, supplier_dict)]}
@@ -592,7 +592,7 @@ class CwaProduct(models.Model):
                     )
                 )
             self.write({"state": "imported"})
-        except ValidationError:
+        except ValidationError as e:
             if self.env.context.get("force"):
                 pass
             else:
