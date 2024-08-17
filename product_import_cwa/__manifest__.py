@@ -4,6 +4,7 @@
     "author": "Sunflower IT",
     "license": "AGPL-3",
     "category": "Sales",
+    "website": "https://github.com/Gedeelde-Weelde/dutch-food-coop-odoo",
     "summary": "",
     "depends": [
         "sale",

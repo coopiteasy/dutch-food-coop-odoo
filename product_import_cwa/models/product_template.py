@@ -16,6 +16,7 @@ class ProductTemplate(models.Model):
     preferred_supplier_id = fields.Many2one(
         "product.supplierinfo",
         compute="_compute_preferred_supplier",
+        search="_search_preferred_supplier",
         string="Preferred Supplier",
     )
     inhoud = fields.Char(related="preferred_supplier_id.inhoud")
@@ -103,6 +104,12 @@ class ProductTemplate(models.Model):
 
     @api.depends("seller_ids")
     def _compute_preferred_supplier(self):
+        for this in self:
+            if this.seller_ids:
+                this.preferred_supplier_id = this.seller_ids[0].id
+
+    @api.depends("seller_ids")
+    def _search_preferred_supplier(self, operator, value):
         for this in self:
             if this.seller_ids:
                 this.preferred_supplier_id = this.seller_ids[0].id
