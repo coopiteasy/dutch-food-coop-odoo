@@ -98,7 +98,7 @@
         <field name="name">product.template.retailer.tree</field>
         <field name="model">product.template</field>
         <field name="arch" type="xml">
-            <tree string="Artikelbeheer">
+            <tree>
                 <field name="has_new_price" invisible="1" />
                 <field name="name" />
                 <field name="product_brand_id" />

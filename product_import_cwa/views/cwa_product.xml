@@ -39,7 +39,7 @@
         <field name="name">cwa.tree</field>
         <field name="model">cwa.product</field>
         <field name="arch" type="xml">
-            <tree string="Catalogue">
+            <tree>
                 <button
                     class="oe_edit_only"
                     states="new"

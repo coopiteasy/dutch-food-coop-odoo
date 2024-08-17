@@ -4,7 +4,7 @@
         <field name="name">product.suppliers.tree</field>
         <field name="model">cwa.product.suppliers</field>
         <field name="arch" type="xml">
-            <tree string="Product Suppliers">
+            <tree>
                 <field name="res_partner_id" />
                 <field name="phone" />
                 <field name="ref" />

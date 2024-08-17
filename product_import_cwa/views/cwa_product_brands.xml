@@ -4,7 +4,7 @@
         <field name="name">product.brands.tree</field>
         <field name="model">cwa.product.brands</field>
         <field name="arch" type="xml">
-            <tree string="Product Brands">
+            <tree>
                 <field name="source_value" />
                 <field name="destination_value" />
             </tree>

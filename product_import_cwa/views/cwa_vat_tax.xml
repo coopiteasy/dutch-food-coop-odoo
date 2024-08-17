@@ -4,7 +4,7 @@
         <field name="name">cwa.vat.tax.tree</field>
         <field name="model">cwa.vat.tax</field>
         <field name="arch" type="xml">
-            <tree string="Sales/Purchase VAT Taxes">
+            <tree>
                 <field name="description" />
                 <field name="btw" />
                 <field name="sale_tax" widget="many2many_tags" />
