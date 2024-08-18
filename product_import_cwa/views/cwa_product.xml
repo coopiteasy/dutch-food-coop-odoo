@@ -93,7 +93,7 @@
                                 <field
                                     name="omschrijving"
                                     class="oe_inline"
-                                    modifiers="{'required': true}"
+                                    modifiers='{"required": true}'
                                 />
                             </h1>
                         </div>
