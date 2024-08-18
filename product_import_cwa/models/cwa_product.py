@@ -1,14 +1,11 @@
 import ftplib
-import hashlib
 import logging
 import os
-
-from lxml import etree
 
 from odoo import _, api, fields, models, tools
 from odoo.exceptions import ValidationError
 
-from .utils import PRESENCE_SELECTION, YESNO_SELECTION, split_data
+from .utils import PRESENCE_SELECTION, YESNO_SELECTION, XMLProductLoader, split_data
 
 _logger = logging.getLogger(__name__)
 
@@ -187,110 +184,11 @@ class CwaProduct(models.Model):
 
     @api.model
     def parse_from_xml(self, prod_file):
-        root = etree.parse(prod_file).getroot()
-        load_values = []
-        update_records = []
+        cwa_product_model = self.env["cwa.product"]
 
-        # make a dict with existing products by unique_id
-        cur_unique_ids = set()
-        records = self.env["cwa.product"].search([]).read(["unique_id", "hash"])
-        hash_dict = {}
-        for record in records:
-            cur_unique_ids.add(record["unique_id"])
-            hash_dict[record["unique_id"]] = record["hash"]
+        loader = XMLProductLoader(cwa_product_model)
 
-        # determine allowed source tags
-        # determine list of destination fields
-        load_tags = []
-        load_fields = []
-        for rec in FIELDS_TO_LOAD:
-            if isinstance(rec, tuple):
-                if rec[0]:
-                    load_tags.append(rec[0])
-                if rec[1]:
-                    load_fields.append(rec[1])
-            else:
-                load_tags.append(rec)
-                load_fields.append(rec)
-
-        new_unique_ids = set()
-        for product in root.iter("product"):
-            # copy full XML record to dict
-            temp_dict = {}
-            for item in product:
-                temp_dict[item.tag] = item.text if item.text else None
-
-            # decide which ones to load
-            load_dict = {}
-            for tag, value in temp_dict.items():
-                if tag not in load_tags:
-                    _logger.warning("Ignoring unknown tag: %s", tag)
-                    continue
-
-                # load prices as floats
-                elif tag in ("consumentenprijs", "inkoopprijs"):
-                    load_dict[tag] = f"{float(value):.2f}"
-
-                elif tag == "verpakkingce":
-                    if value:
-                        load_dict[tag] = value.upper()
-                    # else:
-                    #     load_dict[tag] = 'STUKS'
-
-                # load yes/no selections
-                elif tag in (
-                    "proefdiervrij",
-                    "vegetarisch",
-                    "veganistisch",
-                    "rauwemelk",
-                ):
-                    if value in ["0", "1", "2"]:
-                        load_dict[tag] = value
-                    else:
-                        load_dict[tag] = "0"
-
-                # load booleans
-                elif tag in ("weegschaalartikel", "pluartikel", "wichtartikel"):
-                    if value == "1":
-                        load_dict[tag] = "true"
-                    else:
-                        load_dict[tag] = "false"
-
-                elif tag == "omschrijving":
-                    load_dict[tag] = value.upper()
-
-                else:
-                    load_dict[tag] = value.upper() if value else None
-
-            # create a hash from the recs to load
-            _hash = hashlib.md5()
-            for key, value in load_dict.items():
-                _hash.update(key.encode("utf-8"))
-                _hash.update(str(value).encode("utf-8"))
-            new_hash = _hash.hexdigest()
-            load_dict["hash"] = new_hash
-
-            # create the unique id for this record
-            unique_id = "%s-%s" % (
-                temp_dict["leveranciernummer"],
-                temp_dict["bestelnummer"],
-            )
-            load_dict["unique_id"] = unique_id
-            new_unique_ids.add(unique_id)
-
-            old_hash = hash_dict.get(unique_id, None)
-            if old_hash:
-                # record exists, update only when hash is different
-                if old_hash != new_hash:
-                    update_records.append(load_dict)
-            else:
-                # convert load_dict to a list and append to load_values
-                load_list = [load_dict.get(name, None) for name in load_fields]
-                load_values.append(load_list)
-
-        delete_records = list(cur_unique_ids - new_unique_ids)
-
-        return load_fields, load_values, update_records, delete_records
+        return loader.parse_from_xml(prod_file)
 
     @api.model
     def update_records(self, records, model):
@@ -592,7 +490,7 @@ class CwaProduct(models.Model):
                     )
                 )
             self.write({"state": "imported"})
-        except ValidationError as e:
+        except ValidationError:
             if self.env.context.get("force"):
                 pass
             else:
