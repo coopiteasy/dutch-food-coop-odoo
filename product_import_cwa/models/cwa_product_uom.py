@@ -7,11 +7,11 @@ class CwaProductUom(models.Model):
     _order = "eenheid"
 
     name = fields.Char(related="eenheid")
-    inhoud = fields.Float("Inhoud", size=64, required=True)
-    eenheid = fields.Char("Eenheid", size=64, required=True)
+    inhoud = fields.Float(size=64, required=True)
+    eenheid = fields.Char(size=64, required=True)
     uom_id = fields.Many2one("uom.uom", "Standard UoM", size=64)
     uom_po_id = fields.Many2one("uom.uom", "Purchase UoM", size=64)
-    target_inhoud = fields.Float("Target Inhoud")
+    target_inhoud = fields.Float()
     uos_combo = fields.Char("UoM/UoS Combo")
 
     @api.model

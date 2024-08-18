@@ -7,7 +7,7 @@ class CwaProductBrands(models.Model):
     _order = "source_value"
     _rec_name = "source_value"
 
-    source_value = fields.Char("Source Value", size=64, required=True)
+    source_value = fields.Char(size=64, required=True)
     destination_value = fields.Many2one(
         "product.brand", "Brand Name", size=64, ondelete="cascade"
     )

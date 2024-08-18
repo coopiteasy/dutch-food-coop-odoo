@@ -7,8 +7,8 @@ class CwaProductQuality(models.Model):
     _order = "source_value"
     _rec_name = "source_value"
 
-    source_value = fields.Char("Source Value", size=64, required=True)
-    destination_value = fields.Char("Destination Value", size=64)
+    source_value = fields.Char(size=64, required=True)
+    destination_value = fields.Char(size=64)
 
     _sql_constraints = [
         (

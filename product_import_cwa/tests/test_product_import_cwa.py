@@ -15,13 +15,13 @@ class TestProductImportCwa(TransactionCase):
     def translate_brand(self, prod):
         """Add dummy brand translation to product using wizards"""
         wizard_obj = self.env["cwa.product.import.brands"]
-        wizard = wizard_obj.with_context({"active_ids": prod.ids}).create({})
+        wizard = wizard_obj.with_context(active_ids=prod.ids).create({})
         wizard.action_apply()
 
     def translate_uom(self, prod):
         """Add dummy UOM translation to product using wizards"""
         wizard_obj = self.env["cwa.product.import.uom"]
-        wizard = wizard_obj.with_context({"active_ids": prod.ids}).create({})
+        wizard = wizard_obj.with_context(active_ids=prod.ids).create({})
         uom = self.env.ref("uom.product_uom_kgm")
         wizard.uom_ids.write(dict(uom_id=uom.id, uom_po_id=uom.id))
         wizard.action_apply()
@@ -29,7 +29,7 @@ class TestProductImportCwa(TransactionCase):
     def translate_cblcode(self, prod):
         """Add dummy CBL code translation to product using wizards"""
         wizard_obj = self.env["cwa.product.import.cblcode"]
-        wizard = wizard_obj.with_context({"active_ids": prod.ids}).create({})
+        wizard = wizard_obj.with_context(active_ids=prod.ids).create({})
         pos_categ = self.env["pos.category"].create({"name": "Beverage"})
         categ = self.env["product.category"].create({"name": "Beverage"})
         wizard.cblcode_ids.write(
@@ -40,7 +40,7 @@ class TestProductImportCwa(TransactionCase):
     def translate_tax(self, prod):
         """Add dummy tax translation to product using wizards"""
         wizard_obj = self.env["cwa.vat.tax.wizard"]
-        wizard = wizard_obj.with_context({"active_ids": prod.ids}).create({})
+        wizard = wizard_obj.with_context(active_ids=prod.ids).create({})
         account_tax = self.env["account.tax"].create(
             {
                 "name": "6 percent",

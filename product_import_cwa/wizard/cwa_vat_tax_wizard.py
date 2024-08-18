@@ -48,7 +48,7 @@ class CwaVatTransTaxWizard(models.TransientModel):
     )
     cwa_product_id = fields.Many2one("cwa.product", required=True, ondelete="cascade")
     btw = fields.Integer("BTW", readonly=True)
-    description = fields.Char("Description")
+    description = fields.Char()
     sale_tax_ids = fields.Many2one(
         "account.tax",
         domain=[("type_tax_use", "=", "sale")],
