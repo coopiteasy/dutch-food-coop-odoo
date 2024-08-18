@@ -1,7 +1,7 @@
 {
     "name": "Product Import CWA",
     "version": "16.0.1.0.0",
-    "author": "Sunflower IT",
+    "author": "Sunflower IT, Gedeelde Weelde",
     "license": "AGPL-3",
     "category": "Sales",
     "website": "https://github.com/Gedeelde-Weelde/dutch-food-coop-odoo",

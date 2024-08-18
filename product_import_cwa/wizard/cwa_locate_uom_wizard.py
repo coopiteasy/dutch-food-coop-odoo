@@ -50,11 +50,11 @@ class CwaProductImportWizard(models.TransientModel):
         "cwa.product.import.uom", string="Wizard", required=True, ondelete="cascade"
     )
     cwa_product_id = fields.Many2one("cwa.product", required=True, ondelete="cascade")
-    inhoud = fields.Float("Inhoud")
-    eenheid = fields.Char("Eenheid", required=True)
+    inhoud = fields.Float()
+    eenheid = fields.Char(required=True)
     uom_id = fields.Many2one("uom.uom", "Standard UoM", size=64)
     uom_po_id = fields.Many2one("uom.uom", "Purchase UoM", size=64)
-    target_inhoud = fields.Float("Target Inhoud")
+    target_inhoud = fields.Float()
     uos_combo = fields.Char("UoM/UoS Combo")
 
     # assume the purchase unit is same as uom, saves time!

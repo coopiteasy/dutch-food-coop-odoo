@@ -124,7 +124,7 @@ class CwaProduct(models.Model):
     vegetarisch = fields.Selection(YESNO_SELECTION)
     veganistisch = fields.Selection(YESNO_SELECTION)
     rauwemelk = fields.Selection(YESNO_SELECTION)
-    inkoopprijs = fields.Float("Inkoopprijs", help="inkoopprijs")
+    inkoopprijs = fields.Float(help="inkoopprijs")
     consumentenprijs = fields.Float("Adviesprijs", help="consumentenprijs")
     ingangsdatum = fields.Date(help="Ingangsdatum van product")
     herkomst = fields.Char(help="Land van herkomst in vorm ISO 3166 code.")
@@ -530,7 +530,7 @@ class CwaProduct(models.Model):
 
         tmp = False
         try:
-            ftp_server = ftplib.FTP(host, username, passwd)
+            ftp_server = ftplib.FTP(host, username, passwd, timeout=20)
             ftp_server.encoding = "utf-8"
             root = "VoorWinkel"
             # Go into the Root Directory

@@ -48,8 +48,8 @@ class CwaProductBrandsWizard(models.TransientModel):
         "cwa.product.import.brands", string="Wizard", required=True, ondelete="cascade"
     )
     cwa_product_id = fields.Many2one("cwa.product", required=True, ondelete="cascade")
-    source_brand = fields.Char("Source Brand")
-    target_brand = fields.Char("Target Brand", required=True)
+    source_brand = fields.Char()
+    target_brand = fields.Char(required=True)
     existing_brands = fields.Many2one(
         "product.brand", "Select Existing Brands", size=64
     )

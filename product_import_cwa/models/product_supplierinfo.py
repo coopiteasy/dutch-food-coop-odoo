@@ -30,7 +30,7 @@ class ProductSupplierInfo(models.Model):
     vegetarisch = fields.Selection(YESNO_SELECTION)
     veganistisch = fields.Selection(YESNO_SELECTION)
     rauwemelk = fields.Selection(YESNO_SELECTION)
-    inkoopprijs = fields.Float("Inkoopprijs", help="Inkoopprijs.")
+    inkoopprijs = fields.Float(help="Inkoopprijs.")
     consumentenprijs = fields.Float("Adviesprijs", help="Adviesprijs.")
     old_consumentenprijs = fields.Float("Old Adviesprijs", help="Old Adviesprijs.")
     ingangsdatum = fields.Date(help="Ingangsdatum van product.")
