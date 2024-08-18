@@ -156,4 +156,4 @@ class ProductSupplierInfo(models.Model):
                     "state": "new",
                 }
             )
-        return super(ProductSupplierInfo, self).unlink()
+        return super().unlink()

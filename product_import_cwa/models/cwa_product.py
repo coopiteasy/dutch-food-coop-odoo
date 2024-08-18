@@ -486,7 +486,7 @@ class CwaProduct(models.Model):
             else:
                 raise ValidationError(
                     _(
-                        "A Product with same Leveranciernummer& Bestelnummer already imported"
+                        "A Product with same Leveranciernummer& Bestelnummer already imported"  # noqa: E501
                     )
                 )
             self.write({"state": "imported"})
@@ -542,10 +542,10 @@ class CwaProduct(models.Model):
             if not files_in_dir:
                 _logger.error("Directory '%s' is empty!" % root)
                 return
-            remote = "/%s/%s" % (root, files_in_dir[-1])
+            remote = f"/{root}/{files_in_dir[-1]}"
             tmp = "/tmp/products_data.xml"
             with open(tmp, "wb") as file:
-                _logger.info("Downloading file: %s >>>> %s" % (remote, tmp))
+                _logger.info(f"Downloading file: {remote} >>>> {tmp}")
                 try:
                     ftp_server.retrbinary("RETR %s" % remote, file.write)
                     _logger.info("File successfully downloaded....proceed with Import!")
