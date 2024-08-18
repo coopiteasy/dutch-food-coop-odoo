@@ -122,4 +122,4 @@ class ProductTemplate(models.Model):
                     "state": "new",
                 }
             )
-        return super(ProductTemplate, self).unlink()
+        return super().unlink()

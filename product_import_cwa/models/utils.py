@@ -50,7 +50,7 @@ def check_ean(eancode):
         return False
     try:
         int(eancode)
-    except:
+    except:  # noqa E722
         return False
     return ean_checksum(eancode) == int(eancode[-1])
 
@@ -73,9 +73,9 @@ def split_data(data, split_size=50):
 
 def set_external_id(data):
     if data["eancode"] == 0:
-        return "product_ex_id_%s_%s" % (data["leveranciernummer"], data["bestelnummer"])
+        return f"product_ex_id_{data['leveranciernummer']}_{data['bestelnummer']}"
     else:
-        return "product_ex_id_%s" % (data["eancode"])
+        return f"product_ex_id_{data['eancode']}"
 
 
 # Which fields to load from XML
@@ -215,10 +215,7 @@ class XMLProductLoader:
             self.load_values.append(load_list)
 
     def create_unique_id(self, temp_dict):
-        return "%s-%s" % (
-            temp_dict["leveranciernummer"],
-            temp_dict["bestelnummer"],
-        )
+        return f"{temp_dict['leveranciernummer']}-{temp_dict['bestelnummer']}"
 
     def create_hash_from_recs_to_load(self, load_dict):
         # create a hash from the recs to load
