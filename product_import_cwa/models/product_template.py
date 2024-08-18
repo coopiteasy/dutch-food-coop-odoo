@@ -107,6 +107,8 @@ class ProductTemplate(models.Model):
         for this in self:
             if this.seller_ids:
                 this.preferred_supplier_id = this.seller_ids[0].id
+            else:
+                this.preferred_supplier_id = None
 
     @api.depends("seller_ids")
     def _search_preferred_supplier(self, operator, value):
