@@ -1,6 +1,7 @@
 import hashlib
 import logging
 import math
+import os
 import re
 
 from lxml import etree
@@ -175,7 +176,15 @@ class XMLProductLoader:
         # determine list of destination fields
         self.determine_allowed_source_tags_and_destination_fields()
 
-        root = etree.parse(prod_file).getroot()
+        try:
+            root = etree.parse(prod_file)
+        except etree.XMLSyntaxError:
+            _logger.info("Error decoding. Retrying using recover mode...")
+            with open(prod_file, 'rb') as file:
+                file_content = file.read()
+            parser = etree.XMLParser(recover=True)
+            root = etree.fromstring(file_content, parser)
+
         for product in root.iter("product"):
             # copy full XML record to dict
             temp_dict = self.copy_record_to_temp_dict(product)
@@ -197,9 +206,13 @@ class XMLProductLoader:
                 load_dict, new_hash, unique_id
             )
 
-        delete_records = list(self.cur_unique_ids - self.new_unique_ids)
+        delete_records = self.calculate_records_that_should_be_deleted()
 
         return self.load_fields, self.load_values, self.update_records, delete_records
+
+    def calculate_records_that_should_be_deleted(self):
+        earlier_imported_ids_not_present_in_current_data = list(self.cur_unique_ids - self.new_unique_ids)
+        return earlier_imported_ids_not_present_in_current_data
 
     def determine_if_record_should_be_created_updated_or_ignored(
         self, load_dict, new_hash, unique_id
