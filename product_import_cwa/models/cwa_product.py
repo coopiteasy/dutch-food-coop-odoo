@@ -286,90 +286,12 @@ class CwaProduct(models.Model):
                     _("Uknown vendor for this product. Fill the vendor first")
                 )
 
-            supplier_dict = {
-                "cwa": True,
-                "unique_id": self.unique_id,
-                "eancode": self.eancode,
-                "weegschaalartikel": self.weegschaalartikel,
-                "pluartikel": self.pluartikel,
-                "inhoud": self.inhoud,
-                "eenheid": self.eenheid,
-                "verpakkingce": self.verpakkingce,
-                "merk": self.merk,
-                "kwaliteit": self.kwaliteit,
-                "btw": self.btw,
-                "cblcode": self.cblcode,
-                "bestelnummer": self.bestelnummer,
-                "leveranciernummer": self.leveranciernummer,
-                "proefdiervrij": self.proefdiervrij,
-                "vegetarisch": self.vegetarisch,
-                "veganistisch": self.veganistisch,
-                "rauwemelk": self.rauwemelk,
-                "inkoopprijs": self.inkoopprijs,
-                "consumentenprijs": self.consumentenprijs,
-                "old_consumentenprijs": self.consumentenprijs,
-                "ingangsdatum": self.ingangsdatum,
-                "herkomst": self.herkomst,
-                "ingredienten": self.ingredienten,
-                "statiegeld": self.statiegeld,
-                "kassaomschrijving": self.kassaomschrijving,
-                "plucode": self.plucode,
-                "sve": self.sve,
-                "status": self.status,
-                "keurmerkbio": self.keurmerkbio,
-                "keurmerkoverig": self.keurmerkoverig,
-                "herkomstregio": self.herkomstregio,
-                "aantaldagenhoudbaar": self.aantaldagenhoudbaar,
-                "bewaartemperatuur": self.bewaartemperatuur,
-                "gebruikstips": self.gebruikstips,
-                "lengte": self.lengte,
-                "breedte": self.breedte,
-                "hoogte": self.hoogte,
-                "code": self.code,
-                "d204": self.d204,
-                "d209": self.d209,
-                "d210": self.d210,
-                "d212": self.d212,
-                "d213": self.d213,
-                "d214": self.d214,
-                "d234": self.d234,
-                "d215": self.d215,
-                "d239": self.d239,
-                "d216": self.d216,
-                "d217": self.d217,
-                "d217b": self.d217b,
-                "d220": self.d220,
-                "d221": self.d221,
-                "d221b": self.d221b,
-                "d222": self.d222,
-                "d223": self.d223,
-                "d236": self.d236,
-                "d235": self.d235,
-                "d238": self.d238,
-                "d238b": self.d238b,
-                "d225": self.d225,
-                "d226": self.d226,
-                "d228": self.d228,
-                "d230": self.d230,
-                "d232": self.d232,
-                "d237": self.d237,
-                "d240": self.d240,
-                "d241": self.d241,
-                "d242": self.d242,
-                "pos_categ_id": self.pos_categ_id,
-                "product_code": self.bestelnummer,
-                "product_name": self.omschrijving,
-                "price": self.inkoopprijs,
-                "date_start": self.ingangsdatum,
-                "partner_id": self.vendor_id.id,
-            }
+            supplier_dict = self._create_supplier_dict()
 
             # extra product.template values
             extra_prod_dict = {}
 
-            # Translate standard unit of packaging
-            if self.sve:
-                supplier_dict["min_qty"] = f"{float(self.sve):.2f}"
+            self._translate_standard_unit_of_packiging(supplier_dict)
 
             self._translate_brand(extra_prod_dict)
 
@@ -383,14 +305,14 @@ class CwaProduct(models.Model):
 
             # Search if a product with this EAN code already exists
             prod_obj = self.env["product.template"]
-            products_by_unique_code = prod_obj.search(
+            products_by_same_unique_code = prod_obj.search(
                 [("unique_id", "=", self.unique_id)]
             )
-            products_by_ean_code = self.eancode and prod_obj.search(
+            products_by_same_ean_code = self.eancode and prod_obj.search(
                 [("eancode", "=", self.eancode)]
             )
             # Create new product if the eancode is missing
-            if not products_by_unique_code and not products_by_ean_code:
+            if not products_by_same_unique_code and not products_by_same_ean_code:
                 prod_dict = {
                     "unique_id": self.unique_id,
                     "eancode": self.eancode,
@@ -407,17 +329,17 @@ class CwaProduct(models.Model):
 
             # Otherwise if this is a new supplier, add to existing product
             elif (
-                not products_by_unique_code
-                and products_by_ean_code
+                not products_by_same_unique_code
+                and products_by_same_ean_code
                 and supplier_dict["partner_id"]
-                not in products_by_ean_code.mapped("seller_ids.partner_id.id")
+                not in products_by_same_ean_code.mapped("seller_ids.partner_id.id")
             ):
-                products_by_ean_code[0].write({"seller_ids": [(0, 0, supplier_dict)]})
-            elif products_by_unique_code and supplier_dict[
+                products_by_same_ean_code[0].write({"seller_ids": [(0, 0, supplier_dict)]})
+            elif products_by_same_unique_code and supplier_dict[
                 "name"
-            ] not in products_by_unique_code.mapped("seller_ids.partner_id.id"):
+            ] not in products_by_same_unique_code.mapped("seller_ids.partner_id.id"):
                 supplier_dict["sequence"] = 5  # give it least preference
-                products_by_unique_code[0].write(
+                products_by_same_unique_code[0].write(
                     {"seller_ids": [(0, 0, supplier_dict)]}
                 )
             # Otherwise throw an error, supplier/eancode already exists
@@ -434,6 +356,90 @@ class CwaProduct(models.Model):
             else:
                 raise
         return True
+
+    def _translate_standard_unit_of_packiging(self, supplier_dict):
+        if self.sve:
+            supplier_dict["min_qty"] = f"{float(self.sve):.2f}"
+
+    def _create_supplier_dict(self):
+        supplier_dict = {
+            "cwa": True,
+            "unique_id": self.unique_id,
+            "eancode": self.eancode,
+            "weegschaalartikel": self.weegschaalartikel,
+            "pluartikel": self.pluartikel,
+            "inhoud": self.inhoud,
+            "eenheid": self.eenheid,
+            "verpakkingce": self.verpakkingce,
+            "merk": self.merk,
+            "kwaliteit": self.kwaliteit,
+            "btw": self.btw,
+            "cblcode": self.cblcode,
+            "bestelnummer": self.bestelnummer,
+            "leveranciernummer": self.leveranciernummer,
+            "proefdiervrij": self.proefdiervrij,
+            "vegetarisch": self.vegetarisch,
+            "veganistisch": self.veganistisch,
+            "rauwemelk": self.rauwemelk,
+            "inkoopprijs": self.inkoopprijs,
+            "consumentenprijs": self.consumentenprijs,
+            "old_consumentenprijs": self.consumentenprijs,
+            "ingangsdatum": self.ingangsdatum,
+            "herkomst": self.herkomst,
+            "ingredienten": self.ingredienten,
+            "statiegeld": self.statiegeld,
+            "kassaomschrijving": self.kassaomschrijving,
+            "plucode": self.plucode,
+            "sve": self.sve,
+            "status": self.status,
+            "keurmerkbio": self.keurmerkbio,
+            "keurmerkoverig": self.keurmerkoverig,
+            "herkomstregio": self.herkomstregio,
+            "aantaldagenhoudbaar": self.aantaldagenhoudbaar,
+            "bewaartemperatuur": self.bewaartemperatuur,
+            "gebruikstips": self.gebruikstips,
+            "lengte": self.lengte,
+            "breedte": self.breedte,
+            "hoogte": self.hoogte,
+            "code": self.code,
+            "d204": self.d204,
+            "d209": self.d209,
+            "d210": self.d210,
+            "d212": self.d212,
+            "d213": self.d213,
+            "d214": self.d214,
+            "d234": self.d234,
+            "d215": self.d215,
+            "d239": self.d239,
+            "d216": self.d216,
+            "d217": self.d217,
+            "d217b": self.d217b,
+            "d220": self.d220,
+            "d221": self.d221,
+            "d221b": self.d221b,
+            "d222": self.d222,
+            "d223": self.d223,
+            "d236": self.d236,
+            "d235": self.d235,
+            "d238": self.d238,
+            "d238b": self.d238b,
+            "d225": self.d225,
+            "d226": self.d226,
+            "d228": self.d228,
+            "d230": self.d230,
+            "d232": self.d232,
+            "d237": self.d237,
+            "d240": self.d240,
+            "d241": self.d241,
+            "d242": self.d242,
+            "pos_categ_id": self.pos_categ_id,
+            "product_code": self.bestelnummer,
+            "product_name": self.omschrijving,
+            "price": self.inkoopprijs,
+            "date_start": self.ingangsdatum,
+            "partner_id": self.vendor_id.id,
+        }
+        return supplier_dict
 
     def _translate_brand(self, extra_prod_dict):
         brand = self.merk
