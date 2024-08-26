@@ -371,77 +371,15 @@ class CwaProduct(models.Model):
             if self.sve:
                 supplier_dict["min_qty"] = f"{float(self.sve):.2f}"
 
-            # Translate brand
-            brand = self.merk
-            translated_brand = self.env["cwa.product.brands"].get_translated(brand)
-            if not translated_brand and not self.env.context.get(
-                "force"
-            ):  # skip this if via force
-                raise ValidationError(_("Could not translate brand %s") % (brand,))
-            else:
-                extra_prod_dict[
-                    "product_brand_id"
-                ] = translated_brand.destination_value.id
+            self._translate_brand(extra_prod_dict)
 
-            # Translate uoms
-            uom = self.eenheid
-            translated_eenheid = self.env["cwa.product.uom"].get_translated(uom)
-            if not translated_eenheid and not self.env.context.get(
-                "force"
-            ):  # skip this if via force
-                raise ValidationError(_("Could not translate UoM %s") % (uom,))
-            else:
-                extra_prod_dict["uom_id"] = translated_eenheid.uom_id.id
-                extra_prod_dict["uom_po_id"] = translated_eenheid.uom_po_id.id
+            self._translate_uoms(extra_prod_dict)
 
-            # Translate cblcodes - to internal_category & pos_category
-            cblcode = self.cblcode
-            translated_cblcode = self.env["cwa.product.cblcode"].get_translated(cblcode)
-            if not translated_cblcode and not self.env.context.get(
-                "force"
-            ):  # skip this if via force
-                msg = _("Cannot translate CBL code %s into product categories.") % (
-                    self.cblcode,
-                )
-                raise ValidationError(msg)
-            else:
-                extra_prod_dict["categ_id"] = translated_cblcode.internal_category.id
-                extra_prod_dict["pos_categ_id"] = translated_cblcode.pos_category.id
+            self._translate_cbl_codes(extra_prod_dict)
 
-            # Translate Quality
-            quality = self.kwaliteit
-            if quality:
-                translated_quality = self.env["cwa.product.quality"].get_translated(
-                    quality
-                )
-                if not translated_quality and not self.env.context.get(
-                    "force"
-                ):  # skip this if via force
-                    raise ValidationError(
-                        _("Could not translate Quality %s") % (quality,)
-                    )
-                else:
-                    extra_prod_dict["kwaliteit"] = translated_quality.id
-            else:
-                extra_prod_dict["kwaliteit"] = self.env.ref(
-                    "product_import_cwa.cwa_quality_afbak"
-                ).id
+            self._translate_quality(extra_prod_dict)
 
-            # BTW translations
-            btw = self.btw
-            if btw:
-                translated_btw = self.env["cwa.vat.tax"].get_translated(btw)
-                if not translated_btw and not self.env.context.get(
-                    "force"
-                ):  # skip this if via force
-                    raise ValidationError(
-                        _("Could not get the tax translation for btw: %s") % (btw,)
-                    )
-                else:
-                    extra_prod_dict["taxes_id"] = [(6, 0, translated_btw.sale_tax.ids)]
-                    extra_prod_dict["supplier_taxes_id"] = [
-                        (6, 0, translated_btw.purchase_tax.ids)
-                    ]
+            self._translate_vat(extra_prod_dict)
 
             # Search if a product with this EAN code already exists
             prod_obj = self.env["product.template"]
@@ -496,6 +434,78 @@ class CwaProduct(models.Model):
             else:
                 raise
         return True
+
+    def _translate_brand(self, extra_prod_dict):
+        brand = self.merk
+        translated_brand = self.env["cwa.product.brands"].get_translated(brand)
+        if not translated_brand and not self.env.context.get(
+            "force"
+        ):  # skip this if via force
+            raise ValidationError(_("Could not translate brand %s") % (brand,))
+        else:
+            extra_prod_dict[
+                "product_brand_id"
+            ] = translated_brand.destination_value.id
+
+    def _translate_uoms(self, extra_prod_dict):
+        uom = self.eenheid
+        translated_eenheid = self.env["cwa.product.uom"].get_translated(uom)
+        if not translated_eenheid and not self.env.context.get(
+            "force"
+        ):  # skip this if via force
+            raise ValidationError(_("Could not translate UoM %s") % (uom,))
+        else:
+            extra_prod_dict["uom_id"] = translated_eenheid.uom_id.id
+            extra_prod_dict["uom_po_id"] = translated_eenheid.uom_po_id.id
+
+    def _translate_cbl_codes(self, extra_prod_dict):
+        cblcode = self.cblcode
+        translated_cblcode = self.env["cwa.product.cblcode"].get_translated(cblcode)
+        if not translated_cblcode and not self.env.context.get(
+            "force"
+        ):  # skip this if via force
+            msg = _("Cannot translate CBL code %s into product categories.") % (
+                self.cblcode,
+            )
+            raise ValidationError(msg)
+        else:
+            extra_prod_dict["categ_id"] = translated_cblcode.internal_category.id
+            extra_prod_dict["pos_categ_id"] = translated_cblcode.pos_category.id
+
+    def _translate_quality(self, extra_prod_dict):
+        quality = self.kwaliteit
+        if quality:
+            translated_quality = self.env["cwa.product.quality"].get_translated(
+                quality
+            )
+            if not translated_quality and not self.env.context.get(
+                "force"
+            ):  # skip this if via force
+                raise ValidationError(
+                    _("Could not translate Quality %s") % (quality,)
+                )
+            else:
+                extra_prod_dict["kwaliteit"] = translated_quality.id
+        else:
+            extra_prod_dict["kwaliteit"] = self.env.ref(
+                "product_import_cwa.cwa_quality_afbak"
+            ).id
+
+    def _translate_vat(self, extra_prod_dict):
+        btw = self.btw
+        if btw:
+            translated_btw = self.env["cwa.vat.tax"].get_translated(btw)
+            if not translated_btw and not self.env.context.get(
+                "force"
+            ):  # skip this if via force
+                raise ValidationError(
+                    _("Could not get the tax translation for btw: %s") % (btw,)
+                )
+            else:
+                extra_prod_dict["taxes_id"] = [(6, 0, translated_btw.sale_tax.ids)]
+                extra_prod_dict["supplier_taxes_id"] = [
+                    (6, 0, translated_btw.purchase_tax.ids)
+                ]
 
     @api.depends("leveranciernummer")
     def _compute_vendor_id(self):
