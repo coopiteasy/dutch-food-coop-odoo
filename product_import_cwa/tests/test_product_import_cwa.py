@@ -5,6 +5,10 @@ from odoo.tests.common import TransactionCase
 
 
 class TestProductImportCwa(TransactionCase):
+    def setUp(self):
+        super().setUp()
+        self.env["cwa.product"].search([]).unlink()
+
     def reset_translations(self):
         self.env["product.brand"].search([]).unlink()
         self.env["cwa.product.brands"].search([]).unlink()
