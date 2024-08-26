@@ -159,3 +159,14 @@ class TestProductImportCwa(TransactionCase):
         )
         self.assertEqual(count, 1)
         self.assertEqual(cwa_product_obj.search_count([]), 64)
+
+    def test_product_import_cwa_recovers_from_invalid_characters_in_xml(self):
+        cwa_product_obj = self.env["cwa.product"]
+
+        # load first batch of cwa.product records
+        path = os.path.dirname(os.path.realpath(__file__))
+        file1 = os.path.join(path, "data/products_test_data_faulty.xml")
+        count = cwa_product_obj.with_context(new_cursor=False).import_xml_products(
+            file1
+        )
+        self.assertEqual(count, 65)
