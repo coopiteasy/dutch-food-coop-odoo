@@ -286,12 +286,12 @@ class CwaProduct(models.Model):
                     _("Uknown vendor for this product. Fill the vendor first")
                 )
 
-            supplier_dict = self._create_supplier_dict()
+            supplier_product_info_dict = self._create_supplier_dict()
 
             # extra product.template values
             extra_prod_dict = {}
 
-            self._translate_standard_unit_of_packiging(supplier_dict)
+            self._translate_standard_unit_of_packiging(supplier_product_info_dict)
 
             self._translate_brand(extra_prod_dict)
 
@@ -313,34 +313,22 @@ class CwaProduct(models.Model):
             )
             # Create new product if the eancode is missing
             if not products_by_same_unique_code and not products_by_same_ean_code:
-                prod_dict = {
-                    "unique_id": self.unique_id,
-                    "eancode": self.eancode,
-                    "barcode": self.eancode,
-                    "name": self.omschrijving,
-                    "standard_price": self.inkoopprijs,
-                    "list_price": self.consumentenprijs,
-                    "seller_ids": [(0, 0, supplier_dict)],
-                    "kwaliteit": self.kwaliteit,
-                    "available_in_pos": False,
-                }
-                prod_dict.update(extra_prod_dict)
-                prod_obj.create(prod_dict)
+                self._create_new_product(extra_prod_dict, prod_obj, supplier_product_info_dict)
 
             # Otherwise if this is a new supplier, add to existing product
             elif (
                 not products_by_same_unique_code
                 and products_by_same_ean_code
-                and supplier_dict["partner_id"]
+                and supplier_product_info_dict["partner_id"]
                 not in products_by_same_ean_code.mapped("seller_ids.partner_id.id")
             ):
-                products_by_same_ean_code[0].write({"seller_ids": [(0, 0, supplier_dict)]})
-            elif products_by_same_unique_code and supplier_dict[
+                products_by_same_ean_code[0].write({"seller_ids": [(0, 0, supplier_product_info_dict)]})
+            elif products_by_same_unique_code and supplier_product_info_dict[
                 "name"
             ] not in products_by_same_unique_code.mapped("seller_ids.partner_id.id"):
-                supplier_dict["sequence"] = 5  # give it least preference
+                supplier_product_info_dict["sequence"] = 5  # give it least preference
                 products_by_same_unique_code[0].write(
-                    {"seller_ids": [(0, 0, supplier_dict)]}
+                    {"seller_ids": [(0, 0, supplier_product_info_dict)]}
                 )
             # Otherwise throw an error, supplier/eancode already exists
             else:
@@ -356,6 +344,21 @@ class CwaProduct(models.Model):
             else:
                 raise
         return True
+
+    def _create_new_product(self, extra_prod_dict, prod_obj, supplier_dict):
+        prod_dict = {
+            "unique_id": self.unique_id,
+            "eancode": self.eancode,
+            "barcode": self.eancode,
+            "name": self.omschrijving,
+            "standard_price": self.inkoopprijs,
+            "list_price": self.consumentenprijs,
+            "seller_ids": [(0, 0, supplier_dict)],
+            "kwaliteit": self.kwaliteit,
+            "available_in_pos": False,
+        }
+        prod_dict.update(extra_prod_dict)
+        prod_obj.create(prod_dict)
 
     def _translate_standard_unit_of_packiging(self, supplier_dict):
         if self.sve:
