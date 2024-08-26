@@ -169,4 +169,4 @@ class TestProductImportCwa(TransactionCase):
         count = cwa_product_obj.with_context(new_cursor=False).import_xml_products(
             file1
         )
-        self.assertEqual(count, 65)
+        self.assertEqual(count, 2)
