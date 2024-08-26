@@ -36,12 +36,19 @@
                                     for="piece_barcode_rule_id"
                                     class="o_form_label"
                                 >Piece barcode rule</label>
-                                    <div><field name="piece_barcode_rule_id" /></div>
+                                    <div><field
+                                        name="piece_barcode_rule_id"
+                                        options="{'no_open': True}"
+                                    /></div>
                                     <label
                                     for="weighted_barcode_rule_id"
                                     class="o_form_label"
                                 >Weighted barcode rule</label>
-                                    <div><field name="weighted_barcode_rule_id" /></div>
+                                    <div>
+                                        <field
+                                        name="weighted_barcode_rule_id"
+                                        options="{'no_open': True}"
+                                    /></div>
                                 </div>
                             </div>
                         </div>
