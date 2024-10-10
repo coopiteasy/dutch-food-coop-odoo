@@ -34,7 +34,9 @@ class ProductSupplierInfo(models.Model):
     consumentenprijs = fields.Float("Adviesprijs", help="Adviesprijs.")
     old_consumentenprijs = fields.Float("Old Adviesprijs", help="Old Adviesprijs.")
     ingangsdatum = fields.Date(help="Ingangsdatum van product.")
+    ## TODO: doubles origin field in product_food_fields
     herkomst = fields.Char(help="Land van herkomst in vorm ISO 3166 code.")
+    ## TODO: doubles ingredients field in product_food_fields
     ingredienten = fields.Text(help="Beschrijving van de ingredienten.")
     statiegeld = fields.Float(help="Statiegeldbedrag.")
     omschrijving = fields.Char(help="Omschrijving van het product.")
@@ -47,8 +49,12 @@ class ProductSupplierInfo(models.Model):
     keurmerkbio = fields.Char(help="Keurmerkbio.")
     keurmerkoverig = fields.Char(help="Keurmerkoverig.")
     herkomstregio = fields.Char(help="Regio van herkomst.")
+    ## TODO: doubles days_until_expiry or/and days_until_bad_taste field in product_food_fields
+    ## This field is not available in the data!
     aantaldagenhoudbaar = fields.Char(help="Aantal dagen houdbaar.")
+    ## TODO: doubles storage_temperature field in product_food_fields
     bewaartemperatuur = fields.Char(help="Bewaartemperatuur.")
+    ## TODO: doubles usage_tips field in product_food_fields
     gebruikstips = fields.Char(help="Gebruikstips.")
     lengte = fields.Char(help="Lengte.")
     breedte = fields.Char(help="Breedte.")
