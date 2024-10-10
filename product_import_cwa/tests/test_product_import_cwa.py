@@ -16,6 +16,12 @@ class TestProductImportCwa(TransactionCase):
         self.env["cwa.product.cblcode"].search([]).unlink()
         self.env["cwa.vat.tax"].search([]).unlink()
 
+    def add_translations_for_brand_uom_cblcode_and_tax(self, cwa_prod):
+        self.translate_brand(cwa_prod)
+        self.translate_uom(cwa_prod)
+        self.translate_cblcode(cwa_prod)
+        self.translate_tax(cwa_prod)
+
     def translate_brand(self, prod):
         """Add dummy brand translation to product using wizards"""
         wizard_obj = self.env["cwa.product.import.brands"]
@@ -60,6 +66,11 @@ class TestProductImportCwa(TransactionCase):
         )
         wizard.action_apply()
 
+    def import_first_file(self, cwa_product_obj):
+        path = os.path.dirname(os.path.realpath(__file__))
+        file1 = os.path.join(path, "data/products_test.xml")
+        cwa_product_obj.with_context(new_cursor=False).import_xml_products(file1)
+
 
     def test_product_import_cwa_imports_all_records(self):
         cwa_product_obj = self.env["cwa.product"]
@@ -74,22 +85,15 @@ class TestProductImportCwa(TransactionCase):
 
     def test_product_import_cwa_imports_is_correctly_loaded(self):
         cwa_product_obj = self.env["cwa.product"]
-        path = os.path.dirname(os.path.realpath(__file__))
-        file1 = os.path.join(path, "data/products_test.xml")
-        cwa_product_obj.with_context(new_cursor=False).import_xml_products(
-            file1
-        )
+        self.import_first_file(cwa_product_obj)
         cwa_prod1 = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
         self.assertEqual(len(cwa_prod1), 1)
 
 
     def test_product_import_cwa_load_modified_file(self):
         cwa_product_obj = self.env["cwa.product"]
+        self.import_first_file(cwa_product_obj)
         path = os.path.dirname(os.path.realpath(__file__))
-        file1 = os.path.join(path, "data/products_test.xml")
-        cwa_product_obj.with_context(new_cursor=False).import_xml_products(
-            file1
-        )
         file2 = os.path.join(path, "data/products_test_modified.xml")
         count = cwa_product_obj.with_context(new_cursor=False).import_xml_products(file2)
         self.assertEqual(count, 1)
@@ -98,30 +102,44 @@ class TestProductImportCwa(TransactionCase):
 
     def test_product_import_cwa_translations(self):
         cwa_product_obj = self.env["cwa.product"]
-        path = os.path.dirname(os.path.realpath(__file__))
-        file1 = os.path.join(path, "data/products_test.xml")
-        cwa_product_obj.with_context(new_cursor=False).import_xml_products(file1)
+        self.import_first_file(cwa_product_obj)
         cwa_prod2 = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
         self.reset_translations()
-        self.translate_brand(cwa_prod2)
-        self.translate_uom(cwa_prod2)
-        self.translate_cblcode(cwa_prod2)
-        self.translate_tax(cwa_prod2)
+        self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod2)
         self.assertEqual(self.env["cwa.product.brands"].search_count([]), 1)
         self.assertEqual(self.env["cwa.product.uom"].search_count([]), 1)
         self.assertEqual(self.env["cwa.product.cblcode"].search_count([]), 1)
         self.assertEqual(self.env["cwa.vat.tax"].search_count([]), 1)
 
+    def test_product_import_cwa_product_to_state_imported(self):
+        cwa_product_obj = self.env["cwa.product"]
+        self.import_first_file(cwa_product_obj)
+        cwa_prod = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
+        self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod)
+        cwa_prod.to_product()
+        self.assertEqual(cwa_prod.state, "imported")
+
+    def test_product_import_cwa_supplier_info(self):
+        path = os.path.dirname(os.path.realpath(__file__))
+        cwa_product_obj = self.env["cwa.product"]
+        self.import_first_file(cwa_product_obj)
+        cwa_prod2 = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
+        self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod2)
+        cwa_prod2.to_product()
+        supplierinfo_obj = self.env["product.supplierinfo"]
+        supp_info1 = supplierinfo_obj.search([("product_name", "=", "BOEKWEIT")])
+        self.assertEqual(len(supp_info1), 1)
+        self.assertFalse(supp_info1.eancode)
+        self.assertEqual(supp_info1.unique_id, "1007-1001")
+        _date = datetime.date(2016, 2, 11)
+        self.assertEqual(supp_info1.ingangsdatum, _date)
+        self.assertEqual(supp_info1.date_start, _date)
+
+
     def test_product_import_cwa(self):
         prod_tmpl_object = self.env["product.template"]
         cwa_product_obj = self.env["cwa.product"]
-
-        # load first batch of cwa.product records
-        path = os.path.dirname(os.path.realpath(__file__))
-        file1 = os.path.join(path, "data/products_test.xml")
-        cwa_product_obj.with_context(new_cursor=False).import_xml_products(
-            file1
-        )
+        self.import_first_file(cwa_product_obj)
 
         # test if cwa.product records correctly loaded
         # find "Boekweit"
@@ -130,6 +148,7 @@ class TestProductImportCwa(TransactionCase):
 
         # decide to load the file that is changed a bit
         # check if Boekweit record has changed
+        path = os.path.dirname(os.path.realpath(__file__))
         file2 = os.path.join(path, "data/products_test_modified.xml")
         count = cwa_product_obj.with_context(new_cursor=False).import_xml_products(
             file2
@@ -143,14 +162,8 @@ class TestProductImportCwa(TransactionCase):
 
         # translate unknown stuff
         self.reset_translations()
-        self.translate_brand(cwa_prod2)
-        self.translate_uom(cwa_prod2)
-        self.translate_cblcode(cwa_prod2)
-        self.translate_tax(cwa_prod2)
-        self.assertEqual(self.env["cwa.product.brands"].search_count([]), 1)
-        self.assertEqual(self.env["cwa.product.uom"].search_count([]), 1)
-        self.assertEqual(self.env["cwa.product.cblcode"].search_count([]), 1)
-        self.assertEqual(self.env["cwa.vat.tax"].search_count([]), 1)
+        self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod2)
+        ################################################################################
 
         # Import the Boekweit product into the system,
         # both product and supplier details
