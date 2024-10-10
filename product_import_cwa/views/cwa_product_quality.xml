@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="cwa_quality_tree_view" model="ir.ui.view">
+        <field name="name">product.quality.tree</field>
+        <field name="model">cwa.product.quality</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="source_value" />
+                <field name="destination_value" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="product_quality_form_view" model="ir.ui.view">
+        <field name="name">product.quality.form</field>
+        <field name="model">cwa.product.quality</field>
+        <field name="arch" type="xml">
+            <form string="Product Quality">
+                <sheet>
+                    <group>
+                        <field name="source_value" />
+                        <field name="destination_value" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_cwa_product_quality" model="ir.actions.act_window">
+        <field name="name">CWA Product Quality</field>
+        <field name="res_model">cwa.product.quality</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+    </record>
+
+    <menuitem
+        name="Product Quality"
+        parent="sale.prod_config_main"
+        id="cwa_product_quality_menuitem"
+        sequence="65"
+        action="action_cwa_product_quality"
+    />
+</odoo>

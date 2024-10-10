@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- VAT wizard view -->
+    <record id="cwa_tax_wizard_view" model="ir.ui.view">
+        <field name="name">Update VAT Taxes</field>
+        <field name="model">cwa.vat.tax.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Update Sales/Purchase BTW">
+                <field name="tax_ids" context="{'default_sale_tax_ids': []}">
+                    <tree editable="bottom" create="false" delete="false">
+                        <field name="btw" />
+                        <field name="description" />
+                        <field name="sale_tax_ids" />
+                        <field name="purchase_tax_ids" />
+                    </tree>
+                </field>
+                <footer>
+                    <button
+                        string="Apply"
+                        name="action_apply"
+                        type="object"
+                        class="btn-primary"
+                    />
+                    <button string="Cancel" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- VAT wizard action on cwa.product -->
+    <record id="action_update_vat_taxes" model="ir.actions.act_window">
+        <field name="name">Update VAT Taxes</field>
+        <field name="res_model">cwa.vat.tax.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="model_cwa_product" />
+    </record>
+</odoo>
