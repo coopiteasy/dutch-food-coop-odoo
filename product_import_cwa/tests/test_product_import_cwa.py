@@ -74,18 +74,43 @@ class TestProductImportCwa(TransactionCase):
 
     def test_product_import_cwa_imports_is_correctly_loaded(self):
         cwa_product_obj = self.env["cwa.product"]
-
-        # load first batch of cwa.product records
         path = os.path.dirname(os.path.realpath(__file__))
         file1 = os.path.join(path, "data/products_test.xml")
         cwa_product_obj.with_context(new_cursor=False).import_xml_products(
             file1
         )
-
-        # find "Boekweit"
         cwa_prod1 = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
         self.assertEqual(len(cwa_prod1), 1)
 
+
+    def test_product_import_cwa_load_modified_file(self):
+        cwa_product_obj = self.env["cwa.product"]
+        path = os.path.dirname(os.path.realpath(__file__))
+        file1 = os.path.join(path, "data/products_test.xml")
+        cwa_product_obj.with_context(new_cursor=False).import_xml_products(
+            file1
+        )
+        file2 = os.path.join(path, "data/products_test_modified.xml")
+        count = cwa_product_obj.with_context(new_cursor=False).import_xml_products(file2)
+        self.assertEqual(count, 1)
+        cwa_prod2 = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
+        self.assertTrue("EEKHOORNS" in cwa_prod2.ingredienten)
+
+    def test_product_import_cwa_translations(self):
+        cwa_product_obj = self.env["cwa.product"]
+        path = os.path.dirname(os.path.realpath(__file__))
+        file1 = os.path.join(path, "data/products_test.xml")
+        cwa_product_obj.with_context(new_cursor=False).import_xml_products(file1)
+        cwa_prod2 = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
+        self.reset_translations()
+        self.translate_brand(cwa_prod2)
+        self.translate_uom(cwa_prod2)
+        self.translate_cblcode(cwa_prod2)
+        self.translate_tax(cwa_prod2)
+        self.assertEqual(self.env["cwa.product.brands"].search_count([]), 1)
+        self.assertEqual(self.env["cwa.product.uom"].search_count([]), 1)
+        self.assertEqual(self.env["cwa.product.cblcode"].search_count([]), 1)
+        self.assertEqual(self.env["cwa.vat.tax"].search_count([]), 1)
 
     def test_product_import_cwa(self):
         prod_tmpl_object = self.env["product.template"]
@@ -127,7 +152,6 @@ class TestProductImportCwa(TransactionCase):
         self.assertEqual(self.env["cwa.product.cblcode"].search_count([]), 1)
         self.assertEqual(self.env["cwa.vat.tax"].search_count([]), 1)
 
-        # FROM HERE WE HAVE A PROBLEM!
         # Import the Boekweit product into the system,
         # both product and supplier details
         cwa_prod2.to_product()
