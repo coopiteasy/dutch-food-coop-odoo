@@ -60,8 +60,8 @@ class TestProductImportCwa(TransactionCase):
         )
         wizard.action_apply()
 
-    def test_product_import_cwa(self):
-        prod_tmpl_object = self.env["product.template"]
+
+    def test_product_import_cwa_imports_all_records(self):
         cwa_product_obj = self.env["cwa.product"]
 
         # load first batch of cwa.product records
@@ -71,6 +71,32 @@ class TestProductImportCwa(TransactionCase):
             file1
         )
         self.assertEqual(count, 65)
+
+    def test_product_import_cwa_imports_is_correctly_loaded(self):
+        cwa_product_obj = self.env["cwa.product"]
+
+        # load first batch of cwa.product records
+        path = os.path.dirname(os.path.realpath(__file__))
+        file1 = os.path.join(path, "data/products_test.xml")
+        cwa_product_obj.with_context(new_cursor=False).import_xml_products(
+            file1
+        )
+
+        # find "Boekweit"
+        cwa_prod1 = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
+        self.assertEqual(len(cwa_prod1), 1)
+
+
+    def test_product_import_cwa(self):
+        prod_tmpl_object = self.env["product.template"]
+        cwa_product_obj = self.env["cwa.product"]
+
+        # load first batch of cwa.product records
+        path = os.path.dirname(os.path.realpath(__file__))
+        file1 = os.path.join(path, "data/products_test.xml")
+        cwa_product_obj.with_context(new_cursor=False).import_xml_products(
+            file1
+        )
 
         # test if cwa.product records correctly loaded
         # find "Boekweit"
