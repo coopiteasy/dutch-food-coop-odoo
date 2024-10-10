@@ -1,6 +1,7 @@
 import logging
 
 from odoo import api, fields, models
+from odoo.addons.product_import_cwa.models.utils import YESNO_SELECTION, PRESENCE_SELECTION
 
 _logger = logging.getLogger(__name__)
 
@@ -19,69 +20,52 @@ class ProductTemplate(models.Model):
         search="_search_preferred_supplier",
         string="Preferred Supplier",
     )
-    inhoud = fields.Char(related="preferred_supplier_id.inhoud")
-    eenheid = fields.Char(related="preferred_supplier_id.eenheid")
-    statiegeld = fields.Float(related="preferred_supplier_id.statiegeld")
-    weegschaalartikel = fields.Boolean(
-        related="preferred_supplier_id.weegschaalartikel"
-    )
-    pluartikel = fields.Boolean(related="preferred_supplier_id.pluartikel")
-    herkomst = fields.Char(related="preferred_supplier_id.herkomst")
-    ingredienten = fields.Text(
-        help="Beschrijving van de ingredienten.",
-        related="preferred_supplier_id.ingredienten",
-    )
-    proefdiervrij = fields.Selection(related="preferred_supplier_id.proefdiervrij")
-    vegetarisch = fields.Selection(related="preferred_supplier_id.vegetarisch")
-    veganistisch = fields.Selection(related="preferred_supplier_id.veganistisch")
-    rauwemelk = fields.Selection(related="preferred_supplier_id.rauwemelk")
-    plucode = fields.Char(
-        related="preferred_supplier_id.plucode", help="4-cijferige plucode."
-    )
-    d204 = fields.Selection(related="preferred_supplier_id.d204", help="Cacao.")
-    d209 = fields.Selection(related="preferred_supplier_id.d209", help="Glutamaat.")
-    d210 = fields.Selection(related="preferred_supplier_id.d210", help="Gluten.")
-    d212 = fields.Selection(related="preferred_supplier_id.d212", help="Ei.")
-    d213 = fields.Selection(related="preferred_supplier_id.d213", help="Kip.")
-    d214 = fields.Selection(related="preferred_supplier_id.d214", help="Melk.")
-    d234 = fields.Selection(related="preferred_supplier_id.d234", help="Koriander.")
-    d215 = fields.Selection(related="preferred_supplier_id.d215", help="Lactose.")
-    d239 = fields.Selection(related="preferred_supplier_id.d239", help="Lupine.")
-    d216 = fields.Selection(related="preferred_supplier_id.d216", help="Mais.")
-    d217 = fields.Selection(related="preferred_supplier_id.d217", help="Noten.")
-    d217b = fields.Selection(related="preferred_supplier_id.d217b", help="Notenolie.")
-    d220 = fields.Selection(related="preferred_supplier_id.d220", help="Peulvruchten.")
-    d221 = fields.Selection(related="preferred_supplier_id.d221", help="Pinda.")
-    d221b = fields.Selection(related="preferred_supplier_id.d221b", help="Pindaolie.")
-    d222 = fields.Selection(related="preferred_supplier_id.d222", help="Rogge.")
-    d223 = fields.Selection(related="preferred_supplier_id.d223", help="Rundvlees.")
-    d236 = fields.Selection(related="preferred_supplier_id.d236", help="Schaaldieren.")
-    d235 = fields.Selection(related="preferred_supplier_id.d235", help="Selderij.")
-    d238 = fields.Selection(related="preferred_supplier_id.d238", help="Sesam.")
-    d238b = fields.Selection(related="preferred_supplier_id.d238b", help="Sesamolie.")
-    d225 = fields.Selection(related="preferred_supplier_id.d225", help="Soja.")
-    d226 = fields.Selection(related="preferred_supplier_id.d226", help="Soja-olie.")
-    d228 = fields.Selection(related="preferred_supplier_id.d228", help="Sulfiet.")
-    d230 = fields.Selection(related="preferred_supplier_id.d230", help="Tarwe.")
-    d232 = fields.Selection(related="preferred_supplier_id.d232", help="Varkensvlees.")
-    d237 = fields.Selection(related="preferred_supplier_id.d237", help="Vis.")
-    d240 = fields.Selection(related="preferred_supplier_id.d240", help="Wortel.")
-    d241 = fields.Selection(related="preferred_supplier_id.d241", help="Mosterd.")
-    d242 = fields.Selection(related="preferred_supplier_id.d242", help="Weekdieren.")
-    aantaldagenhoudbaar = fields.Char(
-        related="preferred_supplier_id.aantaldagenhoudbaar",
-        help="Aantal dagen houdbaar.",
-    )
-    bewaartemperatuur = fields.Char(
-        related="preferred_supplier_id.bewaartemperatuur", help="Bewaartemperatuur."
-    )
-    gebruikstips = fields.Char(
-        related="preferred_supplier_id.gebruikstips", help="Gebruikstips."
-    )
-    verpakkingce = fields.Char(
-        related="preferred_supplier_id.verpakkingce",
-        help="Verpakking van consumenteneenheid.",
-    )
+    inhoud = fields.Char(help="Inhoud van de verpakking.")
+    eenheid = fields.Char(help="Eenheid van de inhoud.")
+    statiegeld = fields.Float(help="Statiegeldbedrag.")
+    weegschaalartikel = fields.Boolean()
+    pluartikel = fields.Boolean()
+    herkomst = fields.Char(help="Land van herkomst in vorm ISO 3166 code.")
+    ingredienten = fields.Text(help="Beschrijving van de ingredienten.")
+    proefdiervrij = fields.Selection(YESNO_SELECTION)
+    vegetarisch = fields.Selection(YESNO_SELECTION)
+    veganistisch = fields.Selection(YESNO_SELECTION)
+    rauwemelk = fields.Selection(YESNO_SELECTION)
+    plucode = fields.Char(help="4-cijferige plucode.")
+    d204 = fields.Selection(PRESENCE_SELECTION, help="Cacao.")
+    d209 = fields.Selection(PRESENCE_SELECTION, help="Glutamaat.")
+    d210 = fields.Selection(PRESENCE_SELECTION, help="Gluten.")
+    d212 = fields.Selection(PRESENCE_SELECTION, help="Ei.")
+    d213 = fields.Selection(PRESENCE_SELECTION, help="Kip.")
+    d214 = fields.Selection(PRESENCE_SELECTION, help="Melk.")
+    d234 = fields.Selection(PRESENCE_SELECTION, help="Koriander.")
+    d215 = fields.Selection(PRESENCE_SELECTION, help="Lactose.")
+    d239 = fields.Selection(PRESENCE_SELECTION, help="Lupine.")
+    d216 = fields.Selection(PRESENCE_SELECTION, help="Mais.")
+    d217 = fields.Selection(PRESENCE_SELECTION, help="Noten.")
+    d217b = fields.Selection(PRESENCE_SELECTION, help="Notenolie.")
+    d220 = fields.Selection(PRESENCE_SELECTION, help="Peulvruchten.")
+    d221 = fields.Selection(PRESENCE_SELECTION, help="Pinda.")
+    d221b = fields.Selection(PRESENCE_SELECTION, help="Pindaolie.")
+    d222 = fields.Selection(PRESENCE_SELECTION, help="Rogge.")
+    d223 = fields.Selection(PRESENCE_SELECTION, help="Rundvlees.")
+    d236 = fields.Selection(PRESENCE_SELECTION, help="Schaaldieren.")
+    d235 = fields.Selection(PRESENCE_SELECTION, help="Selderij.")
+    d238 = fields.Selection(PRESENCE_SELECTION, help="Sesam.")
+    d238b = fields.Selection(PRESENCE_SELECTION, help="Sesamolie.")
+    d225 = fields.Selection(PRESENCE_SELECTION, help="Soja.")
+    d226 = fields.Selection(PRESENCE_SELECTION, help="Soja-olie.")
+    d228 = fields.Selection(PRESENCE_SELECTION, help="Sulfiet.")
+    d230 = fields.Selection(PRESENCE_SELECTION, help="Tarwe.")
+    d232 = fields.Selection(PRESENCE_SELECTION, help="Varkensvlees.")
+    d237 = fields.Selection(PRESENCE_SELECTION, help="Vis.")
+    d240 = fields.Selection(PRESENCE_SELECTION, help="Wortel.")
+    d241 = fields.Selection(PRESENCE_SELECTION, help="Mosterd.")
+    d242 = fields.Selection(PRESENCE_SELECTION, help="Weekdieren.")
+    aantaldagenhoudbaar = fields.Char(help="Aantal dagen houdbaar.")
+    bewaartemperatuur = fields.Char(help="Bewaartemperatuur.")
+    gebruikstips = fields.Char(help="Gebruikstips.")
+    verpakkingce = fields.Char(help="Verpakking van consumenteneenheid.")
     price_per_standard_unit = fields.Float(
         "Price per Standard Unit", compute="_compute_price_per_su"
     )
