@@ -49,7 +49,8 @@ class ProductSupplierInfo(models.Model):
     keurmerkbio = fields.Char(help="Keurmerkbio.")
     keurmerkoverig = fields.Char(help="Keurmerkoverig.")
     herkomstregio = fields.Char(help="Regio van herkomst.")
-    ## TODO: doubles days_until_expiry or/and days_until_bad_taste field in product_food_fields
+    ## TODO: doubles days_until_expiry or/and days_until_bad_taste field
+    ## in product_food_fields
     ## This field is not available in the data!
     aantaldagenhoudbaar = fields.Char(help="Aantal dagen houdbaar.")
     ## TODO: doubles storage_temperature field in product_food_fields
