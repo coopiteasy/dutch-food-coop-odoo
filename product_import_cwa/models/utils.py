@@ -1,7 +1,6 @@
 import hashlib
 import logging
 import math
-import os
 import re
 
 from lxml import etree
@@ -180,7 +179,7 @@ class XMLProductLoader:
             root = etree.parse(prod_file)
         except etree.XMLSyntaxError:
             _logger.info("Error decoding. Retrying using recover mode...")
-            with open(prod_file, 'rb') as file:
+            with open(prod_file, "rb") as file:
                 file_content = file.read()
             parser = etree.XMLParser(recover=True)
             root = etree.fromstring(file_content, parser)
@@ -211,7 +210,9 @@ class XMLProductLoader:
         return self.load_fields, self.load_values, self.update_records, delete_records
 
     def calculate_records_that_should_be_deleted(self):
-        earlier_imported_ids_not_present_in_current_data = list(self.cur_unique_ids - self.new_unique_ids)
+        earlier_imported_ids_not_present_in_current_data = list(
+            self.cur_unique_ids - self.new_unique_ids
+        )
         return earlier_imported_ids_not_present_in_current_data
 
     def determine_if_record_should_be_created_updated_or_ignored(

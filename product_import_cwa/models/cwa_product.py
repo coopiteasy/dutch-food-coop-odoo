@@ -313,7 +313,9 @@ class CwaProduct(models.Model):
             )
             # Create new product if the eancode is missing
             if not products_by_same_unique_code and not products_by_same_ean_code:
-                self._create_new_product(extra_prod_dict, prod_obj, supplier_product_info_dict)
+                self._create_new_product(
+                    extra_prod_dict, prod_obj, supplier_product_info_dict
+                )
 
             # Otherwise if this is a new supplier, add to existing product
             elif (
@@ -322,7 +324,9 @@ class CwaProduct(models.Model):
                 and supplier_product_info_dict["partner_id"]
                 not in products_by_same_ean_code.mapped("seller_ids.partner_id.id")
             ):
-                products_by_same_ean_code[0].write({"seller_ids": [(0, 0, supplier_product_info_dict)]})
+                products_by_same_ean_code[0].write(
+                    {"seller_ids": [(0, 0, supplier_product_info_dict)]}
+                )
             elif products_by_same_unique_code and supplier_product_info_dict[
                 "name"
             ] not in products_by_same_unique_code.mapped("seller_ids.partner_id.id"):
@@ -452,9 +456,7 @@ class CwaProduct(models.Model):
         ):  # skip this if via force
             raise ValidationError(_("Could not translate brand %s") % (brand,))
         else:
-            extra_prod_dict[
-                "product_brand_id"
-            ] = translated_brand.destination_value.id
+            extra_prod_dict["product_brand_id"] = translated_brand.destination_value.id
 
     def _translate_uoms(self, extra_prod_dict):
         uom = self.eenheid
@@ -484,15 +486,11 @@ class CwaProduct(models.Model):
     def _translate_quality(self, extra_prod_dict):
         quality = self.kwaliteit
         if quality:
-            translated_quality = self.env["cwa.product.quality"].get_translated(
-                quality
-            )
+            translated_quality = self.env["cwa.product.quality"].get_translated(quality)
             if not translated_quality and not self.env.context.get(
                 "force"
             ):  # skip this if via force
-                raise ValidationError(
-                    _("Could not translate Quality %s") % (quality,)
-                )
+                raise ValidationError(_("Could not translate Quality %s") % (quality,))
             else:
                 extra_prod_dict["kwaliteit"] = translated_quality.id
         else:
