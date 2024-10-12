@@ -1,4 +1,5 @@
 import datetime
+import logging
 import os
 
 from odoo.tests.common import TransactionCase
@@ -7,8 +8,12 @@ from odoo.tests.common import TransactionCase
 class TestProductImportCwa(TransactionCase):
     def setUp(self):
         super().setUp()
+        # Set the logging level to WARNING during deletions
+        old_logLevel = logging.getLogger('odoo').level
+        logging.getLogger('odoo').setLevel(logging.WARNING)
         self.env["cwa.product"].search([]).unlink()
         self.env["product.supplierinfo"].search([]).unlink()
+        logging.getLogger('odoo').setLevel(old_logLevel)
 
     def reset_translations(self):
         self.env["product.brand"].search([]).unlink()
@@ -123,6 +128,81 @@ class TestProductImportCwa(TransactionCase):
         cwa_prod.to_product()
         self.assertEqual(cwa_prod.state, "imported")
 
+    def test_product_import_cwa_product_import_into_product_template(self):
+        cwa_product_obj = self.env["cwa.product"]
+        self.import_first_file(cwa_product_obj)
+        cwa_prod = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
+        self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod)
+        cwa_prod.to_product()
+
+        product_template_object = self.env["product.template"]
+        imported_product = product_template_object.search([("name", "=", "BOEKWEIT")])
+
+        expected_product = {
+            "unique_id": "1007-1001",
+            'weegschaalartikel': False,
+            'pluartikel': False,
+            'inhoud': "1",
+            'eenheid': 'KG',
+            'verpakkingce': False,
+            'herkomst': 'CN',
+            'ingredienten': 'INGREDIENTEN: BOEKWEIT',
+            'd204': '0',
+            'd209': '0',
+            'd210': '0',
+            'd212': '0',
+            'd213': '0',
+            'd214': '0',
+            'd234': '0',
+            'd215': '0',
+            'd239': '0',
+            'd216': '0',
+            'd217': '0',
+            'd217b': '0',
+            'd220': '0',
+            'd221': '0',
+            'd221b': '0',
+            'd222': '0',
+            'd223': '0',
+            'd236': '0',
+            'd235': '0',
+            'd238': '0',
+            'd238b': '0',
+            'd225': '0',
+            'd226': '0',
+            'd228': '0',
+            'd230': '0',
+            'd232': '0',
+            'd237': '0',
+            'd240': '0',
+            'proefdiervrij': '0',
+            'vegetarisch': '0',
+            'veganistisch': '0',
+            'rauwemelk': '0',
+        }
+
+        actual_product = {key: getattr(imported_product, key, None) for key in expected_product.keys()}
+        self.maxDiff = None
+        self.assertDictEqual(expected_product, actual_product)
+
+    def test_product_import_imports_wichtartikel_in_the_right_way(self):
+        cwa_product_obj = self.env["cwa.product"]
+        self.import_first_file(cwa_product_obj)
+        cwa_prod = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
+        self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod)
+        cwa_prod.to_product()
+
+        product_template_object = self.env["product.template"]
+        imported_product = product_template_object.search([("name", "=", "BOEKWEIT")])
+
+        expected_product = {
+            'wichtartikel': True,
+        }
+
+        actual_product = {key: getattr(imported_product, key, None) for key in expected_product.keys()}
+        self.maxDiff = None
+        self.assertDictEqual(expected_product, actual_product)
+
     def test_product_import_cwa_supplier_info(self):
         cwa_product_obj = self.env["cwa.product"]
         self.import_first_file(cwa_product_obj)
@@ -137,6 +217,8 @@ class TestProductImportCwa(TransactionCase):
         _date = datetime.date(2016, 2, 11)
         self.assertEqual(supp_info1.ingangsdatum, _date)
         self.assertEqual(supp_info1.date_start, _date)
+        self.assertEqual(supp_info1.eenheid, "KG")
+        self.assertEqual(supp_info1.herkomst, "CN")
 
     def test_product_import_cwa_handle_multiple_suppliers(self):
         cwa_product_obj = self.env["cwa.product"]
