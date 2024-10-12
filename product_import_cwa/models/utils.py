@@ -167,6 +167,16 @@ class XMLProductLoader:
         self.load_fields = []
         self.load_tags = []
 
+    @staticmethod
+    def detect_encoding(xml_file):
+        with open(xml_file, 'rb') as file:
+            # Read the first 1024 bytes to catch the encoding declaration
+            first_part = file.read(1024).decode('ascii', errors='ignore')
+        match = re.search(r'encoding="(.+?)"', first_part)
+        if match:
+            return match.group(1)
+        return 'UTF-8'  # Default encoding if none is specified
+
     def parse_from_xml(self, prod_file):
         # make a dict with existing products by unique_id
         self.fill_unique_ids_and_hash_dict()
@@ -175,8 +185,11 @@ class XMLProductLoader:
         # determine list of destination fields
         self.determine_allowed_source_tags_and_destination_fields()
 
+        encoding = self.detect_encoding(prod_file)
+        parser = etree.XMLParser(recover=True, encoding=encoding)
+
         try:
-            root = etree.parse(prod_file)
+            root = etree.parse(prod_file, parser)
         except etree.XMLSyntaxError:
             _logger.info("Error decoding. Retrying using recover mode...")
             with open(prod_file, "rb") as file:

@@ -207,31 +207,30 @@ class CwaProduct(models.Model):
         for data_subset in data_chunks:
             for attempt in range(5):
                 use_fresh_cursor = self.env.context.get("new_cursor", False)
-                with api.Environment.manage():
-                    if use_fresh_cursor:
-                        _logger.info("new cursor created")
-                        new_cr = self.pool.cursor()
-                        uid, context = self.env.uid, self.env.context
-                        env = api.Environment(new_cr, uid, context)
+                if use_fresh_cursor:
+                    _logger.info("new cursor created")
+                    new_cr = self.pool.cursor()
+                    uid, context = self.env.uid, self.env.context
+                    env = api.Environment(new_cr, uid, context)
+                else:
+                    env = self.env
+
+                try:
+                    x = env[model].load(keys, data_subset)
+                    if len(x["messages"]) > 0:
+                        _logger.warning("attempt..%s" % attempt)
+                        _logger.error(x)
+                        continue
                     else:
-                        env = self.env
-
-                    try:
-                        x = env[model].load(keys, data_subset)
-                        if len(x["messages"]) > 0:
-                            _logger.warning("attempt..%s" % attempt)
-                            _logger.error(x)
-                            continue
-                        else:
-                            _logger.warning("success..%s" % attempt)
-                            if use_fresh_cursor:
-                                env.cr.commit()
-                            count_successful += len(x["ids"])
-                            break
-
-                    finally:
+                        _logger.warning("success..%s" % attempt)
                         if use_fresh_cursor:
-                            env.cr.close()
+                            env.cr.commit()
+                        count_successful += len(x["ids"])
+                        break
+
+                finally:
+                    if use_fresh_cursor:
+                        env.cr.close()
 
         return count_successful
 
@@ -360,6 +359,47 @@ class CwaProduct(models.Model):
             "seller_ids": [(0, 0, supplier_dict)],
             "kwaliteit": self.kwaliteit,
             "available_in_pos": False,
+            "eenheid": self.eenheid,
+            "herkomst": self.herkomst,
+            "weegschaalartikel": self.weegschaalartikel,
+            "pluartikel": self.pluartikel,
+            "inhoud": self.inhoud,
+            'verpakkingce': self.verpakkingce,
+            "ingredienten": self.ingredienten,
+            "d204": self.d204,
+            "d209": self.d209,
+            "d210": self.d210,
+            "d212": self.d212,
+            "d213": self.d213,
+            "d214": self.d214,
+            "d234": self.d234,
+            "d215": self.d215,
+            "d239": self.d239,
+            "d216": self.d216,
+            "d217": self.d217,
+            "d217b": self.d217b,
+            "d220": self.d220,
+            "d221": self.d221,
+            "d221b": self.d221b,
+            "d222": self.d222,
+            "d223": self.d223,
+            "d236": self.d236,
+            "d235": self.d235,
+            "d238": self.d238,
+            "d238b": self.d238b,
+            "d225": self.d225,
+            "d226": self.d226,
+            "d228": self.d228,
+            "d230": self.d230,
+            "d232": self.d232,
+            "d237": self.d237,
+            "d240": self.d240,
+            "d241": self.d241,
+            "d242": self.d242,
+            "proefdiervrij": self.proefdiervrij,
+            "vegetarisch": self.vegetarisch,
+            "veganistisch": self.veganistisch,
+            "rauwemelk": self.rauwemelk,
         }
         prod_dict.update(extra_prod_dict)
         prod_obj.create(prod_dict)

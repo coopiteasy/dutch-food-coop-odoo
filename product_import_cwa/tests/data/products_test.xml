@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO8859-1" ?>
+<?xml version="1.0" encoding="ISO-8859-1" ?>
 <xmlartikel>
   <product>
   <eancode />
@@ -18,7 +18,7 @@
   <bestelnummer>1001</bestelnummer>
   <sve>10</sve>
   <status>Actief</status>
-  <ingredienten>Ingredi�nten: Boekweit</ingredienten>
+  <ingredienten>Ingredienten: Boekweit</ingredienten>
   <d204>0</d204>
   <d209>0</d209>
   <d210>0</d210>
