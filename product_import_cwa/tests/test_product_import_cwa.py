@@ -8,6 +8,7 @@ class TestProductImportCwa(TransactionCase):
     def setUp(self):
         super().setUp()
         self.env["cwa.product"].search([]).unlink()
+        self.env["product.supplierinfo"].search([]).unlink()
 
     def reset_translations(self):
         self.env["product.brand"].search([]).unlink()
@@ -71,6 +72,11 @@ class TestProductImportCwa(TransactionCase):
         file1 = os.path.join(path, "data/products_test.xml")
         cwa_product_obj.with_context(new_cursor=False).import_xml_products(file1)
 
+    def import_second_file(self, cwa_product_obj):
+        path = os.path.dirname(os.path.realpath(__file__))
+        file2 = os.path.join(path, "data/products_test_modified.xml")
+        count = cwa_product_obj.with_context(new_cursor=False).import_xml_products(file2)
+        return count
 
     def test_product_import_cwa_imports_all_records(self):
         cwa_product_obj = self.env["cwa.product"]
@@ -93,9 +99,7 @@ class TestProductImportCwa(TransactionCase):
     def test_product_import_cwa_load_modified_file(self):
         cwa_product_obj = self.env["cwa.product"]
         self.import_first_file(cwa_product_obj)
-        path = os.path.dirname(os.path.realpath(__file__))
-        file2 = os.path.join(path, "data/products_test_modified.xml")
-        count = cwa_product_obj.with_context(new_cursor=False).import_xml_products(file2)
+        count = self.import_second_file(cwa_product_obj)
         self.assertEqual(count, 1)
         cwa_prod2 = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
         self.assertTrue("EEKHOORNS" in cwa_prod2.ingredienten)
@@ -120,7 +124,6 @@ class TestProductImportCwa(TransactionCase):
         self.assertEqual(cwa_prod.state, "imported")
 
     def test_product_import_cwa_supplier_info(self):
-        path = os.path.dirname(os.path.realpath(__file__))
         cwa_product_obj = self.env["cwa.product"]
         self.import_first_file(cwa_product_obj)
         cwa_prod2 = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
@@ -135,91 +138,37 @@ class TestProductImportCwa(TransactionCase):
         self.assertEqual(supp_info1.ingangsdatum, _date)
         self.assertEqual(supp_info1.date_start, _date)
 
-
-    def test_product_import_cwa(self):
-        prod_tmpl_object = self.env["product.template"]
+    def test_product_import_cwa_handle_multiple_suppliers(self):
         cwa_product_obj = self.env["cwa.product"]
         self.import_first_file(cwa_product_obj)
-
-        # test if cwa.product records correctly loaded
-        # find "Boekweit"
-        cwa_prod1 = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
-        self.assertEqual(len(cwa_prod1), 1)
-
-        # decide to load the file that is changed a bit
-        # check if Boekweit record has changed
-        path = os.path.dirname(os.path.realpath(__file__))
-        file2 = os.path.join(path, "data/products_test_modified.xml")
-        count = cwa_product_obj.with_context(new_cursor=False).import_xml_products(
-            file2
-        )
-        self.assertEqual(count, 1)
-        count = cwa_product_obj.search_count([])
-        self.assertEqual(count, 65)
-        cwa_prod2 = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
-        self.assertEqual(len(cwa_prod2), 1)
-        self.assertTrue("EEKHOORNS" in cwa_prod2.ingredienten)
-
-        # translate unknown stuff
-        self.reset_translations()
-        self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod2)
-        ################################################################################
-
-        # Import the Boekweit product into the system,
-        # both product and supplier details
-        cwa_prod2.to_product()
-        self.assertEqual(cwa_prod2.state, "imported")
-
-        # test if product.supplier record correctly loaded
-        supplierinfo_obj = self.env["product.supplierinfo"]
-        supp_info1 = supplierinfo_obj.search([("product_name", "=", "BOEKWEIT")])
-        self.assertEqual(len(supp_info1), 1)
-        # test if empty EAN code results in eancode = False
-        self.assertFalse(supp_info1.eancode)
-        # test Unique_id correctly generated (1007-1001)
-        self.assertEqual(supp_info1.unique_id, "1007-1001")
-        # test if ingangsdatum is correctly loaded (2016-02-11)
-        _date = datetime.date(2016, 2, 11)
-        self.assertEqual(supp_info1.ingangsdatum, _date)
-        self.assertEqual(supp_info1.date_start, _date)
-
-        # Test if products with multiple suppliers are handled correctly
-        # eg. Mango Met Gember, Prinsessen Droom, Sprookjes Rood
-
-        # Prinsessen Droom, eancode: 8711812421205
         cwa_dup1 = cwa_product_obj.search([("eancode", "=", "8711812421205")])
-
-        # Should have separate supplier numbers
-        self.assertNotEqual(
-            cwa_dup1[0].leveranciernummer, cwa_dup1[1].leveranciernummer
-        )
-
-        # Import product and the two suppliers
-        self.translate_brand(cwa_dup1)
-        self.translate_uom(cwa_dup1)
-        self.translate_cblcode(cwa_dup1)
+        self.assertNotEqual(cwa_dup1[0].leveranciernummer, cwa_dup1[1].leveranciernummer)
+        self.add_translations_for_brand_uom_cblcode_and_tax(cwa_dup1)
         for rec in cwa_dup1:
             rec.to_product()
-        prod1 = prod_tmpl_object.search([("eancode", "=", "8711812421205")])
-
-        # Should be 1 product and 2 suppliers
+        prod1 = self.env["product.template"].search([("eancode", "=", "8711812421205")])
         self.assertEqual(len(prod1), 1)
         self.assertEqual(len(prod1.seller_ids), 2)
 
-        # Do the import again, suppliers should not be deleted
+    def test_product_import_cwa_supplier_not_deleted(self):
+        supplierinfo_obj = self.env["product.supplierinfo"]
+        cwa_product_obj = self.env["cwa.product"]
+        self.import_first_file(cwa_product_obj)
         suppliers_before_import = supplierinfo_obj.search_count([])
-        count = cwa_product_obj.with_context(new_cursor=False).import_xml_products(
-            file2
-        )
+
+        self.import_second_file(cwa_product_obj)
+
+        count = self.import_second_file(cwa_product_obj)
         self.assertEqual(count, 0)
         suppliers_after_import = supplierinfo_obj.search_count([])
         self.assertEqual(suppliers_before_import, suppliers_after_import)
 
-        # If some items have been removed from the file, check if they are deleted
+    def test_product_import_cwa_removal(self):
+        cwa_product_obj = self.env["cwa.product"]
+        self.import_first_file(cwa_product_obj)
+        path = os.path.dirname(os.path.realpath(__file__))
         file3 = os.path.join(path, "data/products_test_removed.xml")
-        count = cwa_product_obj.with_context(new_cursor=False).import_xml_products(
-            file3
-        )
+        count = cwa_product_obj.with_context(new_cursor=False).import_xml_products(file3)
         self.assertEqual(count, 1)
         self.assertEqual(cwa_product_obj.search_count([]), 64)
 
