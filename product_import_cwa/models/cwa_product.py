@@ -182,6 +182,19 @@ class CwaProduct(models.Model):
     )
     hash = fields.Char(required=True)
 
+    def write(self, vals):
+        result = super().write(vals)
+        for cwa_product in self:
+            ## Find if this product has been transferred to a supplier info model
+            supplier_info = self.env['product.supplierinfo'].search([
+                ('unique_id', '=', cwa_product.unique_id)
+            ])
+            if supplier_info:
+                vals = {"ingredienten": cwa_product.ingredienten}
+                supplier_info.write(vals)
+        return result
+
+
     @api.model
     def parse_from_xml(self, prod_file):
         cwa_product_model = self.env["cwa.product"]
