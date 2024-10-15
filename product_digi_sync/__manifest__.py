@@ -28,6 +28,7 @@
         "queue_job",
         "sale",
         "product_brand",
+        "product_import_cwa"
     ],
     "installable": True,
 }
