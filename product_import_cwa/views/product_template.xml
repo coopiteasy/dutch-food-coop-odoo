@@ -257,7 +257,7 @@
                                 <group name="group_left">
                                     <field name="aantaldagenhoudbaar" readonly="1" />
                                     <field name="bewaartemperatuur" readonly="1" />
-                                    <field name="gebruikstips" readonly="1" />
+                                    <field name="usage_tips" readonly="1" />
                                 </group>
                                 <group name="group_right">
                                 </group>
