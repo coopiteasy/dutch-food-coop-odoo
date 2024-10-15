@@ -90,6 +90,16 @@ FIELDS_TO_LOAD = FIELDS_TO_SUPPLIER_INFO + (
     (None, "hash"),
 )
 
+KEY_MAPPINGS_CWA_TO_PRODUCT = {
+    "ingredienten": "ingredients",
+}
+
+
+def map_key(key):
+    if key in KEY_MAPPINGS_CWA_TO_PRODUCT:
+        return KEY_MAPPINGS_CWA_TO_PRODUCT[key]
+    return key
+
 
 class CwaProduct(models.Model):
     _name = "cwa.product"
@@ -194,7 +204,7 @@ class CwaProduct(models.Model):
                 ('unique_id', '=', cwa_product.unique_id)
             ])
             if supplier_info:
-                vals = { key: getattr(self, key) for key in FIELDS_TO_SUPPLIER_INFO}
+                vals = { map_key(key): getattr(self, key) for key in FIELDS_TO_SUPPLIER_INFO}
                 supplier_info.write(vals)
         return result
 
@@ -383,7 +393,7 @@ class CwaProduct(models.Model):
             "pluartikel": self.pluartikel,
             "inhoud": self.inhoud,
             'verpakkingce': self.verpakkingce,
-            "ingredienten": self.ingredienten,
+            "ingredients": self.ingredienten,
             "d204": self.d204,
             "d209": self.d209,
             "d210": self.d210,
@@ -451,7 +461,7 @@ class CwaProduct(models.Model):
             "old_consumentenprijs": self.consumentenprijs,
             "ingangsdatum": self.ingangsdatum,
             "herkomst": self.herkomst,
-            "ingredienten": self.ingredienten,
+            "ingredients": self.ingredienten,
             "statiegeld": self.statiegeld,
             "kassaomschrijving": self.kassaomschrijving,
             "plucode": self.plucode,

@@ -26,7 +26,6 @@ class ProductTemplate(models.Model):
     weegschaalartikel = fields.Boolean()
     pluartikel = fields.Boolean()
     herkomst = fields.Char(help="Land van herkomst in vorm ISO 3166 code.")
-    ingredienten = fields.Text(help="Beschrijving van de ingredienten.")
     proefdiervrij = fields.Selection(YESNO_SELECTION)
     vegetarisch = fields.Selection(YESNO_SELECTION)
     veganistisch = fields.Selection(YESNO_SELECTION)

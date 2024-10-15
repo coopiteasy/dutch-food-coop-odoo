@@ -81,7 +81,7 @@
                 </group>
                 <separator string="Ingrediënten" />
                     <group name="ingredienten">
-                        <field name="ingredienten" readonly="1" />
+                        <field name="ingredients" readonly="1" />
                     </group>
                 <separator string="D numbers" colspan="4" />
                 <group name="group_top">

@@ -146,7 +146,7 @@ class TestProductImportCwa(TransactionCase):
             'eenheid': 'KG',
             'verpakkingce': False,
             'herkomst': 'CN',
-            'ingredienten': 'INGREDIENTEN: BOEKWEIT',
+            'ingredients': 'INGREDIENTEN: BOEKWEIT',
             'd204': '0',
             'd209': '0',
             'd210': '0',
@@ -275,4 +275,4 @@ class TestProductImportCwa(TransactionCase):
 
         supplierinfo_obj = self.env["product.supplierinfo"]
         supp_info1 = supplierinfo_obj.search([("product_name", "=", "BOEKWEIT")])
-        self.assertEqual('INGREDIENTENN: BOEKWEIT, EEKHOORNS', supp_info1.ingredienten)
+        self.assertEqual('INGREDIENTENN: BOEKWEIT, EEKHOORNS', supp_info1.ingredients)
