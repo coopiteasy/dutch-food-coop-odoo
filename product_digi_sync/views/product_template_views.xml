@@ -29,6 +29,49 @@
         </field>
     </record>
 
+    <record id="digi_sync_product_template_retailer_view_form" model="ir.ui.view">
+        <field name="name">product_digi_sync.product.template.retailer</field>
+        <field name="model">product.template</field>
+        <field
+            name="inherit_id"
+            ref="product_import_cwa.product_template_retailer_form_view"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='group_top']" position="after">
+                <separator string="Digi integration" />
+                <group name="group_digi_sync">
+                    <group name="digi_left">
+                        <field name="send_to_scale" />
+                        <field
+                            name="is_pieces_article"
+                            attrs="{'invisible': [('send_to_scale', '=', False)]}"
+                        />
+                        <field
+                            name="show_packed_date_on_label"
+                            attrs="{'invisible': [('send_to_scale', '=', False)]}"
+                        />
+                        <field
+                            name="product_origin_id"
+                            attrs="{'invisible': [('send_to_scale', '=', False)]}"
+                        />
+                        <field name="product_brand_id" />
+                        <field
+                            name="plu_code"
+                            attrs="{'required': [('send_to_scale', '=', True)]}"
+                        />
+                        <field name="barcode" />
+                    </group>
+                    <group name="digi_right">
+                        <field name="best_before_days" />
+                        <field name="use_by_days" />
+                        <field name="usage_tips" />
+                        <field name="storage_temperature" />
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
     <record id="action_send_product_image_to_digi" model="ir.actions.server">
         <field name="name">Send image to digi</field>
         <field name="type">ir.actions.server</field>
