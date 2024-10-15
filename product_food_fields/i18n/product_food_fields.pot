@@ -14,6 +14,17 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: product_food_fields
+#: model:ir.model.fields,help:product_food_fields.field_product_supplierinfo__ingredients
+msgid "Beschrijving van de ingredienten."
+msgstr ""
+
+#. module: product_food_fields
+#: model:ir.model.fields,field_description:product_food_fields.field_product_product__best_before_days
+#: model:ir.model.fields,field_description:product_food_fields.field_product_template__best_before_days
+msgid "Best Before Days"
+msgstr ""
+
+#. module: product_food_fields
 #: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_quality__code
 msgid "Code"
 msgstr ""
@@ -29,33 +40,26 @@ msgid "Created on"
 msgstr ""
 
 #. module: product_food_fields
-#: model:ir.model.fields,field_description:product_food_fields.field_product_product__days_until_bad_taste
-#: model:ir.model.fields,field_description:product_food_fields.field_product_template__days_until_bad_taste
-msgid "Days Until Bad Taste"
-msgstr ""
-
-#. module: product_food_fields
-#: model:ir.model.fields,field_description:product_food_fields.field_product_product__days_until_expiry
-#: model:ir.model.fields,field_description:product_food_fields.field_product_template__days_until_expiry
-msgid "Days Until Expiry"
-msgstr ""
-
-#. module: product_food_fields
 #: model_terms:ir.ui.view,arch_db:product_food_fields.food_product_view_form
 msgid "Days until bad taste"
 msgstr ""
 
 #. module: product_food_fields
-#: model:ir.model.fields,help:product_food_fields.field_product_product__days_until_bad_taste
-#: model:ir.model.fields,help:product_food_fields.field_product_template__days_until_bad_taste
-msgid "Days until bad test"
+#: model:ir.model.fields,help:product_food_fields.field_product_product__best_before_days
+#: model:ir.model.fields,help:product_food_fields.field_product_template__best_before_days
+msgid "Days until best before date is reached"
 msgstr ""
 
 #. module: product_food_fields
-#: model:ir.model.fields,help:product_food_fields.field_product_product__days_until_expiry
-#: model:ir.model.fields,help:product_food_fields.field_product_template__days_until_expiry
 #: model_terms:ir.ui.view,arch_db:product_food_fields.food_product_view_form
 msgid "Days until expiration"
+msgstr ""
+
+#. module: product_food_fields
+#: model:ir.model.fields,help:product_food_fields.field_product_product__use_by_days
+#: model:ir.model.fields,help:product_food_fields.field_product_supplierinfo__use_by_days
+#: model:ir.model.fields,help:product_food_fields.field_product_template__use_by_days
+msgid "Days until use by date is reached"
 msgstr ""
 
 #. module: product_food_fields
@@ -80,6 +84,7 @@ msgstr ""
 
 #. module: product_food_fields
 #: model:ir.model.fields,field_description:product_food_fields.field_product_product__ingredients
+#: model:ir.model.fields,field_description:product_food_fields.field_product_supplierinfo__ingredients
 #: model:ir.model.fields,field_description:product_food_fields.field_product_template__ingredients
 #: model_terms:ir.ui.view,arch_db:product_food_fields.food_product_view_form
 msgid "Ingredients"
@@ -146,26 +151,42 @@ msgstr ""
 
 #. module: product_food_fields
 #: model:ir.model.fields,field_description:product_food_fields.field_product_product__storage_temperature
+#: model:ir.model.fields,field_description:product_food_fields.field_product_supplierinfo__storage_temperature
 #: model:ir.model.fields,field_description:product_food_fields.field_product_template__storage_temperature
 msgid "Storage Temperature"
 msgstr ""
 
 #. module: product_food_fields
 #: model:ir.model.fields,help:product_food_fields.field_product_product__storage_temperature
+#: model:ir.model.fields,help:product_food_fields.field_product_supplierinfo__storage_temperature
 #: model:ir.model.fields,help:product_food_fields.field_product_template__storage_temperature
 #: model_terms:ir.ui.view,arch_db:product_food_fields.food_product_view_form
 msgid "Storage temperature in Celcius"
 msgstr ""
 
 #. module: product_food_fields
+#: model:ir.model,name:product_food_fields.model_product_supplierinfo
+msgid "Supplier Pricelist"
+msgstr ""
+
+#. module: product_food_fields
 #: model:ir.model.fields,field_description:product_food_fields.field_product_product__usage_tips
+#: model:ir.model.fields,field_description:product_food_fields.field_product_supplierinfo__usage_tips
 #: model:ir.model.fields,field_description:product_food_fields.field_product_template__usage_tips
 msgid "Usage Tips"
 msgstr ""
 
 #. module: product_food_fields
 #: model:ir.model.fields,help:product_food_fields.field_product_product__usage_tips
+#: model:ir.model.fields,help:product_food_fields.field_product_supplierinfo__usage_tips
 #: model:ir.model.fields,help:product_food_fields.field_product_template__usage_tips
 #: model_terms:ir.ui.view,arch_db:product_food_fields.food_product_view_form
 msgid "Usage tips"
+msgstr ""
+
+#. module: product_food_fields
+#: model:ir.model.fields,field_description:product_food_fields.field_product_product__use_by_days
+#: model:ir.model.fields,field_description:product_food_fields.field_product_supplierinfo__use_by_days
+#: model:ir.model.fields,field_description:product_food_fields.field_product_template__use_by_days
+msgid "Use By Days"
 msgstr ""
