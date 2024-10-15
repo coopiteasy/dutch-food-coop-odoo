@@ -104,6 +104,36 @@ msgstr ""
 #: model:ir.model.fields.selection,name:product_import_cwa.selection__product_supplierinfo__d240__1
 #: model:ir.model.fields.selection,name:product_import_cwa.selection__product_supplierinfo__d241__1
 #: model:ir.model.fields.selection,name:product_import_cwa.selection__product_supplierinfo__d242__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d204__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d209__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d210__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d212__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d213__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d214__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d215__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d216__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d217__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d217b__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d220__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d221__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d221b__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d222__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d223__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d225__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d226__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d228__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d230__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d232__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d234__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d235__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d236__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d237__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d238__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d238b__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d239__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d240__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d241__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d242__1
 msgid "AANWEZIG"
 msgstr ""
 
@@ -118,17 +148,7 @@ msgid "Aantal dagen houdbaar"
 msgstr ""
 
 #. module: product_import_cwa
-#: model:ir.model.fields,help:product_import_cwa.field_product_product__aantaldagenhoudbaar
-#: model:ir.model.fields,help:product_import_cwa.field_product_supplierinfo__aantaldagenhoudbaar
-#: model:ir.model.fields,help:product_import_cwa.field_product_template__aantaldagenhoudbaar
-msgid "Aantal dagen houdbaar."
-msgstr ""
-
-#. module: product_import_cwa
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product__aantaldagenhoudbaar
-#: model:ir.model.fields,field_description:product_import_cwa.field_product_product__aantaldagenhoudbaar
-#: model:ir.model.fields,field_description:product_import_cwa.field_product_supplierinfo__aantaldagenhoudbaar
-#: model:ir.model.fields,field_description:product_import_cwa.field_product_template__aantaldagenhoudbaar
 msgid "Aantaldagenhoudbaar"
 msgstr ""
 
@@ -212,9 +232,6 @@ msgstr ""
 
 #. module: product_import_cwa
 #: model:ir.model.fields,help:product_import_cwa.field_cwa_product__ingredienten
-#: model:ir.model.fields,help:product_import_cwa.field_product_product__ingredienten
-#: model:ir.model.fields,help:product_import_cwa.field_product_supplierinfo__ingredienten
-#: model:ir.model.fields,help:product_import_cwa.field_product_template__ingredienten
 msgid "Beschrijving van de ingredienten."
 msgstr ""
 
@@ -237,17 +254,7 @@ msgstr ""
 
 #. module: product_import_cwa
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product__bewaartemperatuur
-#: model:ir.model.fields,field_description:product_import_cwa.field_product_product__bewaartemperatuur
-#: model:ir.model.fields,field_description:product_import_cwa.field_product_supplierinfo__bewaartemperatuur
-#: model:ir.model.fields,field_description:product_import_cwa.field_product_template__bewaartemperatuur
 msgid "Bewaartemperatuur"
-msgstr ""
-
-#. module: product_import_cwa
-#: model:ir.model.fields,help:product_import_cwa.field_product_product__bewaartemperatuur
-#: model:ir.model.fields,help:product_import_cwa.field_product_supplierinfo__bewaartemperatuur
-#: model:ir.model.fields,help:product_import_cwa.field_product_template__bewaartemperatuur
-msgid "Bewaartemperatuur."
 msgstr ""
 
 #. module: product_import_cwa
@@ -936,17 +943,7 @@ msgstr ""
 
 #. module: product_import_cwa
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product__gebruikstips
-#: model:ir.model.fields,field_description:product_import_cwa.field_product_product__gebruikstips
-#: model:ir.model.fields,field_description:product_import_cwa.field_product_supplierinfo__gebruikstips
-#: model:ir.model.fields,field_description:product_import_cwa.field_product_template__gebruikstips
 msgid "Gebruikstips"
-msgstr ""
-
-#. module: product_import_cwa
-#: model:ir.model.fields,help:product_import_cwa.field_product_product__gebruikstips
-#: model:ir.model.fields,help:product_import_cwa.field_product_supplierinfo__gebruikstips
-#: model:ir.model.fields,help:product_import_cwa.field_product_template__gebruikstips
-msgid "Gebruikstips."
 msgstr ""
 
 #. module: product_import_cwa
@@ -1108,9 +1105,6 @@ msgstr ""
 
 #. module: product_import_cwa
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product__ingredienten
-#: model:ir.model.fields,field_description:product_import_cwa.field_product_product__ingredienten
-#: model:ir.model.fields,field_description:product_import_cwa.field_product_supplierinfo__ingredienten
-#: model:ir.model.fields,field_description:product_import_cwa.field_product_template__ingredienten
 msgid "Ingredienten"
 msgstr ""
 
@@ -1170,6 +1164,10 @@ msgstr ""
 #: model:ir.model.fields.selection,name:product_import_cwa.selection__product_supplierinfo__rauwemelk__1
 #: model:ir.model.fields.selection,name:product_import_cwa.selection__product_supplierinfo__veganistisch__1
 #: model:ir.model.fields.selection,name:product_import_cwa.selection__product_supplierinfo__vegetarisch__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__proefdiervrij__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__rauwemelk__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__veganistisch__1
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__vegetarisch__1
 msgid "JA"
 msgstr ""
 
@@ -1452,6 +1450,36 @@ msgstr ""
 #: model:ir.model.fields.selection,name:product_import_cwa.selection__product_supplierinfo__d240__3
 #: model:ir.model.fields.selection,name:product_import_cwa.selection__product_supplierinfo__d241__3
 #: model:ir.model.fields.selection,name:product_import_cwa.selection__product_supplierinfo__d242__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d204__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d209__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d210__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d212__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d213__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d214__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d215__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d216__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d217__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d217b__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d220__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d221__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d221b__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d222__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d223__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d225__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d226__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d228__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d230__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d232__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d234__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d235__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d236__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d237__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d238__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d238b__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d239__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d240__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d241__3
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d242__3
 msgid "MOGELIJK AANWEZIG"
 msgstr ""
 
@@ -1532,6 +1560,10 @@ msgstr ""
 #: model:ir.model.fields.selection,name:product_import_cwa.selection__product_supplierinfo__rauwemelk__2
 #: model:ir.model.fields.selection,name:product_import_cwa.selection__product_supplierinfo__veganistisch__2
 #: model:ir.model.fields.selection,name:product_import_cwa.selection__product_supplierinfo__vegetarisch__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__proefdiervrij__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__rauwemelk__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__veganistisch__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__vegetarisch__2
 msgid "NEE"
 msgstr ""
 
@@ -1596,6 +1628,36 @@ msgstr ""
 #: model:ir.model.fields.selection,name:product_import_cwa.selection__product_supplierinfo__d240__2
 #: model:ir.model.fields.selection,name:product_import_cwa.selection__product_supplierinfo__d241__2
 #: model:ir.model.fields.selection,name:product_import_cwa.selection__product_supplierinfo__d242__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d204__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d209__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d210__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d212__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d213__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d214__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d215__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d216__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d217__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d217b__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d220__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d221__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d221b__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d222__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d223__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d225__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d226__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d228__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d230__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d232__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d234__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d235__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d236__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d237__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d238__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d238b__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d239__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d240__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d241__2
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d242__2
 msgid "NIET AANWEZIG"
 msgstr ""
 
@@ -1727,6 +1789,40 @@ msgstr ""
 #: model:ir.model.fields.selection,name:product_import_cwa.selection__product_supplierinfo__rauwemelk__0
 #: model:ir.model.fields.selection,name:product_import_cwa.selection__product_supplierinfo__veganistisch__0
 #: model:ir.model.fields.selection,name:product_import_cwa.selection__product_supplierinfo__vegetarisch__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d204__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d209__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d210__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d212__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d213__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d214__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d215__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d216__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d217__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d217b__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d220__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d221__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d221b__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d222__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d223__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d225__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d226__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d228__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d230__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d232__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d234__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d235__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d236__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d237__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d238__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d238b__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d239__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d240__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d241__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__d242__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__proefdiervrij__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__rauwemelk__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__veganistisch__0
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__product_template__vegetarisch__0
 msgid "ONBEKEND"
 msgstr ""
 
