@@ -15,14 +15,8 @@
                             string="Land where the product is produced, an ISO 3166 code"
                         />
                         <field name="usage_tips" string="Usage tips" />
-                        <field
-                            name="days_until_expiry"
-                            string="Days until expiration"
-                        />
-                        <field
-                            name="days_until_bad_taste"
-                            string="Days until bad taste"
-                        />
+                        <field name="use_by_days" string="Days until expiration" />
+                        <field name="best_before_days" string="Days until bad taste" />
                         <field
                             name="storage_temperature"
                             string="Storage temperature in Celcius"

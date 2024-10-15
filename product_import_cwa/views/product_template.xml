@@ -210,7 +210,7 @@
                             <!-- From Preferred Supplier -->
                             <separator string="Ingrediënten" />
                             <group name="ingredienten">
-                                <field name="ingredienten" readonly="1" />
+                                <field name="ingredients" readonly="1" />
                             </group>
                             <group name="group_top">
                                 <group name="group_left">
@@ -255,9 +255,9 @@
                             <separator string="Overige gegevens" />
                             <group name="group_top">
                                 <group name="group_left">
-                                    <field name="aantaldagenhoudbaar" readonly="1" />
-                                    <field name="bewaartemperatuur" readonly="1" />
-                                    <field name="gebruikstips" readonly="1" />
+                                    <field name="use_by_days" readonly="1" />
+                                    <field name="storage_temperature" readonly="1" />
+                                    <field name="usage_tips" readonly="1" />
                                 </group>
                                 <group name="group_right">
                                 </group>

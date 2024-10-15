@@ -167,8 +167,8 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
             }
         )
 
-        expected_days_until_expiry = 15
-        expected_days_until_bad_taste = 7
+        expected_use_by_days = 15
+        expected_best_before_days = 7
 
         expected_payload = self._create_expected_product_payload(
             cost_price=expected_cost_price,
@@ -179,8 +179,8 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
             category_id=test_category.external_digi_id,
             show_packed_date_on_label=True,
             storage_temp=expected_storage_temp,
-            days_until_expiry=expected_days_until_expiry,
-            days_until_bad_taste=expected_days_until_bad_taste,
+            use_by_days=expected_use_by_days,
+            best_before_days=expected_best_before_days,
         )
 
         product = self.env["product.product"].create(
@@ -193,8 +193,8 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
                 "standard_price": 1.5,
                 "show_packed_date_on_label": True,
                 "storage_temperature": expected_storage_temp,
-                "days_until_expiry": expected_days_until_expiry,
-                "days_until_bad_taste": expected_days_until_bad_taste,
+                "use_by_days": expected_use_by_days,
+                "best_before_days": expected_best_before_days,
             }
         )
 
@@ -772,10 +772,10 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
         data["StatusFields"]["TasteDate"] = False
         if kwargs.get("storage_temp"):
             data["MinStorageTemp"] = kwargs.get("storage_temp")
-        if kwargs.get("days_until_expiry"):
+        if kwargs.get("use_by_days"):
             data["StatusFields"]["SellByDate"] = True
-            data["SellByDateAmount"] = kwargs.get("days_until_expiry")
-        if kwargs.get("days_until_bad_taste"):
+            data["SellByDateAmount"] = kwargs.get("use_by_days")
+        if kwargs.get("best_before_days"):
             data["StatusFields"]["TasteDate"] = True
-            data["TasteDateAmount"] = kwargs.get("days_until_bad_taste")
+            data["TasteDateAmount"] = kwargs.get("best_before_days")
         return json.dumps(data)

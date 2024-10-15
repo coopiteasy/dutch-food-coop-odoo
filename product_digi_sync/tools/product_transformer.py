@@ -50,12 +50,12 @@ class ProductTransformer:
         if product.storage_temperature != 0:
             data["StatusFields"]["ShowMinStorageTemp"] = True
             data["MinStorageTemp"] = product.storage_temperature
-        if product.days_until_expiry != 0:
+        if product.use_by_days != 0:
             data["StatusFields"]["SellByDate"] = True
-            data["SellByDateAmount"] = product.days_until_expiry
-        if product.days_until_bad_taste != 0:
+            data["SellByDateAmount"] = product.use_by_days
+        if product.best_before_days != 0:
             data["StatusFields"]["TasteDate"] = True
-            data["TasteDateAmount"] = product.days_until_bad_taste
+            data["TasteDateAmount"] = product.best_before_days
         if product and product.get_current_barcode_rule() is not None:
             barcode_rule = product.get_current_barcode_rule()
             matches = re.match(r"^(\d{2}).*", barcode_rule.pattern)
