@@ -5,6 +5,7 @@ from . import cwa_product_cblcode
 from . import cwa_product_quality
 from . import cwa_product_suppliers
 from . import cwa_product_uom
+from . import cwa_import_product_change
 from . import product_supplierinfo
 from . import product_template
 from . import cwa_vat_tax

@@ -229,6 +229,14 @@ class CwaProduct(models.Model):
             if rec:
                 rec.write(record)
                 count += 1
+                product = self.env['product.template'].search([("unique_id", "=", record["unique_id"])])
+                if product:
+                    self.env['cwa.import.product.change'].create({
+                        "state": "new",
+                        "affected_product_id": product.id,
+                        "current_consumer_price": product.list_price,
+                        "new_consumer_price": rec.consumentenprijs,
+                    })
         return count
 
     @api.model
