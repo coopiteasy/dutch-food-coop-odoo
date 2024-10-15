@@ -9,11 +9,11 @@ class TestProductImportCwa(TransactionCase):
     def setUp(self):
         super().setUp()
         # Set the logging level to WARNING during deletions
-        old_logLevel = logging.getLogger('odoo').level
-        logging.getLogger('odoo').setLevel(logging.WARNING)
+        old_logLevel = logging.getLogger("odoo").level
+        logging.getLogger("odoo").setLevel(logging.WARNING)
         self.env["cwa.product"].search([]).unlink()
         self.env["product.supplierinfo"].search([]).unlink()
-        logging.getLogger('odoo').setLevel(old_logLevel)
+        logging.getLogger("odoo").setLevel(old_logLevel)
 
     def reset_translations(self):
         self.env["product.brand"].search([]).unlink()
@@ -80,7 +80,9 @@ class TestProductImportCwa(TransactionCase):
     def import_second_file(self, cwa_product_obj):
         path = os.path.dirname(os.path.realpath(__file__))
         file2 = os.path.join(path, "data/products_test_modified.xml")
-        count = cwa_product_obj.with_context(new_cursor=False).import_xml_products(file2)
+        count = cwa_product_obj.with_context(new_cursor=False).import_xml_products(
+            file2
+        )
         return count
 
     def test_product_import_cwa_imports_all_records(self):
@@ -99,7 +101,6 @@ class TestProductImportCwa(TransactionCase):
         self.import_first_file(cwa_product_obj)
         cwa_prod1 = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
         self.assertEqual(len(cwa_prod1), 1)
-
 
     def test_product_import_cwa_load_modified_file(self):
         cwa_product_obj = self.env["cwa.product"]
@@ -140,48 +141,50 @@ class TestProductImportCwa(TransactionCase):
 
         expected_product = {
             "unique_id": "1007-1001",
-            'weegschaalartikel': False,
-            'pluartikel': False,
-            'inhoud': "1",
-            'eenheid': 'KG',
-            'verpakkingce': False,
-            'herkomst': 'CN',
-            'ingredients': 'INGREDIENTEN: BOEKWEIT',
-            'd204': '0',
-            'd209': '0',
-            'd210': '0',
-            'd212': '0',
-            'd213': '0',
-            'd214': '0',
-            'd234': '0',
-            'd215': '0',
-            'd239': '0',
-            'd216': '0',
-            'd217': '0',
-            'd217b': '0',
-            'd220': '0',
-            'd221': '0',
-            'd221b': '0',
-            'd222': '0',
-            'd223': '0',
-            'd236': '0',
-            'd235': '0',
-            'd238': '0',
-            'd238b': '0',
-            'd225': '0',
-            'd226': '0',
-            'd228': '0',
-            'd230': '0',
-            'd232': '0',
-            'd237': '0',
-            'd240': '0',
-            'proefdiervrij': '0',
-            'vegetarisch': '0',
-            'veganistisch': '0',
-            'rauwemelk': '0',
+            "weegschaalartikel": False,
+            "pluartikel": False,
+            "inhoud": "1",
+            "eenheid": "KG",
+            "verpakkingce": False,
+            "herkomst": "CN",
+            "ingredients": "INGREDIENTEN: BOEKWEIT",
+            "d204": "0",
+            "d209": "0",
+            "d210": "0",
+            "d212": "0",
+            "d213": "0",
+            "d214": "0",
+            "d234": "0",
+            "d215": "0",
+            "d239": "0",
+            "d216": "0",
+            "d217": "0",
+            "d217b": "0",
+            "d220": "0",
+            "d221": "0",
+            "d221b": "0",
+            "d222": "0",
+            "d223": "0",
+            "d236": "0",
+            "d235": "0",
+            "d238": "0",
+            "d238b": "0",
+            "d225": "0",
+            "d226": "0",
+            "d228": "0",
+            "d230": "0",
+            "d232": "0",
+            "d237": "0",
+            "d240": "0",
+            "proefdiervrij": "0",
+            "vegetarisch": "0",
+            "veganistisch": "0",
+            "rauwemelk": "0",
         }
 
-        actual_product = {key: getattr(imported_product, key, None) for key in expected_product.keys()}
+        actual_product = {
+            key: getattr(imported_product, key, None) for key in expected_product.keys()
+        }
         self.maxDiff = None
         self.assertDictEqual(expected_product, actual_product)
 
@@ -196,10 +199,12 @@ class TestProductImportCwa(TransactionCase):
         imported_product = product_template_object.search([("name", "=", "BOEKWEIT")])
 
         expected_product = {
-            'to_weight': True,
+            "to_weight": True,
         }
 
-        actual_product = {key: getattr(imported_product, key, None) for key in expected_product.keys()}
+        actual_product = {
+            key: getattr(imported_product, key, None) for key in expected_product.keys()
+        }
         self.assertDictEqual(expected_product, actual_product)
 
     def test_product_import_cwa_supplier_info(self):
@@ -223,7 +228,9 @@ class TestProductImportCwa(TransactionCase):
         cwa_product_obj = self.env["cwa.product"]
         self.import_first_file(cwa_product_obj)
         cwa_dup1 = cwa_product_obj.search([("eancode", "=", "8711812421205")])
-        self.assertNotEqual(cwa_dup1[0].leveranciernummer, cwa_dup1[1].leveranciernummer)
+        self.assertNotEqual(
+            cwa_dup1[0].leveranciernummer, cwa_dup1[1].leveranciernummer
+        )
         self.add_translations_for_brand_uom_cblcode_and_tax(cwa_dup1)
         for rec in cwa_dup1:
             rec.to_product()
@@ -249,7 +256,9 @@ class TestProductImportCwa(TransactionCase):
         self.import_first_file(cwa_product_obj)
         path = os.path.dirname(os.path.realpath(__file__))
         file3 = os.path.join(path, "data/products_test_removed.xml")
-        count = cwa_product_obj.with_context(new_cursor=False).import_xml_products(file3)
+        count = cwa_product_obj.with_context(new_cursor=False).import_xml_products(
+            file3
+        )
         self.assertEqual(count, 1)
         self.assertEqual(cwa_product_obj.search_count([]), 64)
 
@@ -275,4 +284,4 @@ class TestProductImportCwa(TransactionCase):
 
         supplierinfo_obj = self.env["product.supplierinfo"]
         supp_info1 = supplierinfo_obj.search([("product_name", "=", "BOEKWEIT")])
-        self.assertEqual('INGREDIENTENN: BOEKWEIT, EEKHOORNS', supp_info1.ingredients)
+        self.assertEqual("INGREDIENTENN: BOEKWEIT, EEKHOORNS", supp_info1.ingredients)

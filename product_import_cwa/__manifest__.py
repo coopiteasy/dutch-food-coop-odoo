@@ -12,7 +12,7 @@
         "l10n_nl",
         "product_brand",
         "uom",
-        "product_food_fields"
+        "product_food_fields",
     ],
     "data": [
         "data/res_partner.xml",

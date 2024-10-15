@@ -1,7 +1,11 @@
 import logging
 
 from odoo import api, fields, models
-from odoo.addons.product_import_cwa.models.utils import YESNO_SELECTION, PRESENCE_SELECTION
+
+from .utils import (
+    PRESENCE_SELECTION,
+    YESNO_SELECTION,
+)
 
 _logger = logging.getLogger(__name__)
 

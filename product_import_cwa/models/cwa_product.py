@@ -203,14 +203,15 @@ class CwaProduct(models.Model):
         result = super().write(vals)
         for cwa_product in self:
             ## Find if this product has been transferred to a supplier info model
-            supplier_info = self.env['product.supplierinfo'].search([
-                ('unique_id', '=', cwa_product.unique_id)
-            ])
+            supplier_info = self.env["product.supplierinfo"].search(
+                [("unique_id", "=", cwa_product.unique_id)]
+            )
             if supplier_info:
-                vals = { map_key(key): getattr(self, key) for key in FIELDS_TO_SUPPLIER_INFO}
+                vals = {
+                    map_key(key): getattr(self, key) for key in FIELDS_TO_SUPPLIER_INFO
+                }
                 supplier_info.write(vals)
         return result
-
 
     @api.model
     def parse_from_xml(self, prod_file):
@@ -395,7 +396,7 @@ class CwaProduct(models.Model):
             "to_weight": self.wichtartikel,
             "pluartikel": self.pluartikel,
             "inhoud": self.inhoud,
-            'verpakkingce': self.verpakkingce,
+            "verpakkingce": self.verpakkingce,
             "ingredients": self.ingredienten,
             "usage_tips": self.gebruikstips,
             "storage_temperature": self.bewaartemperatuur,
