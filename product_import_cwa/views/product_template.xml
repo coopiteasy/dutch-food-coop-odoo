@@ -255,7 +255,7 @@
                             <separator string="Overige gegevens" />
                             <group name="group_top">
                                 <group name="group_left">
-                                    <field name="aantaldagenhoudbaar" readonly="1" />
+                                    <field name="use_by_days" readonly="1" />
                                     <field name="storage_temperature" readonly="1" />
                                     <field name="usage_tips" readonly="1" />
                                 </group>
