@@ -103,6 +103,11 @@ msgid "Digi image id must be unique."
 msgstr ""
 
 #. module: product_digi_sync
+#: model_terms:ir.ui.view,arch_db:product_digi_sync.digi_sync_product_template_retailer_view_form
+msgid "Digi integration"
+msgstr ""
+
+#. module: product_digi_sync
 #: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_digi_client__display_name
 #: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_product_origin__display_name
 msgid "Display Name"
