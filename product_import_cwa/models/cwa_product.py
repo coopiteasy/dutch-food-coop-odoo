@@ -94,6 +94,7 @@ KEY_MAPPINGS_CWA_TO_PRODUCT = {
     "ingredienten": "ingredients",
     "gebruikstips": "usage_tips",
     "bewaartemperatuur": "storage_temperature",
+    "aantaldagenhoudbaar": "use_by_days",
 }
 
 
@@ -398,6 +399,7 @@ class CwaProduct(models.Model):
             "ingredients": self.ingredienten,
             "usage_tips": self.gebruikstips,
             "storage_temperature": self.bewaartemperatuur,
+            "use_by_days": self.aantaldagenhoudbaar,
             "d204": self.d204,
             "d209": self.d209,
             "d210": self.d210,
@@ -474,7 +476,7 @@ class CwaProduct(models.Model):
             "keurmerkbio": self.keurmerkbio,
             "keurmerkoverig": self.keurmerkoverig,
             "herkomstregio": self.herkomstregio,
-            "aantaldagenhoudbaar": self.aantaldagenhoudbaar,
+            "use_by_days": self.aantaldagenhoudbaar,
             "storage_temperature": self.bewaartemperatuur,
             "usage_tips": self.gebruikstips,
             "lengte": self.lengte,
