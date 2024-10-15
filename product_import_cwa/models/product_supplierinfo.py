@@ -36,8 +36,6 @@ class ProductSupplierInfo(models.Model):
     ingangsdatum = fields.Date(help="Ingangsdatum van product.")
     ## TODO: doubles origin field in product_food_fields
     herkomst = fields.Char(help="Land van herkomst in vorm ISO 3166 code.")
-    ## TODO: doubles ingredients field in product_food_fields
-    ingredienten = fields.Text(help="Beschrijving van de ingredienten.")
     statiegeld = fields.Float(help="Statiegeldbedrag.")
     omschrijving = fields.Char(help="Omschrijving van het product.")
     kassaomschrijving = fields.Char(

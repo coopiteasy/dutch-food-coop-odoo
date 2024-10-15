@@ -210,7 +210,7 @@
                             <!-- From Preferred Supplier -->
                             <separator string="Ingrediënten" />
                             <group name="ingredienten">
-                                <field name="ingredienten" readonly="1" />
+                                <field name="ingredients" readonly="1" />
                             </group>
                             <group name="group_top">
                                 <group name="group_left">
