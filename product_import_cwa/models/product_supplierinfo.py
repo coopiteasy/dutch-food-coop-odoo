@@ -53,8 +53,6 @@ class ProductSupplierInfo(models.Model):
     aantaldagenhoudbaar = fields.Char(help="Aantal dagen houdbaar.")
     ## TODO: doubles storage_temperature field in product_food_fields
     bewaartemperatuur = fields.Char(help="Bewaartemperatuur.")
-    ## TODO: doubles usage_tips field in product_food_fields
-    gebruikstips = fields.Char(help="Gebruikstips.")
     lengte = fields.Char(help="Lengte.")
     breedte = fields.Char(help="Breedte.")
     hoogte = fields.Char(help="Hoogte.")

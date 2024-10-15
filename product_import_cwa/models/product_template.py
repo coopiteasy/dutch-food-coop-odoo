@@ -63,7 +63,6 @@ class ProductTemplate(models.Model):
     d242 = fields.Selection(PRESENCE_SELECTION, help="Weekdieren.")
     aantaldagenhoudbaar = fields.Char(help="Aantal dagen houdbaar.")
     bewaartemperatuur = fields.Char(help="Bewaartemperatuur.")
-    gebruikstips = fields.Char(help="Gebruikstips.")
     verpakkingce = fields.Char(help="Verpakking van consumenteneenheid.")
     price_per_standard_unit = fields.Float(
         "Price per Standard Unit", compute="_compute_price_per_su"
