@@ -6,3 +6,4 @@ class ProductSupplierInfo(models.Model):
 
     ingredients = fields.Text(help="Beschrijving van de ingredienten.")
     usage_tips = fields.Char(help="Usage tips")
+    storage_temperature = fields.Integer(help="Storage temperature in Celcius")

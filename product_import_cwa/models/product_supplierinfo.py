@@ -51,8 +51,6 @@ class ProductSupplierInfo(models.Model):
     ## in product_food_fields
     ## This field is not available in the data!
     aantaldagenhoudbaar = fields.Char(help="Aantal dagen houdbaar.")
-    ## TODO: doubles storage_temperature field in product_food_fields
-    bewaartemperatuur = fields.Char(help="Bewaartemperatuur.")
     lengte = fields.Char(help="Lengte.")
     breedte = fields.Char(help="Breedte.")
     hoogte = fields.Char(help="Hoogte.")

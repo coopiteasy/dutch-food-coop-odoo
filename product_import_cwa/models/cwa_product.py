@@ -92,7 +92,8 @@ FIELDS_TO_LOAD = FIELDS_TO_SUPPLIER_INFO + (
 
 KEY_MAPPINGS_CWA_TO_PRODUCT = {
     "ingredienten": "ingredients",
-    "gebruikstips": "usage_tips"
+    "gebruikstips": "usage_tips",
+    "bewaartemperatuur": "storage_temperature",
 }
 
 
@@ -396,6 +397,7 @@ class CwaProduct(models.Model):
             'verpakkingce': self.verpakkingce,
             "ingredients": self.ingredienten,
             "usage_tips": self.gebruikstips,
+            "storage_temperature": self.bewaartemperatuur,
             "d204": self.d204,
             "d209": self.d209,
             "d210": self.d210,
@@ -473,7 +475,7 @@ class CwaProduct(models.Model):
             "keurmerkoverig": self.keurmerkoverig,
             "herkomstregio": self.herkomstregio,
             "aantaldagenhoudbaar": self.aantaldagenhoudbaar,
-            "bewaartemperatuur": self.bewaartemperatuur,
+            "storage_temperature": self.bewaartemperatuur,
             "usage_tips": self.gebruikstips,
             "lengte": self.lengte,
             "breedte": self.breedte,
