@@ -169,13 +169,13 @@ class XMLProductLoader:
 
     @staticmethod
     def detect_encoding(xml_file):
-        with open(xml_file, 'rb') as file:
+        with open(xml_file, "rb") as file:
             # Read the first 1024 bytes to catch the encoding declaration
-            first_part = file.read(1024).decode('ascii', errors='ignore')
+            first_part = file.read(1024).decode("ascii", errors="ignore")
         match = re.search(r'encoding="(.+?)"', first_part)
         if match:
             return match.group(1)
-        return 'UTF-8'  # Default encoding if none is specified
+        return "UTF-8"  # Default encoding if none is specified
 
     def parse_from_xml(self, prod_file):
         # make a dict with existing products by unique_id
