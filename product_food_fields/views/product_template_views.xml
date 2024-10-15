@@ -16,11 +16,11 @@
                         />
                         <field name="usage_tips" string="Usage tips" />
                         <field
-                            name="days_until_expiry"
+                            name="use_by_days"
                             string="Days until expiration"
                         />
                         <field
-                            name="days_until_bad_taste"
+                            name="best_before_days"
                             string="Days until bad taste"
                         />
                         <field
