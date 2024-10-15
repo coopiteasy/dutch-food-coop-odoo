@@ -11,8 +11,8 @@ _logger = logging.getLogger(__name__)
 
 CHUNKSIZE = 50
 
-# Which fields to load from XML
-FIELDS_TO_LOAD = (
+# Fields to transfer to supplier info
+FIELDS_TO_SUPPLIER_INFO = (
     "eancode",
     "omschrijving",
     "weegschaalartikel",
@@ -82,6 +82,10 @@ FIELDS_TO_LOAD = (
     "d242",
     "pos_categ_id",
     "leveranciernummer",
+)
+
+# Which fields to load from XML
+FIELDS_TO_LOAD = FIELDS_TO_SUPPLIER_INFO + (
     (None, "unique_id"),
     (None, "hash"),
 )
@@ -190,7 +194,7 @@ class CwaProduct(models.Model):
                 ('unique_id', '=', cwa_product.unique_id)
             ])
             if supplier_info:
-                vals = {"ingredienten": cwa_product.ingredienten}
+                vals = { key: getattr(self, key) for key in FIELDS_TO_SUPPLIER_INFO}
                 supplier_info.write(vals)
         return result
 
