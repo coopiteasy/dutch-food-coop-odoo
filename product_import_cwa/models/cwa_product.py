@@ -362,6 +362,7 @@ class CwaProduct(models.Model):
             "eenheid": self.eenheid,
             "herkomst": self.herkomst,
             "weegschaalartikel": self.weegschaalartikel,
+            "to_weight": self.wichtartikel,
             "pluartikel": self.pluartikel,
             "inhoud": self.inhoud,
             'verpakkingce': self.verpakkingce,

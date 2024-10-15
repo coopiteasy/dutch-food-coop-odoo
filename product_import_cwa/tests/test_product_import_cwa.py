@@ -196,11 +196,10 @@ class TestProductImportCwa(TransactionCase):
         imported_product = product_template_object.search([("name", "=", "BOEKWEIT")])
 
         expected_product = {
-            'wichtartikel': True,
+            'to_weight': True,
         }
 
         actual_product = {key: getattr(imported_product, key, None) for key in expected_product.keys()}
-        self.maxDiff = None
         self.assertDictEqual(expected_product, actual_product)
 
     def test_product_import_cwa_supplier_info(self):
