@@ -10,6 +10,7 @@
                     widget="many2one"
                     context="{'form_view_ref': 'product_import_cwa.product_template_retailer_form_view'}"
                 />
+                <field name="changed_fields" />
                 <field name="current_consumer_price"/>
                 <field name="new_consumer_price"/>
                 <field name="state" />

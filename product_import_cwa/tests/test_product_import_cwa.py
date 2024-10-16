@@ -11,6 +11,7 @@ class TestProductImportCwa(TransactionCase):
         # Set the logging level to WARNING during deletions
         old_logLevel = logging.getLogger("odoo").level
         logging.getLogger("odoo").setLevel(logging.WARNING)
+        self.env["cwa.import.product.change"].search([]).unlink()
         self.env["cwa.product"].search([]).unlink()
         self.env["product.supplierinfo"].search([]).unlink()
         logging.getLogger("odoo").setLevel(old_logLevel)
@@ -391,3 +392,20 @@ class TestProductImportCwa(TransactionCase):
 
 
         self.import_second_file(cwa_product_obj)
+
+    def test_a_changed_record_has_a_computed_field_for_changed_fields(self):
+        cwa_product_obj = self.env["cwa.product"]
+        self.import_first_file(cwa_product_obj)
+        cwa_prod = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
+        self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod)
+        cwa_prod.to_product()
+
+        imported_product = self.env["product.template"].search([("name", "=", "BOEKWEIT")])
+
+        self.import_second_file(cwa_product_obj)
+
+        import_result = self.env['cwa.import.product.change'].search([('affected_product_id', "=", imported_product.id)])
+
+        changed_fields = "list_price, ingredients"
+
+        self.assertEqual(changed_fields, import_result.changed_fields)
