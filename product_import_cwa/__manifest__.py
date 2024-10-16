@@ -25,6 +25,7 @@
         "views/product_template.xml",
         "views/product_supplierinfo.xml",
         "views/cwa_import_action.xml",
+        "views/cwa_import_product_change.xml",
         "views/cwa_product_brands.xml",
         "views/cwa_product_cblcode.xml",
         "views/cwa_product_quality.xml",
