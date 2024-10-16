@@ -5,9 +5,14 @@
         <field name="model">cwa.import.product.change</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="affected_product_id"/>
+                <field
+                    name="affected_product_id"
+                    widget="many2one"
+                    context="{'form_view_ref': 'product_import_cwa.product_template_retailer_form_view'}"
+                />
                 <field name="current_consumer_price"/>
                 <field name="new_consumer_price"/>
+                <field name="state" />
             </tree>
         </field>
     </record>
@@ -26,3 +31,4 @@
     />
 
 </odoo>
+
