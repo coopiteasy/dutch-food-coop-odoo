@@ -9,5 +9,6 @@ class CwaImportProductChange(models.Model):
         ('processed', 'Processed'),
     ], string="State", default='new', required=True)
     affected_product_id = fields.Many2one('product.template', string="Affected Product", required=True)
+    source_cwa_product_id = fields.Many2one('cwa.product', string="Source cwa product", required=True)
     current_consumer_price = fields.Float(string="Current Consumer Price", required=True)
     new_consumer_price = fields.Float(string="New Consumer Price", required=True)
