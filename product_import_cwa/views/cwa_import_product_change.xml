@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_cwa_import_product_change_tree" model="ir.ui.view">
+        <field name="name">cwa.import.product.change.tree</field>
+        <field name="model">cwa.import.product.change</field>
+        <field name="arch" type="xml">
+            <tree editable="top" create="false">
+                <field name="create_date" readonly="1" />
+                <field
+                    name="affected_product_id"
+                    widget="many2one"
+                    context="{'form_view_ref': 'product_import_cwa.product_template_retailer_form_view'}"
+                />
+                <field name="product_supplierinfo_supplier" readonly="1" />
+                <field name="changed_fields" readonly="1" />
+                <field
+                    name="product_supplierinfo_cost_price"
+                    string="Cost price"
+                    readonly="1"
+                />
+                <field
+                    name="product_supplierinfo_list_price"
+                    string="New suggested price"
+                    readonly="1"
+                />
+                <field name="affected_product_id_list_price" string="Current price" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_cwa_import_product_change_form" model="ir.ui.view">
+        <field name="name">cwa.import.product.change.form</field>
+        <field name="model">cwa.import.product.change</field>
+        <field name="arch" type="xml">
+            <form string="VWA product change form view">
+                <sheet>
+                    <field name="changed_fields" readonly="1" />
+                    <group name="ingredients">
+                        <group name="ingredients_left">
+                            <field name="affected_product_id_ingredients" />
+                        </group>
+                        <group name="ingredients_right">
+                            <field name="affected_product_id_ingredients" />
+                        </group>
+                    </group>
+                    <group name="price">
+                        <group name="price_left">
+
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_cwa_import_product_change" model="ir.actions.act_window">
+        <field name="name">CWA - Import changes</field>
+        <field name="res_model">cwa.import.product.change</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_cwa_import_product_change_form" model="ir.actions.act_window">
+        <field name="name">Product Change Form</field>
+        <field name="res_model">cwa.import.product.change</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_cwa_import_product_change_form" />
+        <field name="target">new</field>
+    </record>
+
+    <menuitem
+        id="menu_imported_changes"
+        action="action_cwa_import_product_change"
+        parent="sale.sale_menu_root"
+        sequence="6"
+    />
+
+</odoo>
