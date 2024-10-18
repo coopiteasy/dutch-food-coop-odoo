@@ -26,7 +26,6 @@ class CwaImportProductChange(models.Model):
     product_supplierinfo_id = fields.Many2one(
         "product.supplierinfo",
         compute="_compute_product_supplierinfo",
-        search="_search_product_supplierinfo",
         stored=False,
     )
 
@@ -68,7 +67,7 @@ class CwaImportProductChange(models.Model):
                 )
 
     @api.depends("source_cwa_product_id")
-    def _search_product_supplierinfo(self):
+    def _compute_product_supplierinfo(self):
         for record in self:
             if record.source_cwa_product_id:
                 supplier_info = self.env["product.supplierinfo"].search(
@@ -80,10 +79,6 @@ class CwaImportProductChange(models.Model):
                 )
             else:
                 record.product_supplierinfo_id = False
-
-    @api.depends("source_cwa_product_id")
-    def _compute_product_supplierinfo(self):
-        self._search_product_supplierinfo(self)
 
     @api.depends("current_consumer_price", "new_consumer_price")
     def _compute_changed_fields(self):
