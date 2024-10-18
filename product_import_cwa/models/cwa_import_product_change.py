@@ -34,6 +34,9 @@ class CwaImportProductChange(models.Model):
         store=True
     )
     product_supplierinfo_list_price = fields.Float(related="product_supplierinfo_id.consumentenprijs")
+    product_supplierinfo_cost_price = fields.Float(related="product_supplierinfo_id.inkoopprijs")
+    product_supplierinfo_supplier = fields.Many2one(related="product_supplierinfo_id.partner_id")
+
 
     @api.depends('affected_product_id.list_price')
     def _compute_affected_product_id_list_price(self):

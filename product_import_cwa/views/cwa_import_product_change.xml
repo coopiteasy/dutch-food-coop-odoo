@@ -5,14 +5,16 @@
         <field name="model">cwa.import.product.change</field>
         <field name="arch" type="xml">
             <tree editable="top" create="false">
-                <button name="open_form_view" type="object" string="Open Form View" class="btn-primary"/>
+                <field name="create_date" readonly="1" />
                 <field
                     name="affected_product_id"
                     widget="many2one"
                     context="{'form_view_ref': 'product_import_cwa.product_template_retailer_form_view'}"
                 />
+                <field name="product_supplierinfo_supplier" readonly="1"/>
                 <field name="changed_fields" readonly="1"/>
-                <field name="product_supplierinfo_list_price" string="New price"/>
+                <field name="product_supplierinfo_cost_price" string="Cost price" readonly="1"/>
+                <field name="product_supplierinfo_list_price" string="New suggested price" readonly="1"/>
                 <field name="affected_product_id_list_price" string="Current price"/>
                 <field name="state" />
             </tree>
