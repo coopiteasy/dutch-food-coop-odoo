@@ -89,8 +89,10 @@ class ProductTemplate(DigiSyncBaseModel, models.Model):
         for product_template in self:
             if product_template.should_send_to_digi():
                 product_template.send_to_digi()
-                product_template.send_image_to_digi()
-                product_template.send_quality_image_to_digi()
+                if "image_1920" in vals.keys():
+                    product_template.send_image_to_digi()
+                if "product_quality_id" in vals.keys():
+                    product_template.send_quality_image_to_digi()
         return result
 
     @api.model

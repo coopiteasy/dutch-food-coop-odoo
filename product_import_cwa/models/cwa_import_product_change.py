@@ -93,7 +93,7 @@ class CwaImportProductChange(models.Model):
                 product_ids = [supplier_info.id]
 
         # Craft a domain that links back to the desired records
-        domain = [('id', 'in', product_ids)]
+        domain = [("id", "in", product_ids)]
         return domain
 
     @api.depends("current_consumer_price", "new_consumer_price")
