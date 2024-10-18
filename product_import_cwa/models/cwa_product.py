@@ -233,7 +233,9 @@ class CwaProduct(models.Model):
         return count
 
     def _detect_product_changes(self, cwa_product):
-        product = self.env['product.template'].search([("unique_id", "=", cwa_product.unique_id)])
+        product = self.env["product.template"].search(
+            [("unique_id", "=", cwa_product.unique_id)]
+        )
         if product:
             if cwa_product.consumentenprijs != product.list_price:
                 new_vals = {
@@ -243,9 +245,11 @@ class CwaProduct(models.Model):
                     "current_consumer_price": product.list_price,
                     "new_consumer_price": cwa_product.consumentenprijs,
                 }
-                cwa_import_product_change_model = self.env['cwa.import.product.change']
+                cwa_import_product_change_model = self.env["cwa.import.product.change"]
                 # Try to find an existing change model
-                existing = cwa_import_product_change_model.search([('affected_product_id.unique_id', '=', cwa_product.unique_id)])
+                existing = cwa_import_product_change_model.search(
+                    [("affected_product_id.unique_id", "=", cwa_product.unique_id)]
+                )
                 if existing:
                     existing.write(new_vals)
                 else:
