@@ -4,24 +4,58 @@
         <field name="name">cwa.import.product.change.tree</field>
         <field name="model">cwa.import.product.change</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree editable="top" create="false">
+                <button name="open_form_view" type="object" string="Open Form View" class="btn-primary"/>
                 <field
                     name="affected_product_id"
                     widget="many2one"
                     context="{'form_view_ref': 'product_import_cwa.product_template_retailer_form_view'}"
                 />
-                <field name="changed_fields" />
-                <field name="current_consumer_price"/>
-                <field name="new_consumer_price"/>
+                <field name="changed_fields" readonly="1"/>
+                <field name="product_supplierinfo_list_price" string="New price"/>
+                <field name="affected_product_id_list_price" string="Current price"/>
                 <field name="state" />
             </tree>
+        </field>
+    </record>
+
+    <record id="view_cwa_import_product_change_form" model="ir.ui.view">
+        <field name="name">cwa.import.product.change.form</field>
+        <field name="model">cwa.import.product.change</field>
+        <field name="arch" type="xml">
+            <form string="VWA product change form view">
+                <sheet>
+                    <field name="changed_fields" readonly="1" />
+                    <group name="ingredients">
+                        <group name="ingredients_left">
+                            <field name="affected_product_id_ingredients" />
+                        </group>
+                        <group name="ingredients_right">
+                            <field name="affected_product_id_ingredients" />
+                        </group>
+                    </group>
+                    <group name="price">
+                        <group name="price_left">
+
+                        </group>
+                    </group>
+                </sheet>
+            </form>
         </field>
     </record>
 
     <record id="action_cwa_import_product_change" model="ir.actions.act_window">
         <field name="name">CWA - Import changes</field>
         <field name="res_model">cwa.import.product.change</field>
-        <field name="view_mode">tree</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_cwa_import_product_change_form" model="ir.actions.act_window">
+        <field name="name">Product Change Form</field>
+        <field name="res_model">cwa.import.product.change</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_cwa_import_product_change_form"/>
+        <field name="target">new</field>
     </record>
 
     <menuitem
