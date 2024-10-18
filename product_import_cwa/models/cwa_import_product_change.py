@@ -26,6 +26,7 @@ class CwaImportProductChange(models.Model):
     product_supplierinfo_id = fields.Many2one(
         "product.supplierinfo",
         compute="_compute_product_supplierinfo",
+        search="_search_product_supplierinfo",
         stored=False,
     )
 
@@ -79,6 +80,21 @@ class CwaImportProductChange(models.Model):
                 )
             else:
                 record.product_supplierinfo_id = False
+
+    def _search_product_supplierinfo(self, operator, value):
+        product_ids = []  # List to accumulate product IDs matching the search criteria
+
+        if self.source_cwa_product_id:
+            supplier_info = self.env["product.supplierinfo"].search(
+                [("unique_id", "=", self.source_cwa_product_id.unique_id)],
+                limit=1,
+            )
+            if supplier_info:
+                product_ids = [supplier_info.id]
+
+        # Craft a domain that links back to the desired records
+        domain = [("id", "in", product_ids)]
+        return domain
 
     @api.depends("current_consumer_price", "new_consumer_price")
     def _compute_changed_fields(self):
