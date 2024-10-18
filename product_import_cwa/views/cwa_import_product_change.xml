@@ -11,11 +11,19 @@
                     widget="many2one"
                     context="{'form_view_ref': 'product_import_cwa.product_template_retailer_form_view'}"
                 />
-                <field name="product_supplierinfo_supplier" readonly="1"/>
-                <field name="changed_fields" readonly="1"/>
-                <field name="product_supplierinfo_cost_price" string="Cost price" readonly="1"/>
-                <field name="product_supplierinfo_list_price" string="New suggested price" readonly="1"/>
-                <field name="affected_product_id_list_price" string="Current price"/>
+                <field name="product_supplierinfo_supplier" readonly="1" />
+                <field name="changed_fields" readonly="1" />
+                <field
+                    name="product_supplierinfo_cost_price"
+                    string="Cost price"
+                    readonly="1"
+                />
+                <field
+                    name="product_supplierinfo_list_price"
+                    string="New suggested price"
+                    readonly="1"
+                />
+                <field name="affected_product_id_list_price" string="Current price" />
                 <field name="state" />
             </tree>
         </field>
@@ -56,7 +64,7 @@
         <field name="name">Product Change Form</field>
         <field name="res_model">cwa.import.product.change</field>
         <field name="view_mode">form</field>
-        <field name="view_id" ref="view_cwa_import_product_change_form"/>
+        <field name="view_id" ref="view_cwa_import_product_change_form" />
         <field name="target">new</field>
     </record>
 
@@ -68,4 +76,3 @@
     />
 
 </odoo>
-

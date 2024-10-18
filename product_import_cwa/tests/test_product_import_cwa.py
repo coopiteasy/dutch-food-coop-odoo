@@ -295,18 +295,24 @@ class TestProductImportCwa(TransactionCase):
         supp_info1 = supplierinfo_obj.search([("product_name", "=", "BOEKWEIT")])
         self.assertEqual("INGREDIENTENN: BOEKWEIT, EEKHOORNS", supp_info1.ingredients)
 
-    def test_only_one_changed_record_is_created_when_an_imported_product_is_updated(self):
+    def test_only_one_changed_record_is_created_when_an_imported_product_is_updated(
+        self
+    ):
         cwa_product_obj = self.env["cwa.product"]
         self.import_first_file(cwa_product_obj)
         cwa_prod = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
         self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod)
         cwa_prod.to_product()
 
-        imported_product = self.env["product.template"].search([("name", "=", "BOEKWEIT")])
+        imported_product = self.env["product.template"].search(
+            [("name", "=", "BOEKWEIT")]
+        )
 
         self.import_second_file(cwa_product_obj)
 
-        import_result = self.env['cwa.import.product.change'].search([('affected_product_id', "=", imported_product.id)])
+        import_result = self.env["cwa.import.product.change"].search(
+            [("affected_product_id", "=", imported_product.id)]
+        )
 
         self.assertEqual(len(import_result), 1)
 
@@ -317,11 +323,15 @@ class TestProductImportCwa(TransactionCase):
         self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod)
         cwa_prod.to_product()
 
-        imported_product = self.env["product.template"].search([("name", "=", "BOEKWEIT")])
+        imported_product = self.env["product.template"].search(
+            [("name", "=", "BOEKWEIT")]
+        )
 
         self.import_second_file(cwa_product_obj)
 
-        import_result = self.env['cwa.import.product.change'].search([('affected_product_id', "=", imported_product.id)])
+        import_result = self.env["cwa.import.product.change"].search(
+            [("affected_product_id", "=", imported_product.id)]
+        )
 
         expected_result = {
             "state": "new",
@@ -331,25 +341,33 @@ class TestProductImportCwa(TransactionCase):
         }
 
         actual_result = {
-            key: getattr(import_result, key, None) for key in expected_result.keys() if key != "affected_product_id"
+            key: getattr(import_result, key, None)
+            for key in expected_result.keys()
+            if key != "affected_product_id"
         }
         actual_result["affected_product_id"] = import_result.affected_product_id.id
 
         self.assertDictEqual(expected_result, actual_result)
 
-    def test_a_changed_record_is_changed_when_an_imported_product_is_updated_again(self):
+    def test_a_changed_record_is_changed_when_an_imported_product_is_updated_again(
+        self
+    ):
         cwa_product_obj = self.env["cwa.product"]
         self.import_first_file(cwa_product_obj)
         cwa_prod = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
         self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod)
         cwa_prod.to_product()
 
-        imported_product = self.env["product.template"].search([("name", "=", "BOEKWEIT")])
+        imported_product = self.env["product.template"].search(
+            [("name", "=", "BOEKWEIT")]
+        )
 
         self.import_second_file(cwa_product_obj)
         self.import_third_file(cwa_product_obj)
 
-        import_result = self.env['cwa.import.product.change'].search([('affected_product_id', "=", imported_product.id)])
+        import_result = self.env["cwa.import.product.change"].search(
+            [("affected_product_id", "=", imported_product.id)]
+        )
 
         expected_result = {
             "state": "new",
@@ -359,37 +377,42 @@ class TestProductImportCwa(TransactionCase):
         }
 
         actual_result = {
-            key: getattr(import_result, key, None) for key in expected_result.keys() if key != "affected_product_id"
+            key: getattr(import_result, key, None)
+            for key in expected_result.keys()
+            if key != "affected_product_id"
         }
         actual_result["affected_product_id"] = import_result.affected_product_id.id
 
         self.assertDictEqual(expected_result, actual_result)
 
-    def test_both_the_cwa_product_as_the_product_template_are_written_in_a_change_record(self):
+    def test_cwa_product_and_the_product_template_are_written(self):
         cwa_product_obj = self.env["cwa.product"]
         self.import_first_file(cwa_product_obj)
         cwa_prod = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
         self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod)
         cwa_prod.to_product()
 
-        imported_product = self.env["product.template"].search([("name", "=", "BOEKWEIT")])
+        imported_product = self.env["product.template"].search(
+            [("name", "=", "BOEKWEIT")]
+        )
 
         self.import_second_file(cwa_product_obj)
 
         expected_result = {
             "affected_product_id": imported_product.id,
-            "source_cwa_product_id": cwa_prod.id
+            "source_cwa_product_id": cwa_prod.id,
         }
 
-        import_result = self.env['cwa.import.product.change'].search([('affected_product_id', "=", imported_product.id)])
+        import_result = self.env["cwa.import.product.change"].search(
+            [("affected_product_id", "=", imported_product.id)]
+        )
 
         actual_result = {
             "affected_product_id": import_result.affected_product_id.id,
-            "source_cwa_product_id": import_result.source_cwa_product_id.id
+            "source_cwa_product_id": import_result.source_cwa_product_id.id,
         }
 
         self.assertDictEqual(expected_result, actual_result)
-
 
         self.import_second_file(cwa_product_obj)
 
@@ -400,11 +423,15 @@ class TestProductImportCwa(TransactionCase):
         self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod)
         cwa_prod.to_product()
 
-        imported_product = self.env["product.template"].search([("name", "=", "BOEKWEIT")])
+        imported_product = self.env["product.template"].search(
+            [("name", "=", "BOEKWEIT")]
+        )
 
         self.import_second_file(cwa_product_obj)
 
-        import_result = self.env['cwa.import.product.change'].search([('affected_product_id', "=", imported_product.id)])
+        import_result = self.env["cwa.import.product.change"].search(
+            [("affected_product_id", "=", imported_product.id)]
+        )
 
         changed_fields = "list_price, ingredients"
 
