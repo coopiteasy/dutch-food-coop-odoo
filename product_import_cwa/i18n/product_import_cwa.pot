@@ -153,14 +153,21 @@ msgid "Aantaldagenhoudbaar"
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__product_supplierinfo_list_price
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product__consumentenprijs
 #: model:ir.model.fields,field_description:product_import_cwa.field_product_supplierinfo__consumentenprijs
 msgid "Adviesprijs"
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,help:product_import_cwa.field_cwa_import_product_change__product_supplierinfo_list_price
 #: model:ir.model.fields,help:product_import_cwa.field_product_supplierinfo__consumentenprijs
 msgid "Adviesprijs."
+msgstr ""
+
+#. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__affected_product_id
+msgid "Affected Product"
 msgstr ""
 
 #. module: product_import_cwa
@@ -231,6 +238,7 @@ msgid "BTW percentage 0, 6 of 21."
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,help:product_import_cwa.field_cwa_import_product_change__product_supplierinfo_ingredients
 #: model:ir.model.fields,help:product_import_cwa.field_cwa_product__ingredienten
 msgid "Beschrijving van de ingredienten."
 msgstr ""
@@ -309,6 +317,12 @@ msgid "CWA - Catalogue"
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.actions.act_window,name:product_import_cwa.action_cwa_import_product_change
+#: model:ir.ui.menu,name:product_import_cwa.menu_imported_changes
+msgid "CWA - Import changes"
+msgstr ""
+
+#. module: product_import_cwa
 #: model_terms:ir.ui.view,arch_db:product_import_cwa.res_config_settings_view_form_cwa
 msgid "CWA FTP"
 msgstr ""
@@ -316,6 +330,11 @@ msgstr ""
 #. module: product_import_cwa
 #: model_terms:ir.ui.view,arch_db:product_import_cwa.res_config_settings_view_form_cwa
 msgid "CWA FTP Import"
+msgstr ""
+
+#. module: product_import_cwa
+#: model:ir.model,name:product_import_cwa.model_cwa_import_product_change
+msgid "CWA Import Product Change"
 msgstr ""
 
 #. module: product_import_cwa
@@ -443,6 +462,11 @@ msgid "Cblcode."
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__changed_fields
+msgid "Changed Fields"
+msgstr ""
+
+#. module: product_import_cwa
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product__code
 #: model:ir.model.fields,field_description:product_import_cwa.field_product_supplierinfo__code
 msgid "Code"
@@ -474,6 +498,11 @@ msgid "Consumable products"
 msgstr ""
 
 #. module: product_import_cwa
+#: model_terms:ir.ui.view,arch_db:product_import_cwa.view_cwa_import_product_change_tree
+msgid "Cost price"
+msgstr ""
+
+#. module: product_import_cwa
 #. odoo-python
 #: code:addons/product_import_cwa/models/cwa_product.py:0
 #, python-format
@@ -502,6 +531,7 @@ msgid "Could not translate brand %s"
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__create_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_products__create_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product__create_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_brands__create_uid
@@ -522,6 +552,7 @@ msgid "Created by"
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__create_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_products__create_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product__create_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_brands__create_date
@@ -542,8 +573,19 @@ msgid "Created on"
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__current_consumer_price
+msgid "Current Consumer Price"
+msgstr ""
+
+#. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__affected_product_id_list_price
 #: model:ir.model.fields,field_description:product_import_cwa.field_product_supplierinfo__product_price
 msgid "Current Price"
+msgstr ""
+
+#. module: product_import_cwa
+#: model_terms:ir.ui.view,arch_db:product_import_cwa.view_cwa_import_product_change_tree
+msgid "Current price"
 msgstr ""
 
 #. module: product_import_cwa
@@ -825,6 +867,7 @@ msgid "Destination Value"
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__display_name
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_products__display_name
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product__display_name
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_brands__display_name
@@ -1027,6 +1070,7 @@ msgid "Hoogte."
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__id
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_products__id
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product__id
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_brands__id
@@ -1109,6 +1153,17 @@ msgid "Ingredienten"
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__affected_product_id_ingredients
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__product_supplierinfo_ingredients
+msgid "Ingredients"
+msgstr ""
+
+#. module: product_import_cwa
+#: model:ir.model.fields,help:product_import_cwa.field_cwa_import_product_change__affected_product_id_ingredients
+msgid "Ingredients in the product"
+msgstr ""
+
+#. module: product_import_cwa
 #: model_terms:ir.ui.view,arch_db:product_import_cwa.cwa_form_view
 #: model_terms:ir.ui.view,arch_db:product_import_cwa.product_template_retailer_form_view
 #: model_terms:ir.ui.view,arch_db:product_import_cwa.view_supplierinfo_form
@@ -1134,12 +1189,14 @@ msgid "Inhoud van de verpakking."
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__product_supplierinfo_cost_price
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product__inkoopprijs
 #: model:ir.model.fields,field_description:product_import_cwa.field_product_supplierinfo__inkoopprijs
 msgid "Inkoopprijs"
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,help:product_import_cwa.field_cwa_import_product_change__product_supplierinfo_cost_price
 #: model:ir.model.fields,help:product_import_cwa.field_product_supplierinfo__inkoopprijs
 msgid "Inkoopprijs."
 msgstr ""
@@ -1285,6 +1342,7 @@ msgid "Land van herkomst in vorm ISO 3166 code."
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change____last_update
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_products____last_update
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product____last_update
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_brands____last_update
@@ -1305,6 +1363,7 @@ msgid "Last Modified on"
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__write_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_products__write_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product__write_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_brands__write_uid
@@ -1325,6 +1384,7 @@ msgid "Last Updated by"
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__write_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_products__write_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product__write_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_brands__write_date
@@ -1678,9 +1738,20 @@ msgid "NOT A REFERENCE"
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__cwa_import_product_change__state__new
 #: model:ir.model.fields.selection,name:product_import_cwa.selection__cwa_product__state__new
 #: model_terms:ir.ui.view,arch_db:product_import_cwa.view_cwa_product_filter
 msgid "New"
+msgstr ""
+
+#. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__new_consumer_price
+msgid "New Consumer Price"
+msgstr ""
+
+#. module: product_import_cwa
+#: model_terms:ir.ui.view,arch_db:product_import_cwa.view_cwa_import_product_change_tree
+msgid "New suggested price"
 msgstr ""
 
 #. module: product_import_cwa
@@ -1946,6 +2017,11 @@ msgid "Price per Standard Unit"
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__cwa_import_product_change__state__processed
+msgid "Processed"
+msgstr ""
+
+#. module: product_import_cwa
 #: model:ir.model,name:product_import_cwa.model_product_template
 #: model_terms:ir.ui.view,arch_db:product_import_cwa.product_template_retailer_view_search
 msgid "Product"
@@ -1976,6 +2052,11 @@ msgid "Product CBL code"
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.actions.act_window,name:product_import_cwa.action_cwa_import_product_change_form
+msgid "Product Change Form"
+msgstr ""
+
+#. module: product_import_cwa
 #: model_terms:ir.ui.view,arch_db:product_import_cwa.cwa_cblcode_view
 #: model_terms:ir.ui.view,arch_db:product_import_cwa.cwa_form_view
 #: model_terms:ir.ui.view,arch_db:product_import_cwa.cwa_uom_wizard_view
@@ -1989,6 +2070,11 @@ msgstr ""
 #: model:ir.ui.menu,name:product_import_cwa.cwa_product_quality_menuitem
 #: model_terms:ir.ui.view,arch_db:product_import_cwa.product_quality_form_view
 msgid "Product Quality"
+msgstr ""
+
+#. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__product_supplierinfo_id
+msgid "Product Supplierinfo"
 msgstr ""
 
 #. module: product_import_cwa
@@ -2233,6 +2319,11 @@ msgid "Source Value"
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__source_cwa_product_id
+msgid "Source cwa product"
+msgstr ""
+
+#. module: product_import_cwa
 #: model:ir.model.fields,help:product_import_cwa.field_cwa_product__sve
 #: model:ir.model.fields,help:product_import_cwa.field_product_supplierinfo__sve
 msgid "Standaard verpakkingseenheid bij leverancier."
@@ -2245,6 +2336,7 @@ msgid "Standard UoM"
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__state
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product__state
 msgid "State"
 msgstr ""
@@ -2445,6 +2537,11 @@ msgid "VLEES & VIS"
 msgstr ""
 
 #. module: product_import_cwa
+#: model_terms:ir.ui.view,arch_db:product_import_cwa.view_cwa_import_product_change_form
+msgid "VWA product change form view"
+msgstr ""
+
+#. module: product_import_cwa
 #: model:ir.model.fields,help:product_import_cwa.field_cwa_product__d232
 msgid "Varkensvlees"
 msgstr ""
@@ -2470,6 +2567,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:product_import_cwa.field_product_supplierinfo__vegetarisch
 #: model:ir.model.fields,field_description:product_import_cwa.field_product_template__vegetarisch
 msgid "Vegetarisch"
+msgstr ""
+
+#. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__product_supplierinfo_supplier
+msgid "Vendor"
 msgstr ""
 
 #. module: product_import_cwa
