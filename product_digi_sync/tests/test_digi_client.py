@@ -58,7 +58,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
     def test_it_sends_a_product_to_digi_with_the_right_payload(self):
         name = "Test product"
         ingredients = "Noten en zo"
-        plu_code = 200
+        shop_plucode = 200
         expected_unit_price = 250
         expected_cost_price = 150
         expected_storage_temp = 6
@@ -76,7 +76,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
             unit_price=expected_unit_price,
             ingredients=ingredients,
             name=name,
-            plu_code=plu_code,
+            shop_plucode=shop_plucode,
             category_id=test_category.external_digi_id,
             show_packed_date_on_label=True,
             storage_temp=expected_storage_temp,
@@ -86,7 +86,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
             {
                 "name": "Test product",
                 "ingredients": ingredients,
-                "plu_code": plu_code,
+                "shop_plucode": shop_plucode,
                 "categ_id": test_category.id,
                 "list_price": 2.5,
                 "standard_price": 1.5,
@@ -107,7 +107,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
         name = "Test product"
         ingredients = "Noten en zo"
         expected_usage_tips = "Gebruikstips"
-        plu_code = 200
+        shop_plucode = 200
         expected_unit_price = 250
         expected_cost_price = 150
         self.patched_get_param.start()
@@ -124,7 +124,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
             unit_price=expected_unit_price,
             ingredients=ingredients,
             name=name,
-            plu_code=plu_code,
+            shop_plucode=shop_plucode,
             category_id=test_category.external_digi_id,
             show_packed_date_on_label=True,
             usage_tips=expected_usage_tips,
@@ -134,7 +134,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
             {
                 "name": "Test product",
                 "ingredients": ingredients,
-                "plu_code": plu_code,
+                "shop_plucode": shop_plucode,
                 "categ_id": test_category.id,
                 "list_price": 2.5,
                 "standard_price": 1.5,
@@ -154,7 +154,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
     ):
         name = "Test product"
         ingredients = "Noten en zo"
-        plu_code = 200
+        shop_plucode = 200
         expected_unit_price = 250
         expected_cost_price = 150
         expected_storage_temp = 6
@@ -175,7 +175,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
             unit_price=expected_unit_price,
             ingredients=ingredients,
             name=name,
-            plu_code=plu_code,
+            shop_plucode=shop_plucode,
             category_id=test_category.external_digi_id,
             show_packed_date_on_label=True,
             storage_temp=expected_storage_temp,
@@ -187,7 +187,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
             {
                 "name": "Test product",
                 "ingredients": ingredients,
-                "plu_code": plu_code,
+                "shop_plucode": shop_plucode,
                 "categ_id": test_category.id,
                 "list_price": 2.5,
                 "standard_price": 1.5,
@@ -207,7 +207,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
     def test_it_does_not_send_empty_fields(self):
         name = "Test product"
         ingredients = "Noten en zo"
-        plu_code = 200
+        shop_plucode = 200
         self.patched_get_param.start()
 
         test_category = self.env["product.category"].create(
@@ -221,14 +221,14 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
             {
                 "name": "Test product",
                 "ingredients": ingredients,
-                "plu_code": plu_code,
+                "shop_plucode": shop_plucode,
                 "list_price": 1.0,
                 "categ_id": test_category.id,
             }
         )
 
         expected_payload = self._create_expected_product_payload(
-            plu_code=plu_code,
+            shop_plucode=shop_plucode,
             name=name,
             ingredients=ingredients,
             unit_price=int(product_without_standard_price.list_price * 100),
@@ -243,7 +243,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
     @tagged("post_install", "-at_install")
     def test_it_does_not_send_empty_ingredients(self):
         name = "Test product"
-        plu_code = 200
+        shop_plucode = 200
         self.patched_get_param.start()
 
         test_category = self.env["product.category"].create(
@@ -256,14 +256,14 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
         product_without_standard_price = self.env["product.product"].create(
             {
                 "name": "Test product",
-                "plu_code": plu_code,
+                "shop_plucode": shop_plucode,
                 "list_price": 1.0,
                 "categ_id": test_category.id,
             }
         )
 
         expected_payload = self._create_expected_product_payload(
-            plu_code=plu_code,
+            shop_plucode=shop_plucode,
             name=name,
             unit_price=int(product_without_standard_price.list_price * 100),
             category_id=test_category.external_digi_id,
@@ -277,7 +277,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
     @tagged("post_install", "-at_install")
     def test_it_sends_status_pieces_article_true_when_article_is_not_weighted_article(self):
         name = "Test product"
-        plu_code = 200
+        shop_plucode = 200
         self.patched_get_param = self._patch_ir_config_parameter_for_get_param(
             "piece_barcode_rule_id", None
         )
@@ -293,7 +293,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
         product_without_standard_price = self.env["product.product"].create(
             {
                 "name": "Test product",
-                "plu_code": plu_code,
+                "shop_plucode": shop_plucode,
                 "list_price": 1.0,
                 "categ_id": test_category.id,
                 "send_to_scale": True,
@@ -302,7 +302,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
         )
 
         expected_payload = self._create_expected_product_payload(
-            plu_code=plu_code,
+            shop_plucode=shop_plucode,
             name=name,
             unit_price=int(product_without_standard_price.list_price * 100),
             category_id=test_category.external_digi_id,
@@ -442,9 +442,9 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
 
     def test_it_sends_a_product_image_to_digi_with_the_right_url(self):
         name = "product Name"
-        plu_code = 200
+        shop_plucode = 200
         with self.patch_request_post() as post_spy:
-            product_with_image = self._create_product_with_image(name, plu_code)
+            product_with_image = self._create_product_with_image(name, shop_plucode)
 
             expected_url = "https://fresh.digi.eu:8010/API/V1/MultiMedia.SVC/POST"
 
@@ -454,19 +454,19 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
 
     def test_it_sends_a_product_image_to_digi_with_the_right_payload(self):
         name = "product Name"
-        plu_code = 200
+        shop_plucode = 200
 
         with self.patch_request_post() as post_spy:
-            product_with_image = self._create_product_with_image(name, plu_code)
+            product_with_image = self._create_product_with_image(name, shop_plucode)
 
             expected_image_data = product_with_image.image_1920.decode("utf-8")
 
             payload = {}
-            payload["DataId"] = plu_code
+            payload["DataId"] = shop_plucode
             Linknumber_preset_image = 95
             payload["Links"] = [
                 {
-                    "DataId": plu_code,
+                    "DataId": shop_plucode,
                     "LinkNumber": Linknumber_preset_image,
                     "Type": {
                         "Description": "Article",
@@ -492,21 +492,21 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
 
     def test_it_sends_a_product_image_to_digi_with_the_right_payload_for_jpeg(self):
         name = "product Name"
-        plu_code = 200
+        shop_plucode = 200
 
         with self.patch_request_post() as post_spy:
             product_with_image = self._create_product_with_image_for_jpeg(
-                name, plu_code
+                name, shop_plucode
             )
 
             expected_image_data = product_with_image.image_1920.decode("utf-8")
 
             payload = {}
-            payload["DataId"] = plu_code
+            payload["DataId"] = shop_plucode
             linknumber_preset_image = 95
             payload["Links"] = [
                 {
-                    "DataId": plu_code,
+                    "DataId": shop_plucode,
                     "LinkNumber": linknumber_preset_image,
                     "Type": {
                         "Description": "Article",
@@ -542,11 +542,11 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
                 }
             )
 
-            plu_code = 200
+            shop_plucode = 200
             product = self.env["product.template"].create(
                 {
                     "name": "test product",
-                    "plu_code": plu_code,
+                    "shop_plucode": shop_plucode,
                     "list_price": 1.0,
                     "product_quality_id": quality.id,
                 }
@@ -566,7 +566,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
             ]
             payload["Links"] = [
                 {
-                    "DataId": plu_code,
+                    "DataId": shop_plucode,
                     "LinkNumber": 1,
                     "Type": {
                         "Description": "Article",
@@ -656,7 +656,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
     def test_it_sends_the_product_origin_to_digi_using_labeltext_with_digi_id(self):
         origin = self.env["product_digi_sync.product_origin"].create({"name": "Spanje"})
         product = self.env["product.product"].create(
-            {"name": "Test Origin", "plu_code": 42, "product_origin_id": origin.id}
+            {"name": "Test Origin", "shop_plucode": 42, "product_origin_id": origin.id}
         )
 
         expected_labeltext_in_payload = origin.external_digi_id
@@ -676,7 +676,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
         product = self.env["product.product"].create(
             {
                 "name": "Test Origin",
-                "plu_code": 42,
+                "shop_plucode": 42,
                 "product_brand_id": brand.id,
             }
         )
@@ -709,11 +709,11 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
         with patch("requests.post", return_value=mock_response) as post_spy:
             yield post_spy
 
-    def _create_product_with_image(self, name, plu_code):
+    def _create_product_with_image(self, name, shop_plucode):
         product_with_image = self.env["product.template"].create(
             {
                 "name": name,
-                "plu_code": plu_code,
+                "shop_plucode": shop_plucode,
                 "list_price": 1.0,
             }
         )
@@ -727,11 +727,11 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
         product_with_image.image_1920 = image_data
         return product_with_image
 
-    def _create_product_with_image_for_jpeg(self, name, plu_code):
+    def _create_product_with_image_for_jpeg(self, name, shop_plucode):
         product_with_image = self.env["product.template"].create(
             {
                 "name": name,
-                "plu_code": plu_code,
+                "shop_plucode": shop_plucode,
                 "list_price": 1.0,
             }
         )
@@ -742,7 +742,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
 
     def _create_expected_product_payload(self, **kwargs):
         data = {}
-        data["DataId"] = kwargs.get("plu_code")
+        data["DataId"] = kwargs.get("shop_plucode")
         data["Names"] = [
             {
                 "Reference": "Nederlands",

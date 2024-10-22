@@ -34,7 +34,7 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
         patched_get_param.start()
 
         product = self.env["product.template"].create(
-            {"name": "Test Product Template", "plu_code": 405, "send_to_scale": True}
+            {"name": "Test Product Template", "shop_plucode": 405, "send_to_scale": True}
         )
         product.write(
             {
@@ -61,7 +61,7 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
         patch.object(DigiClient, "send_product_image_to_digi", Mock()).start()
 
         product1 = self.env["product.template"].create(
-            {"name": "Test Product Template", "plu_code": 405, "send_to_scale": True}
+            {"name": "Test Product Template", "shop_plucode": 405, "send_to_scale": True}
         )
         product2 = self.env["product.template"].create(
             {"name": "Test Product without ply"}
@@ -92,7 +92,7 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
         patch.object(DigiClient, "send_product_image_to_digi", Mock()).start()
 
         product1 = self.env["product.template"].create(
-            {"name": "Test Product Template", "plu_code": 405, "send_to_scale": False}
+            {"name": "Test Product Template", "shop_plucode": 405, "send_to_scale": False}
         )
 
         products = self.env["product.template"].browse([product1.id])
@@ -165,7 +165,7 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
         product = self.env["product.template"].create(
             {
                 "name": "test quality",
-                "plu_code": 42,
+                "shop_plucode": 42,
                 "send_to_scale": True,
                 "list_price": 1.0,
             }
@@ -202,7 +202,7 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
         product = self.env["product.template"].create(
             {
                 "name": "test quality",
-                "plu_code": 42,
+                "shop_plucode": 42,
                 "send_to_scale": True,
                 "list_price": 1.0,
             }
@@ -222,11 +222,11 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
         self.assertEqual(mock_send_product_image_to_digi.call_count, 1)
         patched_get_param.stop()
 
-    def _create_product_with_image(self, name, plu_code):
+    def _create_product_with_image(self, name, shop_plucode):
         product_with_image = self.env["product.template"].create(
             {
                 "name": name,
-                "plu_code": plu_code,
+                "shop_plucode": shop_plucode,
                 "send_to_scale": True,
                 "list_price": 1.0,
             }

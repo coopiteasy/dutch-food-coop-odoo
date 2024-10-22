@@ -10,7 +10,7 @@ class ProductTransformer:
     @classmethod
     def transform_product_to_payload(self, product):
         data = {}
-        data["DataId"] = product.plu_code
+        data["DataId"] = product.shop_plucode
         commodity = f"08010000{product.name}"
         if product.product_brand_id:
             commodity += (
@@ -81,13 +81,13 @@ class ProductTransformer:
     @classmethod
     def transform_product_to_image_payload(cls, product):
         image_name = product.name.lower().replace(" ", "_")
-        payload = {"DataId": product.plu_code}
+        payload = {"DataId": product.shop_plucode}
         image_data = base64.b64decode(product.image_1920)
         image = Image.open(io.BytesIO(image_data))
         image_format = image.format.lower().replace("jpeg", "jpg")
         payload["Links"] = [
             {
-                "DataId": product.plu_code,
+                "DataId": product.shop_plucode,
                 "LinkNumber": 95,
                 "Type": {
                     "Description": "Article",
@@ -158,7 +158,7 @@ class ProductTransformer:
         ]
         payload["Links"] = [
             {
-                "DataId": product.plu_code,
+                "DataId": product.shop_plucode,
                 "LinkNumber": 1,
                 "Type": {
                     "Description": "Article",
