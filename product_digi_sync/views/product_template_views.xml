@@ -9,7 +9,7 @@
             <field name="barcode" position="before">
                 <field name="send_to_scale" />
                 <field
-                    name="is_pieces_article"
+                    name="is_weighted_article"
                     attrs="{'invisible': [('send_to_scale', '=', False)]}"
                 />
                 <field
@@ -43,7 +43,7 @@
                     <group name="digi_left">
                         <field name="send_to_scale" />
                         <field
-                            name="is_pieces_article"
+                            name="is_weighted_article"
                             attrs="{'invisible': [('send_to_scale', '=', False)]}"
                         />
                         <field

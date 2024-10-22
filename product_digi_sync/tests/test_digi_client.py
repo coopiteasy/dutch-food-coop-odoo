@@ -275,7 +275,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
             self.assertEqual(post_spy.call_args.kwargs["data"], expected_payload)
 
     @tagged("post_install", "-at_install")
-    def test_it_sends_status_pieces_article_true_when_article_is_pieces_article(self):
+    def test_it_sends_status_pieces_article_true_when_article_is_not_weighted_article(self):
         name = "Test product"
         plu_code = 200
         self.patched_get_param = self._patch_ir_config_parameter_for_get_param(
@@ -297,7 +297,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
                 "list_price": 1.0,
                 "categ_id": test_category.id,
                 "send_to_scale": True,
-                "is_pieces_article": True,
+                "is_weighted_article": False,
             }
         )
 
@@ -306,7 +306,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
             name=name,
             unit_price=int(product_without_standard_price.list_price * 100),
             category_id=test_category.external_digi_id,
-            is_pieces_article=True,
+            is_weighted_article=False,
         )
 
         with self.patch_request_post() as post_spy:
@@ -764,7 +764,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
         data["MainGroupDataId"] = kwargs.get("category_id")
 
         data["StatusFields"] = {
-            "PiecesArticle": kwargs.get("is_pieces_article") or False,
+            "PiecesArticle": not kwargs.get("is_weighted_article", True),
             "PackedDate": kwargs.get("show_packed_date_on_label") or False,
             "ShowMinStorageTemp": True if kwargs.get("storage_temp") else False,
         }

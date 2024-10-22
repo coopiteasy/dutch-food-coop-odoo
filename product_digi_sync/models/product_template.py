@@ -16,7 +16,7 @@ class ProductTemplate(DigiSyncBaseModel, models.Model):
 
     plu_code = fields.Integer(string="Plu code", required=False)
     send_to_scale = fields.Boolean(string="Send to scale", required=False)
-    is_pieces_article = fields.Boolean(string="Pieces article", required=False)
+    is_weighted_article = fields.Boolean(string="Weighted article", required=False, default=True)
     product_origin_id = fields.Many2one(
         "product_digi_sync.product_origin", string="Product origin"
     )
@@ -37,9 +37,9 @@ class ProductTemplate(DigiSyncBaseModel, models.Model):
         weighted_barcode_rule = self._get_barcode_rule("weighted_barcode_rule_id")
         piece_barcode_rule = self._get_barcode_rule("piece_barcode_rule_id")
 
-        return piece_barcode_rule if self.is_pieces_article else weighted_barcode_rule
+        return weighted_barcode_rule if self.is_weighted_article else piece_barcode_rule
 
-    @api.depends("plu_code", "is_pieces_article")
+    @api.depends("plu_code", "is_weighted_article")
     def _compute_barcode(self):
         for record in self:
             if not record.plu_code:
