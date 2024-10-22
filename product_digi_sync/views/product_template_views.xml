@@ -69,6 +69,7 @@
                     </group>
                 </group>
             </xpath>
+            <xpath expr="//group[@name='group_other_information']" position="replace" />
         </field>
     </record>
 
