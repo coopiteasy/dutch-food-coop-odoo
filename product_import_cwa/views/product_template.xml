@@ -160,9 +160,7 @@
                                 </group>
                                 <group name="group_right">
                                     <field name="active" />
-                                    <field name="weegschaalartikel" />
-                                    <field name="to_weight" string="Wichtartikel" />
-                                    <field name="pluartikel" />
+                                    <field name="to_weight" />
                                     <field
                                         name="taxes_id"
                                         colspan="2"
@@ -251,8 +249,8 @@
                                     <field name="d242" />
                                 </group>
                             </group>
-                            <separator string="Overige gegevens" />
-                            <group name="group_top">
+                            <group name="group_other_information">
+                                <separator string="Overige gegevens" />
                                 <group name="group_left">
                                     <field name="use_by_days" />
                                     <field name="storage_temperature" />

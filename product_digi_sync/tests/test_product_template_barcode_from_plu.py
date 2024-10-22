@@ -23,7 +23,7 @@ class ProductTemplateBarcodeFromPluTestCase(DigiSyncBaseTestCase):
 
         # Test case code here
         product_template = self.env["product.template"].create(
-            {"name": "dummy_name", "plu_code": 100}
+            {"name": "dummy_name", "shop_plucode": 100}
         )
 
         self.assertEqual(product_template.barcode, "2300100000008")
@@ -48,7 +48,7 @@ class ProductTemplateBarcodeFromPluTestCase(DigiSyncBaseTestCase):
 
         # Test case code here
         product_template = self.env["product.template"].create(
-            {"name": "dummy_name", "plu_code": 100, "is_pieces_article": True}
+            {"name": "dummy_name", "shop_plucode": 100, "is_weighted_article": False}
         )
 
         self.assertEqual(product_template.barcode, "3100100000003")

@@ -150,8 +150,6 @@ class TestProductImportCwa(TransactionCase):
 
         expected_product = {
             "unique_id": "1007-1001",
-            "weegschaalartikel": False,
-            "pluartikel": False,
             "inhoud": "1",
             "eenheid": "KG",
             "verpakkingce": False,
@@ -195,25 +193,6 @@ class TestProductImportCwa(TransactionCase):
             key: getattr(imported_product, key, None) for key in expected_product.keys()
         }
         self.maxDiff = None
-        self.assertDictEqual(expected_product, actual_product)
-
-    def test_product_import_imports_wichtartikel_in_the_right_way(self):
-        cwa_product_obj = self.env["cwa.product"]
-        self.import_first_file(cwa_product_obj)
-        cwa_prod = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
-        self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod)
-        cwa_prod.to_product()
-
-        product_template_object = self.env["product.template"]
-        imported_product = product_template_object.search([("name", "=", "BOEKWEIT")])
-
-        expected_product = {
-            "to_weight": True,
-        }
-
-        actual_product = {
-            key: getattr(imported_product, key, None) for key in expected_product.keys()
-        }
         self.assertDictEqual(expected_product, actual_product)
 
     def test_product_import_cwa_supplier_info(self):

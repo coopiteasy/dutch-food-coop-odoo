@@ -14,9 +14,11 @@ _logger = logging.getLogger(__name__)
 class ProductTemplate(DigiSyncBaseModel, models.Model):
     _inherit = "product.template"
 
-    plu_code = fields.Integer(string="Plu code", required=False)
+    shop_plucode = fields.Integer(string="Shop plucode", required=False)
     send_to_scale = fields.Boolean(string="Send to scale", required=False)
-    is_pieces_article = fields.Boolean(string="Pieces article", required=False)
+    is_weighted_article = fields.Boolean(
+        string="Weighted article", required=False, default=True
+    )
     product_origin_id = fields.Many2one(
         "product_digi_sync.product_origin", string="Product origin"
     )
@@ -27,8 +29,8 @@ class ProductTemplate(DigiSyncBaseModel, models.Model):
 
     _sql_constraints = [
         (
-            "plu_code_uniq",
-            "unique(plu_code)",
+            "shop_plucode_uniq",
+            "unique(shop_plucode)",
             "Plu code must be unique.",
         ),
     ]
@@ -37,12 +39,12 @@ class ProductTemplate(DigiSyncBaseModel, models.Model):
         weighted_barcode_rule = self._get_barcode_rule("weighted_barcode_rule_id")
         piece_barcode_rule = self._get_barcode_rule("piece_barcode_rule_id")
 
-        return piece_barcode_rule if self.is_pieces_article else weighted_barcode_rule
+        return weighted_barcode_rule if self.is_weighted_article else piece_barcode_rule
 
-    @api.depends("plu_code", "is_pieces_article")
+    @api.depends("shop_plucode", "is_weighted_article")
     def _compute_barcode(self):
         for record in self:
-            if not record.plu_code:
+            if not record.shop_plucode:
                 continue
             current_rule = record.get_current_barcode_rule()
             if current_rule is not None:
@@ -51,12 +53,12 @@ class ProductTemplate(DigiSyncBaseModel, models.Model):
     def set_barcode(self, rule):
         pattern = rule.pattern
         is_ean = rule.encoding == "ean13"
-        self.barcode = self._prepare_barcode(pattern, self.plu_code, is_ean)
+        self.barcode = self._prepare_barcode(pattern, self.shop_plucode, is_ean)
 
     @staticmethod
-    def _prepare_barcode(barcode_pattern, plu_code, is_ean13):
+    def _prepare_barcode(barcode_pattern, shop_plucode, is_ean13):
         # Converting the code to a padded string
-        code_str = str(plu_code)
+        code_str = str(shop_plucode)
         code_length = barcode_pattern.count(".")
         padded_code = code_str.zfill(code_length)
 
@@ -107,7 +109,7 @@ class ProductTemplate(DigiSyncBaseModel, models.Model):
         return record
 
     def should_send_to_digi(self):
-        return self.send_to_scale and self.plu_code
+        return self.send_to_scale and self.shop_plucode
 
     def send_to_digi_directly(self):
         client = self._get_digi_client()
