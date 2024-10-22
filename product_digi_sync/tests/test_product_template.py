@@ -34,7 +34,11 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
         patched_get_param.start()
 
         product = self.env["product.template"].create(
-            {"name": "Test Product Template", "shop_plucode": 405, "send_to_scale": True}
+            {
+                "name": "Test Product Template",
+                "shop_plucode": 405,
+                "send_to_scale": True,
+            }
         )
         product.write(
             {
@@ -61,7 +65,11 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
         patch.object(DigiClient, "send_product_image_to_digi", Mock()).start()
 
         product1 = self.env["product.template"].create(
-            {"name": "Test Product Template", "shop_plucode": 405, "send_to_scale": True}
+            {
+                "name": "Test Product Template",
+                "shop_plucode": 405,
+                "send_to_scale": True,
+            }
         )
         product2 = self.env["product.template"].create(
             {"name": "Test Product without ply"}
@@ -92,7 +100,11 @@ class ProductTemplateTestCase(DigiSyncBaseTestCase):
         patch.object(DigiClient, "send_product_image_to_digi", Mock()).start()
 
         product1 = self.env["product.template"].create(
-            {"name": "Test Product Template", "shop_plucode": 405, "send_to_scale": False}
+            {
+                "name": "Test Product Template",
+                "shop_plucode": 405,
+                "send_to_scale": False,
+            }
         )
 
         products = self.env["product.template"].browse([product1.id])

@@ -275,7 +275,9 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
             self.assertEqual(post_spy.call_args.kwargs["data"], expected_payload)
 
     @tagged("post_install", "-at_install")
-    def test_it_sends_status_pieces_article_true_when_article_is_not_weighted_article(self):
+    def test_it_sends_status_pieces_article_true_when_article_is_not_weighted_article(
+        self
+    ):
         name = "Test product"
         shop_plucode = 200
         self.patched_get_param = self._patch_ir_config_parameter_for_get_param(

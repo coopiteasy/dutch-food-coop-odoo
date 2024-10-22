@@ -16,7 +16,9 @@ class ProductTemplate(DigiSyncBaseModel, models.Model):
 
     shop_plucode = fields.Integer(string="Shop plucode", required=False)
     send_to_scale = fields.Boolean(string="Send to scale", required=False)
-    is_weighted_article = fields.Boolean(string="Weighted article", required=False, default=True)
+    is_weighted_article = fields.Boolean(
+        string="Weighted article", required=False, default=True
+    )
     product_origin_id = fields.Many2one(
         "product_digi_sync.product_origin", string="Product origin"
     )
