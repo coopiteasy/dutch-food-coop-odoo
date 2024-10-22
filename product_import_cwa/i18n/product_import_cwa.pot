@@ -238,6 +238,13 @@ msgid "BTW percentage 0, 6 of 21."
 msgstr ""
 
 #. module: product_import_cwa
+#: model_terms:ir.ui.view,arch_db:product_import_cwa.view_supplierinfo_form
+msgid ""
+"Be ware! The weighting scale fields stemming from CWA are not what you think"
+" they are. Please read the help text for a better understanding."
+msgstr ""
+
+#. module: product_import_cwa
 #: model:ir.model.fields,help:product_import_cwa.field_cwa_import_product_change__product_supplierinfo_ingredients
 #: model:ir.model.fields,help:product_import_cwa.field_cwa_product__ingredienten
 msgid "Beschrijving van de ingredienten."
@@ -885,6 +892,25 @@ msgstr ""
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_vat_tax_trans_wizard__display_name
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_vat_tax_wizard__display_name
 msgid "Display Name"
+msgstr ""
+
+#. module: product_import_cwa
+#: model_terms:ir.ui.view,arch_db:product_import_cwa.view_supplierinfo_form
+msgid "Dit is brood en banket dat per stuk wordt verkocht."
+msgstr ""
+
+#. module: product_import_cwa
+#: model_terms:ir.ui.view,arch_db:product_import_cwa.view_supplierinfo_form
+msgid ""
+"Dit zijn artikelen (kaas, groente) waarvan de verkoopprijs afhankelijk is "
+"van het verkochte gewicht. De artikelen worden in de winkel gewogen."
+msgstr ""
+
+#. module: product_import_cwa
+#: model_terms:ir.ui.view,arch_db:product_import_cwa.view_supplierinfo_form
+msgid ""
+"Dit zijn artikelen die per stuk worden verkocht, bijvoorbeeld een krop sla, "
+"een komkommer of een ei."
 msgstr ""
 
 #. module: product_import_cwa
@@ -1984,9 +2010,7 @@ msgstr ""
 
 #. module: product_import_cwa
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product__pluartikel
-#: model:ir.model.fields,field_description:product_import_cwa.field_product_product__pluartikel
 #: model:ir.model.fields,field_description:product_import_cwa.field_product_supplierinfo__pluartikel
-#: model:ir.model.fields,field_description:product_import_cwa.field_product_template__pluartikel
 msgid "Pluartikel"
 msgstr ""
 
@@ -2609,9 +2633,7 @@ msgstr ""
 
 #. module: product_import_cwa
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product__weegschaalartikel
-#: model:ir.model.fields,field_description:product_import_cwa.field_product_product__weegschaalartikel
 #: model:ir.model.fields,field_description:product_import_cwa.field_product_supplierinfo__weegschaalartikel
-#: model:ir.model.fields,field_description:product_import_cwa.field_product_template__weegschaalartikel
 msgid "Weegschaalartikel"
 msgstr ""
 
@@ -2630,7 +2652,6 @@ msgstr ""
 #. module: product_import_cwa
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product__wichtartikel
 #: model:ir.model.fields,field_description:product_import_cwa.field_product_supplierinfo__wichtartikel
-#: model_terms:ir.ui.view,arch_db:product_import_cwa.product_template_retailer_form_view
 msgid "Wichtartikel"
 msgstr ""
 
