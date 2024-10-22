@@ -40,7 +40,7 @@
             <xpath expr="//label[@for='min_qty']" position='attributes'>
                 <attribute name="string">Minimal Order Quantity</attribute>
             </xpath>
-            <xpath expr="//form/sheet/group/group[1]" position="after">
+            <xpath expr="//form/sheet/group" position="after">
                 <separator string="Price information" colspan="4" />
                 <group>
                     <field name="inkoopprijs" readonly="1" />
@@ -66,9 +66,24 @@
                     </group>
                     <group name="group_right">
                         <field name="eancode" readonly="1" />
-                        <field name="weegschaalartikel" readonly="1" />
-                        <field name="wichtartikel" readonly="1" />
-                        <field name="pluartikel" readonly="1" />
+                        <separator
+                            string="Be ware! The weighting scale fields stemming from CWA are not what you think they are. Please read the help text for a better understanding. "
+                        />
+                        <field
+                            name="weegschaalartikel"
+                            help="Dit is brood en banket dat per stuk wordt verkocht."
+                            readonly="1"
+                        />
+                        <field
+                            name="wichtartikel"
+                            help="Dit zijn artikelen (kaas, groente) waarvan de verkoopprijs afhankelijk is van het verkochte gewicht. De artikelen worden in de winkel gewogen."
+                            readonly="1"
+                        />
+                        <field
+                            name="pluartikel"
+                            help="Dit zijn artikelen die per stuk worden verkocht, bijvoorbeeld een krop sla, een komkommer of een ei."
+                            readonly="1"
+                        />
                         <field name="inhoud" readonly="1" />
                         <field name="eenheid" readonly="1" />
                         <field name="btw" readonly="1" />
