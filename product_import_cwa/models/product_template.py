@@ -27,8 +27,6 @@ class ProductTemplate(models.Model):
     inhoud = fields.Char(help="Inhoud van de verpakking.")
     eenheid = fields.Char(help="Eenheid van de inhoud.")
     statiegeld = fields.Float(help="Statiegeldbedrag.")
-    weegschaalartikel = fields.Boolean()
-    pluartikel = fields.Boolean()
     herkomst = fields.Char(help="Land van herkomst in vorm ISO 3166 code.")
     proefdiervrij = fields.Selection(YESNO_SELECTION)
     vegetarisch = fields.Selection(YESNO_SELECTION)

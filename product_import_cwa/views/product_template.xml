@@ -160,9 +160,7 @@
                                 </group>
                                 <group name="group_right">
                                     <field name="active" />
-                                    <field name="weegschaalartikel" />
-                                    <field name="to_weight" string="Wichtartikel" />
-                                    <field name="pluartikel" />
+                                    <field name="to_weight" />
                                     <field
                                         name="taxes_id"
                                         colspan="2"
