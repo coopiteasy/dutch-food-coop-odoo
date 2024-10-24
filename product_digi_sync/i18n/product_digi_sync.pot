@@ -60,13 +60,11 @@ msgstr ""
 
 #. module: product_digi_sync
 #: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_digi_client__create_uid
-#: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_product_origin__create_uid
 msgid "Created by"
 msgstr ""
 
 #. module: product_digi_sync
 #: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_digi_client__create_date
-#: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_product_origin__create_date
 msgid "Created on"
 msgstr ""
 
@@ -109,7 +107,6 @@ msgstr ""
 
 #. module: product_digi_sync
 #: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_digi_client__display_name
-#: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_product_origin__display_name
 msgid "Display Name"
 msgstr ""
 
@@ -120,7 +117,7 @@ msgstr ""
 
 #. module: product_digi_sync
 #: model:ir.model.fields,field_description:product_digi_sync.field_product_category__external_digi_id
-#: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_product_origin__external_digi_id
+#: model:ir.model.fields,field_description:product_digi_sync.field_product_food_fields_product_origin__external_digi_id
 msgid "External Digi identifier"
 msgstr ""
 
@@ -135,7 +132,7 @@ msgid "External digi id for the image"
 msgstr ""
 
 #. module: product_digi_sync
-#: model:ir.model.constraint,message:product_digi_sync.constraint_product_digi_sync_product_origin_external_digi_id_uniq
+#: model:ir.model.constraint,message:product_digi_sync.constraint_product_food_fields_product_origin_external_digi_id_uniq
 msgid "External digi id must be unique."
 msgstr ""
 
@@ -146,31 +143,26 @@ msgstr ""
 
 #. module: product_digi_sync
 #: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_digi_client__id
-#: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_product_origin__id
 msgid "ID"
 msgstr ""
 
 #. module: product_digi_sync
 #: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_digi_client____last_update
-#: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_product_origin____last_update
 msgid "Last Modified on"
 msgstr ""
 
 #. module: product_digi_sync
 #: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_digi_client__write_uid
-#: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_product_origin__write_uid
 msgid "Last Updated by"
 msgstr ""
 
 #. module: product_digi_sync
 #: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_digi_client__write_date
-#: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_product_origin__write_date
 msgid "Last Updated on"
 msgstr ""
 
 #. module: product_digi_sync
 #: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_digi_client__name
-#: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_product_origin__name
 msgid "Name"
 msgstr ""
 
@@ -195,15 +187,8 @@ msgid "Product Category"
 msgstr ""
 
 #. module: product_digi_sync
-#: model:ir.model,name:product_digi_sync.model_product_digi_sync_product_origin
-#: model:ir.ui.menu,name:product_digi_sync.menu_product_origin
-#: model_terms:ir.ui.view,arch_db:product_digi_sync.product_origin_form
+#: model:ir.model,name:product_digi_sync.model_product_food_fields_product_origin
 msgid "Product Origin"
-msgstr ""
-
-#. module: product_digi_sync
-#: model:ir.actions.act_window,name:product_digi_sync.action_product_origin
-msgid "Product Origins"
 msgstr ""
 
 #. module: product_digi_sync
@@ -220,12 +205,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:product_digi_sync.field_product_product__product_brand_id
 #: model:ir.model.fields,field_description:product_digi_sync.field_product_template__product_brand_id
 msgid "Product brand"
-msgstr ""
-
-#. module: product_digi_sync
-#: model:ir.model.fields,field_description:product_digi_sync.field_product_product__product_origin_id
-#: model:ir.model.fields,field_description:product_digi_sync.field_product_template__product_origin_id
-msgid "Product origin"
 msgstr ""
 
 #. module: product_digi_sync
@@ -275,11 +254,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:product_digi_sync.field_product_product__show_packed_date_on_label
 #: model:ir.model.fields,field_description:product_digi_sync.field_product_template__show_packed_date_on_label
 msgid "Show packed date on label"
-msgstr ""
-
-#. module: product_digi_sync
-#: model:ir.model.fields,help:product_digi_sync.field_product_digi_sync_product_origin__name
-msgid "The origin name. Can be a country, region or producer."
 msgstr ""
 
 #. module: product_digi_sync
