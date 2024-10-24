@@ -415,3 +415,23 @@ class TestProductImportCwa(TransactionCase):
         changed_fields = "list_price, ingredients"
 
         self.assertEqual(changed_fields, import_result.changed_fields)
+
+    def test_the_origin_is_imported_in_the_origin_field(self):
+        cwa_product_obj = self.env["cwa.product"]
+        self.import_first_file(cwa_product_obj)
+        cwa_prod = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
+        self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod)
+
+        origin = self.env['product_digi_sync.product_origin'].create({
+            "name": "China",
+            "country_code": "CN",
+        })
+
+        cwa_prod = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
+        cwa_prod.to_product()
+
+        imported_product = self.env["product.template"].search(
+            [("name", "=", "BOEKWEIT")]
+        )
+
+        self.assertEqual(imported_product.product_origin_id.id, origin.id)
