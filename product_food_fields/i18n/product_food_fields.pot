@@ -30,11 +30,13 @@ msgid "Code"
 msgstr ""
 
 #. module: product_food_fields
+#: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_origin__create_uid
 #: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_quality__create_uid
 msgid "Created by"
 msgstr ""
 
 #. module: product_food_fields
+#: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_origin__create_date
 #: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_quality__create_date
 msgid "Created on"
 msgstr ""
@@ -63,6 +65,7 @@ msgid "Days until use by date is reached"
 msgstr ""
 
 #. module: product_food_fields
+#: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_origin__display_name
 #: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_quality__display_name
 msgid "Display Name"
 msgstr ""
@@ -73,6 +76,7 @@ msgid "Food related information"
 msgstr ""
 
 #. module: product_food_fields
+#: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_origin__id
 #: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_quality__id
 msgid "ID"
 msgstr ""
@@ -104,21 +108,25 @@ msgid "Land where the product is produced, an ISO 3166 code"
 msgstr ""
 
 #. module: product_food_fields
+#: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_origin____last_update
 #: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_quality____last_update
 msgid "Last Modified on"
 msgstr ""
 
 #. module: product_food_fields
+#: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_origin__write_uid
 #: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_quality__write_uid
 msgid "Last Updated by"
 msgstr ""
 
 #. module: product_food_fields
+#: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_origin__write_date
 #: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_quality__write_date
 msgid "Last Updated on"
 msgstr ""
 
 #. module: product_food_fields
+#: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_origin__name
 #: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_quality__name
 msgid "Name"
 msgstr ""
@@ -135,11 +143,29 @@ msgid "Product"
 msgstr ""
 
 #. module: product_food_fields
+#: model:ir.model,name:product_food_fields.model_product_food_fields_product_origin
+#: model:ir.ui.menu,name:product_food_fields.menu_product_origin
+#: model_terms:ir.ui.view,arch_db:product_food_fields.product_origin_form
+msgid "Product Origin"
+msgstr ""
+
+#. module: product_food_fields
+#: model:ir.actions.act_window,name:product_food_fields.action_product_origin
+msgid "Product Origins"
+msgstr ""
+
+#. module: product_food_fields
 #: model:ir.actions.act_window,name:product_food_fields.action_product_quality
 #: model:ir.model,name:product_food_fields.model_product_food_fields_product_quality
 #: model:ir.ui.menu,name:product_food_fields.menu_product_quality
 #: model_terms:ir.ui.view,arch_db:product_food_fields.view_product_quality_form
 msgid "Product Quality"
+msgstr ""
+
+#. module: product_food_fields
+#: model:ir.model.fields,field_description:product_food_fields.field_product_product__product_origin_id
+#: model:ir.model.fields,field_description:product_food_fields.field_product_template__product_origin_id
+msgid "Product origin"
 msgstr ""
 
 #. module: product_food_fields
@@ -167,6 +193,16 @@ msgstr ""
 #. module: product_food_fields
 #: model:ir.model,name:product_food_fields.model_product_supplierinfo
 msgid "Supplier Pricelist"
+msgstr ""
+
+#. module: product_food_fields
+#: model:ir.model.fields,field_description:product_food_fields.field_product_food_fields_product_origin__country_code
+msgid "The ISO 3166 country code"
+msgstr ""
+
+#. module: product_food_fields
+#: model:ir.model.fields,help:product_food_fields.field_product_food_fields_product_origin__name
+msgid "The origin name. Can be a country, region or producer."
 msgstr ""
 
 #. module: product_food_fields
