@@ -630,7 +630,9 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
             self.assertEqual(post_spy.call_args.kwargs["data"], expected_payload)
 
     def test_it_sends_a_product_origin_to_digi_with_the_right_payload(self):
-        origin = self.env["product_digi_sync.product_origin"].create({"name": "Spanje"})
+        origin = self.env["product_food_fields.product_origin"].create(
+            {"name": "Spanje"}
+        )
 
         payload = {
             "DataId": origin.external_digi_id,
@@ -656,7 +658,9 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
             self.assertEqual(post_spy.call_args.kwargs["data"], expected_payload)
 
     def test_it_sends_the_product_origin_to_digi_using_labeltext_with_digi_id(self):
-        origin = self.env["product_digi_sync.product_origin"].create({"name": "Spanje"})
+        origin = self.env["product_food_fields.product_origin"].create(
+            {"name": "Spanje"}
+        )
         product = self.env["product.product"].create(
             {"name": "Test Origin", "shop_plucode": 42, "product_origin_id": origin.id}
         )

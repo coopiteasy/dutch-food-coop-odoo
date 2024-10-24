@@ -19,9 +19,6 @@ class ProductTemplate(DigiSyncBaseModel, models.Model):
     is_weighted_article = fields.Boolean(
         string="Weighted article", required=False, default=True
     )
-    product_origin_id = fields.Many2one(
-        "product_digi_sync.product_origin", string="Product origin"
-    )
     product_brand_id = fields.Many2one("product.brand", string="Product brand")
     show_packed_date_on_label = fields.Boolean(
         string="Show packed date on label", required=False
@@ -30,7 +27,7 @@ class ProductTemplate(DigiSyncBaseModel, models.Model):
     _sql_constraints = [
         (
             "shop_plucode_uniq",
-            "unique(shop_plucode)",
+            "unique(shop_plu)",
             "Plu code must be unique.",
         ),
     ]

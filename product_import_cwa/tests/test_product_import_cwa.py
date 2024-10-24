@@ -14,6 +14,7 @@ class TestProductImportCwa(TransactionCase):
         self.env["cwa.import.product.change"].search([]).unlink()
         self.env["cwa.product"].search([]).unlink()
         self.env["product.supplierinfo"].search([]).unlink()
+        self.env["product_food_fields.product_origin"].search([]).unlink()
         logging.getLogger("odoo").setLevel(old_logLevel)
 
     def reset_translations(self):
@@ -28,6 +29,13 @@ class TestProductImportCwa(TransactionCase):
         self.translate_uom(cwa_prod)
         self.translate_cblcode(cwa_prod)
         self.translate_tax(cwa_prod)
+
+    def create_origin(self, country_code="CN"):
+        return self.env["product_food_fields.product_origin"].create(
+            {
+                "country_code": country_code,
+            }
+        )
 
     def translate_brand(self, prod):
         """Add dummy brand translation to product using wizards"""
@@ -125,6 +133,7 @@ class TestProductImportCwa(TransactionCase):
         cwa_prod2 = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
         self.reset_translations()
         self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod2)
+        self.create_origin()
         self.assertEqual(self.env["cwa.product.brands"].search_count([]), 1)
         self.assertEqual(self.env["cwa.product.uom"].search_count([]), 1)
         self.assertEqual(self.env["cwa.product.cblcode"].search_count([]), 1)
@@ -135,6 +144,7 @@ class TestProductImportCwa(TransactionCase):
         self.import_first_file(cwa_product_obj)
         cwa_prod = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
         self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod)
+        self.create_origin()
         cwa_prod.to_product()
         self.assertEqual(cwa_prod.state, "imported")
 
@@ -143,6 +153,7 @@ class TestProductImportCwa(TransactionCase):
         self.import_first_file(cwa_product_obj)
         cwa_prod = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
         self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod)
+        self.create_origin()
         cwa_prod.to_product()
 
         product_template_object = self.env["product.template"]
@@ -200,6 +211,7 @@ class TestProductImportCwa(TransactionCase):
         self.import_first_file(cwa_product_obj)
         cwa_prod2 = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
         self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod2)
+        self.create_origin()
         cwa_prod2.to_product()
         supplierinfo_obj = self.env["product.supplierinfo"]
         supp_info1 = supplierinfo_obj.search([("product_name", "=", "BOEKWEIT")])
@@ -220,6 +232,7 @@ class TestProductImportCwa(TransactionCase):
             cwa_dup1[0].leveranciernummer, cwa_dup1[1].leveranciernummer
         )
         self.add_translations_for_brand_uom_cblcode_and_tax(cwa_dup1)
+        self.create_origin("NL")
         for rec in cwa_dup1:
             rec.to_product()
         prod1 = self.env["product.template"].search([("eancode", "=", "8711812421205")])
@@ -266,6 +279,7 @@ class TestProductImportCwa(TransactionCase):
         self.import_first_file(cwa_product_obj)
         cwa_prod2 = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
         self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod2)
+        self.create_origin()
         cwa_prod2.to_product()
 
         self.import_second_file(cwa_product_obj)
@@ -281,6 +295,7 @@ class TestProductImportCwa(TransactionCase):
         self.import_first_file(cwa_product_obj)
         cwa_prod = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
         self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod)
+        self.create_origin()
         cwa_prod.to_product()
 
         imported_product = self.env["product.template"].search(
@@ -300,6 +315,7 @@ class TestProductImportCwa(TransactionCase):
         self.import_first_file(cwa_product_obj)
         cwa_prod = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
         self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod)
+        self.create_origin()
         cwa_prod.to_product()
 
         imported_product = self.env["product.template"].search(
@@ -335,6 +351,7 @@ class TestProductImportCwa(TransactionCase):
         self.import_first_file(cwa_product_obj)
         cwa_prod = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
         self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod)
+        self.create_origin()
         cwa_prod.to_product()
 
         imported_product = self.env["product.template"].search(
@@ -369,6 +386,7 @@ class TestProductImportCwa(TransactionCase):
         self.import_first_file(cwa_product_obj)
         cwa_prod = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
         self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod)
+        self.create_origin()
         cwa_prod.to_product()
 
         imported_product = self.env["product.template"].search(
@@ -400,6 +418,7 @@ class TestProductImportCwa(TransactionCase):
         self.import_first_file(cwa_product_obj)
         cwa_prod = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
         self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod)
+        self.create_origin()
         cwa_prod.to_product()
 
         imported_product = self.env["product.template"].search(
@@ -415,3 +434,20 @@ class TestProductImportCwa(TransactionCase):
         changed_fields = "list_price, ingredients"
 
         self.assertEqual(changed_fields, import_result.changed_fields)
+
+    def test_the_origin_is_imported_in_the_origin_field(self):
+        cwa_product_obj = self.env["cwa.product"]
+        self.import_first_file(cwa_product_obj)
+        cwa_prod = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
+        self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod)
+
+        origin = self.create_origin()
+
+        cwa_prod = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
+        cwa_prod.to_product()
+
+        imported_product = self.env["product.template"].search(
+            [("name", "=", "BOEKWEIT")]
+        )
+
+        self.assertEqual(imported_product.product_origin_id.id, origin.id)

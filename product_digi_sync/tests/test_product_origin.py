@@ -21,7 +21,7 @@ class TestProductOrigin(DigiSyncBaseTestCase):
         self.patcher.stop()
 
     def test_the_external_digi_id_is_based_on_the_id_after_creation(self):
-        product_origin = self.env["product_digi_sync.product_origin"].create(
+        product_origin = self.env["product_food_fields.product_origin"].create(
             {"name": "Nederland"}
         )
 
@@ -43,7 +43,7 @@ class TestProductOrigin(DigiSyncBaseTestCase):
         )
         patched_digi_client.start()
 
-        origin = self.env["product_digi_sync.product_origin"].create(
+        origin = self.env["product_food_fields.product_origin"].create(
             {"name": "Nederland"}
         )
 
@@ -65,7 +65,7 @@ class TestProductOrigin(DigiSyncBaseTestCase):
         )
         patched_digi_client.start()
 
-        origin = self.env["product_digi_sync.product_origin"].create(
+        origin = self.env["product_food_fields.product_origin"].create(
             {"name": "Nederland"}
         )
         origin.write({"name": "Spanje"})

@@ -172,6 +172,7 @@
                                     <field name="kwaliteit" />
                                     <field name="verpakkingce" />
                                     <field name="herkomst" />
+                                    <field name="product_origin_id" />
                                 </group>
                             </group>
                             <separator string="Suppliers" />

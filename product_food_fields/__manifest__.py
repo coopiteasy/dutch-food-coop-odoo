@@ -12,12 +12,18 @@
     "category": "Sales/Point of Sale",
     "version": "16.0.0.0.1",
     # any module necessary for this one to work correctly
-    "depends": ["base", "product", "point_of_sale"],
+    "depends": [
+        "base",
+        "product",
+        "point_of_sale",
+        "sale",
+    ],
     # always loaded
     "data": [
         "security/ir.model.access.csv",
         "views/product_template_views.xml",
         "views/product_quality_views.xml",
+        "views/product_origin_views.xml",
     ],
     # only loaded in demonstration mode
 }

@@ -357,6 +357,8 @@ class CwaProduct(models.Model):
 
             self._translate_vat(extra_prod_dict)
 
+            self._translate_product_origin(extra_prod_dict)
+
             # Search if a product with this EAN code already exists
             prod_obj = self.env["product.template"]
             products_by_same_unique_code = prod_obj.search(
@@ -609,6 +611,19 @@ class CwaProduct(models.Model):
                 extra_prod_dict["supplier_taxes_id"] = [
                     (6, 0, translated_btw.purchase_tax.ids)
                 ]
+
+    def _translate_product_origin(self, extra_prod_dict):
+        country_code = self.herkomst
+        if country_code:
+            product_origin = self.env["product_food_fields.product_origin"].search(
+                [("country_code", "=", country_code)]
+            )
+            if not product_origin:
+                raise ValidationError(
+                    _("Could not translate country code %s") % (country_code,)
+                )
+            else:
+                extra_prod_dict["product_origin_id"] = product_origin.id
 
     @api.depends("leveranciernummer")
     def _compute_vendor_id(self):
