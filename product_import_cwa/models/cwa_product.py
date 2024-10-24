@@ -615,9 +615,13 @@ class CwaProduct(models.Model):
     def _translate_product_origin(self, extra_prod_dict):
         country_code = self.herkomst
         if country_code:
-            product_origin = self.env['product_food_fields.product_origin'].search([('country_code', '=', country_code)])
+            product_origin = self.env["product_food_fields.product_origin"].search(
+                [("country_code", "=", country_code)]
+            )
             if not product_origin:
-                raise ValidationError(_("Could not translate country code %s") % (country_code,))
+                raise ValidationError(
+                    _("Could not translate country code %s") % (country_code,)
+                )
             else:
                 extra_prod_dict["product_origin_id"] = product_origin.id
 

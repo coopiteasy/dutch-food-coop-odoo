@@ -12,7 +12,7 @@ EXTERNAL_DIGI_ID_START = 10000
 
 
 class ProductOrigin(DigiSyncBaseModel, models.Model):
-    _inherit = 'product_food_fields.product_origin'
+    _inherit = "product_food_fields.product_origin"
 
     external_digi_id = fields.Integer(
         string="External Digi identifier",

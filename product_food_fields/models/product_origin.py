@@ -1,6 +1,5 @@
-import logging
+from odoo import fields, models
 
-from odoo import api, fields, models
 
 class ProductOrigin(models.Model):
     _name = "product_food_fields.product_origin"

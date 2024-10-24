@@ -12,7 +12,12 @@
     "category": "Sales/Point of Sale",
     "version": "16.0.0.0.1",
     # any module necessary for this one to work correctly
-    "depends": ["base", "product", "point_of_sale", "sale",],
+    "depends": [
+        "base",
+        "product",
+        "point_of_sale",
+        "sale",
+    ],
     # always loaded
     "data": [
         "security/ir.model.access.csv",
