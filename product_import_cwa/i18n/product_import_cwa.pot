@@ -538,6 +538,13 @@ msgid "Could not translate brand %s"
 msgstr ""
 
 #. module: product_import_cwa
+#. odoo-python
+#: code:addons/product_import_cwa/models/cwa_product.py:0
+#, python-format
+msgid "Could not translate country code %s"
+msgstr ""
+
+#. module: product_import_cwa
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__create_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_products__create_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product__create_uid
