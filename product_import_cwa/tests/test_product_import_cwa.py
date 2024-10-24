@@ -422,7 +422,7 @@ class TestProductImportCwa(TransactionCase):
         cwa_prod = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
         self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod)
 
-        origin = self.env['product_digi_sync.product_origin'].create({
+        origin = self.env['product_food_fields.product_origin'].create({
             "name": "China",
             "country_code": "CN",
         })
