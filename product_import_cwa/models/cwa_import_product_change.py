@@ -16,12 +16,10 @@ class CwaImportProductChange(models.Model):
         required=True,
     )
     affected_product_id = fields.Many2one(
-        "product.template", string="Affected Product", required=True,
-        ondelete="cascade"
+        "product.template", string="Affected Product", required=True, ondelete="cascade"
     )
     source_cwa_product_id = fields.Many2one(
-        "cwa.product", string="Source cwa product", required=True,
-        ondelete="cascade"
+        "cwa.product", string="Source cwa product", required=True, ondelete="cascade"
     )
     current_consumer_price = fields.Float(required=True)
     new_consumer_price = fields.Float(required=True)

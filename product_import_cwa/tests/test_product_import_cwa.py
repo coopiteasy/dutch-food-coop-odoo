@@ -14,7 +14,7 @@ class TestProductImportCwa(TransactionCase):
         self.env["cwa.import.product.change"].search([]).unlink()
         self.env["cwa.product"].search([]).unlink()
         self.env["product.supplierinfo"].search([]).unlink()
-        self.env['product_food_fields.product_origin'].search([]).unlink()
+        self.env["product_food_fields.product_origin"].search([]).unlink()
         logging.getLogger("odoo").setLevel(old_logLevel)
 
     def reset_translations(self):
@@ -30,10 +30,12 @@ class TestProductImportCwa(TransactionCase):
         self.translate_cblcode(cwa_prod)
         self.translate_tax(cwa_prod)
 
-    def create_origin(self, country_code = "CN"):
-        return self.env['product_food_fields.product_origin'].create({
-            "country_code": country_code,
-        })
+    def create_origin(self, country_code="CN"):
+        return self.env["product_food_fields.product_origin"].create(
+            {
+                "country_code": country_code,
+            }
+        )
 
     def translate_brand(self, prod):
         """Add dummy brand translation to product using wizards"""
@@ -449,4 +451,3 @@ class TestProductImportCwa(TransactionCase):
         )
 
         self.assertEqual(imported_product.product_origin_id.id, origin.id)
-
