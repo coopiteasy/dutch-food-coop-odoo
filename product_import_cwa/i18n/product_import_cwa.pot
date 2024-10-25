@@ -520,6 +520,13 @@ msgstr ""
 #. odoo-python
 #: code:addons/product_import_cwa/models/cwa_product.py:0
 #, python-format
+msgid "Could not translate Product Quality %s"
+msgstr ""
+
+#. module: product_import_cwa
+#. odoo-python
+#: code:addons/product_import_cwa/models/cwa_product.py:0
+#, python-format
 msgid "Could not translate Quality %s"
 msgstr ""
 
@@ -2098,6 +2105,7 @@ msgstr ""
 
 #. module: product_import_cwa
 #: model:ir.model,name:product_import_cwa.model_cwa_product_quality
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_quality__destination_product_quality_id
 #: model:ir.ui.menu,name:product_import_cwa.cwa_product_quality_menuitem
 #: model_terms:ir.ui.view,arch_db:product_import_cwa.product_quality_form_view
 msgid "Product Quality"
