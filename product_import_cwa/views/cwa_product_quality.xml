@@ -7,6 +7,7 @@
             <tree>
                 <field name="source_value" />
                 <field name="destination_value" />
+                <field name="destination_product_quality_id" />
             </tree>
         </field>
     </record>
@@ -20,6 +21,7 @@
                     <group>
                         <field name="source_value" />
                         <field name="destination_value" />
+                        <field name="destination_product_quality_id" />
                     </group>
                 </sheet>
             </form>
