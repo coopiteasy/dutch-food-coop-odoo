@@ -169,7 +169,7 @@
                                     <field name="list_price" />
                                     <field name="standard_price" />
                                     <field name="price_per_standard_unit" />
-                                    <field name="kwaliteit" />
+                                    <field name="product_quality_id" />
                                     <field name="verpakkingce" />
                                     <field name="herkomst" />
                                     <field name="product_origin_id" />

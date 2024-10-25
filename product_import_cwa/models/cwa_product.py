@@ -355,6 +355,8 @@ class CwaProduct(models.Model):
 
             self._translate_quality(extra_prod_dict)
 
+            self._translate_product_quality(extra_prod_dict)
+
             self._translate_vat(extra_prod_dict)
 
             self._translate_product_origin(extra_prod_dict)
@@ -595,6 +597,21 @@ class CwaProduct(models.Model):
             extra_prod_dict["kwaliteit"] = self.env.ref(
                 "product_import_cwa.cwa_quality_afbak"
             ).id
+
+    def _translate_product_quality(self, extra_prod_dict):
+        quality = self.kwaliteit
+        if quality:
+            translated_quality = self.env[
+                "cwa.product.quality"
+            ].get_translated_product_quality(quality)
+            if not translated_quality and not self.env.context.get(
+                "force"
+            ):  # skip this if via force
+                raise ValidationError(
+                    _("Could not translate Product Quality %s") % (quality,)
+                )
+            else:
+                extra_prod_dict["product_quality_id"] = translated_quality.id
 
     def _translate_vat(self, extra_prod_dict):
         btw = self.btw

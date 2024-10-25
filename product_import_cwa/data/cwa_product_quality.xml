@@ -15,6 +15,10 @@
 	<record id="cwa_quality_biologisch" model="cwa.product.quality">
 		<field name="source_value">BIOLOGISCH</field>
 		<field name="destination_value">BIOLOGISCH</field>
+        <field
+            name="destination_product_quality_id"
+            ref="product_import_cwa_quality_bio"
+        />
 	</record>
 	<record id="cwa_quality_natrue" model="cwa.product.quality">
 		<field name="source_value">NATRUE</field>

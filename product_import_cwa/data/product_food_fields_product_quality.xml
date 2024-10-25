@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record
+        model="product_food_fields.product_quality"
+        id="product_import_cwa_quality_bio"
+    >
+        <field name="name">Biologisch</field>
+        <field name="code">BIOLOGISCH</field>
+    </record>
+</odoo>

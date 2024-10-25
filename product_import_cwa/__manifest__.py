@@ -18,6 +18,7 @@
         "data/res_partner.xml",
         "data/ir_cron.xml",
         "data/pos_categories.xml",
+        "data/product_food_fields_product_quality.xml",
         "data/cwa_product_quality.xml",
         "data/cwa_product_suppliers.xml",
         "data/account_tax.xml",
