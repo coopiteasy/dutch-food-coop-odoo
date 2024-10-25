@@ -601,11 +601,15 @@ class CwaProduct(models.Model):
     def _translate_product_quality(self, extra_prod_dict):
         quality = self.kwaliteit
         if quality:
-            translated_quality = self.env["cwa.product.quality"].get_translated_product_quality(quality)
+            translated_quality = self.env[
+                "cwa.product.quality"
+            ].get_translated_product_quality(quality)
             if not translated_quality and not self.env.context.get(
                 "force"
             ):  # skip this if via force
-                raise ValidationError(_("Could not translate Product Quality %s") % (quality,))
+                raise ValidationError(
+                    _("Could not translate Product Quality %s") % (quality,)
+                )
             else:
                 extra_prod_dict["product_quality_id"] = translated_quality.id
 
