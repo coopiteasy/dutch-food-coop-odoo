@@ -24,7 +24,6 @@ class ProductQuality(models.Model):
         self.update_product_quality_digi_id(records)
         return records
 
-
     def write(self, vals):
         res = super().write(vals)
         self.update_product_quality_digi_id(self)

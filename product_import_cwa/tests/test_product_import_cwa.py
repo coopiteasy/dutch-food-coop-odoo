@@ -453,7 +453,9 @@ class TestProductImportCwa(TransactionCase):
         self.assertEqual(imported_product.product_origin_id.id, origin.id)
 
     def test_the_default_product_quality_is_provided_using_data(self):
-        imported_quality = self.env['product_food_fields.product_quality'].search([("code", "=", "BIOLOGISCH")])
+        imported_quality = self.env["product_food_fields.product_quality"].search(
+            [("code", "=", "BIOLOGISCH")]
+        )
         self.assertEqual(len(imported_quality), 1)
 
     def test_the_product_quality_is_imported_in_the_product_quality_field(self):
@@ -462,7 +464,9 @@ class TestProductImportCwa(TransactionCase):
         cwa_prod = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
         self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod)
 
-        expected_quality = self.env['product_food_fields.product_quality'].search([("code","=","BIOLOGISCH")])
+        expected_quality = self.env["product_food_fields.product_quality"].search(
+            [("code", "=", "BIOLOGISCH")]
+        )
         self.create_origin()
         cwa_prod.to_product()
 

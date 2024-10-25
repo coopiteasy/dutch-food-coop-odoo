@@ -9,7 +9,9 @@ class CwaProductQuality(models.Model):
 
     source_value = fields.Char(size=64, required=True)
     destination_value = fields.Char(size=64)
-    destination_product_quality_id = fields.Many2one("product_food_fields.product_quality", "Product Quality", required=False)
+    destination_product_quality_id = fields.Many2one(
+        "product_food_fields.product_quality", "Product Quality", required=False
+    )
 
     _sql_constraints = [
         (
