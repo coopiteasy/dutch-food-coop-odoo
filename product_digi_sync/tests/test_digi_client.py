@@ -697,6 +697,41 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
                 send_data["Names"][0]["DdFormatCommodity"], expected_commodity_payload
             )
 
+    def test_it_sends_active_in_scale_as_true_when_product_is_active(self):
+        shop_plucode = 42
+        name = "Test Active"
+        product = self.env["product.product"].create(
+            {
+                "name": name,
+                "shop_plucode": shop_plucode,
+            }
+        )
+
+        with self.patch_request_post() as post_spy:
+            self.digi_client.send_product_to_digi(product)
+
+            send_data = json.loads(post_spy.call_args.kwargs["data"])
+
+            self.assertTrue(send_data["StatusFields"]["ActiveInScale"])
+
+    def test_it_sends_active_in_scale_as_false_when_product_is_inactive(self):
+        shop_plucode = 42
+        name = "Test Active"
+        product = self.env["product.product"].create(
+            {
+                "name": name,
+                "active": False,
+                "shop_plucode": shop_plucode,
+            }
+        )
+
+        with self.patch_request_post() as post_spy:
+            self.digi_client.send_product_to_digi(product)
+
+            send_data = json.loads(post_spy.call_args.kwargs["data"])
+
+            self.assertFalse(send_data["StatusFields"]["ActiveInScale"])
+
     @contextlib.contextmanager
     def patch_request_post(self, status_code=200, response_content=None):
         if not response_content:
@@ -770,6 +805,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
         data["MainGroupDataId"] = kwargs.get("category_id")
 
         data["StatusFields"] = {
+            "ActiveInScale": True,
             "PiecesArticle": not kwargs.get("is_weighted_article", True),
             "PackedDate": kwargs.get("show_packed_date_on_label") or False,
             "ShowMinStorageTemp": True if kwargs.get("storage_temp") else False,
