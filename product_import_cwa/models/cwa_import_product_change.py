@@ -21,8 +21,6 @@ class CwaImportProductChange(models.Model):
     source_cwa_product_id = fields.Many2one(
         "cwa.product", string="Source cwa product", required=True, ondelete="cascade"
     )
-    current_consumer_price = fields.Float(required=True)
-    new_consumer_price = fields.Float(required=True)
     product_supplierinfo_id = fields.Many2one(
         "product.supplierinfo",
         compute="_compute_product_supplierinfo",
@@ -30,7 +28,6 @@ class CwaImportProductChange(models.Model):
         stored=False,
     )
 
-    changed_fields = fields.Char(compute="_compute_changed_fields", store=False)
     product_supplierinfo_ingredients = fields.Text(
         related="product_supplierinfo_id.ingredients"
     )
@@ -95,25 +92,6 @@ class CwaImportProductChange(models.Model):
         # Craft a domain that links back to the desired records
         domain = [("id", "in", product_ids)]
         return domain
-
-    @api.depends("current_consumer_price", "new_consumer_price")
-    def _compute_changed_fields(self):
-        for record in self:
-            new_supplier_info = record.product_supplierinfo_id
-            changed = []
-
-            if record.current_consumer_price != record.new_consumer_price:
-                changed.append("list_price")
-
-            if new_supplier_info:
-                for field in FIELDS_TO_COMPARE:
-                    if hasattr(record.affected_product_id, field):
-                        supplier_value = getattr(new_supplier_info, field)
-                        value = getattr(record.affected_product_id, field)
-                        if supplier_value != value:
-                            changed.append(field)
-
-            record.changed_fields = ", ".join(changed)
 
     @api.model
     def open_form_view(self, record_id):

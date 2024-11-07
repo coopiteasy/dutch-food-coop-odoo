@@ -242,8 +242,6 @@ class CwaProduct(models.Model):
                     "state": "new",
                     "affected_product_id": product.id,
                     "source_cwa_product_id": cwa_product.id,
-                    "current_consumer_price": product.list_price,
-                    "new_consumer_price": cwa_product.consumentenprijs,
                 }
                 cwa_import_product_change_model = self.env["cwa.import.product.change"]
                 # Try to find an existing change model
