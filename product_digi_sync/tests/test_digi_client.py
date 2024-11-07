@@ -697,7 +697,7 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
                 send_data["Names"][0]["DdFormatCommodity"], expected_commodity_payload
             )
 
-    def test_it_sends_active_in_scale_to_true_in_status_field_when_product_is_active(self):
+    def test_it_sends_active_in_scale_as_true_when_product_is_active(self):
         shop_plucode = 42
         name = "Test Active"
         product = self.env["product.product"].create(
@@ -707,7 +707,6 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
             }
         )
 
-
         with self.patch_request_post() as post_spy:
             self.digi_client.send_product_to_digi(product)
 
@@ -715,7 +714,23 @@ class DigiClientTestCase(DigiSyncBaseTestCase):
 
             self.assertTrue(send_data["StatusFields"]["ActiveInScale"])
 
+    def test_it_sends_active_in_scale_as_false_when_product_is_inactive(self):
+        shop_plucode = 42
+        name = "Test Active"
+        product = self.env["product.product"].create(
+            {
+                "name": name,
+                "active": False,
+                "shop_plucode": shop_plucode,
+            }
+        )
 
+        with self.patch_request_post() as post_spy:
+            self.digi_client.send_product_to_digi(product)
+
+            send_data = json.loads(post_spy.call_args.kwargs["data"])
+
+            self.assertFalse(send_data["StatusFields"]["ActiveInScale"])
 
     @contextlib.contextmanager
     def patch_request_post(self, status_code=200, response_content=None):
