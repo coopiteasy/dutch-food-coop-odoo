@@ -35,9 +35,15 @@ class CwaImportProductChange(models.Model):
         related="affected_product_id.ingredients"
     )
     affected_product_id_list_price = fields.Float(
-        string="Current Price",
+        string="Current List Price",
         compute="_compute_affected_product_id_list_price",
         inverse="_inverse_set_affected_product_id_list_price",
+        store=True,
+    )
+    affected_product_id_cost_price = fields.Float(
+        string="Current Cost Price",
+        compute="_compute_affected_product_id_cost_price",
+        inverse="_inverse_set_affected_product_id_cost_price",
         store=True,
     )
     product_supplierinfo_list_price = fields.Float(
@@ -62,6 +68,20 @@ class CwaImportProductChange(models.Model):
             if record.affected_product_id:
                 record.affected_product_id.list_price = (
                     record.affected_product_id_list_price
+                )
+
+    @api.depends("affected_product_id.standard_price")
+    def _compute_affected_product_id_cost_price(self):
+        for record in self:
+            record.affected_product_id_cost_price = (
+                record.affected_product_id.standard_price
+            )
+
+    def _inverse_set_affected_product_id_cost_price(self):
+        for record in self:
+            if record.affected_product_id:
+                record.affected_product_id.standard_price = (
+                    record.affected_product_id_cost_price
                 )
 
     @api.depends("source_cwa_product_id")
