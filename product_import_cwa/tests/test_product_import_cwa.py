@@ -331,8 +331,8 @@ class TestProductImportCwa(TransactionCase):
         expected_result = {
             "state": "new",
             "affected_product_id": imported_product.id,
-            "current_consumer_price": 3.7,
-            "new_consumer_price": 3.9,
+            "affected_product_id_list_price": 3.7,
+            "product_supplierinfo_list_price": 3.9,
         }
 
         actual_result = {
@@ -368,8 +368,8 @@ class TestProductImportCwa(TransactionCase):
         expected_result = {
             "state": "new",
             "affected_product_id": imported_product.id,
-            "current_consumer_price": 3.7,
-            "new_consumer_price": 4.1,
+            "affected_product_id_list_price": 3.7,
+            "product_supplierinfo_list_price": 4.1,
         }
 
         actual_result = {
