@@ -12,6 +12,7 @@
                     context="{'form_view_ref': 'product_import_cwa.product_template_retailer_form_view'}"
                 />
                 <field name="product_supplierinfo_supplier" readonly="1" />
+                <field name="changed_fields" readonly="1" />
                 <field
                     name="product_supplierinfo_cost_price"
                     string="Supplier cost price"
