@@ -505,11 +505,6 @@ msgid "Consumable products"
 msgstr ""
 
 #. module: product_import_cwa
-#: model_terms:ir.ui.view,arch_db:product_import_cwa.view_cwa_import_product_change_tree
-msgid "Cost price"
-msgstr ""
-
-#. module: product_import_cwa
 #. odoo-python
 #: code:addons/product_import_cwa/models/cwa_product.py:0
 #, python-format
@@ -594,19 +589,28 @@ msgid "Created on"
 msgstr ""
 
 #. module: product_import_cwa
-#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__current_consumer_price
-msgid "Current Consumer Price"
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__affected_product_id_cost_price
+msgid "Current Cost Price"
 msgstr ""
 
 #. module: product_import_cwa
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__affected_product_id_list_price
+msgid "Current List Price"
+msgstr ""
+
+#. module: product_import_cwa
 #: model:ir.model.fields,field_description:product_import_cwa.field_product_supplierinfo__product_price
 msgid "Current Price"
 msgstr ""
 
 #. module: product_import_cwa
 #: model_terms:ir.ui.view,arch_db:product_import_cwa.view_cwa_import_product_change_tree
-msgid "Current price"
+msgid "Current cost price"
+msgstr ""
+
+#. module: product_import_cwa
+#: model_terms:ir.ui.view,arch_db:product_import_cwa.view_cwa_import_product_change_tree
+msgid "Current sell price"
 msgstr ""
 
 #. module: product_import_cwa
@@ -1785,16 +1789,6 @@ msgid "New"
 msgstr ""
 
 #. module: product_import_cwa
-#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__new_consumer_price
-msgid "New Consumer Price"
-msgstr ""
-
-#. module: product_import_cwa
-#: model_terms:ir.ui.view,arch_db:product_import_cwa.view_cwa_import_product_change_tree
-msgid "New suggested price"
-msgstr ""
-
-#. module: product_import_cwa
 #: model:ir.model.fields,help:product_import_cwa.field_cwa_product__pos_categ_id
 #: model:ir.model.fields,help:product_import_cwa.field_product_supplierinfo__pos_categ_id
 msgid "Not a reference field, just a char field."
@@ -2427,6 +2421,16 @@ msgid "Supplier Pricelist"
 msgstr ""
 
 #. module: product_import_cwa
+#: model_terms:ir.ui.view,arch_db:product_import_cwa.view_cwa_import_product_change_tree
+msgid "Supplier cost price"
+msgstr ""
+
+#. module: product_import_cwa
+#: model_terms:ir.ui.view,arch_db:product_import_cwa.view_cwa_import_product_change_tree
+msgid "Supplier sell price"
+msgstr ""
+
+#. module: product_import_cwa
 #: model_terms:ir.ui.view,arch_db:product_import_cwa.product_template_retailer_form_view
 msgid "Suppliers"
 msgstr ""
@@ -2578,6 +2582,11 @@ msgstr ""
 #. module: product_import_cwa
 #: model_terms:ir.ui.view,arch_db:product_import_cwa.view_cwa_import_product_change_form
 msgid "VWA product change form view"
+msgstr ""
+
+#. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__value_changes
+msgid "Value Changes"
 msgstr ""
 
 #. module: product_import_cwa
