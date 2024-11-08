@@ -3,6 +3,10 @@
 	<record id="cwa_quality_bd" model="cwa.product.quality">
 		<field name="source_value">BD</field>
 		<field name="destination_value">DEMETER</field>
+        <field
+            name="destination_product_quality_id"
+            ref="product_import_cwa_quality_bd"
+        />
 	</record>
 	<record id="cwa_quality_bdih" model="cwa.product.quality">
 		<field name="source_value">BDIH</field>
