@@ -100,10 +100,13 @@ class ProductTemplate(models.Model):
 
     def unlink(self):
         for prod in self:
-            cwa = self.env["cwa.product"].search([("unique_id", "=", prod.unique_id)])
-            cwa.write(
-                {
-                    "state": "new",
-                }
-            )
+            for supplier_info in prod.seller_ids:
+                cwa = self.env["cwa.product"].search(
+                    [("unique_id", "=", supplier_info.unique_id)]
+                )
+                cwa.write(
+                    {
+                        "state": "new",
+                    }
+                )
         return super().unlink()

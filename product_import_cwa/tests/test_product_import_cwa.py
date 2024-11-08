@@ -102,6 +102,14 @@ class TestProductImportCwa(TransactionCase):
         )
         return count
 
+    def import_subset_file(self, cwa_product_obj):
+        path = os.path.dirname(os.path.realpath(__file__))
+        file2 = os.path.join(path, "data/products_test_subset.xml")
+        count = cwa_product_obj.with_context(new_cursor=False).import_xml_products(
+            file2
+        )
+        return count
+
     def test_product_import_cwa_imports_all_records(self):
         cwa_product_obj = self.env["cwa.product"]
 
@@ -541,3 +549,29 @@ class TestProductImportCwa(TransactionCase):
         )
 
         self.assertEqual(imported_product.product_quality_id.id, expected_quality.id)
+
+    def test_all_cwa_products_are_returned_to_new_when_product_is_deleted(self):
+        cwa_product_obj = self.env["cwa.product"]
+        self.import_subset_file(cwa_product_obj)
+
+        cwa_prod1 = cwa_product_obj.search([("unique_id", "=", "1001-1263")])
+        cwa_prod2 = cwa_product_obj.search([("unique_id", "=", "1039-1263")])
+
+        self.create_origin("NL")
+        self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod1)
+        self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod2)
+
+        cwa_prod1.to_product()
+        cwa_prod2.to_product()
+
+        imported_product = self.env["product.template"].search(
+            [("eancode", "=", "8714811142843")]
+        )
+
+        imported_product.unlink()
+
+        cwa_prod1_changed = cwa_product_obj.search([("unique_id", "=", "1001-1263")])
+        cwa_prod2_changed = cwa_product_obj.search([("unique_id", "=", "1039-1263")])
+
+        self.assertEqual(cwa_prod1_changed.state, "new")
+        self.assertEqual(cwa_prod2_changed.state, "new")
