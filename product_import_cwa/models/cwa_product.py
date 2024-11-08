@@ -241,21 +241,32 @@ class CwaProduct(models.Model):
         return count
 
     def _detect_product_changes(self, cwa_product, supplier_info, supplier_info_vals):
-        product = self.env["product.template"].search(
-            [("unique_id", "=", cwa_product.unique_id)]
-        )
-        if product:
+        if cwa_product.eancode:
+            product_tmpl = self.env["product.template"].search(
+                [("eancode", "=", cwa_product.eancode)]
+            )
+        else:
+            product_tmpl = self.env["product.template"].search(
+                [("unique_id", "=", cwa_product.unique_id)]
+            )
+
+        if product_tmpl:
             changes = self._get_value_changes(supplier_info_vals, supplier_info)
             cwa_import_product_change_model = self.env["cwa.import.product.change"]
+            state = "new"
+            if product_tmpl.preferred_supplier_id and (
+                supplier_info.id != product_tmpl.preferred_supplier_id.id
+            ):
+                state = "no-preferred-new"
             new_vals = {
-                "state": "new",
-                "affected_product_id": product.id,
+                "state": state,
+                "affected_product_id": product_tmpl.id,
                 "source_cwa_product_id": cwa_product.id,
                 "value_changes": changes,
             }
             # Try to find an existing change model
             existing = cwa_import_product_change_model.search(
-                [("affected_product_id.unique_id", "=", cwa_product.unique_id)]
+                [("source_cwa_product_id", "=", cwa_product.id)]
             )
             if existing:
                 existing.write(new_vals)
@@ -403,7 +414,7 @@ class CwaProduct(models.Model):
                     {"seller_ids": [(0, 0, supplier_product_info_dict)]}
                 )
             elif products_by_same_unique_code and supplier_product_info_dict[
-                "name"
+                "omschrijving"
             ] not in products_by_same_unique_code.mapped("seller_ids.partner_id.id"):
                 supplier_product_info_dict["sequence"] = 5  # give it least preference
                 products_by_same_unique_code[0].write(
