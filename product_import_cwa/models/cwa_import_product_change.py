@@ -15,6 +15,9 @@ class CwaImportProductChange(models.Model):
         default="new",
         required=True,
     )
+    value_changes = fields.Json()
+    changed_fields = fields.Char(store=False, compute="_compute_changed_fields")
+
     affected_product_id = fields.Many2one(
         "product.template", string="Affected Product", required=True, ondelete="cascade"
     )
@@ -55,6 +58,14 @@ class CwaImportProductChange(models.Model):
     product_supplierinfo_supplier = fields.Many2one(
         related="product_supplierinfo_id.partner_id"
     )
+
+    @api.depends("value_changes")
+    def _compute_changed_fields(self):
+        for record in self:
+            if record.value_changes:
+                record.changed_fields = ", ".join(record.value_changes.keys())
+            else:
+                record.changed_fields = ""
 
     @api.depends("affected_product_id.list_price")
     def _compute_affected_product_id_list_price(self):
