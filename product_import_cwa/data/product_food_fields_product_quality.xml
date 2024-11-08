@@ -7,4 +7,11 @@
         <field name="name">Biologisch</field>
         <field name="code">BIOLOGISCH</field>
     </record>
+    <record
+        model="product_food_fields.product_quality"
+        id="product_import_cwa_quality_bd"
+    >
+        <field name="name">Biologisch-Dynamisch</field>
+        <field name="code">BD</field>
+    </record>
 </odoo>
