@@ -201,17 +201,25 @@ class CwaProduct(models.Model):
 
     def write(self, vals):
         result = super().write(vals)
+        # TODO: This triggers very weird behaviour. Please fix after testing
+        # (GED-24)
         for cwa_product in self:
+            keys_write_now = set(vals.keys())
+            if not keys_write_now.intersection(FIELDS_TO_SUPPLIER_INFO):
+                continue
+
             ## Find if this product has been transferred to a supplier info model
             supplier_info = self.env["product.supplierinfo"].search(
                 [("unique_id", "=", cwa_product.unique_id)]
             )
             if supplier_info:
-                vals = {
+                supplier_info_vals = {
                     map_key(key): getattr(self, key) for key in FIELDS_TO_SUPPLIER_INFO
                 }
-                supplier_info.write(vals)
-            self._detect_product_changes(cwa_product)
+                self._detect_product_changes(
+                    cwa_product, supplier_info, supplier_info_vals
+                )
+                supplier_info.write(supplier_info_vals)
         return result
 
     @api.model
@@ -232,28 +240,37 @@ class CwaProduct(models.Model):
                 count += 1
         return count
 
-    def _detect_product_changes(self, cwa_product):
+    def _detect_product_changes(self, cwa_product, supplier_info, supplier_info_vals):
         product = self.env["product.template"].search(
             [("unique_id", "=", cwa_product.unique_id)]
         )
         if product:
-            if cwa_product.consumentenprijs != product.list_price:
-                new_vals = {
-                    "state": "new",
-                    "affected_product_id": product.id,
-                    "source_cwa_product_id": cwa_product.id,
-                    "current_consumer_price": product.list_price,
-                    "new_consumer_price": cwa_product.consumentenprijs,
-                }
-                cwa_import_product_change_model = self.env["cwa.import.product.change"]
-                # Try to find an existing change model
-                existing = cwa_import_product_change_model.search(
-                    [("affected_product_id.unique_id", "=", cwa_product.unique_id)]
-                )
-                if existing:
-                    existing.write(new_vals)
-                else:
-                    cwa_import_product_change_model.create(new_vals)
+            changes = self._get_value_changes(supplier_info_vals, supplier_info)
+            cwa_import_product_change_model = self.env["cwa.import.product.change"]
+            new_vals = {
+                "state": "new",
+                "affected_product_id": product.id,
+                "source_cwa_product_id": cwa_product.id,
+                "value_changes": changes,
+            }
+            # Try to find an existing change model
+            existing = cwa_import_product_change_model.search(
+                [("affected_product_id.unique_id", "=", cwa_product.unique_id)]
+            )
+            if existing:
+                existing.write(new_vals)
+            else:
+                cwa_import_product_change_model.create(new_vals)
+
+    def _get_value_changes(self, new_vals, supplier_info):
+        changes = {}
+        if supplier_info:
+            for field in new_vals:
+                old_value = getattr(supplier_info, field, None)
+                new_value = new_vals[field]
+                if old_value != new_value:
+                    changes[field] = {"old": old_value, "new": new_value}
+        return changes
 
     @api.model
     def load_records(self, keys, data, model):
@@ -340,7 +357,7 @@ class CwaProduct(models.Model):
                     _("Uknown vendor for this product. Fill the vendor first")
                 )
 
-            supplier_product_info_dict = self._create_supplier_dict()
+            supplier_product_info_dict = self._create_supplier_load_dict()
 
             # extra product.template values
             extra_prod_dict = {}
@@ -468,12 +485,13 @@ class CwaProduct(models.Model):
         if self.sve:
             supplier_dict["min_qty"] = f"{float(self.sve):.2f}"
 
-    def _create_supplier_dict(self):
+    def _create_supplier_load_dict(self):
         supplier_dict = {
             "cwa": True,
             "unique_id": self.unique_id,
             "eancode": self.eancode,
             "weegschaalartikel": self.weegschaalartikel,
+            "wichtartikel": self.wichtartikel,
             "pluartikel": self.pluartikel,
             "inhoud": self.inhoud,
             "eenheid": self.eenheid,
@@ -495,6 +513,7 @@ class CwaProduct(models.Model):
             "herkomst": self.herkomst,
             "ingredients": self.ingredienten,
             "statiegeld": self.statiegeld,
+            "omschrijving": self.omschrijving,
             "kassaomschrijving": self.kassaomschrijving,
             "plucode": self.plucode,
             "sve": self.sve,

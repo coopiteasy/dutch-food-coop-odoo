@@ -331,8 +331,10 @@ class TestProductImportCwa(TransactionCase):
         expected_result = {
             "state": "new",
             "affected_product_id": imported_product.id,
-            "current_consumer_price": 3.7,
-            "new_consumer_price": 3.9,
+            "affected_product_id_list_price": 3.7,
+            "affected_product_id_cost_price": 2.1,
+            "product_supplierinfo_list_price": 3.9,
+            "product_supplierinfo_cost_price": 2.3,
         }
 
         actual_result = {
@@ -368,8 +370,10 @@ class TestProductImportCwa(TransactionCase):
         expected_result = {
             "state": "new",
             "affected_product_id": imported_product.id,
-            "current_consumer_price": 3.7,
-            "new_consumer_price": 4.1,
+            "affected_product_id_list_price": 3.7,
+            "affected_product_id_cost_price": 2.1,
+            "product_supplierinfo_list_price": 4.1,
+            "product_supplierinfo_cost_price": 2.3,
         }
 
         actual_result = {
@@ -413,6 +417,68 @@ class TestProductImportCwa(TransactionCase):
 
         self.import_second_file(cwa_product_obj)
 
+    def test_boolean_fields_are_imported_correctly_at_first_import(self):
+        cwa_product_obj = self.env["cwa.product"]
+        self.import_first_file(cwa_product_obj)
+        cwa_prod = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
+        self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod)
+        self.create_origin()
+        cwa_prod.to_product()
+
+        imported_supplierinfo = self.env["product.supplierinfo"].search(
+            [("omschrijving", "=", "BOEKWEIT")]
+        )
+
+        self.assertFalse(imported_supplierinfo.weegschaalartikel)
+        self.assertFalse(imported_supplierinfo.pluartikel)
+        self.assertTrue(imported_supplierinfo.wichtartikel)
+
+    def test_boolean_fields_are_imported_correctly_at_second_import(self):
+        cwa_product_obj = self.env["cwa.product"]
+        self.import_first_file(cwa_product_obj)
+        cwa_prod = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
+        self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod)
+        self.create_origin()
+        cwa_prod.to_product()
+        self.import_second_file(cwa_product_obj)
+
+        imported_supplierinfo = self.env["product.supplierinfo"].search(
+            [("omschrijving", "=", "BOEKWEIT")]
+        )
+
+        self.assertFalse(imported_supplierinfo.weegschaalartikel)
+        self.assertFalse(imported_supplierinfo.pluartikel)
+        self.assertTrue(imported_supplierinfo.wichtartikel)
+
+    def test_a_changed_record_has_a_json_field_for_changes(self):
+        cwa_product_obj = self.env["cwa.product"]
+        self.import_first_file(cwa_product_obj)
+        cwa_prod = cwa_product_obj.search([("omschrijving", "=", "BOEKWEIT")])
+        self.add_translations_for_brand_uom_cblcode_and_tax(cwa_prod)
+        self.create_origin()
+        cwa_prod.to_product()
+
+        imported_product = self.env["product.template"].search(
+            [("name", "=", "BOEKWEIT")]
+        )
+
+        self.import_second_file(cwa_product_obj)
+
+        import_result = self.env["cwa.import.product.change"].search(
+            [("affected_product_id", "=", imported_product.id)]
+        )
+
+        changes = {
+            "consumentenprijs": {"new": 3.9, "old": 3.7},
+            "ingredients": {
+                "new": "INGREDIENTENN: BOEKWEIT, EEKHOORNS",
+                "old": "INGREDIENTEN: BOEKWEIT",
+            },
+            "inkoopprijs": {"new": 2.3, "old": 2.1},
+        }
+        result = import_result.value_changes
+        self.assertDictEqual(changes, result)
+
     def test_a_changed_record_has_a_computed_field_for_changed_fields(self):
         cwa_product_obj = self.env["cwa.product"]
         self.import_first_file(cwa_product_obj)
@@ -431,7 +497,7 @@ class TestProductImportCwa(TransactionCase):
             [("affected_product_id", "=", imported_product.id)]
         )
 
-        changed_fields = "list_price, ingredients"
+        changed_fields = "inkoopprijs, consumentenprijs, ingredients"
 
         self.assertEqual(changed_fields, import_result.changed_fields)
 

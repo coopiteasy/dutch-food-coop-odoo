@@ -15,14 +15,15 @@ class CwaImportProductChange(models.Model):
         default="new",
         required=True,
     )
+    value_changes = fields.Json()
+    changed_fields = fields.Char(store=False, compute="_compute_changed_fields")
+
     affected_product_id = fields.Many2one(
         "product.template", string="Affected Product", required=True, ondelete="cascade"
     )
     source_cwa_product_id = fields.Many2one(
         "cwa.product", string="Source cwa product", required=True, ondelete="cascade"
     )
-    current_consumer_price = fields.Float(required=True)
-    new_consumer_price = fields.Float(required=True)
     product_supplierinfo_id = fields.Many2one(
         "product.supplierinfo",
         compute="_compute_product_supplierinfo",
@@ -30,7 +31,6 @@ class CwaImportProductChange(models.Model):
         stored=False,
     )
 
-    changed_fields = fields.Char(compute="_compute_changed_fields", store=False)
     product_supplierinfo_ingredients = fields.Text(
         related="product_supplierinfo_id.ingredients"
     )
@@ -38,9 +38,15 @@ class CwaImportProductChange(models.Model):
         related="affected_product_id.ingredients"
     )
     affected_product_id_list_price = fields.Float(
-        string="Current Price",
+        string="Current List Price",
         compute="_compute_affected_product_id_list_price",
         inverse="_inverse_set_affected_product_id_list_price",
+        store=True,
+    )
+    affected_product_id_cost_price = fields.Float(
+        string="Current Cost Price",
+        compute="_compute_affected_product_id_cost_price",
+        inverse="_inverse_set_affected_product_id_cost_price",
         store=True,
     )
     product_supplierinfo_list_price = fields.Float(
@@ -52,6 +58,14 @@ class CwaImportProductChange(models.Model):
     product_supplierinfo_supplier = fields.Many2one(
         related="product_supplierinfo_id.partner_id"
     )
+
+    @api.depends("value_changes")
+    def _compute_changed_fields(self):
+        for record in self:
+            if record.value_changes:
+                record.changed_fields = ", ".join(record.value_changes.keys())
+            else:
+                record.changed_fields = ""
 
     @api.depends("affected_product_id.list_price")
     def _compute_affected_product_id_list_price(self):
@@ -65,6 +79,20 @@ class CwaImportProductChange(models.Model):
             if record.affected_product_id:
                 record.affected_product_id.list_price = (
                     record.affected_product_id_list_price
+                )
+
+    @api.depends("affected_product_id.standard_price")
+    def _compute_affected_product_id_cost_price(self):
+        for record in self:
+            record.affected_product_id_cost_price = (
+                record.affected_product_id.standard_price
+            )
+
+    def _inverse_set_affected_product_id_cost_price(self):
+        for record in self:
+            if record.affected_product_id:
+                record.affected_product_id.standard_price = (
+                    record.affected_product_id_cost_price
                 )
 
     @api.depends("source_cwa_product_id")
@@ -95,25 +123,6 @@ class CwaImportProductChange(models.Model):
         # Craft a domain that links back to the desired records
         domain = [("id", "in", product_ids)]
         return domain
-
-    @api.depends("current_consumer_price", "new_consumer_price")
-    def _compute_changed_fields(self):
-        for record in self:
-            new_supplier_info = record.product_supplierinfo_id
-            changed = []
-
-            if record.current_consumer_price != record.new_consumer_price:
-                changed.append("list_price")
-
-            if new_supplier_info:
-                for field in FIELDS_TO_COMPARE:
-                    if hasattr(record.affected_product_id, field):
-                        supplier_value = getattr(new_supplier_info, field)
-                        value = getattr(record.affected_product_id, field)
-                        if supplier_value != value:
-                            changed.append(field)
-
-            record.changed_fields = ", ".join(changed)
 
     @api.model
     def open_form_view(self, record_id):
