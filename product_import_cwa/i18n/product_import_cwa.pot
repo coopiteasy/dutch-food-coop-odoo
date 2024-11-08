@@ -1789,6 +1789,11 @@ msgid "New"
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields.selection,name:product_import_cwa.selection__cwa_import_product_change__state__no-preferred-new
+msgid "Non preferred new"
+msgstr ""
+
+#. module: product_import_cwa
 #: model:ir.model.fields,help:product_import_cwa.field_cwa_product__pos_categ_id
 #: model:ir.model.fields,help:product_import_cwa.field_product_supplierinfo__pos_categ_id
 msgid "Not a reference field, just a char field."
