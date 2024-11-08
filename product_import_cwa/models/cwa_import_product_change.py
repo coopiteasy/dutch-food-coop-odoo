@@ -10,6 +10,7 @@ class CwaImportProductChange(models.Model):
     state = fields.Selection(
         [
             ("new", "New"),
+            ("no-preferred-new", "Non preferred new"),
             ("processed", "Processed"),
         ],
         default="new",
