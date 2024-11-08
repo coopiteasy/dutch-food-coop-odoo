@@ -22,8 +22,14 @@
                     string="Supplier sell price"
                     readonly="1"
                 />
-                <field name="affected_product_id_cost_price" string="Current cost price" />
-                <field name="affected_product_id_list_price" string="Current sell price" />
+                <field
+                    name="affected_product_id_cost_price"
+                    string="Current cost price"
+                />
+                <field
+                    name="affected_product_id_list_price"
+                    string="Current sell price"
+                />
                 <field name="state" />
             </tree>
         </field>

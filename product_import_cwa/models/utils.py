@@ -16,6 +16,8 @@ PRESENCE_SELECTION = [
 
 YESNO_SELECTION = [("0", "ONBEKEND"), ("1", "JA"), ("2", "NEE")]
 
+BOOLEAN_KEYS = ("weegschaalartikel", "pluartikel", "wichtartikel")
+
 
 def ean_checksum(eancode):
     """
@@ -235,6 +237,7 @@ class XMLProductLoader:
         if old_hash:
             # record exists, update only when hash is different
             if old_hash != new_hash:
+                load_dict = self.convert_booleans_in_load_dict(load_dict)
                 self.update_records.append(load_dict)
         else:
             # convert load_dict to a list and append to load_values
@@ -283,7 +286,7 @@ class XMLProductLoader:
                     load_dict[tag] = "0"
 
             # load booleans
-            elif tag in ("weegschaalartikel", "pluartikel", "wichtartikel"):
+            elif tag in BOOLEAN_KEYS:
                 if value == "1":
                     load_dict[tag] = "true"
                 else:
@@ -318,3 +321,15 @@ class XMLProductLoader:
         for record in records:
             self.cur_unique_ids.add(record["unique_id"])
             self.hash_dict[record["unique_id"]] = record["hash"]
+
+    def convert_booleans_in_load_dict(self, load_dict):
+        return_dict = {}
+        for key, value in load_dict.items():
+            if key in BOOLEAN_KEYS:
+                if value == "true":
+                    return_dict[key] = True
+                else:
+                    return_dict[key] = False
+            else:
+                return_dict[key] = value
+        return return_dict
