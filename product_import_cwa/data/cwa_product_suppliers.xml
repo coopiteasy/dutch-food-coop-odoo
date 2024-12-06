@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+	<record id="supplier_1001" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1001" />
+		<field name="leveranciernummer">1001</field>
+	</record>
+	<record id="supplier_1002" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1002" />
+		<field name="leveranciernummer">1002</field>
+	</record>
+	<record id="supplier_1003" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1003" />
+		<field name="leveranciernummer">1003</field>
+	</record>
+	<record id="supplier_1004" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1004" />
+		<field name="leveranciernummer">1004</field>
+	</record>
+	<record id="supplier_1006" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1006" />
+		<field name="leveranciernummer">1006</field>
+	</record>
+	<record id="supplier_1007" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1007" />
+		<field name="leveranciernummer">1007</field>
+	</record>
+	<record id="supplier_1008" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1008" />
+		<field name="leveranciernummer">1008</field>
+	</record>
+	<record id="supplier_1009" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1009" />
+		<field name="leveranciernummer">1009</field>
+	</record>
+	<record id="supplier_1012" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1012" />
+		<field name="leveranciernummer">1012</field>
+	</record>
+	<record id="supplier_1014" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1014" />
+		<field name="leveranciernummer">1014</field>
+	</record>
+	<record id="supplier_1020" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1020" />
+		<field name="leveranciernummer">1020</field>
+	</record>
+	<record id="supplier_1023" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1023" />
+		<field name="leveranciernummer">1023</field>
+	</record>
+	<record id="supplier_1029" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1029" />
+		<field name="leveranciernummer">1029</field>
+	</record>
+	<record id="supplier_1036" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1036" />
+		<field name="leveranciernummer">1036</field>
+	</record>
+	<record id="supplier_1039" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1039" />
+		<field name="leveranciernummer">1039</field>
+	</record>
+	<record id="supplier_1040" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1040" />
+		<field name="leveranciernummer">1040</field>
+	</record>
+	<record id="supplier_1042" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1042" />
+		<field name="leveranciernummer">1042</field>
+	</record>
+	<record id="supplier_1043" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1043" />
+		<field name="leveranciernummer">1043</field>
+	</record>
+	<record id="supplier_1052" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1052" />
+		<field name="leveranciernummer">1052</field>
+	</record>
+	<record id="supplier_1054" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1054" />
+		<field name="leveranciernummer">1054</field>
+	</record>
+	<record id="supplier_1056" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1056" />
+		<field name="leveranciernummer">1056</field>
+	</record>
+	<record id="supplier_1061" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1061" />
+		<field name="leveranciernummer">1061</field>
+	</record>
+	<record id="supplier_1065" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1065" />
+		<field name="leveranciernummer">1065</field>
+	</record>
+	<record id="supplier_1071" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1071" />
+		<field name="leveranciernummer">1071</field>
+	</record>
+	<record id="supplier_1116" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1116" />
+		<field name="leveranciernummer">1116</field>
+	</record>
+	<record id="supplier_1117" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1117" />
+		<field name="leveranciernummer">1117</field>
+	</record>
+	<record id="supplier_1119" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1119" />
+		<field name="leveranciernummer">1119</field>
+	</record>
+	<record id="supplier_1127" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1127" />
+		<field name="leveranciernummer">1127</field>
+	</record>
+	<record id="supplier_1144" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1144" />
+		<field name="leveranciernummer">1144</field>
+	</record>
+	<record id="supplier_1146" model="cwa.product.suppliers">
+		<field name="res_partner_id" ref="product_import_cwa.supplier_code_1146" />
+		<field name="leveranciernummer">1146</field>
+	</record>
+</odoo>

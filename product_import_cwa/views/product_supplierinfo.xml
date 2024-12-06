@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Add more filters to supplierinfo -->
+    <record id="view_cwa_supplierinfo_filter" model="ir.ui.view">
+        <field name="name">cwa.supplier.info</field>
+        <field name="model">product.supplierinfo</field>
+        <field name="arch" type="xml">
+            <search string="Search Supplieinfo">
+                <field name="product_name" />
+                <field name="product_code" />
+                <field name="eancode" string="Eancode" />
+           </search>
+        </field>
+    </record>
+
+    <!-- product supplier form view -->
+    <record id="view_supplierinfo_form" model="ir.ui.view">
+        <field name="name">Extended supplierinfo form</field>
+        <field name="model">product.supplierinfo</field>
+        <field name="inherit_id" ref="product.product_supplierinfo_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/group" position="before">
+                <header>
+                    <button
+                        name="compare_prices"
+                        type="object"
+                        string="Compare Prices"
+                        class="oe_highlight"
+                        groups="base.group_no_one"
+                    />
+                    <button
+                        name="update_price"
+                        type="object"
+                        string="Update Prices"
+                        class="oe_highlight"
+                        attrs="{'invisible':[('has_new_price','=',False)]}"
+                    />
+                </header>
+            </xpath>
+            <xpath expr="//label[@for='min_qty']" position='attributes'>
+                <attribute name="string">Minimal Order Quantity</attribute>
+            </xpath>
+            <xpath expr="//form/sheet/group" position="after">
+                <separator string="Price information" colspan="4" />
+                <group>
+                    <field
+                        name="inkoopprijs"
+                        attrs="{'readonly': [('cwa', '=', True)]}"
+                    />
+                    <field
+                        name="consumentenprijs"
+                        attrs="{'readonly': [('cwa', '=', True)]}"
+                    />
+                    <field name="cwa" invisible="1" />
+                    <field name="has_new_price" invisible="1" />
+                </group>
+                <separator string="CWA Information" colspan="4" />
+                <group name="group_top">
+                    <group name="group_left">
+                        <field name="merk" attrs="{'readonly': [('cwa', '=', True)]}" />
+                        <field
+                            name="herkomst"
+                            attrs="{'readonly': [('cwa', '=', True)]}"
+                        />
+                        <field
+                            name="kassaomschrijving"
+                            attrs="{'readonly': [('cwa', '=', True)]}"
+                        />
+                        <field
+                            name="status"
+                            attrs="{'readonly': [('cwa', '=', True)]}"
+                        />
+                        <field
+                            name="ingangsdatum"
+                            attrs="{'readonly': [('cwa', '=', True)]}"
+                        />
+                        <field
+                            name="kwaliteit"
+                            attrs="{'readonly': [('cwa', '=', True)]}"
+                        />
+                        <field
+                            name="verpakkingce"
+                            attrs="{'readonly': [('cwa', '=', True)]}"
+                        />
+                        <field name="sve" attrs="{'readonly': [('cwa', '=', True)]}" />
+                        <field
+                            name="proefdiervrij"
+                            attrs="{'readonly': [('cwa', '=', True)]}"
+                        />
+                        <field
+                            name="vegetarisch"
+                            attrs="{'readonly': [('cwa', '=', True)]}"
+                        />
+                        <field
+                            name="veganistisch"
+                            attrs="{'readonly': [('cwa', '=', True)]}"
+                        />
+                        <field
+                            name="rauwemelk"
+                            attrs="{'readonly': [('cwa', '=', True)]}"
+                        />
+                    </group>
+                    <group name="group_right">
+                        <field
+                            name="eancode"
+                            attrs="{'readonly': [('cwa', '=', True)]}"
+                        />
+                        <separator
+                            string="Be ware! The weighting scale fields stemming from CWA are not what you think they are. Please read the help text for a better understanding. "
+                        />
+                        <field
+                            name="weegschaalartikel"
+                            help="Dit is brood en banket dat per stuk wordt verkocht."
+                            attrs="{'readonly': [('cwa', '=', True)]}"
+                        />
+                        <field
+                            name="wichtartikel"
+                            help="Dit zijn artikelen (kaas, groente) waarvan de verkoopprijs afhankelijk is van het verkochte gewicht. De artikelen worden in de winkel gewogen."
+                            attrs="{'readonly': [('cwa', '=', True)]}"
+                        />
+                        <field
+                            name="pluartikel"
+                            help="Dit zijn artikelen die per stuk worden verkocht, bijvoorbeeld een krop sla, een komkommer of een ei."
+                            attrs="{'readonly': [('cwa', '=', True)]}"
+                        />
+                        <field
+                            name="inhoud"
+                            attrs="{'readonly': [('cwa', '=', True)]}"
+                        />
+                        <field
+                            name="eenheid"
+                            attrs="{'readonly': [('cwa', '=', True)]}"
+                        />
+                        <field name="btw" attrs="{'readonly': [('cwa', '=', True)]}" />
+                        <field
+                            name="plucode"
+                            attrs="{'readonly': [('cwa', '=', True)]}"
+                        />
+                        <field
+                            name="cblcode"
+                            attrs="{'readonly': [('cwa', '=', True)]}"
+                        />
+                        <field
+                            name="bestelnummer"
+                            attrs="{'readonly': [('cwa', '=', True)]}"
+                        />
+                        <field
+                            name="leveranciernummer"
+                            attrs="{'readonly': [('cwa', '=', True)]}"
+                        />
+                        <field
+                            name="statiegeld"
+                            attrs="{'readonly': [('cwa', '=', True)]}"
+                        />
+                    </group>
+                </group>
+                <separator string="Ingrediënten" />
+                    <group name="ingredienten">
+                        <field
+                        name="ingredients"
+                        attrs="{'readonly': [('cwa', '=', True)]}"
+                    />
+                    </group>
+                <separator string="D numbers" colspan="4" />
+                <group name="group_top">
+                    <group name="group_left">
+                        <field name="d204" attrs="{'readonly': [('cwa', '=', True)]}" />
+                        <field name="d209" attrs="{'readonly': [('cwa', '=', True)]}" />
+                        <field name="d210" attrs="{'readonly': [('cwa', '=', True)]}" />
+                        <field name="d212" attrs="{'readonly': [('cwa', '=', True)]}" />
+                        <field name="d213" attrs="{'readonly': [('cwa', '=', True)]}" />
+                        <field name="d214" attrs="{'readonly': [('cwa', '=', True)]}" />
+                        <field name="d215" attrs="{'readonly': [('cwa', '=', True)]}" />
+                        <field name="d216" attrs="{'readonly': [('cwa', '=', True)]}" />
+                        <field name="d217" attrs="{'readonly': [('cwa', '=', True)]}" />
+                        <field
+                            name="d217b"
+                            attrs="{'readonly': [('cwa', '=', True)]}"
+                        />
+                        <field name="d220" attrs="{'readonly': [('cwa', '=', True)]}" />
+                        <field name="d221" attrs="{'readonly': [('cwa', '=', True)]}" />
+                        <field
+                            name="d221b"
+                            attrs="{'readonly': [('cwa', '=', True)]}"
+                        />
+                        <field name="d222" attrs="{'readonly': [('cwa', '=', True)]}" />
+                    </group>
+                    <group name="group_right">
+                        <field name="d223" attrs="{'readonly': [('cwa', '=', True)]}" />
+                        <field name="d225" attrs="{'readonly': [('cwa', '=', True)]}" />
+                        <field name="d226" attrs="{'readonly': [('cwa', '=', True)]}" />
+                        <field name="d228" attrs="{'readonly': [('cwa', '=', True)]}" />
+                        <field name="d230" attrs="{'readonly': [('cwa', '=', True)]}" />
+                        <field name="d232" attrs="{'readonly': [('cwa', '=', True)]}" />
+                        <field name="d234" attrs="{'readonly': [('cwa', '=', True)]}" />
+                        <field name="d235" attrs="{'readonly': [('cwa', '=', True)]}" />
+                        <field name="d236" attrs="{'readonly': [('cwa', '=', True)]}" />
+                        <field name="d237" attrs="{'readonly': [('cwa', '=', True)]}" />
+                        <field name="d238" attrs="{'readonly': [('cwa', '=', True)]}" />
+                        <field
+                            name="d238b"
+                            attrs="{'readonly': [('cwa', '=', True)]}"
+                        />
+                        <field name="d239" attrs="{'readonly': [('cwa', '=', True)]}" />
+                        <field name="d240" attrs="{'readonly': [('cwa', '=', True)]}" />
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- product supplier tree view -->
+    <record id="view_supplierinfo_tree" model="ir.ui.view">
+        <field name="name">Extended supplierinfo tree view</field>
+        <field name="model">product.supplierinfo</field>
+        <field name="inherit_id" ref="product.product_supplierinfo_tree_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='min_qty']" position='attributes'>
+                <attribute name="string">Minimal Order Quantity</attribute>
+            </xpath>
+            <xpath expr="//field[@name='min_qty']" position='after'>
+                <field name="product_code" />
+                <field name="eancode" />
+                <field name="merk" />
+                <field name="inkoopprijs" />
+                <field name="consumentenprijs" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

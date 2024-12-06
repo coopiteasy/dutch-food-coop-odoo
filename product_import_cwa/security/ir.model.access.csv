@@ -1,0 +1,11 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+access_cwa_product_admin,cwa.product admin,model_cwa_product,base.group_no_one,1,1,1,1
+access_cwa_product_user,cwa.product user,model_cwa_product,base.group_user,1,1,1,1
+access_cwa_product_brands,access_cwa_product_brands,model_cwa_product_brands,base.group_user,1,1,1,1
+access_cwa_product_cblcode,access_cwa_product_cblcode,model_cwa_product_cblcode,base.group_user,1,1,1,1
+access_cwa_product_quality,access_cwa_product_quality,model_cwa_product_quality,base.group_user,1,1,1,1
+access_cwa_product_suppliers,access_cwa_product_suppliers,model_cwa_product_suppliers,base.group_user,1,1,1,1
+access_cwa_product_uom,access_cwa_product_uom,model_cwa_product_uom,base.group_user,1,1,1,1
+access_cwa_vat_tax,access_cwa_vat_tax,model_cwa_vat_tax,base.group_user,1,1,1,1
+access_cwa_import_product_change_admin,cwa.import.product.change admin,model_cwa_import_product_change,base.group_no_one,1,1,1,1
+access_cwa_import_product_change_user,cwa.import.product.change user,model_cwa_import_product_change,base.group_user,1,1,1,1

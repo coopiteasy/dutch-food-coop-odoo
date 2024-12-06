@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- wizard view -->
+    <record id="cwa_cblcode_view" model="ir.ui.view">
+        <field name="name">Update CBL translations</field>
+        <field name="model">cwa.product.import.cblcode</field>
+        <field name="arch" type="xml">
+            <form string="Update CBL translations">
+                <field name="cblcode_ids">
+                    <tree editable="bottom" create="false" delete="false">
+                        <field name="cwa_product_id" string="Product Name" />
+                        <field name="source_value" readonly="0" />
+                        <field name="trans_id" invisible="1" />
+                        <field name="internal_category" />
+                        <field name="pos_category" />
+                    </tree>
+                </field>
+                <footer>
+                    <button
+                        string="Apply"
+                        name="action_apply"
+                        type="object"
+                        class="btn-primary"
+                    />
+                    <button string="Cancel" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_cwa_cblcode_all" model="ir.actions.act_window">
+        <field name="name">Update All CBL translations</field>
+        <field name="res_model">cwa.product.import.cblcode</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{'show_all': True}</field>
+        <field name="binding_model_id" ref="model_cwa_product" />
+    </record>
+
+    <record id="action_cwa_cblcode_unknown" model="ir.actions.act_window">
+        <field name="name">Locate Unknown CBL translations</field>
+        <field name="res_model">cwa.product.import.cblcode</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{'show_all': False}</field>
+        <field name="binding_model_id" ref="model_cwa_product" />
+    </record>
+</odoo>

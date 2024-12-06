@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+	<record id="cwa_derving_01" model="product.template">
+		<field name="name">DERVING AGF</field>
+		<field name="list_price">0.00</field>
+		<field name="categ_id" ref="product_import_cwa.afdeling_01" />
+		<field name="pos_categ_id" ref="pos_categ_12" />
+		<field name="uom_id" ref="product.product_cwa_stuks" />
+		<field name="uom_po_id" ref="product.product_cwa_stuks" />
+		<field name="taxes_id" />
+	</record>
+
+	<record id="cwa_derving_02" model="product.template">
+		<field name="name">DERVING BROOD &amp; BANKET</field>
+		<field name="list_price">0.00</field>
+		<field name="categ_id" ref="product_import_cwa.afdeling_02" />
+		<field name="pos_categ_id" ref="pos_categ_12" />
+		<field name="uom_id" ref="product.product_cwa_stuks" />
+		<field name="uom_po_id" ref="product.product_cwa_stuks" />
+		<field name="taxes_id" />
+	</record>
+
+	<record id="cwa_derving_03" model="product.template">
+		<field name="name">DERVING KAAS &amp; DELICATESSEN</field>
+		<field name="list_price">0.00</field>
+		<field name="categ_id" ref="product_import_cwa.afdeling_03" />
+		<field name="pos_categ_id" ref="pos_categ_12" />
+		<field name="uom_id" ref="product.product_cwa_stuks" />
+		<field name="uom_po_id" ref="product.product_cwa_stuks" />
+		<field name="taxes_id" />
+	</record>
+
+	<record id="cwa_derving_04" model="product.template">
+		<field name="name">DERVING VLEES &amp; VIS</field>
+		<field name="list_price">0.00</field>
+		<field name="categ_id" ref="product_import_cwa.afdeling_04" />
+		<field name="pos_categ_id" ref="pos_categ_12" />
+		<field name="uom_id" ref="product.product_cwa_stuks" />
+		<field name="uom_po_id" ref="product.product_cwa_stuks" />
+		<field name="taxes_id" />
+	</record>
+
+	<record id="cwa_derving_05" model="product.template">
+		<field name="name">DERVING KOELVERS</field>
+		<field name="list_price">0.00</field>
+		<field name="categ_id" ref="product_import_cwa.afdeling_05" />
+		<field name="pos_categ_id" ref="pos_categ_12" />
+		<field name="uom_id" ref="product.product_cwa_stuks" />
+		<field name="uom_po_id" ref="product.product_cwa_stuks" />
+		<field name="taxes_id" />
+	</record>
+
+	<record id="cwa_derving_06" model="product.template">
+		<field name="name">DERVING KRUIDENIERSWAREN</field>
+		<field name="list_price">0.00</field>
+		<field name="categ_id" ref="product_import_cwa.afdeling_06" />
+		<field name="pos_categ_id" ref="pos_categ_12" />
+		<field name="uom_id" ref="product.product_cwa_stuks" />
+		<field name="uom_po_id" ref="product.product_cwa_stuks" />
+		<field name="taxes_id" />
+	</record>
+
+	<record id="cwa_derving_07" model="product.template">
+		<field name="name">DERVING NON-FOOD</field>
+		<field name="list_price">0.00</field>
+		<field name="categ_id" ref="product_import_cwa.afdeling_07" />
+		<field name="pos_categ_id" ref="pos_categ_12" />
+		<field name="uom_id" ref="product.product_cwa_stuks" />
+		<field name="uom_po_id" ref="product.product_cwa_stuks" />
+		<field name="taxes_id" />
+	</record>
+
+	<record id="cwa_derving_10" model="product.template">
+		<field name="name">DERVING DIEPVRIES</field>
+		<field name="list_price">0.00</field>
+		<field name="categ_id" ref="product_import_cwa.afdeling_10" />
+		<field name="pos_categ_id" ref="pos_categ_12" />
+		<field name="uom_id" ref="product.product_cwa_stuks" />
+		<field name="uom_po_id" ref="product.product_cwa_stuks" />
+		<field name="taxes_id" />
+	</record>
+</odoo>
