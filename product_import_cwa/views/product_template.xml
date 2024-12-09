@@ -196,6 +196,7 @@
                                         string="Ignore the Price Changes"
                                         attrs="{'invisible': [('has_new_price', '=', False)]}"
                                     />
+                                    <field name="leveranciernummer" />
                                     <field name="product_name" />
                                     <field name="min_qty" />
                                     <field name="product_code" />
