@@ -36,7 +36,7 @@
     </record>
 
     <menuitem
-        name="Product Quality"
+        name="Product Quality Translation"
         parent="sale.prod_config_main"
         id="cwa_product_quality_menuitem"
         sequence="65"
