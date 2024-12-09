@@ -14,6 +14,13 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: product_digi_sync
+#: model_terms:ir.ui.view,arch_db:product_digi_sync.res_config_settings_view_form
+msgid ""
+"<i class=\"fa fa-fw o_button_icon fa-arrow-right\"/>\n"
+"                                    <span>Open digi clients</span>"
+msgstr ""
+
+#. module: product_digi_sync
 #: model:ir.model.fields,field_description:product_digi_sync.field_product_digi_sync_digi_client__password
 msgid "@Fresh Password"
 msgstr ""
@@ -111,11 +118,6 @@ msgid "Display Name"
 msgstr ""
 
 #. module: product_digi_sync
-#: model_terms:ir.ui.view,arch_db:product_digi_sync.res_config_settings_view_form
-msgid "Documentation"
-msgstr ""
-
-#. module: product_digi_sync
 #: model:ir.model.fields,field_description:product_digi_sync.field_product_category__external_digi_id
 #: model:ir.model.fields,field_description:product_digi_sync.field_product_food_fields_product_origin__external_digi_id
 msgid "External Digi identifier"
@@ -168,6 +170,11 @@ msgstr ""
 
 #. module: product_digi_sync
 #: model_terms:ir.ui.view,arch_db:product_digi_sync.res_config_settings_view_form
+msgid "Open Clients"
+msgstr ""
+
+#. module: product_digi_sync
+#: model_terms:ir.ui.view,arch_db:product_digi_sync.res_config_settings_view_form
 msgid "Piece barcode rule"
 msgstr ""
 
@@ -184,6 +191,11 @@ msgstr ""
 #. module: product_digi_sync
 #: model:ir.model,name:product_digi_sync.model_product_category
 msgid "Product Category"
+msgstr ""
+
+#. module: product_digi_sync
+#: model_terms:ir.ui.view,arch_db:product_digi_sync.res_config_settings_view_form
+msgid "Product Digi Sync"
 msgstr ""
 
 #. module: product_digi_sync
