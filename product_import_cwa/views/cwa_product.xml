@@ -39,7 +39,7 @@
         <field name="name">cwa.tree</field>
         <field name="model">cwa.product</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree create="false">
                 <button
                     class="oe_edit_only"
                     states="new"
@@ -67,7 +67,7 @@
         <field name="name">cwa.form</field>
         <field name="model">cwa.product</field>
         <field name="arch" type="xml">
-            <form string="CWA form view">
+            <form string="CWA form view" delete="false" duplicate="false">
             <header>
                 <button
                         name="to_product"
