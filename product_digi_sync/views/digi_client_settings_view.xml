@@ -23,8 +23,13 @@
                                 <div class="text-muted">
                                     Send products to @fresh by Digi
                                 </div>
-                                <button name="%(product_digi_sync.digi_client_action)d" type="action" string="Open Clients" class="btn btn-link">
-                                    <i class="fa fa-fw o_button_icon fa-arrow-right"></i>
+                                <button
+                                    name="%(product_digi_sync.digi_client_action)d"
+                                    type="action"
+                                    string="Open Clients"
+                                    class="btn btn-link"
+                                >
+                                    <i class="fa fa-fw o_button_icon fa-arrow-right" />
                                     <span>Open digi clients</span>
                                 </button>
                             </div>
@@ -43,9 +48,9 @@
                                         class="o_form_label"
                                     >Piece barcode rule</label>
                                     <div><field
-                                        name="piece_barcode_rule_id"
-                                        options="{'no_open': True}"
-                                    /></div>
+                                            name="piece_barcode_rule_id"
+                                            options="{'no_open': True}"
+                                        /></div>
                                     <label
                                         for="weighted_barcode_rule_id"
                                         class="o_form_label"
