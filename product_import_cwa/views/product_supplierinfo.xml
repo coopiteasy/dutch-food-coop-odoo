@@ -19,6 +19,11 @@
         <field name="model">product.supplierinfo</field>
         <field name="inherit_id" ref="product.product_supplierinfo_form_view" />
         <field name="arch" type="xml">
+            <data>
+                <field name="min_qty" position="attributes">
+                    <attribute name="attrs">{'required': True}</attribute>
+                </field>
+            </data>
             <xpath expr="//form/sheet/group" position="before">
                 <header>
                     <button
@@ -142,11 +147,11 @@
                         />
                         <field
                             name="bestelnummer"
-                            attrs="{'readonly': [('cwa', '=', True)]}"
+                            attrs="{'readonly': [('cwa', '=', True)], 'required': True}"
                         />
                         <field
                             name="leveranciernummer"
-                            attrs="{'readonly': [('cwa', '=', True)]}"
+                            attrs="{'readonly': [('cwa', '=', True)], 'required': True}"
                         />
                         <field
                             name="statiegeld"
