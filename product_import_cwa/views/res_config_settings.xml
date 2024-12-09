@@ -33,7 +33,7 @@
                                         name="cwa_ftp_address"
                                         placeholder="ftp.valksolutions.nl"
                                         attrs="{'invisible': [('enable_ftp_import', '=', False )], 'required': [('enable_ftp_import', '=', True )]}"
-                                        style="width:110%%"
+                                        style="width:110%"
                                     />
                                 </div>
                             </div>
@@ -69,7 +69,7 @@
                                         name="cwa_ftp_password"
                                         password="True"
                                         attrs="{'invisible': [('enable_ftp_import', '=', False )], 'required': [('enable_ftp_import', '=', True )]}"
-                                        style="width:110%%"
+                                        style="width:110%"
                                     />
                                 </div>
                             </div>

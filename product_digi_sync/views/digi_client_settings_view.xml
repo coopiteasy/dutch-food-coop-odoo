@@ -2,58 +2,70 @@
 <odoo>
     <record id="res_config_settings_view_form" model="ir.ui.view">
         <field name="name">res.config.settings.view.form.inherit.stock</field>
-            <field name="model">res.config.settings</field>
-            <field name="priority" eval="30" />
-            <field name="inherit_id" ref="stock.res_config_settings_view_form" />
-            <field name="arch" type="xml">
-                <xpath expr="//div[@id='sell_purchase_uom']" position="after">
-                    <div class="col-12 col-lg-6 o_setting_box" id="sell_purchase_uom">
-                        <div class="o_setting_left_pane">
-                            <field name="digi_sync_products_enabled" />
-                        </div>
-                        <div class="o_setting_right_pane">
-                            <label for="digi_sync_products_enabled" />
-                            <a
-                            href="https://www.odoo.com/documentation/16.0/applications/inventory_and_mrp/inventory/management/products/uom.html"
-                            title="Documentation"
-                            class="o_doc_link"
-                            target="_blank"
-                        />
-                            <div class="text-muted">
-                                Send products to @fresh by Digi
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="30" />
+        <field name="inherit_id" ref="stock.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div
+                    class="app_settings_block"
+                    data-string="Product Digi Sync"
+                    string="Product Digi Sync"
+                    data-key="product_digi_sync"
+                >
+                    <h2>Product Digi Sync</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="digi_sync_products_enabled" />
                             </div>
-                            <div class="content-group">
+                            <div class="o_setting_right_pane">
+                                <div class="text-muted">
+                                    Send products to @fresh by Digi
+                                </div>
+                                <button
+                                    name="%(product_digi_sync.digi_client_action)d"
+                                    type="action"
+                                    string="Open Clients"
+                                    class="btn btn-link"
+                                >
+                                    <i class="fa fa-fw o_button_icon fa-arrow-right" />
+                                    <span>Open digi clients</span>
+                                </button>
+                            </div>
+                            <div class="o_setting_right_pane">
                                 <div
-                                class="mt8"
-                                attrs="{'invisible': [('digi_sync_products_enabled', '=', False)]}"
-                            >
+                                    class="mt8"
+                                    attrs="{'invisible': [('digi_sync_products_enabled', '=', False)]}"
+                                >
                                     <label
-                                    for="digi_client_id"
-                                    class="o_form_label"
-                                >Digi client</label>
+                                        for="digi_client_id"
+                                        class="o_form_label"
+                                    >Digi client</label>
                                     <div><field name="digi_client_id" /></div>
                                     <label
-                                    for="piece_barcode_rule_id"
-                                    class="o_form_label"
-                                >Piece barcode rule</label>
+                                        for="piece_barcode_rule_id"
+                                        class="o_form_label"
+                                    >Piece barcode rule</label>
                                     <div><field
-                                        name="piece_barcode_rule_id"
-                                        options="{'no_open': True}"
-                                    /></div>
+                                            name="piece_barcode_rule_id"
+                                            options="{'no_open': True}"
+                                        /></div>
                                     <label
-                                    for="weighted_barcode_rule_id"
-                                    class="o_form_label"
-                                >Weighted barcode rule</label>
+                                        for="weighted_barcode_rule_id"
+                                        class="o_form_label"
+                                    >Weighted barcode rule</label>
                                     <div>
                                         <field
-                                        name="weighted_barcode_rule_id"
-                                        options="{'no_open': True}"
-                                    /></div>
+                                            name="weighted_barcode_rule_id"
+                                            options="{'no_open': True}"
+                                        /></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </xpath>
-            </field>
+                </div>
+            </xpath>
+        </field>
     </record>
 </odoo>

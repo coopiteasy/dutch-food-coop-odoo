@@ -38,7 +38,7 @@
     <menuitem
         id="menu_product_quality"
         name="Product Quality"
-        parent="point_of_sale.menu_point_config_product"
+        parent="sale.prod_config_main"
         sequence="66"
         action="action_product_quality"
     />
