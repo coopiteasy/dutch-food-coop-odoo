@@ -5,12 +5,17 @@
         <field name="arch" type="xml">
             <form string="Translate Brand">
                 <group>
-                    <field name="brand_name"/>
+                    <field name="brand_name" />
                     <field name="translated_brand" />
                 </group>
                 <footer>
-                    <button string="Apply" type="object" name="action_translate_brand" class="btn-primary"/>
-                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    <button
+                        string="Apply"
+                        type="object"
+                        name="action_translate_brand"
+                        class="btn-primary"
+                    />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
                 </footer>
             </form>
         </field>

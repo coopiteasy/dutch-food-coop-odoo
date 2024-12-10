@@ -377,17 +377,30 @@ class CwaProduct(models.Model):
 
             try:
                 self._translate_brand(extra_prod_dict)
-            except:
+            except ValidationError:
                 return {
-                    'type': 'ir.actions.act_window',
-                    'name': 'Translate Brand',
-                    'res_model': 'cwa.brand.translation.wizard',
-                    'view_mode': 'form',
-                    'target': 'new',
-                    'context': {'default_brand_name': self.merk}
+                    "type": "ir.actions.act_window",
+                    "name": "Translate Brand",
+                    "res_model": "cwa.brand.translation.wizard",
+                    "view_mode": "form",
+                    "target": "new",
+                    "context": {"default_brand_name": self.merk},
                 }
 
-            self._translate_uoms(extra_prod_dict)
+            try:
+                self._translate_uoms(extra_prod_dict)
+            except ValidationError:
+                return {
+                    "type": "ir.actions.act_window",
+                    "name": "Translate UOMs",
+                    "res_model": "cwa.uom.translation.wizard",
+                    "view_mode": "form",
+                    "target": "new",
+                    "context": {
+                        "default_eenheid": self.eenheid,
+                        "default_inhoud": self.inhoud,
+                    },
+                }
 
             self._translate_cbl_codes(extra_prod_dict)
 

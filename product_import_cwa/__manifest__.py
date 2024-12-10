@@ -34,6 +34,7 @@
         "views/cwa_product_uom.xml",
         "views/cwa_vat_tax.xml",
         "wizard/cwa_brand_translation_wizard.xml",
+        "wizard/cwa_uom_translation_wizard.xml",
         "wizard/cwa_locate_brands_wizard.xml",
         "wizard/cwa_locate_cblcode_wizard.xml",
         "wizard/cwa_locate_uom_wizard.xml",
