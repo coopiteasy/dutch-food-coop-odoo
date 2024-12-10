@@ -375,7 +375,17 @@ class CwaProduct(models.Model):
 
             self._translate_standard_unit_of_packiging(supplier_product_info_dict)
 
-            self._translate_brand(extra_prod_dict)
+            try:
+                self._translate_brand(extra_prod_dict)
+            except:
+                return {
+                    'type': 'ir.actions.act_window',
+                    'name': 'Translate Brand',
+                    'res_model': 'cwa.brand.translation.wizard',
+                    'view_mode': 'form',
+                    'target': 'new',
+                    'context': {'default_brand_name': self.merk}
+                }
 
             self._translate_uoms(extra_prod_dict)
 
