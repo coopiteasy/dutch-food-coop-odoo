@@ -51,7 +51,7 @@
                 <field name="leveranciernummer" />
                 <field name="bestelnummer" />
                 <field name="eancode" />
-                <field name="cblcode" />
+                <field name="ingangsdatum" />
                 <field name="omschrijving" />
                 <field name="merk" />
                 <field name="kwaliteit" />
