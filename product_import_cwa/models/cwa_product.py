@@ -402,7 +402,19 @@ class CwaProduct(models.Model):
                     },
                 }
 
-            self._translate_cbl_codes(extra_prod_dict)
+            try:
+                self._translate_cbl_codes(extra_prod_dict)
+            except ValidationError:
+                return {
+                    "type": "ir.actions.act_window",
+                    "name": "Translate CBL Codes",
+                    "res_model": "cwa.cblcode.translation.wizard",
+                    "view_mode": "form",
+                    "target": "new",
+                    "context": {
+                        "default_source_value": self.cblcode,
+                    },
+                }
 
             self._translate_quality(extra_prod_dict)
 
