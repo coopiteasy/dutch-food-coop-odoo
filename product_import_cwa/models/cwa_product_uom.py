@@ -9,8 +9,8 @@ class CwaProductUom(models.Model):
     name = fields.Char(related="eenheid")
     inhoud = fields.Float(size=64, required=True)
     eenheid = fields.Char(size=64, required=True)
-    uom_id = fields.Many2one("uom.uom", "Standard UoM", size=64)
-    uom_po_id = fields.Many2one("uom.uom", "Purchase UoM", size=64)
+    uom_id = fields.Many2one("uom.uom", "Standard UoM", size=64, required=True)
+    uom_po_id = fields.Many2one("uom.uom", "Purchase UoM", size=64, required=True)
     target_inhoud = fields.Float()
     uos_combo = fields.Char("UoM/UoS Combo")
 
