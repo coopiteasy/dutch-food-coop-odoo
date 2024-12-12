@@ -422,7 +422,19 @@ class CwaProduct(models.Model):
 
             self._translate_vat(extra_prod_dict)
 
-            self._translate_product_origin(extra_prod_dict)
+            try:
+                self._translate_product_origin(extra_prod_dict)
+            except ValidationError:
+                return {
+                    "type": "ir.actions.act_window",
+                    "name": "Translate Product Origin",
+                    "res_model": "cwa.product.origin.translation.wizard",
+                    "view_mode": "form",
+                    "target": "new",
+                    "context": {
+                        "default_country_code": self.herkomst,
+                    },
+                }
 
             # Search if a product with this EAN code already exists
             prod_obj = self.env["product.template"]
