@@ -181,10 +181,13 @@ msgid "Applicable Sale Tax"
 msgstr ""
 
 #. module: product_import_cwa
+#: model_terms:ir.ui.view,arch_db:product_import_cwa.brand_translation_wizard_view
 #: model_terms:ir.ui.view,arch_db:product_import_cwa.cwa_cblcode_view
 #: model_terms:ir.ui.view,arch_db:product_import_cwa.cwa_tax_wizard_view
+#: model_terms:ir.ui.view,arch_db:product_import_cwa.cwa_uom_translation_wizard_form_view
 #: model_terms:ir.ui.view,arch_db:product_import_cwa.cwa_uom_wizard_view
 #: model_terms:ir.ui.view,arch_db:product_import_cwa.cwa_wizard_view
+#: model_terms:ir.ui.view,arch_db:product_import_cwa.product_origin_translation_wizard_view
 msgid "Apply"
 msgstr ""
 
@@ -273,6 +276,7 @@ msgid "Bewaartemperatuur"
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_brand_translation_wizard__brand_name
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_brands__destination_value
 msgid "Brand Name"
 msgstr ""
@@ -300,6 +304,7 @@ msgid "Btw"
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_cblcode_translation_wizard__source_value
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_cblcode__name
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_cblcode__source_value
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_import_cblcode__cblcode_ids
@@ -327,6 +332,16 @@ msgstr ""
 #: model:ir.actions.act_window,name:product_import_cwa.action_cwa_import_product_change
 #: model:ir.ui.menu,name:product_import_cwa.menu_imported_changes
 msgid "CWA - Import changes"
+msgstr ""
+
+#. module: product_import_cwa
+#: model:ir.model,name:product_import_cwa.model_cwa_brand_translation_wizard
+msgid "CWA Brand Translation Wizard"
+msgstr ""
+
+#. module: product_import_cwa
+#: model:ir.model,name:product_import_cwa.model_cwa_cblcode_translation_wizard
+msgid "CWA CBL Code Translation Wizard"
 msgstr ""
 
 #. module: product_import_cwa
@@ -437,11 +452,15 @@ msgid "Can be Sold"
 msgstr ""
 
 #. module: product_import_cwa
+#: model_terms:ir.ui.view,arch_db:product_import_cwa.brand_translation_wizard_view
+#: model_terms:ir.ui.view,arch_db:product_import_cwa.cblcode_translation_wizard_view
 #: model_terms:ir.ui.view,arch_db:product_import_cwa.cwa_cblcode_view
 #: model_terms:ir.ui.view,arch_db:product_import_cwa.cwa_product_form_import_to_product
 #: model_terms:ir.ui.view,arch_db:product_import_cwa.cwa_tax_wizard_view
+#: model_terms:ir.ui.view,arch_db:product_import_cwa.cwa_uom_translation_wizard_form_view
 #: model_terms:ir.ui.view,arch_db:product_import_cwa.cwa_uom_wizard_view
 #: model_terms:ir.ui.view,arch_db:product_import_cwa.cwa_wizard_view
+#: model_terms:ir.ui.view,arch_db:product_import_cwa.product_origin_translation_wizard_view
 msgid "Cancel"
 msgstr ""
 
@@ -547,6 +566,18 @@ msgid "Could not translate country code %s"
 msgstr ""
 
 #. module: product_import_cwa
+#: model_terms:ir.ui.view,arch_db:product_import_cwa.cblcode_translation_wizard_view
+msgid "Create"
+msgstr ""
+
+#. module: product_import_cwa
+#: model:ir.actions.act_window,name:product_import_cwa.action_open_cblcode_translation_wizard
+msgid "Create CWA Product CBL Code"
+msgstr ""
+
+#. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_brand_translation_wizard__create_uid
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_cblcode_translation_wizard__create_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__create_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_products__create_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product__create_uid
@@ -557,10 +588,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_import_cblcode__create_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_import_cblcode_wizard__create_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_import_uom__create_uid
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_origin_translation_wizard__create_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_quality__create_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_suppliers__create_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom__create_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom_wizard__create_uid
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_uom_translation_wizard__create_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_vat_tax__create_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_vat_tax_trans_wizard__create_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_vat_tax_wizard__create_uid
@@ -568,6 +601,8 @@ msgid "Created by"
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_brand_translation_wizard__create_date
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_cblcode_translation_wizard__create_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__create_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_products__create_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product__create_date
@@ -578,10 +613,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_import_cblcode__create_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_import_cblcode_wizard__create_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_import_uom__create_date
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_origin_translation_wizard__create_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_quality__create_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_suppliers__create_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom__create_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom_wizard__create_date
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_uom_translation_wizard__create_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_vat_tax__create_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_vat_tax_trans_wizard__create_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_vat_tax_wizard__create_date
@@ -619,6 +656,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom_wizard__cwa_product_id
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_vat_tax_trans_wizard__cwa_product_id
 msgid "Cwa Product"
+msgstr ""
+
+#. module: product_import_cwa
+#: model:ir.model,name:product_import_cwa.model_cwa_product_origin_translation_wizard
+msgid "Cwa Product Origin Translation Wizard"
 msgstr ""
 
 #. module: product_import_cwa
@@ -892,6 +934,8 @@ msgid "Destination Value"
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_brand_translation_wizard__display_name
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_cblcode_translation_wizard__display_name
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__display_name
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_products__display_name
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product__display_name
@@ -902,10 +946,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_import_cblcode__display_name
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_import_cblcode_wizard__display_name
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_import_uom__display_name
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_origin_translation_wizard__display_name
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_quality__display_name
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_suppliers__display_name
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom__display_name
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom_wizard__display_name
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_uom_translation_wizard__display_name
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_vat_tax__display_name
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_vat_tax_trans_wizard__display_name
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_vat_tax_wizard__display_name
@@ -967,6 +1013,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom__eenheid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom__name
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom_wizard__eenheid
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_uom_translation_wizard__eenheid
 #: model:ir.model.fields,field_description:product_import_cwa.field_product_product__eenheid
 #: model:ir.model.fields,field_description:product_import_cwa.field_product_supplierinfo__eenheid
 #: model:ir.model.fields,field_description:product_import_cwa.field_product_template__eenheid
@@ -1114,6 +1161,8 @@ msgid "Hoogte."
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_brand_translation_wizard__id
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_cblcode_translation_wizard__id
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__id
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_products__id
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product__id
@@ -1124,10 +1173,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_import_cblcode__id
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_import_cblcode_wizard__id
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_import_uom__id
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_origin_translation_wizard__id
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_quality__id
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_suppliers__id
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom__id
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom_wizard__id
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_uom_translation_wizard__id
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_vat_tax__id
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_vat_tax_trans_wizard__id
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_vat_tax_wizard__id
@@ -1218,6 +1269,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product__inhoud
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom__inhoud
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom_wizard__inhoud
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_uom_translation_wizard__inhoud
 #: model:ir.model.fields,field_description:product_import_cwa.field_product_product__inhoud
 #: model:ir.model.fields,field_description:product_import_cwa.field_product_supplierinfo__inhoud
 #: model:ir.model.fields,field_description:product_import_cwa.field_product_template__inhoud
@@ -1246,6 +1298,7 @@ msgid "Inkoopprijs."
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_cblcode_translation_wizard__internal_category
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_cblcode__internal_category
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_import_cblcode_wizard__internal_category
 msgid "Internal category"
@@ -1386,6 +1439,8 @@ msgid "Land van herkomst in vorm ISO 3166 code."
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_brand_translation_wizard____last_update
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_cblcode_translation_wizard____last_update
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change____last_update
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_products____last_update
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product____last_update
@@ -1396,10 +1451,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_import_cblcode____last_update
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_import_cblcode_wizard____last_update
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_import_uom____last_update
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_origin_translation_wizard____last_update
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_quality____last_update
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_suppliers____last_update
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom____last_update
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom_wizard____last_update
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_uom_translation_wizard____last_update
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_vat_tax____last_update
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_vat_tax_trans_wizard____last_update
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_vat_tax_wizard____last_update
@@ -1407,6 +1464,8 @@ msgid "Last Modified on"
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_brand_translation_wizard__write_uid
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_cblcode_translation_wizard__write_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__write_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_products__write_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product__write_uid
@@ -1417,10 +1476,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_import_cblcode__write_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_import_cblcode_wizard__write_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_import_uom__write_uid
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_origin_translation_wizard__write_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_quality__write_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_suppliers__write_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom__write_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom_wizard__write_uid
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_uom_translation_wizard__write_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_vat_tax__write_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_vat_tax_trans_wizard__write_uid
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_vat_tax_wizard__write_uid
@@ -1428,6 +1489,8 @@ msgid "Last Updated by"
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_brand_translation_wizard__write_date
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_cblcode_translation_wizard__write_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_product_change__write_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_import_products__write_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product__write_date
@@ -1438,10 +1501,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_import_cblcode__write_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_import_cblcode_wizard__write_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_import_uom__write_date
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_origin_translation_wizard__write_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_quality__write_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_suppliers__write_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom__write_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom_wizard__write_date
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_uom_translation_wizard__write_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_vat_tax__write_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_vat_tax_trans_wizard__write_date
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_vat_tax_wizard__write_date
@@ -1782,6 +1847,11 @@ msgid "NOT A REFERENCE"
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_origin_translation_wizard__name
+msgid "Name"
+msgstr ""
+
+#. module: product_import_cwa
 #: model:ir.model.fields.selection,name:product_import_cwa.selection__cwa_import_product_change__state__new
 #: model:ir.model.fields.selection,name:product_import_cwa.selection__cwa_product__state__new
 #: model_terms:ir.ui.view,arch_db:product_import_cwa.view_cwa_product_filter
@@ -1970,6 +2040,7 @@ msgid "Overige gegevens"
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_cblcode_translation_wizard__pos_category
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_cblcode__pos_category
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_import_cblcode_wizard__pos_category
 msgid "POS category"
@@ -2171,6 +2242,7 @@ msgstr ""
 #. module: product_import_cwa
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom__uom_po_id
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom_wizard__uom_po_id
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_uom_translation_wizard__uom_po_id
 msgid "Purchase UoM"
 msgstr ""
 
@@ -2374,6 +2446,7 @@ msgstr ""
 #. module: product_import_cwa
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom__uom_id
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom_wizard__uom_id
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_uom_translation_wizard__uom_id
 msgid "Standard UoM"
 msgstr ""
 
@@ -2463,6 +2536,7 @@ msgstr ""
 #. module: product_import_cwa
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom__target_inhoud
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom_wizard__target_inhoud
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_uom_translation_wizard__target_inhoud
 msgid "Target Inhoud"
 msgstr ""
 
@@ -2476,6 +2550,16 @@ msgstr ""
 #: model:ir.model.fields,help:product_import_cwa.field_product_supplierinfo__d230
 #: model:ir.model.fields,help:product_import_cwa.field_product_template__d230
 msgid "Tarwe."
+msgstr ""
+
+#. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_origin_translation_wizard__country_code
+msgid "The ISO 3166 country code"
+msgstr ""
+
+#. module: product_import_cwa
+#: model:ir.model.fields,help:product_import_cwa.field_cwa_product_origin_translation_wizard__name
+msgid "The origin name. Can be a country, region or producer."
 msgstr ""
 
 #. module: product_import_cwa
@@ -2496,6 +2580,28 @@ msgstr ""
 #. module: product_import_cwa
 #: model:ir.model,name:product_import_cwa.model_cwa_vat_tax_wizard
 msgid "Translate BTW to taxes"
+msgstr ""
+
+#. module: product_import_cwa
+#: model:ir.actions.act_window,name:product_import_cwa.action_open_brand_translation_wizard
+#: model_terms:ir.ui.view,arch_db:product_import_cwa.brand_translation_wizard_view
+msgid "Translate Brand"
+msgstr ""
+
+#. module: product_import_cwa
+#: model_terms:ir.ui.view,arch_db:product_import_cwa.cblcode_translation_wizard_view
+msgid "Translate CBL Code"
+msgstr ""
+
+#. module: product_import_cwa
+#: model:ir.actions.act_window,name:product_import_cwa.action_open_product_origin_translation_wizard
+#: model_terms:ir.ui.view,arch_db:product_import_cwa.product_origin_translation_wizard_view
+msgid "Translate Product Origin"
+msgstr ""
+
+#. module: product_import_cwa
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_brand_translation_wizard__translated_brand
+msgid "Translated Brand"
 msgstr ""
 
 #. module: product_import_cwa
@@ -2523,8 +2629,16 @@ msgid "Unique ID."
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.actions.act_window,name:product_import_cwa.action_cwa_uom_translation_wizard
+#: model:ir.model,name:product_import_cwa.model_cwa_uom_translation_wizard
+#: model_terms:ir.ui.view,arch_db:product_import_cwa.cwa_uom_translation_wizard_form_view
+msgid "UoM Translation Wizard"
+msgstr ""
+
+#. module: product_import_cwa
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom__uos_combo
 #: model:ir.model.fields,field_description:product_import_cwa.field_cwa_product_uom_wizard__uos_combo
+#: model:ir.model.fields,field_description:product_import_cwa.field_cwa_uom_translation_wizard__uos_combo
 msgid "UoM/UoS Combo"
 msgstr ""
 
