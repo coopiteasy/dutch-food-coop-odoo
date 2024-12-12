@@ -69,6 +69,10 @@ class ProductTemplate(models.Model):
     )
     has_new_price = fields.Boolean()
 
+    def make_available_in_pos(self):
+        for product in self:
+            product.write({"available_in_pos": True})
+
     @api.depends("uom_id", "uom_po_id", "list_price")
     def _compute_price_per_su(self):
         for this in self:

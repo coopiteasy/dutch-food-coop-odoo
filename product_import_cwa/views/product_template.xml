@@ -291,6 +291,17 @@
         action="action_product_template_retailer"
     />
 
+    <record id="action_make_available_in_pos" model="ir.actions.server">
+        <field name="name">Make Available in POS</field>
+        <field name="model_id" ref="product.model_product_template" />
+        <field name="binding_model_id" ref="product.model_product_template" />
+        <field name="state">code</field>
+        <field name="code">
+            for record in records:
+                record.make_available_in_pos()
+        </field>
+    </record>
+
     <!-- Replace Default Kanban with Tree view - Sales -> Products -->
     <record id="sale.product_template_action" model="ir.actions.act_window">
         <field name="view_mode">tree,form,kanban</field>
