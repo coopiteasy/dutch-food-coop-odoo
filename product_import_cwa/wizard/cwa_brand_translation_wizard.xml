@@ -1,0 +1,30 @@
+<odoo>
+    <record id="brand_translation_wizard_view" model="ir.ui.view">
+        <field name="name">brand.translation.wizard.form</field>
+        <field name="model">cwa.brand.translation.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Translate Brand">
+                <group>
+                    <field name="brand_name" />
+                    <field name="translated_brand" />
+                </group>
+                <footer>
+                    <button
+                        string="Apply"
+                        type="object"
+                        name="action_translate_brand"
+                        class="btn-primary"
+                    />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_open_brand_translation_wizard" model="ir.actions.act_window">
+        <field name="name">Translate Brand</field>
+        <field name="res_model">cwa.brand.translation.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

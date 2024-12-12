@@ -1,0 +1,31 @@
+<odoo>
+    <record id="cblcode_translation_wizard_view" model="ir.ui.view">
+        <field name="name">cblcode.translation.wizard.form</field>
+        <field name="model">cwa.cblcode.translation.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Translate CBL Code">
+                <group>
+                    <field name="source_value" />
+                    <field name="internal_category" />
+                    <field name="pos_category" />
+                </group>
+                <footer>
+                    <button
+                        string="Create"
+                        type="object"
+                        name="action_create_cwa_product_cblcode"
+                        class="btn-primary"
+                    />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_open_cblcode_translation_wizard" model="ir.actions.act_window">
+        <field name="name">Create CWA Product CBL Code</field>
+        <field name="res_model">cwa.cblcode.translation.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

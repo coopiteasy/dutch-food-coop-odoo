@@ -1,0 +1,33 @@
+<odoo>
+    <record id="product_origin_translation_wizard_view" model="ir.ui.view">
+        <field name="name">product.origin.translation.wizard.form</field>
+        <field name="model">cwa.product.origin.translation.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Translate Product Origin">
+                <group>
+                    <field name="country_code" />
+                    <field name="name" />
+                </group>
+                <footer>
+                    <button
+                        string="Apply"
+                        type="object"
+                        name="action_create_product_origin_translation"
+                        class="btn-primary"
+                    />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record
+        id="action_open_product_origin_translation_wizard"
+        model="ir.actions.act_window"
+    >
+        <field name="name">Translate Product Origin</field>
+        <field name="res_model">cwa.product.origin.translation.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

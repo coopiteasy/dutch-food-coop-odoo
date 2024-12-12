@@ -1,0 +1,35 @@
+<odoo>
+    <record id="cwa_uom_translation_wizard_form_view" model="ir.ui.view">
+        <field name="name">cwa.uom.translation.wizard.form</field>
+        <field name="model">cwa.uom.translation.wizard</field>
+        <field name="arch" type="xml">
+            <form string="UoM Translation Wizard">
+                <group>
+                    <field name="eenheid" required="1" />
+                    <field name="inhoud" required="1" />
+                    <field name="uom_id" required="1" />
+                    <field name="uom_po_id" required="1" />
+                    <field name="target_inhoud" />
+                    <field name="uos_combo" />
+                </group>
+                <footer>
+                    <button
+                        string="Apply"
+                        type="object"
+                        name="action_translate_product_uom"
+                        class="btn-primary"
+                    />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_cwa_uom_translation_wizard" model="ir.actions.act_window">
+        <field name="name">UoM Translation Wizard</field>
+        <field name="res_model">cwa.uom.translation.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>
