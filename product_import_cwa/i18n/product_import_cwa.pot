@@ -1665,6 +1665,11 @@ msgid "Mais."
 msgstr ""
 
 #. module: product_import_cwa
+#: model:ir.actions.server,name:product_import_cwa.action_make_available_in_pos
+msgid "Make Available in POS"
+msgstr ""
+
+#. module: product_import_cwa
 #: model_terms:ir.ui.view,arch_db:product_import_cwa.cwa_product_form_import_to_product
 msgid "Mass Import"
 msgstr ""
